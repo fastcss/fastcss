@@ -1,0 +1,38 @@
+@use 'mixins/typography';
+@use 'functions' as *;
+
+body {
+  font-size: config('typography', 'font-sizes', 'base');
+  font-family: config('typography', 'font-families', 'base');
+  line-height: config('typography', 'line-heights', 'base');
+  word-spacing: config('typography', 'word-spacings', 'base');
+  letter-spacing: config('typography', 'letter-spacings', 'base');
+}
+
+@each $name, $value in config('typography', 'font-families') {
+  @include typography.font-family($name, $value);
+}
+
+@each $name, $value in config('typography', 'font-sizes') {
+  @include typography.font-size($name, $value);
+}
+
+@each $weight in config('typography', 'font-weights') {
+  @include typography.font-weight($weight);
+}
+
+@each $style in config('typography', 'font-styles') {
+  @include typography.font-style($style);
+}
+
+@each $name, $value in config('typography', 'line-heights') {
+  @include typography.line-height($name, $value);
+}
+
+@each $name, $value in config('typography', 'word-spacings') {
+  @include typography.letter-spacing($name, $value);
+}
+
+@each $name, $value in config('typography', 'letter-spacings') {
+  @include typography.word-spacing($name, $value);
+}

@@ -1,0 +1,43 @@
+{
+  "name": "fastcss",
+  "description": "Code fast with this awesome css framework.",
+  "version": "0.1.0",
+  "style": "dist/fastcss.css",
+  "sass": "scss/fastcss.scss",
+  "scripts": {
+    "dev": "webpack",
+    "prod": "cross-env NODE_ENV=production webpack",
+    "watch": "webpack --progress --colors --watch"
+  },
+  "keywords": [
+    "fastcss",
+    "css",
+    "sass",
+    "scss",
+    "framework"
+  ],
+  "author": "Lucian Ene <lucianene@mail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/fastcss/fastcss.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fastcss/fastcss/issues"
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.7.3",
+    "cross-env": "^6.0.3",
+    "css-loader": "^3.3.2",
+    "file-loader": "^5.0.2",
+    "mini-css-extract-plugin": "^0.8.0",
+    "normalize.css": "^8.0.1",
+    "postcss-loader": "^3.0.0",
+    "postcss-sort-media-queries": "^1.0.15",
+    "sass": "^1.23.7",
+    "sass-loader": "^8.0.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
+  },
+  "dependencies": {}
+}

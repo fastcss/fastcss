@@ -1,0 +1,33 @@
+@mixin hover {
+  &:hover {
+    @content;
+  }
+}
+@mixin active {
+  &:active {
+    @content;
+  }
+}
+@mixin focus {
+  &:focus {
+    @content;
+  }
+}
+
+@mixin all-states($class) {
+  .hover\:#{$class} {
+    @include hover {
+      @content;
+    }
+  }
+  .active\:#{$class} {
+    @include active {
+      @content;
+    }
+  }
+  .focus\:#{$class} {
+    @include focus {
+      @content;
+    }
+  }
+}

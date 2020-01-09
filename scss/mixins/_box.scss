@@ -1,0 +1,150 @@
+@use 'functions' as *;
+
+@mixin margin($length, $screen: null) {
+  // strip the unit
+  $lengthText: if(config('box', 'stripunits'), strip-unit($length), $length);
+
+  // escape percentages
+  $lengthText: if(is-percentage($length), $lengthText + '\\%', $lengthText);
+
+  // create the screen
+  $screenText: if($screen, $screen+'\\:', '');
+
+  .#{$screenText}m-#{$lengthText}  { margin: #{$length}; }
+  .#{$screenText}mt-#{$lengthText} { margin-top: #{$length}; }
+  .#{$screenText}mr-#{$lengthText} { margin-right: #{$length}; }
+  .#{$screenText}mb-#{$lengthText} { margin-bottom: #{$length}; }
+  .#{$screenText}ml-#{$lengthText} { margin-left: #{$length}; }
+  .#{$screenText}mv-#{$lengthText} {
+    @extend .#{$screenText}mt-#{$lengthText};
+    @extend .#{$screenText}mb-#{$lengthText};
+  }
+  .#{$screenText}mh-#{$lengthText} {
+    @extend .#{$screenText}ml-#{$lengthText};
+    @extend .#{$screenText}mr-#{$lengthText};
+  }
+}
+
+@mixin padding($length, $screen: null) {
+  // strip the unit
+  $lengthText: if(config('box', 'stripunits'), strip-unit($length), $length);
+
+  // escape percentages
+  $lengthText: if(is-percentage($length), $lengthText + '\\%', $lengthText);
+
+  // create the screen
+  $screenText: if($screen, $screen+'\\:', '');
+
+  .#{$screenText}p-#{$lengthText}  { padding: #{$length}; }
+  .#{$screenText}pt-#{$lengthText} { padding-top: #{$length}; }
+  .#{$screenText}pr-#{$lengthText} { padding-right: #{$length}; }
+  .#{$screenText}pb-#{$lengthText} { padding-bottom: #{$length}; }
+  .#{$screenText}pl-#{$lengthText} { padding-left: #{$length}; }
+  .#{$screenText}pv-#{$lengthText} {
+    @extend .#{$screenText}pt-#{$lengthText};
+    @extend .#{$screenText}pb-#{$lengthText};
+  }
+  .#{$screenText}ph-#{$lengthText} {
+    @extend .#{$screenText}pl-#{$lengthText};
+    @extend .#{$screenText}pr-#{$lengthText};
+  }
+}
+
+@mixin border-width($length, $screen: null) {
+  // strip the unit
+  $lengthText: if(config('box', 'stripunits'), strip-unit($length), $length);
+
+  // escape percentages
+  $lengthText: if(is-percentage($length), $lengthText + '\\%', $lengthText);
+
+  // create the screen
+  $screenText: if($screen, $screen+'\\:', '');
+
+  .#{$screenText}b-#{$lengthText}  { border-width: #{$length}; }
+  .#{$screenText}bt-#{$lengthText} { border-top-width: #{$length}; }
+  .#{$screenText}br-#{$lengthText} { border-right-width: #{$length}; }
+  .#{$screenText}bb-#{$lengthText} { border-bottom-width: #{$length}; }
+  .#{$screenText}bl-#{$lengthText} { border-left-width: #{$length}; }
+  .#{$screenText}bv-#{$length} {
+    @extend .#{$screenText}bt-#{$lengthText};
+    @extend .#{$screenText}bb-#{$lengthText};
+  }
+  .#{$screenText}bh-#{$length} {
+    @extend .#{$screenText}bl-#{$lengthText};
+    @extend .#{$screenText}br-#{$lengthText};
+  }
+}
+
+@mixin border-radius($radius, $screen: null) {
+  // strip the unit
+  $radiusText: if(config('box', 'stripunits'), strip-unit($radius), $radius);
+
+  // escape percentages
+  $radiusText: if(is-percentage($radius), $radiusText + '\\%', $radiusText);
+
+  // create the screen
+  $screenText: if($screen, $screen+'\\:', '');
+
+  .#{$screenText}radius-#{$radiusText}  {
+    border-radius: #{$radius};
+  }
+}
+
+@mixin width($length, $screen: null) {
+  // strip the unit
+  $lengthText: if(config('box', 'stripunits'), strip-unit($length), $length);
+
+  // escape percentages
+  $lengthText: if(is-percentage($length), $lengthText + '\\%', $lengthText);
+
+  // create the screen
+  $screenText: if($screen, $screen+'\\:', '');
+
+  .#{$screenText}w-#{$lengthText} { width: #{$length}; }
+  .#{$screenText}minw-#{$lengthText} { min-width: #{$length}; }
+  .#{$screenText}maxw-#{$lengthText} { max-width: #{$length}; }
+}
+
+@mixin height($length, $screen: null) {
+  // strip the unit
+  $lengthText: if(config('box', 'stripunits'), strip-unit($length), $length);
+
+  // escape percentages
+  $lengthText: if(is-percentage($length), $lengthText + '\\%', $lengthText);
+
+  // create the screen
+  $screenText: if($screen, $screen+'\\:', '');
+
+  .#{$screenText}h-#{$lengthText} { height: #{$length}; }
+  .#{$screenText}minh-#{$lengthText} { min-height: #{$length}; }
+  .#{$screenText}maxh-#{$lengthText} { max-height: #{$length}; }
+}
+
+@mixin position($length, $screen: null) {
+  // strip the unit
+  $lengthText: if(config('box', 'stripunits'), strip-unit($length), $length);
+
+  // escape percentages
+  $lengthText: if(is-percentage($length), $lengthText + '\\%', $lengthText);
+
+  // create the screen
+  $screenText: if($screen, $screen+'\\:', '');
+
+  .#{$screenText}top-#{$lengthText} { top: #{$length}; }
+  .#{$screenText}right-#{$lengthText} { right: #{$length}; }
+  .#{$screenText}bottom-#{$lengthText} { bottom: #{$length}; }
+  .#{$screenText}left-#{$lengthText} { left: #{$length}; }
+}
+
+@mixin z-index($depth, $screen: null) {
+  $screenText: if($screen, $screen+'\\:', '');
+
+  .#{$screenText}z-#{$depth} { z-index: #{$depth}; }
+}
+
+@mixin shadow($suffix, $shadow, $screen: null) {
+  // create the screen
+  $screenText: if($screen, $screen+'\\:', '');
+
+  .#{$screenText}bs-#{$suffix} { box-shadow: #{$shadow}; }
+}

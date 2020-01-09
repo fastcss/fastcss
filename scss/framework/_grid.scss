@@ -1,0 +1,58 @@
+@use 'mixins/grid';
+@use 'mixins/utilities';
+@use 'functions' as *;
+
+$_gutter:     config('grid', 'gutter');
+$_gutterHalf: $_gutter / 2;
+$_columns:    config('grid', 'columns');
+$_screens:    config('grid', 'screens');
+
+.container,
+.container-fluid {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $_gutterHalf;
+  padding-right: $_gutterHalf;
+}
+
+.row {
+  box-sizing: border-box;
+  display: flex;
+  flex: 0 1 auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: -($_gutterHalf);
+  margin-right: -($_gutterHalf);
+  @include utilities.clearfix;
+
+  &.row-reverse {
+    flex-direction: row-reverse;
+  }
+}
+
+// applies for all classes starting with col or containing :col-
+[class^="col"],
+[class*="\:col-"] {
+  position: relative;
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  padding-left: $_gutterHalf;
+  padding-right: $_gutterHalf;
+
+  &.col-reverse {
+    flex-direction: column-reverse;
+  }
+}
+
+// generate screen releated items
+@each $screen, $width in $_screens {
+  @if $screen == nth(nth($_screens, 1), 1) {
+    // create the first column which live outside media queries
+    @include grid.column-classes($screen, $width, $_columns, $_gutter);
+  } @else {
+    // create media queries
+    @include grid.screen($screen) {
+      @include grid.column-classes($screen, $width, $_columns, $_gutter);
+    }
+  }
+}

@@ -1,0 +1,36 @@
+@use 'mixins/box';
+@use 'mixins/grid';
+@use 'functions' as *;
+
+$_shadows: config('box', 'shadows');
+
+@include grid.all-screen-max() using ($screenName) {
+  @each $size in config('box', 'paddings') {
+    @include box.padding($size, $screenName);
+  }
+  @each $size in config('box', 'margins') {
+    @include box.margin($size, $screenName);
+  }
+  @each $size in config('box', 'border-widths') {
+    @include box.border-width($size, $screenName);
+  }
+  @each $size in config('box', 'border-radiuses') {
+    @include box.border-radius($size, $screenName);
+  }
+  @each $size in config('box', 'widths') {
+    @include box.width($size, $screenName);
+  }
+  @each $size in config('box', 'heights') {
+    @include box.height($size, $screenName);
+  }
+  @each $size in config('box', 'positions') {
+    @include box.position($size, $screenName);
+  }
+  @each $size in config('box', 'z-indexes') {
+    @include box.z-index($size, $screenName);
+  }
+  @each $shadow in $_shadows {
+    $index: index($_shadows, $shadow) - 1;
+    @include box.shadow($index, $shadow, $screenName);
+  }
+}

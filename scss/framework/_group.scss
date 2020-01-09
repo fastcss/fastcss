@@ -1,0 +1,32 @@
+@use 'mixins/grid';
+
+@include grid.all-screen-max() using ($screenName) {
+  // create the screen
+  $screenText: if($screenName, $screenName+'\\:', '');
+
+  .#{$screenText}group {
+    display: flex;
+    flex-direction: row;
+    > .group-item {
+      flex-shrink: 0;
+      &.group-item-shrink {
+        flex-shrink: 1;
+      }
+    }
+    &.#{$screenText}group-shrink > .group-item {
+      flex-shrink: 1;
+    }
+    &.#{$screenText}group-vertical {
+      flex-direction: column;
+    }
+    &.#{$screenText}group-center {
+      justify-content: center;
+    }
+    &.#{$screenText}group-left {
+      justify-content: flex-start;
+    }
+    &.#{$screenText}group-right {
+      justify-content: flex-end;
+    }
+  }
+}

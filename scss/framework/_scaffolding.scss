@@ -1,0 +1,5 @@
+// placeholder for contenteditable
+[contenteditable=true]:empty:before {
+  content: attr(placeholder);
+  display: block; /* For Firefox */
+}

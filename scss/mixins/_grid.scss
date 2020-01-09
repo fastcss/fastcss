@@ -1,0 +1,89 @@
+@use 'functions' as *;
+
+@mixin column-classes($screen, $width, $columns, $gutter) {
+  @include container($width, $gutter);
+  @include column($screen, $columns);
+
+  // @TODO: make these utilities optional
+  @include column-utilities($screen, $columns);
+  @include row-utilities($screen);
+}
+
+@mixin column($screen, $columns) {
+  .#{$screen}\:col {
+    flex-grow: 1;
+    flex-basis: 0;
+    max-width: 100%;
+  }
+  @for $column from 1 through $columns {
+    .#{$screen}\:col-#{$column} {
+      flex-basis: percentage($column / $columns);
+      max-width: percentage($column / $columns);
+    }
+  }
+}
+
+@mixin container($width, $gutter) {
+  .container {
+    width: $width - $gutter;
+  }
+}
+
+@mixin column-utilities($screen, $columns) {
+  @for $column from 1 through $columns {
+    .#{$screen}\:col-#{$column}-offset {
+      margin-left: percentage($column / $columns);
+    }
+    .#{$screen}\:col-#{$column}-push {
+      left: percentage($column / $columns);
+    }
+    .#{$screen}\:col-#{$column}-pull {
+      right: percentage($column / $columns);
+    }
+  }
+}
+
+@mixin row-utilities($screen) {
+  .#{$screen}\:items-start { justify-content: flex-start; }
+  .#{$screen}\:items-end { justify-content: flex-end; }
+  .#{$screen}\:items-center { justify-content: center; }
+  .#{$screen}\:items-top { align-items: flex-start; }
+  .#{$screen}\:items-bottom { align-items: flex-end; }
+  .#{$screen}\:items-middle { align-items: center; }
+  .#{$screen}\:items-around { justify-content: space-around; }
+  .#{$screen}\:items-between { justify-content: space-between; }
+  .#{$screen}\:items-initial-items { order: initial; }
+  .#{$screen}\:items-reverse { flex-direction: row-reverse; }
+}
+
+@mixin screen-max($screen) {
+  @media only screen and (max-width: config('grid', 'screens', $screen)) {
+    @content;
+  }
+}
+
+@mixin screen-min-max($min-screen, $max-screen) {
+  $max-width: config('grid', 'screens', $max-screen);
+  $min-width: if(config('grid', 'screens', $min-screen) == $max-width, 0, config('grid', 'screens', $min-screen));
+  @media (min-width: $min-width) and (max-width: $max-width) {
+    @content;
+  }
+}
+
+@mixin screen($screen) {
+  @media (min-width: config('grid', 'screens', $screen)) {
+    @content;
+  }
+}
+
+@mixin all-screen-max() {
+  // default screen
+  @content(null);
+
+  // for the other screens
+  @each $screenName, $screenWidth in config('grid', 'screens') {
+    @include screen-max($screenName) {
+      @content($screenName);
+    }
+  }
+}

@@ -1,0 +1,124 @@
+@use 'fastcss' with (
+  $config: (
+
+    // // @TODO: implement this system to control which feature
+    // // to be enabled, responsive or have different states
+    //
+    // // list: (responsive,hover,active,focus), boolean (true / false)
+    // 'fastcss': (
+    //   'typography': 'responsive',
+    //   'box': 'responsive',
+    //   'grid': 'responsive',
+    //   'grid-utilities': true,
+    //   'colors': 'responsive,hover,active,focus',
+    //   'cursors': true,
+    //   'floats': 'responsive',
+    //   'displays': 'responsive',
+    //   'positions': true,
+    //   'text-utilities': 'responsive,hover',
+    // ),
+
+    // Notice: the base setting is required
+    'typography': (
+      'font-families': (
+        'base': "-apple-system, sans-serif",
+        'sans': "-apple-system, sans-serif",
+        'serif': serif,
+        'mono': monospace,
+      ),
+      'font-sizes': (
+        'xs': .75rem,
+        'sm': .875rem,
+        'base': 16px,
+        'lg': 1.125rem,
+        'xl': 1.25rem,
+        'hg': 1.5rem,
+      ),
+      'font-weights': (
+        400, 700
+      ),
+      'font-styles': (
+        'normal', 'italic', 'oblique'
+      ),
+      'line-heights': (
+        'xs': 1rem,
+        'sm': 1.25rem,
+        'base': 1.5rem,
+      ),
+      'word-spacings': (
+        'base': .03rem
+      ),
+      'letter-spacings': (
+        'base': 0
+      ),
+    ),
+
+    'box': (
+      // Change to false if you want to keep the units in class names.
+      // Percentages will not be striped.
+      'stripunits': true,
+      'paddings': (2px, 10px, 15px, 20px),
+      'margins': (auto, 5px, 10px, 15px, 20px, 30px),
+      'widths': (25%, 50%, 100%, 900px),
+      'heights': (100%),
+      'positions': (),
+      'z-indexes': (-1, 1, 2),
+      'border-radiuses': (3px, 5px),
+      'border-widths': (1px, 2px),
+
+      // Based on google's material shadows guide
+      'shadows': (
+        "none",
+        "0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)",
+        "0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)",
+        "0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)",
+        "0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)",
+        "0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22)",
+      )
+    ),
+
+    'grid': (
+      'columns': 12,
+      'gutter':  30px,
+      'screens': (
+        'xs': 576px,
+        'sm': 768px,
+        'md': 992px,
+        'lg': 1200px
+      )
+    ),
+
+    // Based on google's material colors system.
+    'colors': (
+      // This is the color palette, add as many as you need but remember, this will fatten your css file.
+      'palette': (
+        'transparent': transparent,
+        'white':       #ffffff,
+        'black':       #000000,
+        'purple':      #9C27B0,
+        'pink':        #f4b9ff,
+        'grey':        #9E9E9E,
+        'lightgrey':   #D3D3D3,
+        'blue':        #2f4b7c,
+        'green':       #5cb85c,
+        'red':         #d9534f,
+        'orange':      #f0ad4e,
+        'magneta':     #5bc0de,
+      ),
+
+      // Control the lightness and the darnkess of the variants by providing positive and negative numbers.
+      'variants': (
+        '50':  88,
+        '100': 70,
+        '200': 50, // light variant
+        '300': 30,
+        '400': 15,
+        '500': 0, // base variant
+        '600': -9.25,
+        '700': -21, // dark variant
+        '800': -32,
+        '900': -52.5,
+      )
+    ),
+  )
+);

@@ -1,0 +1,20 @@
+@use 'mixins/colors';
+@use 'functions' as *;
+
+// applies for border classes
+[class*="-border"] {
+  border-style: solid;
+  border-width: 0;
+}
+
+@each $color, $hex in config('colors', 'palette') {
+  // base variant
+  @include colors.color($color, '500');
+
+  // some colors don't have variants
+  @if index(('transparent','white','black'), $color) == null {
+    @each $variant, $percent in config('colors', 'variants') {
+      @include colors.color($color, $variant);
+    }
+  }
+}

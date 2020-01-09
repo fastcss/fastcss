@@ -1,0 +1,222 @@
+// Import google font generating the @import rule
+//
+// @param  {string} $font
+// @param  {list} $weights: ()
+@mixin import-google-font($font, $weights: ()) {
+  @import url('https://fonts.googleapis.com/css?family=#{unquote($font)}');
+}
+
+// Generate the clearfix class
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: ' '; // 1
+    display: table; // 2
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+// Generate displays
+//
+// @param  {string} $screen
+@mixin displays($screen: null) {
+  $screenText: if($screen, $screen+'\\:', '');
+
+  .#{$screenText}show,
+  .#{$screenText}block {
+    display: block;
+  }
+  .#{$screenText}hide,
+  .#{$screenText}hidden {
+    display: none;
+  }
+  .#{$screenText}inline {
+    display: inline;
+  }
+  .#{$screenText}inline-block {
+    display: inline-block;
+  }
+  .#{$screenText}table {
+    display: table;
+  }
+  .#{$screenText}table-row {
+    display: table-row;
+  }
+  .#{$screenText}table-cell {
+    display: table-cell;
+  }
+  .#{$screenText}flex {
+    display: flex;
+  }
+  .#{$screenText}inline-flex {
+    display: inline-flex;
+  }
+  .#{$screenText}visible {
+    visibility: visible;
+  }
+  .#{$screenText}invisible {
+    visibility: hidden;
+  }
+}
+
+// Generate positions
+//
+// @param  {string} $screen
+@mixin positions($screen: null) {
+  $screenText: if($screen, $screen+'\\:', '');
+
+  .#{$screenText}relative {
+    position: relative;
+  }
+  .#{$screenText}absolute {
+    position: absolute;
+  }
+  .#{$screenText}fixed {
+    position: fixed;
+  }
+  .#{$screenText}static {
+    position: static;
+  }
+  .#{$screenText}sticky {
+    position: sticky;
+  }
+}
+
+// Generate overflows
+//
+// @param  {string} $screen
+@mixin overflows($screen: null) {
+  $screenText: if($screen, $screen+'\\:', '');
+
+  .#{$screenText}of-hidden {
+    overflow: hidden;
+  }
+  .#{$screenText}of-visible {
+    overflow: visible;
+  }
+  .#{$screenText}of-auto {
+    overflow: auto;
+  }
+  .#{$screenText}of-auto-y {
+    overflow-y: auto;
+  }
+  .#{$screenText}of-auto-x {
+    overflow-x: auto;
+  }
+  .#{$screenText}of-scroll {
+    overflow: scroll;
+  }
+  .#{$screenText}of-scroll-y {
+    overflow-y: scroll;
+  }
+  .#{$screenText}of-scroll-x {
+    overflow-x: scroll;
+  }
+}
+
+// Generate floats
+//
+// @param  {string} $screen
+@mixin floats($screen: null) {
+  $screenText: if($screen, $screen+'\\:', '');
+
+  .#{$screenText}float-left {
+    float: left;
+  }
+  .#{$screenText}float-right {
+    float: right;
+  }
+  .#{$screenText}float-none {
+    float: none;
+  }
+  .#{$screenText}clear-left {
+    clear: left;
+  }
+  .#{$screenText}clear-right {
+    clear: right;
+  }
+  .#{$screenText}clear-both {
+    clear: both;
+  }
+  .#{$screenText}clear-none {
+    clear: none;
+  }
+  .#{$screenText}clearfix {
+    @include clearfix;
+  }
+}
+
+// Generate vertical aligns
+//
+// @param  {string} $screen
+@mixin vertical-aligns($screen: null) {
+  $screenText: if($screen, $screen+'\\:', '');
+
+  // ex: .va-middle
+  @each $value in (
+    'sub',
+    'super',
+    'top',
+    'text-top',
+    'middle',
+    'bottom',
+    'text-bottom',
+    'initial',
+    'inherit'
+  ) {
+    .#{$screenText}va-#{$value} {
+      vertical-align: #{$value};
+    }
+  }
+}
+
+// Generate text utilities
+//
+// @param  {string} $screen
+@mixin text-utilities($screen: null) {
+  $screenText: if($screen, $screen+'\\:', '');
+
+  // alignment
+  .#{$screenText}text-left {
+    text-align: left;
+  }
+  .#{$screenText}text-right {
+    text-align: right;
+  }
+  .#{$screenText}text-center {
+    text-align: center;
+  }
+
+  // transforms
+  .#{$screenText}text-lowercase {
+    text-transform: lowercase;
+  }
+  .#{$screenText}text-uppercase {
+    text-transform: uppercase;
+  }
+  .#{$screenText}text-capitalize {
+    text-transform: capitalize;
+  }
+
+  // decorations
+  .#{$screenText}text-strike {
+    text-decoration: line-through;
+  }
+  .#{$screenText}text-underline {
+    text-decoration: underline;
+  }
+  .#{$screenText}no-decoration,
+  .#{$screenText}text-no-decoration {
+    text-decoration: none;
+  }
+
+  // white-space
+  .#{$screenText}text-wrap {
+    white-space: wrap;
+  }
+  .#{$screenText}text-nowrap {
+    white-space: nowrap;
+  }
+}

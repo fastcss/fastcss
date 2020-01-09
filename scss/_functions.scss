@@ -1,0 +1,169 @@
+$config: () !default;
+
+// @param {Arglist} $keys - Key chain
+// @return {*} - Desired value
+@function config($keys...) {
+  $value: $config;
+  @each $key in $keys {
+      $value: map-get($value, $key);
+  }
+  @return $value;
+}
+
+// Returns a color from the palette based on the specified variant
+// The default (base) variant is 500
+//
+// @param  {string} $colorName
+// @param  {string} $variantName
+// @return {string} Hex color
+@function get-color($colorName, $variantName: '500') {
+  $colorHex: config('colors', 'palette', $colorName);
+  $variantPercent: config('colors', 'variants', $variantName);
+
+  @if not $colorHex {
+    @error "Unknown color `#{$colorName}` in the configuration.";
+  }
+
+  @if not $variantPercent {
+    @error "Unknown variant `#{$variantName}` in the configuration.";
+  }
+
+  @if($variantPercent == 0) {
+    @return $colorHex;
+  }
+
+  @if($variantPercent > 0) {
+    @return mix(white, $colorHex, (percentage($variantPercent) / 100));
+  }
+
+  @return mix(black, $colorHex, (percentage($variantPercent) / -100));
+}
+
+// Get the previous element from a map by using the key of the current element
+//
+// @param  {integer} $key
+// @param  {map} $map
+// @return {integer} The key of the previous element
+@function map-get-prev($key, $map) {
+
+  $keys: map-keys($map);
+  $index: index($keys, $key) - 1;
+
+  @if($index == 0) {
+    @return $key;
+  }
+
+  @return nth($keys, $index);
+}
+
+// Convert pixels to ems
+//
+// @param  {px} $pixels
+// @param  {number} $base:  16
+// @return {em}
+@function pxtoem($pixels, $base: 16) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+
+  @if (unitless($base)) {
+    $base: $base * 1px;
+  }
+
+  @return $pixels / $base * 1em;
+}
+
+/// Remove the unit of a length
+///
+/// @param {Number} $number - Number to remove unit from
+/// @return {Number} - Unitless number
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+// Prepend to list
+//
+// @param {List} $list
+// @param {Mixed} $value
+// @return {List}
+@function prepend($list, $value) {
+  @return join($value, $list);
+}
+
+// Get the first key from the list
+//
+// @return {integer}
+@function first($list) {
+  @return nth($list, 1);
+}
+
+// Get the last key from the list
+//
+// @return {integer}
+@function last($list) {
+  @return nth($list, length($list));
+}
+
+// @return {boolean}
+@function is-number($value) {
+  @return type-of($value) == 'number';
+}
+
+// @return {boolean}
+@function is-time($value) {
+  @return is-number($value) and index('ms' 's', unit($value)) != null;
+}
+
+// @return {boolean}
+@function is-duration($value) {
+  @return is-time($value);
+}
+
+// @return {boolean}
+@function is-angle($value) {
+  @return is-number($value) and index('deg' 'rad' 'grad' 'turn', unit($value)) != null;
+}
+
+// @return {boolean}
+@function is-frequency($value) {
+  @return is-number($value) and index('Hz' 'kHz', unit($value)) != null;
+}
+
+// @return {boolean}
+@function is-integer($value) {
+  @return is-number($value) and round($value) == $value;
+}
+
+// @return {boolean}
+@function is-relative-length($value) {
+  @return is-number($value) and index('em' 'ex' 'ch' 'rem' 'vw' 'vh' 'vmin' 'vmax', unit($value)) != null;
+}
+
+// @return {boolean}
+@function is-absolute-length($value) {
+  @return is-number($value) and index('cm' 'mm' 'in' 'px' 'pt' 'pc', unit($value)) != null;
+}
+
+// @return {boolean}
+@function is-percentage($value) {
+  @return is-number($value) and unit($value) == '%';
+}
+
+// @return {boolean}
+@function is-length($value) {
+  @return is-relative-length($value) or is-absolute-length($value);
+}
+
+// @return {boolean}
+@function is-resolution($value) {
+  @return is-number($value) and index('dpi' 'dpcm' 'dppx', unit($value)) != null;
+}
+
+// @return {boolean}
+@function is-position($value) {
+  @return is-length($value) or is-percentage($value) or index('top' 'right' 'bottom' 'left' 'center', $value) != null;
+}

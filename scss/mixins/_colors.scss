@@ -1,0 +1,44 @@
+@use 'states';
+@use 'functions' as *;
+
+@mixin text($color, $variant: '500') {
+  $variantText: #{if($variant != '500', '\\:'+$variant, '')};
+
+  .#{$color+''}-text#{$variantText} {
+    color: get-color($color, $variant);
+  }
+
+  @include states.all-states(#{$color+'-text'+$variantText}) {
+    @extend .#{$color+'-text'+$variantText};
+  }
+}
+
+@mixin fill($color, $variant: '500') {
+  $variantText: #{if($variant != '500', '\\:'+$variant, '')};
+
+  .#{$color+''}-fill#{$variantText} {
+    background-color: get-color($color, $variant);
+  }
+
+  @include states.all-states(#{$color+'-fill'+$variantText}) {
+    @extend .#{$color+'-fill'+$variantText};
+  }
+}
+
+@mixin border($color, $variant: '500') {
+  $variantText: #{if($variant != '500', '\\:'+$variant, '')};
+
+  .#{$color+''}-border#{$variantText} {
+    border-color: get-color($color, $variant);
+  }
+
+  @include states.all-states(#{$color+'-border'+$variantText}) {
+    @extend .#{$color+'-border'+$variantText};
+  }
+}
+
+@mixin color($color, $variant: '500') {
+    @include text($color, $variant);
+    @include fill($color, $variant);
+    @include border($color, $variant);
+}

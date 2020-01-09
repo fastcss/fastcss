@@ -1,0 +1,53 @@
+// @param  {string} $name
+// @param  {integer} $value
+@mixin font-family($name, $value) {
+  .ff-#{$name} {
+    font-family: #{$value};
+  }
+}
+
+// @param  {string} $name
+// @param  {integer} $value
+@mixin font-size($name, $value) {
+  .fs-#{$name} {
+    font-size: #{$value};
+  }
+}
+
+// @param  {integer} $weight
+@mixin font-weight($weight) {
+  .fw-#{$weight} {
+    font-weight: #{$weight};
+  }
+}
+
+// @param  {string} $style
+@mixin font-style($style) {
+  .fs-#{$style} {
+    font-style: #{$style};
+  }
+}
+
+// @param  {string} $name
+// @param  {integer} $value
+@mixin line-height($name, $value) {
+  .lh-#{$name} {
+    line-height: #{$value};
+  }
+}
+
+// @param  {string} $name
+// @param  {integer} $value
+@mixin word-spacing($name, $value) {
+  .ws-#{$name} {
+    word-spacing: #{$value};
+  }
+}
+
+// @param  {string} $name
+// @param  {integer} $value
+@mixin letter-spacing($name, $value) {
+  .ls-#{$name} {
+    letter-spacing: #{$value};
+  }
+}
