@@ -18,6 +18,7 @@
   ],
   "author": "Lucian Ene <lucianene@mail.com>",
   "license": "MIT",
+  "homepage": "http://fastcss.org",
   "repository": {
     "type": "git",
     "url": "git://github.com/fastcss/fastcss.git"
