@@ -10,7 +10,7 @@ Code fast with this awesome css framework.
 
 ## Documentation
 
-Check [http://fastcss.org](fastcss.org) for the full documentation.
+Check [fastcss.org](http://fastcss.org/) for the full documentation.
 
 ## Contributing
 
