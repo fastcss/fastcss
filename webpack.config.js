@@ -26,6 +26,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist')
   },
+  devtool: devMode ? 'source-map' : 'eval-cheap-module-source-map',
   module: {
     rules: [
       // css/sass rules

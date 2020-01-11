@@ -6,7 +6,7 @@
   "sass": "scss/fastcss.scss",
   "scripts": {
     "dev": "webpack",
-    "prod": "cross-env NODE_ENV=production webpack",
+    "prod": "webpack && cross-env NODE_ENV=production webpack",
     "watch": "webpack --progress --colors --watch"
   },
   "keywords": [
