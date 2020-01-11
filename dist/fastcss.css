@@ -346,7 +346,7 @@ template {
 
 body {
   font-size: 16px;
-  font-family: "-apple-system, sans-serif";
+  font-family: -apple-system, sans-serif;
   line-height: 1.5rem;
   word-spacing: 0.03rem;
   letter-spacing: 0;
