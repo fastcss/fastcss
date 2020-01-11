@@ -172,6 +172,74 @@
   }
 }
 
+// Generate groups
+//
+// @param  {string} $screen
+@mixin groups($screen:null) {
+  $screenText: if($screen, $screen+'\\:', '');
+
+  .#{$screenText}group {
+    display: flex;
+    flex-direction: row;
+    > .group-item {
+      flex-shrink: 0;
+      &.group-item-shrink {
+        flex-shrink: 1;
+      }
+    }
+    // group utilities
+    &.#{$screenText}group-shrink > .group-item {
+      flex-shrink: 1;
+    }
+    &.#{$screenText}group-vertical {
+      flex-direction: column;
+    }
+    &.#{$screenText}group-center {
+      justify-content: center;
+    }
+    &.#{$screenText}group-left {
+      justify-content: flex-start;
+    }
+    &.#{$screenText}group-right {
+      justify-content: flex-end;
+    }
+  }
+}
+
+// Generate lists
+//
+// @param  {string} $screen
+@mixin lists($screen: null) {
+  $screenText: if($screen, $screen+'\\:', '');
+
+  // ex: .list-none
+  @each $value in (
+    'none',
+    'upper-roman',
+    'lower-roman',
+    'upper-latin',
+    'lower-latin',
+    'decimal',
+    'disc',
+    'circle',
+    'square',
+  ) {
+    .#{$screenText}list-#{$value} {
+      list-style-type: #{$value};
+    }
+  }
+
+  // ex: .list-outside
+  @each $value in (
+    'outside',
+    'inside',
+  ) {
+    .#{$screenText}list-#{$value} {
+      list-style-position: #{$value};
+    }
+  }
+}
+
 // Generate text utilities
 //
 // @param  {string} $screen

@@ -7,5 +7,7 @@
   @include utilities.overflows($screenName);
   @include utilities.floats($screenName);
   @include utilities.vertical-aligns($screenName);
+  @include utilities.groups($screenName);
+  @include utilities.lists($screenName);
   @include utilities.text-utilities($screenName);
 }
