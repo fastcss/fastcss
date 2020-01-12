@@ -54,6 +54,7 @@ module.exports = {
             }
           },
 
+          // load postcss modules
           {
             loader: 'postcss-loader',
             options: {
@@ -83,15 +84,6 @@ module.exports = {
           },
         ]
       },
-      // file rules
-      {
-        test: /\.(png|jpe?g|gif)$/i,
-        use: [
-          {
-            loader: 'file-loader',
-          },
-        ],
-      }
     ]
   },
   plugins: [
