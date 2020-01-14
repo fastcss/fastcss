@@ -77,7 +77,8 @@ module.exports = {
               sourceMap: true,
               implementation: require('sass'),
               sassOptions: {
-                indentWidth: 2,
+                indentedSyntax: false,
+                fiber: require('fibers'),
                 includePaths: [path.resolve(__dirname, "scss")],
               },
             }
