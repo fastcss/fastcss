@@ -65,11 +65,11 @@
   .#{$screenText}br-#{$lengthText} { border-right-width: #{$length}; }
   .#{$screenText}bb-#{$lengthText} { border-bottom-width: #{$length}; }
   .#{$screenText}bl-#{$lengthText} { border-left-width: #{$length}; }
-  .#{$screenText}bv-#{$length} {
+  .#{$screenText}bv-#{$lengthText} {
     @extend .#{$screenText}bt-#{$lengthText};
     @extend .#{$screenText}bb-#{$lengthText};
   }
-  .#{$screenText}bh-#{$length} {
+  .#{$screenText}bh-#{$lengthText} {
     @extend .#{$screenText}bl-#{$lengthText};
     @extend .#{$screenText}br-#{$lengthText};
   }
