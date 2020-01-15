@@ -1,4 +1,5 @@
 $defaultConfig: (
+  'normalize': true, // this will compile the vendor package normalize.css
   'typography': (
     'font-families': (
       'base': "-apple-system, sans-serif",

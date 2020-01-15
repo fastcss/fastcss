@@ -337,7 +337,6 @@ template {
 [hidden] {
   display: none;
 }
-
 [contenteditable=true]:empty:before {
   content: attr(placeholder);
   display: block;
@@ -2506,7 +2505,7 @@ body {
   white-space: nowrap;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px){
   .container {
     width: 738px;
   }
@@ -2773,7 +2772,7 @@ body {
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 992px){
   .container {
     width: 962px;
   }
@@ -3040,7 +3039,7 @@ body {
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1200px){
   .container {
     width: 1170px;
   }
@@ -3307,7 +3306,7 @@ body {
   }
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1200px){
   .lg\:p-0 {
     padding: 0;
   }
@@ -4116,7 +4115,7 @@ body {
   }
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 992px){
   .md\:p-0 {
     padding: 0;
   }
@@ -4925,7 +4924,7 @@ body {
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 768px){
   .sm\:p-0 {
     padding: 0;
   }
@@ -5734,7 +5733,7 @@ body {
   }
 }
 
-@media only screen and (max-width: 576px) {
+@media only screen and (max-width: 576px){
   .xs\:p-0 {
     padding: 0;
   }
