@@ -1,5 +1,10 @@
-$config: () !default;
+@use 'config' as *;
 
+// The default config is used if the $config map is not overwritten
+$config: $defaultConfig !default;
+
+// Use this function to access the config
+//
 // @param {Arglist} $keys - Key chain
 // @return {*} - Desired value
 @function config($keys...) {

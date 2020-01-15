@@ -1,2 +1,14 @@
+// Import $defaultConfig
 @use 'config' as *;
-@use 'fastcss' with ($config: $config);
+
+// Import fastcss with your configuration from a
+// separate file (from '_config.scss' in this example)
+@use 'fastcss' with ($config: $defaultConfig);
+
+// // Import fastcss (the simplest way) with the default config (no "with" provided)
+// @use 'fastcss';
+
+// // You can also pass the config map directy
+// @use 'fastcss' with ($config: (
+// ...
+// ));
