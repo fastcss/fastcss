@@ -1,5 +1,5 @@
-@use 'mixins/typography';
-@use 'functions' as *;
+@use '../mixins/typography';
+@use '../functions' as *;
 
 $_fs: config('typography', 'font-sizes', 'base');
 $_ff: config('typography', 'font-families', 'base');

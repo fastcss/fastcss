@@ -1,5 +1,5 @@
-@use 'mixins/utilities';
-@use 'mixins/grid';
+@use '../mixins/utilities';
+@use '../mixins/grid';
 
 @include grid.all-screen-max() using ($screenName) {
   @include utilities.displays($screenName);

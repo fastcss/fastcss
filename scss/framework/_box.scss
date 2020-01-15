@@ -1,6 +1,6 @@
-@use 'mixins/box';
-@use 'mixins/grid';
-@use 'functions' as *;
+@use '../mixins/box';
+@use '../mixins/grid';
+@use '../functions' as *;
 
 $_shadows: config('box', 'shadows');
 

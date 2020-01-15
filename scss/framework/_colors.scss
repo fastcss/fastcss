@@ -1,5 +1,5 @@
-@use 'mixins/colors';
-@use 'functions' as *;
+@use '../mixins/colors';
+@use '../functions' as *;
 
 // applies for border classes
 [class*="-border"] {

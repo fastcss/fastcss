@@ -1,6 +1,6 @@
-@use 'mixins/grid';
-@use 'mixins/utilities';
-@use 'functions' as *;
+@use '../mixins/grid';
+@use '../mixins/utilities';
+@use '../functions' as *;
 
 $_gutter:     config('grid', 'gutter');
 $_gutterHalf: $_gutter / 2;

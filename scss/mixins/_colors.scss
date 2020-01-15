@@ -1,5 +1,5 @@
 @use 'states';
-@use 'functions' as *;
+@use '../functions' as *;
 
 @mixin text($color, $variant: '500') {
   $variantText: #{if($variant != '500', '\\:'+$variant, '')};

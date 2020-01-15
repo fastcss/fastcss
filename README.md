@@ -14,18 +14,9 @@ Code fast with this awesome css framework.
 
 ```node_modules/fastcss/scss/_config.scss```
 
-3. Import fastcss with your custom configuration and compile it.
+3. Import fastcss with your custom configuration and compile it. Check the **build.scss** file to see different ways to do it.
 
 ```@use 'fastcss' with ($config: ...);```
-
-**Important:** If you use webpack with the sass-loader and have issues importing the module, be sure to add the folowing line to the includePaths array:
-
-```
-includePaths: [
-  ...
-  node_modules/fastcss/scss
-]
-```
 
 4. Build the css
 

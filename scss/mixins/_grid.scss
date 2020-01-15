@@ -1,4 +1,4 @@
-@use 'functions' as *;
+@use '../functions' as *;
 
 @mixin column-classes($screen, $width, $columns, $gutter) {
   @include container($width, $gutter);

@@ -1,2 +1,5 @@
-@forward '~normalize.css';
-@forward 'framework';
+@forward 'functions';
+@forward 'mixins';
+
+@use '~normalize.css' as *;
+@use 'framework';
