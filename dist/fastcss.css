@@ -2346,40 +2346,40 @@ body {
   clear: both;
 }
 
-.va-sub {
-  vertical-align: sub;
-}
-
-.va-super {
-  vertical-align: super;
-}
-
-.va-top {
-  vertical-align: top;
-}
-
-.va-text-top {
-  vertical-align: text-top;
-}
-
-.va-middle {
-  vertical-align: middle;
-}
-
-.va-bottom {
-  vertical-align: bottom;
-}
-
-.va-text-bottom {
-  vertical-align: text-bottom;
-}
-
 .va-initial {
   vertical-align: initial;
 }
 
 .va-inherit {
   vertical-align: inherit;
+}
+
+.va-middle {
+  vertical-align: middle;
+}
+
+.va-super {
+  vertical-align: super;
+}
+
+.va-sub {
+  vertical-align: sub;
+}
+
+.va-top {
+  vertical-align: top;
+}
+
+.va-bottom {
+  vertical-align: bottom;
+}
+
+.va-text-top {
+  vertical-align: text-top;
+}
+
+.va-text-bottom {
+  vertical-align: text-bottom;
 }
 
 .group {
@@ -3955,40 +3955,40 @@ body {
     clear: both;
   }
 
-  .lg\:va-sub {
-    vertical-align: sub;
-  }
-
-  .lg\:va-super {
-    vertical-align: super;
-  }
-
-  .lg\:va-top {
-    vertical-align: top;
-  }
-
-  .lg\:va-text-top {
-    vertical-align: text-top;
-  }
-
-  .lg\:va-middle {
-    vertical-align: middle;
-  }
-
-  .lg\:va-bottom {
-    vertical-align: bottom;
-  }
-
-  .lg\:va-text-bottom {
-    vertical-align: text-bottom;
-  }
-
   .lg\:va-initial {
     vertical-align: initial;
   }
 
   .lg\:va-inherit {
     vertical-align: inherit;
+  }
+
+  .lg\:va-middle {
+    vertical-align: middle;
+  }
+
+  .lg\:va-super {
+    vertical-align: super;
+  }
+
+  .lg\:va-sub {
+    vertical-align: sub;
+  }
+
+  .lg\:va-top {
+    vertical-align: top;
+  }
+
+  .lg\:va-bottom {
+    vertical-align: bottom;
+  }
+
+  .lg\:va-text-top {
+    vertical-align: text-top;
+  }
+
+  .lg\:va-text-bottom {
+    vertical-align: text-bottom;
   }
 
   .lg\:group {
@@ -4764,40 +4764,40 @@ body {
     clear: both;
   }
 
-  .md\:va-sub {
-    vertical-align: sub;
-  }
-
-  .md\:va-super {
-    vertical-align: super;
-  }
-
-  .md\:va-top {
-    vertical-align: top;
-  }
-
-  .md\:va-text-top {
-    vertical-align: text-top;
-  }
-
-  .md\:va-middle {
-    vertical-align: middle;
-  }
-
-  .md\:va-bottom {
-    vertical-align: bottom;
-  }
-
-  .md\:va-text-bottom {
-    vertical-align: text-bottom;
-  }
-
   .md\:va-initial {
     vertical-align: initial;
   }
 
   .md\:va-inherit {
     vertical-align: inherit;
+  }
+
+  .md\:va-middle {
+    vertical-align: middle;
+  }
+
+  .md\:va-super {
+    vertical-align: super;
+  }
+
+  .md\:va-sub {
+    vertical-align: sub;
+  }
+
+  .md\:va-top {
+    vertical-align: top;
+  }
+
+  .md\:va-bottom {
+    vertical-align: bottom;
+  }
+
+  .md\:va-text-top {
+    vertical-align: text-top;
+  }
+
+  .md\:va-text-bottom {
+    vertical-align: text-bottom;
   }
 
   .md\:group {
@@ -5573,40 +5573,40 @@ body {
     clear: both;
   }
 
-  .sm\:va-sub {
-    vertical-align: sub;
-  }
-
-  .sm\:va-super {
-    vertical-align: super;
-  }
-
-  .sm\:va-top {
-    vertical-align: top;
-  }
-
-  .sm\:va-text-top {
-    vertical-align: text-top;
-  }
-
-  .sm\:va-middle {
-    vertical-align: middle;
-  }
-
-  .sm\:va-bottom {
-    vertical-align: bottom;
-  }
-
-  .sm\:va-text-bottom {
-    vertical-align: text-bottom;
-  }
-
   .sm\:va-initial {
     vertical-align: initial;
   }
 
   .sm\:va-inherit {
     vertical-align: inherit;
+  }
+
+  .sm\:va-middle {
+    vertical-align: middle;
+  }
+
+  .sm\:va-super {
+    vertical-align: super;
+  }
+
+  .sm\:va-sub {
+    vertical-align: sub;
+  }
+
+  .sm\:va-top {
+    vertical-align: top;
+  }
+
+  .sm\:va-bottom {
+    vertical-align: bottom;
+  }
+
+  .sm\:va-text-top {
+    vertical-align: text-top;
+  }
+
+  .sm\:va-text-bottom {
+    vertical-align: text-bottom;
   }
 
   .sm\:group {
@@ -6382,40 +6382,40 @@ body {
     clear: both;
   }
 
-  .xs\:va-sub {
-    vertical-align: sub;
-  }
-
-  .xs\:va-super {
-    vertical-align: super;
-  }
-
-  .xs\:va-top {
-    vertical-align: top;
-  }
-
-  .xs\:va-text-top {
-    vertical-align: text-top;
-  }
-
-  .xs\:va-middle {
-    vertical-align: middle;
-  }
-
-  .xs\:va-bottom {
-    vertical-align: bottom;
-  }
-
-  .xs\:va-text-bottom {
-    vertical-align: text-bottom;
-  }
-
   .xs\:va-initial {
     vertical-align: initial;
   }
 
   .xs\:va-inherit {
     vertical-align: inherit;
+  }
+
+  .xs\:va-middle {
+    vertical-align: middle;
+  }
+
+  .xs\:va-super {
+    vertical-align: super;
+  }
+
+  .xs\:va-sub {
+    vertical-align: sub;
+  }
+
+  .xs\:va-top {
+    vertical-align: top;
+  }
+
+  .xs\:va-bottom {
+    vertical-align: bottom;
+  }
+
+  .xs\:va-text-top {
+    vertical-align: text-top;
+  }
+
+  .xs\:va-text-bottom {
+    vertical-align: text-bottom;
   }
 
   .xs\:group {

@@ -14,20 +14,26 @@
   }
 }
 
-@mixin all-states($class) {
-  .hover\:#{$class} {
-    @include hover {
-      @content;
+@mixin on-states($class, $states: ('hover', 'active', 'focus')) {
+  @each $state in $states {
+    @if index(('hover', 'active', 'focus'), $state) {
+      .#{$state}\:#{$class} {
+        @if ($state == 'hover') {
+          @include hover { @content; }
+        } @else if ($state == 'active') {
+          @include active { @content; }
+        } @else if ($state == 'focus') {
+          @include focus { @content; }
+        }
+      }
+    } @else {
+      @warn "State #{$state} is invalid."
     }
   }
-  .active\:#{$class} {
-    @include active {
-      @content;
-    }
-  }
-  .focus\:#{$class} {
-    @include focus {
-      @content;
-    }
+}
+
+@mixin on-all-states($class) {
+  @include on-states($class, ('hover', 'active', 'focus')) {
+    @content;
   }
 }

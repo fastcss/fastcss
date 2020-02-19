@@ -8,7 +8,7 @@
     color: get-color($color, $variant);
   }
 
-  @include states.all-states(#{$color+'-text'+$variantText}) {
+  @include states.on-all-states(#{$color+'-text'+$variantText}) {
     @extend .#{$color+'-text'+$variantText};
   }
 }
@@ -20,7 +20,7 @@
     background-color: get-color($color, $variant);
   }
 
-  @include states.all-states(#{$color+'-fill'+$variantText}) {
+  @include states.on-all-states(#{$color+'-fill'+$variantText}) {
     @extend .#{$color+'-fill'+$variantText};
   }
 }
@@ -32,7 +32,7 @@
     border-color: get-color($color, $variant);
   }
 
-  @include states.all-states(#{$color+'-border'+$variantText}) {
+  @include states.on-all-states(#{$color+'-border'+$variantText}) {
     @extend .#{$color+'-border'+$variantText};
   }
 }
