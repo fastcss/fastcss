@@ -10,4 +10,5 @@
   @include utilities.groups($screenName);
   @include utilities.lists($screenName);
   @include utilities.text-utilities($screenName);
+  @include utilities.cursors($screenName);
 }

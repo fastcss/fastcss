@@ -1,3 +1,5 @@
+@use '../functions' as *;
+
 // Import google font generating the @import rule
 //
 // @param  {string} $font
@@ -155,17 +157,7 @@
   $screenText: if($screen, $screen+'\\:', '');
 
   // ex: .va-middle
-  @each $value in (
-    'sub',
-    'super',
-    'top',
-    'text-top',
-    'middle',
-    'bottom',
-    'text-bottom',
-    'initial',
-    'inherit'
-  ) {
+  @each $value in config('utilities', 'vertical-aligns') {
     .#{$screenText}va-#{$value} {
       vertical-align: #{$value};
     }
@@ -175,7 +167,7 @@
 // Generate groups
 //
 // @param  {string} $screen
-@mixin groups($screen:null) {
+@mixin groups($screen: null) {
   $screenText: if($screen, $screen+'\\:', '');
 
   .#{$screenText}group {
@@ -213,17 +205,7 @@
   $screenText: if($screen, $screen+'\\:', '');
 
   // ex: .list-none
-  @each $value in (
-    'none',
-    'upper-roman',
-    'lower-roman',
-    'upper-latin',
-    'lower-latin',
-    'decimal',
-    'disc',
-    'circle',
-    'square',
-  ) {
+  @each $value in config('utilities', 'lists') {
     .#{$screenText}list-#{$value} {
       list-style-type: #{$value};
     }
@@ -286,5 +268,19 @@
   }
   .#{$screenText}text-nowrap {
     white-space: nowrap;
+  }
+}
+
+// Generate cursors
+//
+// @param  {string} $screen
+@mixin cursors($screen: null) {
+  $screenText: if($screen, $screen+'\\:', '');
+
+  // ex: .list-none
+  @each $cursor in config('utilities', 'cursors') {
+    .#{$screenText}cursor-#{$cursor} {
+      cursor: #{$cursor};
+    }
   }
 }

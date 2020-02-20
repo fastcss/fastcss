@@ -97,5 +97,17 @@ $defaultConfig: (
       '800': -32,
       '900': -52.5,
     )
+  ),
+
+  'utilities': (
+    'vertical-aligns': (
+      'initial', 'inherit', 'middle', 'super', 'sub', 'top', 'bottom', 'text-top', 'text-bottom'
+    ),
+    'cursors': (
+      'default', 'none', 'grab', 'grabbing', 'help', 'pointer', 'zoom-in', 'zoom-out'
+    ),
+    'lists': (
+      'none', 'upper-roman', 'lower-roman', 'upper-latin', 'lower-latin', 'decimal', 'disc', 'circle', 'square'
+    )
   )
 );

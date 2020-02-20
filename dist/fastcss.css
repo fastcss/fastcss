@@ -3282,6 +3282,42 @@ body {
   white-space: nowrap;
 }
 
+.cursor-default {
+  cursor: default;
+}
+
+.cursor-none {
+  cursor: none;
+}
+
+.cursor-grab {
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+
+.cursor-grabbing {
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
+}
+
+.cursor-help {
+  cursor: help;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.cursor-zoom-in {
+  cursor: -webkit-zoom-in;
+  cursor: zoom-in;
+}
+
+.cursor-zoom-out {
+  cursor: -webkit-zoom-out;
+  cursor: zoom-out;
+}
+
 .xs\:show,
 .xs\:block {
   display: block;
@@ -3576,6 +3612,42 @@ body {
 
 .xs\:text-nowrap {
   white-space: nowrap;
+}
+
+.xs\:cursor-default {
+  cursor: default;
+}
+
+.xs\:cursor-none {
+  cursor: none;
+}
+
+.xs\:cursor-grab {
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+
+.xs\:cursor-grabbing {
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
+}
+
+.xs\:cursor-help {
+  cursor: help;
+}
+
+.xs\:cursor-pointer {
+  cursor: pointer;
+}
+
+.xs\:cursor-zoom-in {
+  cursor: -webkit-zoom-in;
+  cursor: zoom-in;
+}
+
+.xs\:cursor-zoom-out {
+  cursor: -webkit-zoom-out;
+  cursor: zoom-out;
 }
 
 @media (min-width: 768px){
@@ -4648,6 +4720,42 @@ body {
 
   .sm\:text-nowrap {
     white-space: nowrap;
+  }
+
+  .sm\:cursor-default {
+    cursor: default;
+  }
+
+  .sm\:cursor-none {
+    cursor: none;
+  }
+
+  .sm\:cursor-grab {
+    cursor: -webkit-grab;
+    cursor: grab;
+  }
+
+  .sm\:cursor-grabbing {
+    cursor: -webkit-grabbing;
+    cursor: grabbing;
+  }
+
+  .sm\:cursor-help {
+    cursor: help;
+  }
+
+  .sm\:cursor-pointer {
+    cursor: pointer;
+  }
+
+  .sm\:cursor-zoom-in {
+    cursor: -webkit-zoom-in;
+    cursor: zoom-in;
+  }
+
+  .sm\:cursor-zoom-out {
+    cursor: -webkit-zoom-out;
+    cursor: zoom-out;
   }
 }
 
@@ -5722,6 +5830,42 @@ body {
   .md\:text-nowrap {
     white-space: nowrap;
   }
+
+  .md\:cursor-default {
+    cursor: default;
+  }
+
+  .md\:cursor-none {
+    cursor: none;
+  }
+
+  .md\:cursor-grab {
+    cursor: -webkit-grab;
+    cursor: grab;
+  }
+
+  .md\:cursor-grabbing {
+    cursor: -webkit-grabbing;
+    cursor: grabbing;
+  }
+
+  .md\:cursor-help {
+    cursor: help;
+  }
+
+  .md\:cursor-pointer {
+    cursor: pointer;
+  }
+
+  .md\:cursor-zoom-in {
+    cursor: -webkit-zoom-in;
+    cursor: zoom-in;
+  }
+
+  .md\:cursor-zoom-out {
+    cursor: -webkit-zoom-out;
+    cursor: zoom-out;
+  }
 }
 
 @media (min-width: 1200px){
@@ -6794,6 +6938,42 @@ body {
 
   .lg\:text-nowrap {
     white-space: nowrap;
+  }
+
+  .lg\:cursor-default {
+    cursor: default;
+  }
+
+  .lg\:cursor-none {
+    cursor: none;
+  }
+
+  .lg\:cursor-grab {
+    cursor: -webkit-grab;
+    cursor: grab;
+  }
+
+  .lg\:cursor-grabbing {
+    cursor: -webkit-grabbing;
+    cursor: grabbing;
+  }
+
+  .lg\:cursor-help {
+    cursor: help;
+  }
+
+  .lg\:cursor-pointer {
+    cursor: pointer;
+  }
+
+  .lg\:cursor-zoom-in {
+    cursor: -webkit-zoom-in;
+    cursor: zoom-in;
+  }
+
+  .lg\:cursor-zoom-out {
+    cursor: -webkit-zoom-out;
+    cursor: zoom-out;
   }
 }
 
