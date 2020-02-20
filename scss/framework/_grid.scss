@@ -44,15 +44,6 @@ $_screens:    config('grid', 'screens');
   }
 }
 
-// generate screen releated items
-@each $screen, $width in $_screens {
-  @if $screen == nth(nth($_screens, 1), 1) {
-    // create the first column which live outside media queries
-    @include grid.column-classes($screen, $width, $_columns, $_gutter);
-  } @else {
-    // create media queries
-    @include grid.screen($screen) {
-      @include grid.column-classes($screen, $width, $_columns, $_gutter);
-    }
-  }
+@include grid.all-screen-min() using ($screenName, $screenWidth) {
+  @include grid.column-classes($screenName, $screenWidth, $_columns, $_gutter);
 }

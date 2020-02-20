@@ -10,13 +10,15 @@
 }
 
 @mixin column($screen, $columns) {
-  .#{$screen}\:col {
+  $screenText: if($screen, $screen+'\\:', '');
+
+  .#{$screenText}col {
     flex-grow: 1;
     flex-basis: 0;
     max-width: 100%;
   }
   @for $column from 1 through $columns {
-    .#{$screen}\:col-#{$column} {
+    .#{$screenText}col-#{$column} {
       flex-basis: percentage($column / $columns);
       max-width: percentage($column / $columns);
     }
@@ -30,34 +32,44 @@
 }
 
 @mixin column-utilities($screen, $columns) {
+  $screenText: if($screen, $screen+'\\:', '');
+
   @for $column from 1 through $columns {
-    .#{$screen}\:col-#{$column}-offset {
+    .#{$screenText}col-#{$column}-offset {
       margin-left: percentage($column / $columns);
     }
-    .#{$screen}\:col-#{$column}-push {
+    .#{$screenText}col-#{$column}-push {
       left: percentage($column / $columns);
     }
-    .#{$screen}\:col-#{$column}-pull {
+    .#{$screenText}col-#{$column}-pull {
       right: percentage($column / $columns);
     }
   }
 }
 
 @mixin row-utilities($screen) {
-  .#{$screen}\:items-start { justify-content: flex-start; }
-  .#{$screen}\:items-end { justify-content: flex-end; }
-  .#{$screen}\:items-center { justify-content: center; }
-  .#{$screen}\:items-top { align-items: flex-start; }
-  .#{$screen}\:items-bottom { align-items: flex-end; }
-  .#{$screen}\:items-middle { align-items: center; }
-  .#{$screen}\:items-around { justify-content: space-around; }
-  .#{$screen}\:items-between { justify-content: space-between; }
-  .#{$screen}\:items-initial-items { order: initial; }
-  .#{$screen}\:items-reverse { flex-direction: row-reverse; }
+  $screenText: if($screen, $screen+'\\:', '');
+
+  .#{$screenText}items-start { justify-content: flex-start; }
+  .#{$screenText}items-end { justify-content: flex-end; }
+  .#{$screenText}items-center { justify-content: center; }
+  .#{$screenText}items-top { align-items: flex-start; }
+  .#{$screenText}items-bottom { align-items: flex-end; }
+  .#{$screenText}items-middle { align-items: center; }
+  .#{$screenText}items-around { justify-content: space-around; }
+  .#{$screenText}items-between { justify-content: space-between; }
+  .#{$screenText}items-initial-items { order: initial; }
+  .#{$screenText}items-reverse { flex-direction: row-reverse; }
 }
 
 @mixin screen-max($screen) {
-  @media only screen and (max-width: config('grid', 'screens', $screen)) {
+  @media (max-width: config('grid', 'screens', $screen)) {
+    @content;
+  }
+}
+
+@mixin screen-min($screen) {
+  @media (min-width: config('grid', 'screens', $screen)) {
     @content;
   }
 }
@@ -70,20 +82,34 @@
   }
 }
 
-@mixin screen($screen) {
-  @media (min-width: config('grid', 'screens', $screen)) {
-    @content;
+@mixin all-screen-min() {
+  $_screens: config('grid', 'screens');
+
+  @content(null, null);
+
+  @each $screenName, $screenWidth in $_screens {
+    @if $screenName == nth(nth($_screens, 1), 1) {
+      @content($screenName, $screenWidth);
+    } @else {
+      @include screen-min($screenName) {
+        @content($screenName, $screenWidth);
+      }
+    }
   }
 }
 
 @mixin all-screen-max() {
-  // default screen
-  @content(null);
+  $_screens: config('grid', 'screens');
 
-  // for the other screens
-  @each $screenName, $screenWidth in config('grid', 'screens') {
-    @include screen-max($screenName) {
-      @content($screenName);
+  @content(null, null);
+
+  @each $screenName, $screenWidth in $_screens {
+    @if $screenName == nth(nth($_screens, 1), 1) {
+      @content($screenName, $screenWidth);
+    } @else {
+      @include screen-max($screenName) {
+        @content($screenName, $screenWidth);
+      }
     }
   }
 }

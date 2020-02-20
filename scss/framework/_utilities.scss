@@ -1,7 +1,7 @@
 @use '../mixins/utilities';
 @use '../mixins/grid';
 
-@include grid.all-screen-max() using ($screenName) {
+@include grid.all-screen-min() using ($screenName, $screenWidth) {
   @include utilities.displays($screenName);
   @include utilities.positions($screenName);
   @include utilities.overflows($screenName);

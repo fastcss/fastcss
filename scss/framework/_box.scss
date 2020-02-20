@@ -4,7 +4,7 @@
 
 $_shadows: config('box', 'shadows');
 
-@include grid.all-screen-max() using ($screenName) {
+@include grid.all-screen-min() using ($screenName, $screenWidth) {
   @each $size in config('box', 'paddings') {
     @include box.padding($size, $screenName);
   }
