@@ -1,3 +1,4 @@
+@use "sass:list";
 @use 'config' as *;
 
 // The default config is used if the $config map is not overwritten
@@ -9,8 +10,15 @@ $config: $defaultConfig !default;
 // @return {*} - Desired value
 @function config($keys...) {
   $value: $config;
+  // $keyHistory: null;
   @each $key in $keys {
+    // $keyHistory: list.append($keyHistory, $key);
+    @if null == map-get($value, $key) {
+      // @warn "Key `#{$keyHistory}` is not defined.";
+      @return ();
+    } @else {
       $value: map-get($value, $key);
+    }
   }
   @return $value;
 }
