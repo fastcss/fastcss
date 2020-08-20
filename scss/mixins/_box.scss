@@ -88,16 +88,16 @@
   .#{$screenText}rad-#{$radiusText}  {
     border-radius: #{$radius};
   }
-  .#{$screenText}tl-rad-#{$radiusText}  {
+  .#{$screenText}radtl-#{$radiusText}  {
     border-top-left-radius: #{$radius};
   }
-  .#{$screenText}tr-rad-#{$radiusText}  {
+  .#{$screenText}radtr-#{$radiusText}  {
     border-top-right-radius: #{$radius};
   }
-  .#{$screenText}bl-rad-#{$radiusText}  {
+  .#{$screenText}radbl-#{$radiusText}  {
     border-bottom-left-radius: #{$radius};
   }
-  .#{$screenText}br-rad-#{$radiusText}  {
+  .#{$screenText}radbr-#{$radiusText}  {
     border-bottom-right-radius: #{$radius};
   }
 }
