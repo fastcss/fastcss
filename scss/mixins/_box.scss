@@ -85,8 +85,20 @@
   // create the screen
   $screenText: if($screen, $screen+'\\:', '');
 
-  .#{$screenText}radius-#{$radiusText}  {
+  .#{$screenText}rad-#{$radiusText}  {
     border-radius: #{$radius};
+  }
+  .#{$screenText}tl-rad-#{$radiusText}  {
+    border-top-left-radius: #{$radius};
+  }
+  .#{$screenText}tr-rad-#{$radiusText}  {
+    border-top-right-radius: #{$radius};
+  }
+  .#{$screenText}bl-rad-#{$radiusText}  {
+    border-bottom-left-radius: #{$radius};
+  }
+  .#{$screenText}br-rad-#{$radiusText}  {
+    border-bottom-right-radius: #{$radius};
   }
 }
 
