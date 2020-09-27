@@ -63,27 +63,27 @@
 }
 
 @mixin screen-max($screen) {
-  @media (max-width: config('grid', 'screens', $screen)) {
+  @media (max-width: conf('grid.screens.' + $screen)) {
     @content;
   }
 }
 
 @mixin screen-min($screen) {
-  @media (min-width: config('grid', 'screens', $screen)) {
+  @media (min-width: conf('grid.screens.' + $screen)) {
     @content;
   }
 }
 
 @mixin screen-min-max($min-screen, $max-screen) {
-  $max-width: config('grid', 'screens', $max-screen);
-  $min-width: if(config('grid', 'screens', $min-screen) == $max-width, 0, config('grid', 'screens', $min-screen));
+  $max-width: conf('grid.screens', $max-screen);
+  $min-width: if(conf('grid.screens', $min-screen) == $max-width, 0, conf('grid.screens', $min-screen));
   @media (min-width: $min-width) and (max-width: $max-width) {
     @content;
   }
 }
 
 @mixin all-screen-min() {
-  $_screens: config('grid', 'screens');
+  $_screens: conf('grid.screens');
 
   @content(null, null);
 
@@ -99,7 +99,7 @@
 }
 
 @mixin all-screen-max() {
-  $_screens: config('grid', 'screens');
+  $_screens: conf('grid.screens');
 
   @content(null, null);
 

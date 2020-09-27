@@ -1,45 +1,39 @@
 @use '../mixins/typography';
 @use '../functions' as *;
 
-$_fs: config('typography', 'font-sizes', 'base');
-$_ff: config('typography', 'font-families', 'base');
-$_lh: config('typography', 'line-heights', 'base');
-$_ws: config('typography', 'word-spacings', 'base');
-$_ls: config('typography', 'letter-spacings', 'base');
-
 // Setup the base typography (all settings are optional)
 body {
-  @if $_fs { font-size: #{$_fs}; }
-  @if $_ff { font-family: #{$_ff}; }
-  @if $_lh { line-height: #{$_lh}; }
-  @if $_ws { word-spacing: #{$_ws}; }
-  @if $_ls { letter-spacing: #{$_ls}; }
+  font-size: #{conf('typography.font-sizes.base')};
+  font-family: #{conf('typography.font-families.base')};
+  line-height: #{conf('typography.line-heights.base')};
+  word-spacing: #{conf('typography.word-spacings.base')};
+  letter-spacing: #{conf('typography.letter-spacings.base')};
 }
 
-@each $name, $value in config('typography', 'font-families') {
+@each $name, $value in conf('typography.font-families') {
   @include typography.font-family($name, $value);
 }
 
-@each $name, $value in config('typography', 'font-sizes') {
+@each $name, $value in conf('typography.font-sizes') {
   @include typography.font-size($name, $value);
 }
 
-@each $weight in config('typography', 'font-weights') {
+@each $weight in conf('typography.font-weights') {
   @include typography.font-weight($weight);
 }
 
-@each $style in config('typography', 'font-styles') {
+@each $style in conf('typography.font-styles') {
   @include typography.font-style($style);
 }
 
-@each $name, $value in config('typography', 'line-heights') {
+@each $name, $value in conf('typography.line-heights') {
   @include typography.line-height($name, $value);
 }
 
-@each $name, $value in config('typography', 'word-spacings') {
+@each $name, $value in conf('typography.word-spacings') {
   @include typography.letter-spacing($name, $value);
 }
 
-@each $name, $value in config('typography', 'letter-spacings') {
+@each $name, $value in conf('typography.letter-spacings') {
   @include typography.word-spacing($name, $value);
 }

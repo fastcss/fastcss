@@ -2,10 +2,10 @@
 @use '../mixins/utilities';
 @use '../functions' as *;
 
-$_gutter:     config('grid', 'gutter');
+$_gutter:     conf('grid.gutter');
 $_gutterHalf: $_gutter / 2;
-$_columns:    config('grid', 'columns');
-$_screens:    config('grid', 'screens');
+$_columns:    conf('grid.columns');
+$_screens:    conf('grid.screens');
 
 .container,
 .container-fluid {
