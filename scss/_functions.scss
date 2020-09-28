@@ -15,7 +15,7 @@ $config: $defaultConfig !default;
     // $keyHistory: list.append($keyHistory, $key);
     @if null == map-get($value, $key) {
       // @warn "Key `#{$keyHistory}` is not defined.";
-      @return ();
+      @return null;
     } @else {
       $value: map-get($value, $key);
     }
@@ -27,12 +27,12 @@ $config: $defaultConfig !default;
 // ex: typography.font-families.base
 //
 // @return {null|list}
-@function conf($namespace) {
-  @if ($namespace) {
-    $elements: explode($namespace, '.');
+@function conf($namespace, $default: null) {
+  $elements: explode($namespace, '.');
+  @if ($elements) {
     @return config($elements...);
   }
-  @return null;
+  @return $default;
 }
 
 // Returns a color from the palette based on the specified variant
