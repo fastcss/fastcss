@@ -1,13 +1,5 @@
 @use '../functions' as *;
 
-// Import google font generating the @import rule
-//
-// @param  {string} $font
-// @param  {list} $weights: ()
-@mixin import-google-font($font, $weights: ()) {
-  @import url('https://fonts.googleapis.com/css?family=#{unquote($font)}');
-}
-
 // Generate the clearfix class
 @mixin clearfix() {
   &:before,

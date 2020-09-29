@@ -1,6 +1,8 @@
 @use '../mixins/typography';
 @use '../functions' as *;
 
+@include typography.import-google-fonts(conf('typography.google-fonts'));
+
 // Setup the base typography (all settings are optional)
 body {
   font-size: #{conf('typography.font-sizes.base')};

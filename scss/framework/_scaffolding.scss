@@ -1,7 +1,7 @@
 @use '../functions' as *;
 
 // import normalize.css (the @use rule can't be used with @if statements)
-@if (conf('normalize')) {
+@if (conf('scaffolding.normalize')) {
   @import '~normalize.css';
 }
 
