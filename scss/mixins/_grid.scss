@@ -1,7 +1,51 @@
 @use '../functions' as *;
+@use '../mixins/utilities';
+
+@mixin row($gutterHalf) {
+  .row {
+    box-sizing: border-box;
+    display: flex;
+    flex: 0 1 auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: -($gutterHalf);
+    margin-right: -($gutterHalf);
+    @include utilities.clearfix;
+
+    &.row-reverse {
+      flex-direction: row-reverse;
+    }
+  }
+}
+
+@mixin container($gutterHalf) {
+  .container,
+  .container-fluid {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: $gutterHalf;
+    padding-right: $gutterHalf;
+  }
+}
+
+@mixin columns($gutterHalf) {
+  // applies for all classes starting with col or containing :col-
+  [class^="col"],
+  [class*="\:col-"] {
+    position: relative;
+    box-sizing: border-box;
+    flex: 0 0 auto;
+    padding-left: $gutterHalf;
+    padding-right: $gutterHalf;
+
+    &.col-reverse {
+      flex-direction: column-reverse;
+    }
+  }
+}
 
 @mixin column-classes($screen, $width, $columns, $gutter) {
-  @include container($width, $gutter);
+  @include _container($width, $gutter);
   @include column($screen, $columns);
 
   // @TODO: make these utilities optional
@@ -25,7 +69,7 @@
   }
 }
 
-@mixin container($width, $gutter) {
+@mixin _container($width, $gutter) {
   .container {
     width: $width - $gutter;
   }
