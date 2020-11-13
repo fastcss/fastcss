@@ -42,3 +42,9 @@
     @include fill($color, $variant);
     @include border($color, $variant);
 }
+
+@mixin gradient($suffix, $value) {
+  .grad-#{$suffix} {
+    background: $value;
+  }
+}

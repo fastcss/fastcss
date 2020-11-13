@@ -1,6 +1,8 @@
 @use '../mixins/colors';
 @use '../functions' as *;
 
+$_gradients: conf('colors.gradients');
+
 // applies for border classes
 [class*="-border"] {
   border-style: solid;
@@ -17,4 +19,9 @@
       @include colors.color($color, $variant);
     }
   }
+}
+
+@each $value in $_gradients {
+  $index: index($_gradients, $value) - 1;
+  @include colors.gradient($index, $value);
 }
