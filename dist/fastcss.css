@@ -1389,7 +1389,7 @@ body {
   border-color: #794800;
 }
 
-.grad-0 {
+.grad-0, .focus\:grad-0:focus, .active\:grad-0:active, .hover\:grad-0:hover {
   background: -webkit-gradient(linear, left top, right top, from(red), to(blue));
   background: linear-gradient(90deg, red 0%, blue 100%);
 }

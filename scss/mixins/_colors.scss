@@ -47,4 +47,8 @@
   .grad-#{$suffix} {
     background: $value;
   }
+
+  @include states.on-all-states(#{'grad-'+$suffix}) {
+    @extend .#{'grad-'+$suffix};
+  }
 }
