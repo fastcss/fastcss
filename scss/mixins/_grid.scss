@@ -1,7 +1,51 @@
 @use '../functions' as *;
+@use '../mixins/utilities';
+
+@mixin row($gutterHalf) {
+  .row {
+    box-sizing: border-box;
+    display: flex;
+    flex: 0 1 auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: -($gutterHalf);
+    margin-right: -($gutterHalf);
+    @include utilities.clearfix;
+
+    &.row-reverse {
+      flex-direction: row-reverse;
+    }
+  }
+}
+
+@mixin container($gutterHalf) {
+  .container,
+  .container-fluid {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: $gutterHalf;
+    padding-right: $gutterHalf;
+  }
+}
+
+@mixin columns($gutterHalf) {
+  // applies for all classes starting with col or containing :col-
+  [class^="col"],
+  [class*="\:col-"] {
+    position: relative;
+    box-sizing: border-box;
+    flex: 0 0 auto;
+    padding-left: $gutterHalf;
+    padding-right: $gutterHalf;
+
+    &.col-reverse {
+      flex-direction: column-reverse;
+    }
+  }
+}
 
 @mixin column-classes($screen, $width, $columns, $gutter) {
-  @include container($width, $gutter);
+  @include _container($width, $gutter);
   @include column($screen, $columns);
 
   // @TODO: make these utilities optional
@@ -25,7 +69,7 @@
   }
 }
 
-@mixin container($width, $gutter) {
+@mixin _container($width, $gutter) {
   .container {
     width: $width - $gutter;
   }
@@ -63,27 +107,27 @@
 }
 
 @mixin screen-max($screen) {
-  @media (max-width: config('grid', 'screens', $screen)) {
+  @media (max-width: conf('grid.screens.' + $screen)) {
     @content;
   }
 }
 
 @mixin screen-min($screen) {
-  @media (min-width: config('grid', 'screens', $screen)) {
+  @media (min-width: conf('grid.screens.' + $screen)) {
     @content;
   }
 }
 
 @mixin screen-min-max($min-screen, $max-screen) {
-  $max-width: config('grid', 'screens', $max-screen);
-  $min-width: if(config('grid', 'screens', $min-screen) == $max-width, 0, config('grid', 'screens', $min-screen));
+  $max-width: conf('grid.screens', $max-screen);
+  $min-width: if(conf('grid.screens', $min-screen) == $max-width, 0, conf('grid.screens', $min-screen));
   @media (min-width: $min-width) and (max-width: $max-width) {
     @content;
   }
 }
 
 @mixin all-screen-min() {
-  $_screens: config('grid', 'screens');
+  $_screens: conf('grid.screens');
 
   @content(null, null);
 
@@ -99,7 +143,7 @@
 }
 
 @mixin all-screen-max() {
-  $_screens: config('grid', 'screens');
+  $_screens: conf('grid.screens');
 
   @content(null, null);
 

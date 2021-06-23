@@ -1,3 +1,5 @@
+@use '../functions' as *;
+
 // @param  {string} $name
 // @param  {integer} $value
 @mixin font-family($name, $value) {
@@ -49,5 +51,21 @@
 @mixin letter-spacing($name, $value) {
   .ls-#{$name} {
     letter-spacing: #{$value};
+  }
+}
+
+// Import google font generating the @import rule
+//
+// @param  {string} $font
+// @param  {list} $weights: ()
+@mixin import-google-font($font, $weights: (400)) {
+  $_weights: implode($weights, ';');
+  @import url('https://fonts.googleapis.com/css2?family=#{unquote($font)}:wght@#{$_weights}&display=swap');
+}
+
+// @param  {list} $weights: ()
+@mixin import-google-fonts($fonts: ()) {
+  @each $font, $weight in $fonts {
+    @include import-google-font($font, $weight);
   }
 }

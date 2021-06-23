@@ -1,13 +1,5 @@
 @use '../functions' as *;
 
-// Import google font generating the @import rule
-//
-// @param  {string} $font
-// @param  {list} $weights: ()
-@mixin import-google-font($font, $weights: ()) {
-  @import url('https://fonts.googleapis.com/css?family=#{unquote($font)}');
-}
-
 // Generate the clearfix class
 @mixin clearfix() {
   &:before,
@@ -157,7 +149,7 @@
   $screenText: if($screen, $screen+'\\:', '');
 
   // ex: .va-middle
-  @each $value in config('utilities', 'vertical-aligns') {
+  @each $value in conf('utilities.vertical-aligns') {
     .#{$screenText}va-#{$value} {
       vertical-align: #{$value};
     }
@@ -205,7 +197,7 @@
   $screenText: if($screen, $screen+'\\:', '');
 
   // ex: .list-none
-  @each $value in config('utilities', 'lists') {
+  @each $value in conf('utilities.lists') {
     .#{$screenText}list-#{$value} {
       list-style-type: #{$value};
     }
@@ -278,7 +270,7 @@
   $screenText: if($screen, $screen+'\\:', '');
 
   // ex: .list-none
-  @each $cursor in config('utilities', 'cursors') {
+  @each $cursor in conf('utilities.cursors') {
     .#{$screenText}cursor-#{$cursor} {
       cursor: #{$cursor};
     }

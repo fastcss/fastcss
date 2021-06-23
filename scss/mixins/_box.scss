@@ -2,7 +2,7 @@
 
 @mixin margin($length, $screen: null) {
   // strip the unit
-  $lengthText: if(config('box', 'stripunits'), strip-unit($length), $length);
+  $lengthText: if(conf('box.stripunits'), strip-unit($length), $length);
 
   // escape percentages
   $lengthText: if(is-percentage($length), $lengthText + '\\%', $lengthText);
@@ -27,7 +27,7 @@
 
 @mixin padding($length, $screen: null) {
   // strip the unit
-  $lengthText: if(config('box', 'stripunits'), strip-unit($length), $length);
+  $lengthText: if(conf('box.stripunits'), strip-unit($length), $length);
 
   // escape percentages
   $lengthText: if(is-percentage($length), $lengthText + '\\%', $lengthText);
@@ -52,7 +52,7 @@
 
 @mixin border-width($length, $screen: null) {
   // strip the unit
-  $lengthText: if(config('box', 'stripunits'), strip-unit($length), $length);
+  $lengthText: if(conf('box.stripunits'), strip-unit($length), $length);
 
   // escape percentages
   $lengthText: if(is-percentage($length), $lengthText + '\\%', $lengthText);
@@ -77,7 +77,7 @@
 
 @mixin border-radius($radius, $screen: null) {
   // strip the unit
-  $radiusText: if(config('box', 'stripunits'), strip-unit($radius), $radius);
+  $radiusText: if(conf('box.stripunits'), strip-unit($radius), $radius);
 
   // escape percentages
   $radiusText: if(is-percentage($radius), $radiusText + '\\%', $radiusText);
@@ -85,14 +85,26 @@
   // create the screen
   $screenText: if($screen, $screen+'\\:', '');
 
-  .#{$screenText}radius-#{$radiusText}  {
+  .#{$screenText}rad-#{$radiusText}  {
     border-radius: #{$radius};
+  }
+  .#{$screenText}radtl-#{$radiusText}  {
+    border-top-left-radius: #{$radius};
+  }
+  .#{$screenText}radtr-#{$radiusText}  {
+    border-top-right-radius: #{$radius};
+  }
+  .#{$screenText}radbl-#{$radiusText}  {
+    border-bottom-left-radius: #{$radius};
+  }
+  .#{$screenText}radbr-#{$radiusText}  {
+    border-bottom-right-radius: #{$radius};
   }
 }
 
 @mixin width($length, $screen: null) {
   // strip the unit
-  $lengthText: if(config('box', 'stripunits'), strip-unit($length), $length);
+  $lengthText: if(conf('box.stripunits'), strip-unit($length), $length);
 
   // escape percentages
   $lengthText: if(is-percentage($length), $lengthText + '\\%', $lengthText);
@@ -107,7 +119,7 @@
 
 @mixin height($length, $screen: null) {
   // strip the unit
-  $lengthText: if(config('box', 'stripunits'), strip-unit($length), $length);
+  $lengthText: if(conf('box.stripunits'), strip-unit($length), $length);
 
   // escape percentages
   $lengthText: if(is-percentage($length), $lengthText + '\\%', $lengthText);
@@ -122,7 +134,7 @@
 
 @mixin position($length, $screen: null) {
   // strip the unit
-  $lengthText: if(config('box', 'stripunits'), strip-unit($length), $length);
+  $lengthText: if(conf('box.stripunits'), strip-unit($length), $length);
 
   // escape percentages
   $lengthText: if(is-percentage($length), $lengthText + '\\%', $lengthText);

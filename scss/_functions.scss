@@ -10,17 +10,26 @@ $config: $defaultConfig !default;
 // @return {*} - Desired value
 @function config($keys...) {
   $value: $config;
-  // $keyHistory: null;
   @each $key in $keys {
-    // $keyHistory: list.append($keyHistory, $key);
     @if null == map-get($value, $key) {
-      // @warn "Key `#{$keyHistory}` is not defined.";
-      @return ();
+      @return null;
     } @else {
       $value: map-get($value, $key);
     }
   }
   @return $value;
+}
+
+// Returns a config value, the namespace should be using dots
+// ex: typography.font-families.base
+//
+// @return {null|list}
+@function conf($namespace, $default: null) {
+  $elements: explode($namespace, '.');
+  @if ($elements) {
+    @return config($elements...);
+  }
+  @return $default;
 }
 
 // Returns a color from the palette based on the specified variant
@@ -88,7 +97,7 @@ $config: $defaultConfig !default;
 
 /// Remove the unit of a length
 ///
-/// @param {Number} $number - Number to remove unit from
+/// @param  {Number} $number - Number to remove unit from
 /// @return {Number} - Unitless number
 @function strip-unit($number) {
   @if type-of($number) == 'number' and not unitless($number) {
@@ -184,4 +193,66 @@ $config: $defaultConfig !default;
 // @return {boolean}
 @function is-map($value){
   @return type-of($value) == 'map';
+}
+
+// Split a string into a list of strings
+//
+// @param  {string} $string The string to be split
+// @param  {string} $delimiter The boundary string
+// @return {list} the result list
+@function explode($string, $delimiter) {
+  $result: ();
+  @if $delimiter == "" {
+    @for $i from 1 through str-length($string) {
+      $result: append($result, str-slice($string, $i, $i));
+    }
+    @return $result;
+  }
+  $exploding: true;
+  @while $exploding {
+    $d-index: str-index($string, $delimiter);
+    @if $d-index {
+      @if $d-index > 1 {
+        $result: append($result, str-slice($string, 1, $d-index - 1));
+        $string: str-slice($string, $d-index + str-length($delimiter));
+      } @else if $d-index == 1 {
+        $string: str-slice($string, 1, $d-index + str-length($delimiter));
+      } @else {
+        $result: append($result, $string);
+        $exploding: false;
+      }
+    } @else {
+      $result: append($result, $string);
+      $exploding: false;
+    }
+  }
+  @return $result;
+}
+
+// Join list elements to form a single string
+//
+// @param  {string} $pieces The list of strings to implode
+// @param  {string} $glue The "glue" between elements in the result string
+// @return {string} The result string
+@function implode($pieces, $glue: "") {
+  $result: null;
+  @for $i from 1 through length($pieces) {
+    $piece: nth($pieces, $i);
+    @if type-of($piece) == list {
+      $result: unquote("#{$result}#{$glue}#{implode($piece, $glue)}");
+    } @else {
+      $result: unquote("#{$result}#{$glue}#{$piece}");
+    }
+  }
+  @if $result != null {
+    $result: str-slice($result, str-length($glue) + 1, -1);
+  }
+  @return $result;
+}
+
+// @param  {List} $haystack
+// @param  {Mixed} $needle
+// @return {boolean}
+@function contains($haystack, $needle) {
+  @return not not index($haystack, $needle);
 }

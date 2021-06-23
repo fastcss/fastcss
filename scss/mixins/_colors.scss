@@ -42,3 +42,13 @@
     @include fill($color, $variant);
     @include border($color, $variant);
 }
+
+@mixin gradient($suffix, $value) {
+  .grad-#{$suffix} {
+    background: $value;
+  }
+
+  @include states.on-all-states(#{'grad-'+$suffix}) {
+    @extend .#{'grad-'+$suffix};
+  }
+}

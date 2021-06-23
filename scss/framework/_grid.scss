@@ -1,48 +1,14 @@
 @use '../mixins/grid';
-@use '../mixins/utilities';
 @use '../functions' as *;
 
-$_gutter:     config('grid', 'gutter');
+$_gutter:     conf('grid.gutter');
 $_gutterHalf: $_gutter / 2;
-$_columns:    config('grid', 'columns');
-$_screens:    config('grid', 'screens');
+$_columns:    conf('grid.columns');
+$_screens:    conf('grid.screens');
 
-.container,
-.container-fluid {
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: $_gutterHalf;
-  padding-right: $_gutterHalf;
-}
-
-.row {
-  box-sizing: border-box;
-  display: flex;
-  flex: 0 1 auto;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-left: -($_gutterHalf);
-  margin-right: -($_gutterHalf);
-  @include utilities.clearfix;
-
-  &.row-reverse {
-    flex-direction: row-reverse;
-  }
-}
-
-// applies for all classes starting with col or containing :col-
-[class^="col"],
-[class*="\:col-"] {
-  position: relative;
-  box-sizing: border-box;
-  flex: 0 0 auto;
-  padding-left: $_gutterHalf;
-  padding-right: $_gutterHalf;
-
-  &.col-reverse {
-    flex-direction: column-reverse;
-  }
-}
+@include grid.container($_gutterHalf);
+@include grid.row($_gutterHalf);
+@include grid.columns($_gutterHalf);
 
 @include grid.all-screen-min() using ($screenName, $screenWidth) {
   @include grid.column-classes($screenName, $screenWidth, $_columns, $_gutter);

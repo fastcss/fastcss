@@ -1,9 +1,15 @@
 $defaultConfig: (
-  'normalize': true, // this will compile the vendor package normalize.css
+  'scaffolding': (
+    'normalize': true, // this will compile the vendor package normalize.css
+  ),
+
   'typography': (
+    'google-fonts': (
+      'Source+Sans+Pro': (400, 600, 700),
+    ),
     'font-families': (
-      'base': "-apple-system, sans-serif",
-      'sans': "-apple-system, sans-serif",
+      'base': "'Source Sans Pro', -apple-system, sans-serif",
+      'sans': "'Source Sans Pro', -apple-system, sans-serif",
       'serif': serif,
       'mono': monospace,
     ),
@@ -16,7 +22,7 @@ $defaultConfig: (
       'hg': 2rem,
     ),
     'font-weights': (
-      400, 700
+      400, 600, 700
     ),
     'font-styles': (
       normal, italic, oblique
@@ -46,7 +52,7 @@ $defaultConfig: (
     'border-widths': (0, 1px, 2px, 3px, 4px),
 
     // Based on google's material shadows guide.
-    // The first shadow is number 0 (s-0).
+    // The first shadow is number 0 (bs-0).
     'shadows': (
       "none",
       "0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)",
@@ -96,6 +102,11 @@ $defaultConfig: (
       '700': -21, // dark variant
       '800': -32,
       '900': -52.5,
+    ),
+
+    // Gradients (grad-0, grad-1, etc.)
+    'gradients': (
+      linear-gradient(90deg, red 0%, blue 100%),
     )
   ),
 

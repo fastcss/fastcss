@@ -1,20 +1,27 @@
 @use '../mixins/colors';
 @use '../functions' as *;
 
+$_gradients: conf('colors.gradients');
+
 // applies for border classes
 [class*="-border"] {
   border-style: solid;
   border-width: 0;
 }
 
-@each $color, $hex in config('colors', 'palette') {
+@each $color, $hex in conf('colors.palette') {
   // base variant
   @include colors.color($color, '500');
 
   // some colors don't have variants
   @if index(('transparent','white','black'), $color) == null {
-    @each $variant, $percent in config('colors', 'variants') {
+    @each $variant, $percent in conf('colors.variants') {
       @include colors.color($color, $variant);
     }
   }
+}
+
+@each $value in $_gradients {
+  $index: index($_gradients, $value) - 1;
+  @include colors.gradient($index, $value);
 }
