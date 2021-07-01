@@ -8,7 +8,7 @@
   @include row($_gutterHalf);
   @include columns($_gutterHalf);
 
-  @include all-screen-min() using ($screenName, $screenWidth) {
+  @include all-screen-min() using ($screenName, $screenWidth, $screenIndex) {
     @include column-classes($screenName, $screenWidth, $columns, $gutter);
   }
 }
@@ -142,14 +142,16 @@
 @mixin all-screen-min() {
   $_screens: conf('grid.screens');
 
-  @content(null, null);
+  @content(null, null, null);
 
   @each $screenName, $screenWidth in $_screens {
+    $screenIndex: index($_screens, $screenName $screenWidth) - 1;
+
     @if $screenName == nth(nth($_screens, 1), 1) {
-      @content($screenName, $screenWidth);
+      @content($screenName, $screenWidth, $screenIndex);
     } @else {
       @include screen-min($screenName) {
-        @content($screenName, $screenWidth);
+        @content($screenName, $screenWidth, $screenIndex);
       }
     }
   }
@@ -158,14 +160,16 @@
 @mixin all-screen-max() {
   $_screens: conf('grid.screens');
 
-  @content(null, null);
+  @content(null, null, null);
 
   @each $screenName, $screenWidth in $_screens {
+    $screenIndex: index($_screens, $screenName $screenWidth) - 1;
+
     @if $screenName == nth(nth($_screens, 1), 1) {
-      @content($screenName, $screenWidth);
+      @content($screenName, $screenWidth, $screenIndex);
     } @else {
       @include screen-max($screenName) {
-        @content($screenName, $screenWidth);
+        @content($screenName, $screenWidth, $screenIndex);
       }
     }
   }

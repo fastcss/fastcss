@@ -11,11 +11,11 @@
 @include typography.make-typography-all();
 @include colors.make-colors(conf('colors.palette'), conf('colors.gradients'), conf('colors.variants'));
 @include grid.make-grid(conf('grid.gutter'), conf('grid.columns'));
-@include grid.all-screen-min() using ($screenName, $screenWidth) {
+@include grid.all-screen-min() using ($screenName, $screenWidth, $screenIndex) {
   @each $confKey, $confValues in conf('box') {
     @each $value in $confValues {
       $index: index($confValues, $value) - 1;
-      @include box.makeBox($confKey, $value, $screenName, $index);
+      @include box.makeBox($confKey, $value, $index, $screenName, $screenIndex);
     }
   }
   @include utilities.make-utilities($screenName);

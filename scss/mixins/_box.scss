@@ -1,6 +1,6 @@
 @use '../functions' as *;
 
-@mixin makeBox($type, $value, $screen:null, $index:null) {
+@mixin makeBox($type, $value, $boxIndex, $screenName:null, $screenIndex:null) {
   @if ($type != 'stripunits') {
     // strip the unit
     $suffix: if(conf('stripunits'), strip-unit($value), $value);
@@ -8,8 +8,8 @@
     // escape percentages
     $suffix: if(is-percentage($value), $suffix + '\\%', $suffix);
 
-    // create the screen
-    $prefix: if($screen, $screen+'\\:', '');
+    // create the prefix
+    $prefix: if($screenName, $screenName+'\\:', '');
 
     @if $type == 'margin' {
       @include margin($prefix, $suffix, $value);
@@ -28,7 +28,7 @@
     } @else if $type == 'z-index' {
       @include z-index($prefix, $suffix, $value);
     } @else if $type == 'shadow' {
-      @include shadow($prefix, $suffix, $value, $index);
+      @include shadow($prefix, $suffix, $value, $boxIndex);
     } @else {
       @warn 'Type "' + $type + '" is not valid.';
     }
