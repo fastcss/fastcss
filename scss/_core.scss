@@ -1,0 +1,25 @@
+@use 'mixins/scaffolding';
+@use 'mixins/box';
+@use 'mixins/grid';
+@use 'mixins/colors';
+@use 'mixins/typography';
+@use 'mixins/utilities';
+@use 'functions' as *;
+@use "sass:list";
+
+@include scaffolding.make-scaffolding();
+@include typography.make-typography-all();
+@include colors.make-colors(conf('colors.palette'), conf('colors.gradients'), conf('colors.variants'));
+@include grid.make-grid(conf('grid.gutter'), conf('grid.columns'));
+@include grid.all-screen-min() using ($screenName, $screenWidth) {
+  @each $confKey, $confValues in conf('box') {
+    @each $value in $confValues {
+      $index: index($confValues, $value) - 1;
+      @include box.makeBox($confKey, $value, $screenName, $index);
+    }
+  }
+  @include utilities.make-utilities($screenName);
+  @if (conf('grid.utilities')) {
+    @include grid.make-grid-utilities($screenName, conf('grid.columns'));
+  }
+}

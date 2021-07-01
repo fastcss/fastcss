@@ -1,6 +1,23 @@
 @use '../functions' as *;
 @use '../mixins/utilities';
 
+@mixin make-grid($gutter, $columns) {
+  $_gutterHalf: $gutter / 2;
+
+  @include container($_gutterHalf);
+  @include row($_gutterHalf);
+  @include columns($_gutterHalf);
+
+  @include all-screen-min() using ($screenName, $screenWidth) {
+    @include column-classes($screenName, $screenWidth, $columns, $gutter);
+  }
+}
+
+@mixin make-grid-utilities($screen, $columns) {
+  @include column-utilities($screen, $columns);
+  @include row-utilities($screen);
+}
+
 @mixin row($gutterHalf) {
   .row {
     box-sizing: border-box;
@@ -47,10 +64,6 @@
 @mixin column-classes($screen, $width, $columns, $gutter) {
   @include _container($width, $gutter);
   @include column($screen, $columns);
-
-  // @TODO: make these utilities optional
-  @include column-utilities($screen, $columns);
-  @include row-utilities($screen);
 }
 
 @mixin column($screen, $columns) {

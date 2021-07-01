@@ -1,162 +1,111 @@
 @use '../functions' as *;
 
-@mixin margin($length, $screen: null) {
-  // strip the unit
-  $lengthText: if(conf('box.stripunits'), strip-unit($length), $length);
+@mixin makeBox($type, $value, $screen:null, $index:null) {
+  @if ($type != 'stripunits') {
+    // strip the unit
+    $suffix: if(conf('stripunits'), strip-unit($value), $value);
 
-  // escape percentages
-  $lengthText: if(is-percentage($length), $lengthText + '\\%', $lengthText);
+    // escape percentages
+    $suffix: if(is-percentage($value), $suffix + '\\%', $suffix);
 
-  // create the screen
-  $screenText: if($screen, $screen+'\\:', '');
+    // create the screen
+    $prefix: if($screen, $screen+'\\:', '');
 
-  .#{$screenText}m-#{$lengthText}  { margin: #{$length}; }
-  .#{$screenText}mt-#{$lengthText} { margin-top: #{$length}; }
-  .#{$screenText}mr-#{$lengthText} { margin-right: #{$length}; }
-  .#{$screenText}mb-#{$lengthText} { margin-bottom: #{$length}; }
-  .#{$screenText}ml-#{$lengthText} { margin-left: #{$length}; }
-  .#{$screenText}mv-#{$lengthText} {
-    @extend .#{$screenText}mt-#{$lengthText};
-    @extend .#{$screenText}mb-#{$lengthText};
-  }
-  .#{$screenText}mh-#{$lengthText} {
-    @extend .#{$screenText}ml-#{$lengthText};
-    @extend .#{$screenText}mr-#{$lengthText};
-  }
-}
-
-@mixin padding($length, $screen: null) {
-  // strip the unit
-  $lengthText: if(conf('box.stripunits'), strip-unit($length), $length);
-
-  // escape percentages
-  $lengthText: if(is-percentage($length), $lengthText + '\\%', $lengthText);
-
-  // create the screen
-  $screenText: if($screen, $screen+'\\:', '');
-
-  .#{$screenText}p-#{$lengthText}  { padding: #{$length}; }
-  .#{$screenText}pt-#{$lengthText} { padding-top: #{$length}; }
-  .#{$screenText}pr-#{$lengthText} { padding-right: #{$length}; }
-  .#{$screenText}pb-#{$lengthText} { padding-bottom: #{$length}; }
-  .#{$screenText}pl-#{$lengthText} { padding-left: #{$length}; }
-  .#{$screenText}pv-#{$lengthText} {
-    @extend .#{$screenText}pt-#{$lengthText};
-    @extend .#{$screenText}pb-#{$lengthText};
-  }
-  .#{$screenText}ph-#{$lengthText} {
-    @extend .#{$screenText}pl-#{$lengthText};
-    @extend .#{$screenText}pr-#{$lengthText};
+    @if $type == 'margin' {
+      @include margin($prefix, $suffix, $value);
+    } @else if $type == 'padding' {
+      @include padding($prefix, $suffix, $value);
+    } @else if $type == 'border-width' {
+      @include border-width($prefix, $suffix, $value);
+    } @else if $type == 'border-radius' {
+      @include border-radius($prefix, $suffix, $value);
+    } @else if $type == 'width' {
+      @include width($prefix, $suffix, $value);
+    } @else if $type == 'height' {
+      @include height($prefix, $suffix, $value);
+    } @else if $type == 'positions' {
+      @include positions($prefix, $suffix, $value);
+    } @else if $type == 'z-index' {
+      @include z-index($prefix, $suffix, $value);
+    } @else if $type == 'shadow' {
+      @include shadow($prefix, $suffix, $value, $index);
+    } @else {
+      @warn 'Type "' + $type + '" is not valid.';
+    }
   }
 }
 
-@mixin border-width($length, $screen: null) {
-  // strip the unit
-  $lengthText: if(conf('box.stripunits'), strip-unit($length), $length);
-
-  // escape percentages
-  $lengthText: if(is-percentage($length), $lengthText + '\\%', $lengthText);
-
-  // create the screen
-  $screenText: if($screen, $screen+'\\:', '');
-
-  .#{$screenText}b-#{$lengthText}  { border-width: #{$length}; }
-  .#{$screenText}bt-#{$lengthText} { border-top-width: #{$length}; }
-  .#{$screenText}br-#{$lengthText} { border-right-width: #{$length}; }
-  .#{$screenText}bb-#{$lengthText} { border-bottom-width: #{$length}; }
-  .#{$screenText}bl-#{$lengthText} { border-left-width: #{$length}; }
-  .#{$screenText}bv-#{$lengthText} {
-    @extend .#{$screenText}bt-#{$lengthText};
-    @extend .#{$screenText}bb-#{$lengthText};
+@mixin margin($prefix, $suffix, $value) {
+  .#{$prefix}m-#{$suffix}  { margin: #{$value}; }
+  .#{$prefix}mt-#{$suffix} { margin-top: #{$value}; }
+  .#{$prefix}mr-#{$suffix} { margin-right: #{$value}; }
+  .#{$prefix}mb-#{$suffix} { margin-bottom: #{$value}; }
+  .#{$prefix}ml-#{$suffix} { margin-left: #{$value}; }
+  .#{$prefix}mv-#{$suffix} {
+    @extend .#{$prefix}mt-#{$suffix};
+    @extend .#{$prefix}mb-#{$suffix};
   }
-  .#{$screenText}bh-#{$lengthText} {
-    @extend .#{$screenText}bl-#{$lengthText};
-    @extend .#{$screenText}br-#{$lengthText};
+  .#{$prefix}mh-#{$suffix} {
+    @extend .#{$prefix}ml-#{$suffix};
+    @extend .#{$prefix}mr-#{$suffix};
   }
 }
-
-@mixin border-radius($radius, $screen: null) {
-  // strip the unit
-  $radiusText: if(conf('box.stripunits'), strip-unit($radius), $radius);
-
-  // escape percentages
-  $radiusText: if(is-percentage($radius), $radiusText + '\\%', $radiusText);
-
-  // create the screen
-  $screenText: if($screen, $screen+'\\:', '');
-
-  .#{$screenText}rad-#{$radiusText}  {
-    border-radius: #{$radius};
+@mixin padding($prefix, $suffix, $value) {
+  .#{$prefix}p-#{$suffix}  { padding: #{$value}; }
+  .#{$prefix}pt-#{$suffix} { padding-top: #{$value}; }
+  .#{$prefix}pr-#{$suffix} { padding-right: #{$value}; }
+  .#{$prefix}pb-#{$suffix} { padding-bottom: #{$value}; }
+  .#{$prefix}pl-#{$suffix} { padding-left: #{$value}; }
+  .#{$prefix}pv-#{$suffix} {
+    @extend .#{$prefix}pt-#{$suffix};
+    @extend .#{$prefix}pb-#{$suffix};
   }
-  .#{$screenText}radtl-#{$radiusText}  {
-    border-top-left-radius: #{$radius};
-  }
-  .#{$screenText}radtr-#{$radiusText}  {
-    border-top-right-radius: #{$radius};
-  }
-  .#{$screenText}radbl-#{$radiusText}  {
-    border-bottom-left-radius: #{$radius};
-  }
-  .#{$screenText}radbr-#{$radiusText}  {
-    border-bottom-right-radius: #{$radius};
+  .#{$prefix}ph-#{$suffix} {
+    @extend .#{$prefix}pl-#{$suffix};
+    @extend .#{$prefix}pr-#{$suffix};
   }
 }
-
-@mixin width($length, $screen: null) {
-  // strip the unit
-  $lengthText: if(conf('box.stripunits'), strip-unit($length), $length);
-
-  // escape percentages
-  $lengthText: if(is-percentage($length), $lengthText + '\\%', $lengthText);
-
-  // create the screen
-  $screenText: if($screen, $screen+'\\:', '');
-
-  .#{$screenText}w-#{$lengthText} { width: #{$length}; }
-  .#{$screenText}minw-#{$lengthText} { min-width: #{$length}; }
-  .#{$screenText}maxw-#{$lengthText} { max-width: #{$length}; }
+@mixin border-width($prefix, $suffix, $value) {
+  .#{$prefix}b-#{$suffix}  { border-width: #{$value}; }
+  .#{$prefix}bt-#{$suffix} { border-top-width: #{$value}; }
+  .#{$prefix}br-#{$suffix} { border-right-width: #{$value}; }
+  .#{$prefix}bb-#{$suffix} { border-bottom-width: #{$value}; }
+  .#{$prefix}bl-#{$suffix} { border-left-width: #{$value}; }
+  .#{$prefix}bv-#{$suffix} {
+    @extend .#{$prefix}bt-#{$suffix};
+    @extend .#{$prefix}bb-#{$suffix};
+  }
+  .#{$prefix}bh-#{$suffix} {
+    @extend .#{$prefix}bl-#{$suffix};
+    @extend .#{$prefix}br-#{$suffix};
+  }
 }
-
-@mixin height($length, $screen: null) {
-  // strip the unit
-  $lengthText: if(conf('box.stripunits'), strip-unit($length), $length);
-
-  // escape percentages
-  $lengthText: if(is-percentage($length), $lengthText + '\\%', $lengthText);
-
-  // create the screen
-  $screenText: if($screen, $screen+'\\:', '');
-
-  .#{$screenText}h-#{$lengthText} { height: #{$length}; }
-  .#{$screenText}minh-#{$lengthText} { min-height: #{$length}; }
-  .#{$screenText}maxh-#{$lengthText} { max-height: #{$length}; }
+@mixin border-radius($prefix, $suffix, $value) {
+  .#{$prefix}rad-#{$suffix}  { border-radius: #{$value}; }
+  .#{$prefix}radtl-#{$suffix}  { border-top-left-radius: #{$value}; }
+  .#{$prefix}radtr-#{$suffix}  { border-top-right-radius: #{$value}; }
+  .#{$prefix}radbl-#{$suffix}  { border-bottom-left-radius: #{$value}; }
+  .#{$prefix}radbr-#{$suffix}  { border-bottom-right-radius: #{$value}; }
 }
-
-@mixin position($length, $screen: null) {
-  // strip the unit
-  $lengthText: if(conf('box.stripunits'), strip-unit($length), $length);
-
-  // escape percentages
-  $lengthText: if(is-percentage($length), $lengthText + '\\%', $lengthText);
-
-  // create the screen
-  $screenText: if($screen, $screen+'\\:', '');
-
-  .#{$screenText}top-#{$lengthText} { top: #{$length}; }
-  .#{$screenText}right-#{$lengthText} { right: #{$length}; }
-  .#{$screenText}bottom-#{$lengthText} { bottom: #{$length}; }
-  .#{$screenText}left-#{$lengthText} { left: #{$length}; }
+@mixin width($prefix, $suffix, $value) {
+  .#{$prefix}w-#{$suffix}    { width: #{$value}; }
+  .#{$prefix}minw-#{$suffix} { min-width: #{$value}; }
+  .#{$prefix}maxw-#{$suffix} { max-width: #{$value}; }
 }
-
-@mixin z-index($depth, $screen: null) {
-  $screenText: if($screen, $screen+'\\:', '');
-
-  .#{$screenText}z-#{$depth} { z-index: #{$depth}; }
+@mixin height($prefix, $suffix, $value) {
+  .#{$prefix}h-#{$suffix}    { height: #{$value}; }
+  .#{$prefix}minh-#{$suffix} { min-height: #{$value}; }
+  .#{$prefix}maxh-#{$suffix} { max-height: #{$value}; }
 }
-
-@mixin shadow($suffix, $shadow, $screen: null) {
-  // create the screen
-  $screenText: if($screen, $screen+'\\:', '');
-
-  .#{$screenText}bs-#{$suffix} { box-shadow: #{$shadow}; }
+@mixin positions($prefix, $suffix, $value) {
+  .#{$prefix}top-#{$suffix}    { top: #{$value}; }
+  .#{$prefix}right-#{$suffix}  { right: #{$value}; }
+  .#{$prefix}bottom-#{$suffix} { bottom: #{$value}; }
+  .#{$prefix}left-#{$suffix}   { left: #{$value}; }
+}
+@mixin z-index($prefix, $suffix, $value) {
+  .#{$prefix}z-#{$suffix} { z-index: #{$value}; }
+}
+@mixin shadow($prefix, $suffix, $value, $index) {
+  .#{$prefix}bs-#{$index} { box-shadow: #{$value}; }
 }

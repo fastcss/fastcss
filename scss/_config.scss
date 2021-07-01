@@ -7,13 +7,13 @@ $defaultConfig: (
     'google-fonts': (
       'Source+Sans+Pro': (400, 600, 700),
     ),
-    'font-families': (
+    'font-family': (
       'base': "'Source Sans Pro', -apple-system, sans-serif",
       'sans': "'Source Sans Pro', -apple-system, sans-serif",
       'serif': serif,
       'mono': monospace,
     ),
-    'font-sizes': (
+    'font-size': (
       'xs': .75rem,
       'sm': .875rem,
       'base': 16px,
@@ -21,39 +21,39 @@ $defaultConfig: (
       'xl': 1.5rem,
       'hg': 2rem,
     ),
-    'font-weights': (
+    'font-weight': (
       400, 600, 700
     ),
-    'font-styles': (
+    'font-style': (
       normal, italic, oblique
     ),
-    'line-heights': (
+    'line-height': (
       'xs': 1,
       'base': 1.375,
       'lg': 1.5,
     ),
-    'word-spacings': (
+    'word-spacing': (
       'base': .03em
     ),
-    'letter-spacings': (
+    'letter-spacing': (
       'base': 0
     ),
   ),
 
   'box': (
     'stripunits': true, // percentages won't be striped
-    'paddings': (0, 2px, 10px, 15px, 20px),
-    'margins': (0, auto, 5px, 10px, 15px, 20px, 30px, 40px),
-    'widths': (100%),
-    'heights': (100%, 1px),
+    'padding': (0, 2px, 10px, 15px, 20px),
+    'margin': (0, auto, 5px, 10px, 15px, 20px, 30px, 40px),
+    'width': (100%),
+    'height': (100%, 1px),
     'positions': (0, 5px, 10px, 15px), // for absolute positioning (top, left etc)
-    'z-indexes': (-1, 1, 2),
-    'border-radiuses': (0, 3px, 5px, 10px),
-    'border-widths': (0, 1px, 2px, 3px, 4px),
+    'z-index': (-1, 1, 2),
+    'border-radius': (0, 3px, 5px, 10px),
+    'border-width': (0, 1px, 2px, 3px, 4px),
 
     // Based on google's material shadows guide.
     // The first shadow is number 0 (bs-0).
-    'shadows': (
+    'shadow': (
       "none",
       "0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)",
       "0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)",
@@ -66,6 +66,7 @@ $defaultConfig: (
   'grid': (
     'columns': 12,
     'gutter':  30px,
+    'utilities': true,
     'screens': (
       'xs': 576px,
       'sm': 768px,
@@ -111,14 +112,17 @@ $defaultConfig: (
   ),
 
   'utilities': (
-    'vertical-aligns': (
+    'vertical-align': (
       'initial', 'inherit', 'middle', 'super', 'sub', 'top', 'bottom', 'text-top', 'text-bottom'
     ),
-    'cursors': (
+    'cursor': (
       'default', 'none', 'grab', 'grabbing', 'help', 'pointer', 'zoom-in', 'zoom-out'
     ),
-    'lists': (
+    'list-style-type': (
       'none', 'upper-roman', 'lower-roman', 'upper-latin', 'lower-latin', 'decimal', 'disc', 'circle', 'square'
+    ),
+    'text-decoration': (
+      'line-through', 'underline', 'none'
     )
   )
 );

@@ -1,0 +1,11 @@
+@mixin make-scaffolding() {
+  @if (conf('scaffolding.normalize')) {
+    @import '~normalize.css';
+  }
+
+  // placeholder for contenteditable
+  [contenteditable=true]:empty:before {
+    content: attr(placeholder);
+    display: block; /* For Firefox */
+  }
+}

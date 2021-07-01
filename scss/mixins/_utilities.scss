@@ -1,5 +1,19 @@
 @use '../functions' as *;
 
+@mixin make-utilities($screen: null) {
+  $screenPrefix: if($screen, $screen+'\\:', '');
+
+  @include display($screenPrefix);
+  @include position($screenPrefix);
+  @include overflow($screenPrefix);
+  @include float($screenPrefix);
+  @include vertical-align($screenPrefix);
+  @include group($screenPrefix);
+  @include list-style-type($screenPrefix);
+  @include text-utilities($screenPrefix);
+  @include cursor($screenPrefix);
+}
+
 // Generate the clearfix class
 @mixin clearfix() {
   &:before,
@@ -12,157 +26,145 @@
   }
 }
 
-// Generate displays
+// Generate display
 //
-// @param  {string} $screen
-@mixin displays($screen: null) {
-  $screenText: if($screen, $screen+'\\:', '');
-
-  .#{$screenText}show,
-  .#{$screenText}block {
+// @param  {string} $prefix
+@mixin display($prefix: null) {
+  .#{$prefix}show,
+  .#{$prefix}block {
     display: block;
   }
-  .#{$screenText}hide,
-  .#{$screenText}hidden {
+  .#{$prefix}hide,
+  .#{$prefix}hidden {
     display: none;
   }
-  .#{$screenText}inline {
+  .#{$prefix}inline {
     display: inline;
   }
-  .#{$screenText}inline-block {
+  .#{$prefix}inline-block {
     display: inline-block;
   }
-  .#{$screenText}table {
+  .#{$prefix}table {
     display: table;
   }
-  .#{$screenText}table-row {
+  .#{$prefix}table-row {
     display: table-row;
   }
-  .#{$screenText}table-cell {
+  .#{$prefix}table-cell {
     display: table-cell;
   }
-  .#{$screenText}flex {
+  .#{$prefix}flex {
     display: flex;
   }
-  .#{$screenText}inline-flex {
+  .#{$prefix}inline-flex {
     display: inline-flex;
   }
-  .#{$screenText}visible {
+  .#{$prefix}visible {
     visibility: visible;
   }
-  .#{$screenText}invisible {
+  .#{$prefix}invisible {
     visibility: hidden;
   }
 }
 
 // Generate positions
 //
-// @param  {string} $screen
-@mixin positions($screen: null) {
-  $screenText: if($screen, $screen+'\\:', '');
-
-  .#{$screenText}relative {
+// @param  {string} $prefix
+@mixin position($prefix: null) {
+  .#{$prefix}relative {
     position: relative;
   }
-  .#{$screenText}absolute {
+  .#{$prefix}absolute {
     position: absolute;
   }
-  .#{$screenText}fixed {
+  .#{$prefix}fixed {
     position: fixed;
   }
-  .#{$screenText}static {
+  .#{$prefix}static {
     position: static;
   }
-  .#{$screenText}sticky {
+  .#{$prefix}sticky {
     position: sticky;
   }
 }
 
 // Generate overflows
 //
-// @param  {string} $screen
-@mixin overflows($screen: null) {
-  $screenText: if($screen, $screen+'\\:', '');
-
-  .#{$screenText}of-hidden {
+// @param  {string} $prefix
+@mixin overflow($prefix: null) {
+  .#{$prefix}of-hidden {
     overflow: hidden;
   }
-  .#{$screenText}of-visible {
+  .#{$prefix}of-visible {
     overflow: visible;
   }
-  .#{$screenText}of-auto {
+  .#{$prefix}of-auto {
     overflow: auto;
   }
-  .#{$screenText}of-auto-y {
+  .#{$prefix}of-auto-y {
     overflow-y: auto;
   }
-  .#{$screenText}of-auto-x {
+  .#{$prefix}of-auto-x {
     overflow-x: auto;
   }
-  .#{$screenText}of-scroll {
+  .#{$prefix}of-scroll {
     overflow: scroll;
   }
-  .#{$screenText}of-scroll-y {
+  .#{$prefix}of-scroll-y {
     overflow-y: scroll;
   }
-  .#{$screenText}of-scroll-x {
+  .#{$prefix}of-scroll-x {
     overflow-x: scroll;
   }
 }
 
 // Generate floats
 //
-// @param  {string} $screen
-@mixin floats($screen: null) {
-  $screenText: if($screen, $screen+'\\:', '');
-
-  .#{$screenText}float-left {
+// @param  {string} $prefix
+@mixin float($prefix: null) {
+  .#{$prefix}float-left {
     float: left;
   }
-  .#{$screenText}float-right {
+  .#{$prefix}float-right {
     float: right;
   }
-  .#{$screenText}float-none {
+  .#{$prefix}float-none {
     float: none;
   }
-  .#{$screenText}clear-left {
+  .#{$prefix}clear-left {
     clear: left;
   }
-  .#{$screenText}clear-right {
+  .#{$prefix}clear-right {
     clear: right;
   }
-  .#{$screenText}clear-both {
+  .#{$prefix}clear-both {
     clear: both;
   }
-  .#{$screenText}clear-none {
+  .#{$prefix}clear-none {
     clear: none;
   }
-  .#{$screenText}clearfix {
+  .#{$prefix}clearfix {
     @include clearfix;
   }
 }
 
 // Generate vertical aligns
 //
-// @param  {string} $screen
-@mixin vertical-aligns($screen: null) {
-  $screenText: if($screen, $screen+'\\:', '');
-
+// @param  {string} $prefix
+@mixin vertical-align($prefix: null) {
   // ex: .va-middle
-  @each $value in conf('utilities.vertical-aligns') {
-    .#{$screenText}va-#{$value} {
+  @each $value in conf('utilities.vertical-align') {
+    .#{$prefix}va-#{$value} {
       vertical-align: #{$value};
     }
   }
 }
 
-// Generate groups
+// Generate group
 //
-// @param  {string} $screen
-@mixin groups($screen: null) {
-  $screenText: if($screen, $screen+'\\:', '');
-
-  .#{$screenText}group {
+// @param  {string} $prefix
+@mixin group($prefix: null) {
+  .#{$prefix}group {
     display: flex;
     flex-direction: row;
     > .group-item {
@@ -172,33 +174,31 @@
       }
     }
     // group utilities
-    &.#{$screenText}group-shrink > .group-item {
+    &.#{$prefix}group-shrink > .group-item {
       flex-shrink: 1;
     }
-    &.#{$screenText}group-vertical {
+    &.#{$prefix}group-vertical {
       flex-direction: column;
     }
-    &.#{$screenText}group-center {
+    &.#{$prefix}group-center {
       justify-content: center;
     }
-    &.#{$screenText}group-left {
+    &.#{$prefix}group-left {
       justify-content: flex-start;
     }
-    &.#{$screenText}group-right {
+    &.#{$prefix}group-right {
       justify-content: flex-end;
     }
   }
 }
 
-// Generate lists
+// Generate list-style-type
 //
 // @param  {string} $screen
-@mixin lists($screen: null) {
-  $screenText: if($screen, $screen+'\\:', '');
-
+@mixin list-style-type($prefix: null) {
   // ex: .list-none
-  @each $value in conf('utilities.lists') {
-    .#{$screenText}list-#{$value} {
+  @each $value in conf('utilities.list-style-type') {
+    .#{$prefix}list-#{$value} {
       list-style-type: #{$value};
     }
   }
@@ -208,7 +208,7 @@
     'outside',
     'inside',
   ) {
-    .#{$screenText}list-#{$value} {
+    .#{$prefix}list-#{$value} {
       list-style-position: #{$value};
     }
   }
@@ -216,62 +216,58 @@
 
 // Generate text utilities
 //
-// @param  {string} $screen
-@mixin text-utilities($screen: null) {
-  $screenText: if($screen, $screen+'\\:', '');
-
+// @param  {string} $prefix
+@mixin text-utilities($prefix: null) {
   // alignment
-  .#{$screenText}text-left {
+  .#{$prefix}text-left {
     text-align: left;
   }
-  .#{$screenText}text-right {
+  .#{$prefix}text-right {
     text-align: right;
   }
-  .#{$screenText}text-center {
+  .#{$prefix}text-center {
     text-align: center;
   }
 
   // transforms
-  .#{$screenText}text-lowercase {
+  .#{$prefix}text-lowercase {
     text-transform: lowercase;
   }
-  .#{$screenText}text-uppercase {
+  .#{$prefix}text-uppercase {
     text-transform: uppercase;
   }
-  .#{$screenText}text-capitalize {
+  .#{$prefix}text-capitalize {
     text-transform: capitalize;
   }
 
   // decorations
-  .#{$screenText}text-strike {
+  .#{$prefix}text-strike {
     text-decoration: line-through;
   }
-  .#{$screenText}text-underline {
+  .#{$prefix}text-underline {
     text-decoration: underline;
   }
-  .#{$screenText}no-decoration,
-  .#{$screenText}text-no-decoration {
+  .#{$prefix}no-decoration,
+  .#{$prefix}text-no-decoration {
     text-decoration: none;
   }
 
   // white-space
-  .#{$screenText}text-wrap {
+  .#{$prefix}text-wrap {
     white-space: wrap;
   }
-  .#{$screenText}text-nowrap {
+  .#{$prefix}text-nowrap {
     white-space: nowrap;
   }
 }
 
 // Generate cursors
 //
-// @param  {string} $screen
-@mixin cursors($screen: null) {
-  $screenText: if($screen, $screen+'\\:', '');
-
+// @param  {string} $prefix
+@mixin cursor($prefix: null) {
   // ex: .list-none
-  @each $cursor in conf('utilities.cursors') {
-    .#{$screenText}cursor-#{$cursor} {
+  @each $cursor in conf('utilities.cursor') {
+    .#{$prefix}cursor-#{$cursor} {
       cursor: #{$cursor};
     }
   }

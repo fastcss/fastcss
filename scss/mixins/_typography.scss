@@ -1,5 +1,48 @@
 @use '../functions' as *;
 
+@mixin make-typography-all() {
+  @include import-google-fonts(conf('typography.google-fonts'));
+  @include make-typography-body();
+
+  @each $confKey, $confValues in conf('typography') {
+    @each $key, $value in $confValues {
+      $index: index($confValues, $value) - 1;
+      @include make-typography($confKey, $key, $value);
+    }
+  }
+}
+
+// @param  {string} $type
+// @param  {string} $key
+// @param  {string} $value
+@mixin make-typography($type, $key, $value) {
+    @if $type == 'font-family' {
+      @include font-family($key, $value);
+    } @else if $type == 'font-size' {
+      @include font-size($key, $value);
+    } @else if $type == 'font-weight' {
+      @include font-weight($key);
+    } @else if $type == 'font-style' {
+      @include font-style($key);
+    } @else if $type == 'line-height' {
+      @include line-height($key, $value);
+    } @else if $type == 'word-spacing' {
+      @include word-spacing($key, $value);
+    } @else if $type == 'letter-spacing' {
+      @include letter-spacing($key, $value);
+    }
+}
+
+@mixin make-typography-body() {
+  body {
+    font-size: #{conf('typography.font-sizes.base')};
+    font-family: #{conf('typography.font-families.base')};
+    line-height: #{conf('typography.line-heights.base')};
+    word-spacing: #{conf('typography.word-spacings.base')};
+    letter-spacing: #{conf('typography.letter-spacings.base')};
+  }
+}
+
 // @param  {string} $name
 // @param  {integer} $value
 @mixin font-family($name, $value) {

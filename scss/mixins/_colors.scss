@@ -1,6 +1,39 @@
 @use 'states';
 @use '../functions' as *;
 
+@mixin make-colors($palette: null, $gradients: null, $variants: null) {
+  // applies for border classes
+  [class*="-border"] {
+    border-style: solid;
+    border-width: 0;
+  }
+
+  @if ($palette) {
+    @each $color, $hex in $palette {
+      // base variant
+      @include color($color, '500');
+
+      // some colors don't have variants
+      @if index(('transparent','white','black'), $color) == null {
+        @each $variant, $percent in $variants {
+          @include color($color, $variant);
+        }
+      }
+    }
+  } @else {
+    @warn "No color palette defined";
+  }
+
+  @if ($gradients) {
+    @each $value in $gradients {
+      $index: index($gradients, $value) - 1;
+      @include gradient($index, $value);
+    }
+  } @else {
+    @warn "No gradients defined";
+  }
+}
+
 @mixin text($color, $variant: '500') {
   $variantText: #{if($variant != '500', '\\:'+$variant, '')};
 
