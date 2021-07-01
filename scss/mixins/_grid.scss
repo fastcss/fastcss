@@ -1,8 +1,9 @@
+@use 'sass:math';
 @use '../functions' as *;
 @use '../mixins/utilities';
 
 @mixin make-grid($gutter, $columns) {
-  $_gutterHalf: $gutter / 2;
+  $_gutterHalf: math.div($gutter, 2);
 
   @include container($_gutterHalf);
   @include row($_gutterHalf);
@@ -76,8 +77,8 @@
   }
   @for $column from 1 through $columns {
     .#{$screenText}col-#{$column} {
-      flex-basis: percentage($column / $columns);
-      max-width: percentage($column / $columns);
+      flex-basis: percentage(math.div($column, $columns));
+      max-width: percentage(math.div($column, $columns));
     }
   }
 }
@@ -93,13 +94,13 @@
 
   @for $column from 1 through $columns {
     .#{$screenText}col-#{$column}-offset {
-      margin-left: percentage($column / $columns);
+      margin-left: percentage(math.div($column, $columns));
     }
     .#{$screenText}col-#{$column}-push {
-      left: percentage($column / $columns);
+      left: percentage(math.div($column, $columns));
     }
     .#{$screenText}col-#{$column}-pull {
-      right: percentage($column / $columns);
+      right: percentage(math.div($column, $columns));
     }
   }
 }

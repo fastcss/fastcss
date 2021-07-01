@@ -1,4 +1,5 @@
 @use "sass:list";
+@use "sass:math";
 @use 'config' as *;
 
 // The default config is used if the $config map is not overwritten
@@ -55,10 +56,10 @@ $config: $defaultConfig !default;
   }
 
   @if($variantPercent > 0) {
-    @return mix(white, $colorHex, (percentage($variantPercent) / 100));
+    @return mix(white, $colorHex, (percentage(math.div($variantPercent, 100))));
   }
 
-  @return mix(black, $colorHex, (percentage($variantPercent) / -100));
+  @return mix(black, $colorHex, (percentage(math.div($variantPercent, -100))));
 }
 
 // Get the previous element from a map by using the key of the current element
@@ -92,7 +93,7 @@ $config: $defaultConfig !default;
     $base: $base * 1px;
   }
 
-  @return $pixels / $base * 1em;
+  @return math.div($pixels, $base) * 1em;
 }
 
 /// Remove the unit of a length
@@ -101,7 +102,7 @@ $config: $defaultConfig !default;
 /// @return {Number} - Unitless number
 @function strip-unit($number) {
   @if type-of($number) == 'number' and not unitless($number) {
-    @return $number / ($number * 0 + 1);
+    @return math.div($number, ($number * 0 + 1));
   }
 
   @return $number;
