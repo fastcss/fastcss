@@ -1,9 +1,11 @@
 @use '../functions' as *;
 
+// @debug strip-unit('20px');
+
 @mixin make-box($type, $value, $boxIndex, $screenName:null, $screenIndex:null) {
   @if ($type != 'stripunits') {
     // strip the unit
-    $suffix: if(conf('stripunits'), strip-unit($value), $value);
+    $suffix: if(conf('box.stripunits'), strip-unit($value), $value);
 
     // escape percentages
     $suffix: if(is-percentage($value), $suffix + '\\%', $suffix);

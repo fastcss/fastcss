@@ -1585,83 +1585,83 @@ template {
   padding-left: 0;
 }
 
-.p-2px {
+.p-2 {
   padding: 2px;
 }
 
-.pt-2px, .pv-2px {
+.pt-2, .pv-2 {
   padding-top: 2px;
 }
 
-.pr-2px, .ph-2px {
+.pr-2, .ph-2 {
   padding-right: 2px;
 }
 
-.pb-2px, .pv-2px {
+.pb-2, .pv-2 {
   padding-bottom: 2px;
 }
 
-.pl-2px, .ph-2px {
+.pl-2, .ph-2 {
   padding-left: 2px;
 }
 
-.p-10px {
+.p-10 {
   padding: 10px;
 }
 
-.pt-10px, .pv-10px {
+.pt-10, .pv-10 {
   padding-top: 10px;
 }
 
-.pr-10px, .ph-10px {
+.pr-10, .ph-10 {
   padding-right: 10px;
 }
 
-.pb-10px, .pv-10px {
+.pb-10, .pv-10 {
   padding-bottom: 10px;
 }
 
-.pl-10px, .ph-10px {
+.pl-10, .ph-10 {
   padding-left: 10px;
 }
 
-.p-15px {
+.p-15 {
   padding: 15px;
 }
 
-.pt-15px, .pv-15px {
+.pt-15, .pv-15 {
   padding-top: 15px;
 }
 
-.pr-15px, .ph-15px {
+.pr-15, .ph-15 {
   padding-right: 15px;
 }
 
-.pb-15px, .pv-15px {
+.pb-15, .pv-15 {
   padding-bottom: 15px;
 }
 
-.pl-15px, .ph-15px {
+.pl-15, .ph-15 {
   padding-left: 15px;
 }
 
-.p-20px {
+.p-20 {
   padding: 20px;
 }
 
-.pt-20px, .pv-20px {
+.pt-20, .pv-20 {
   padding-top: 20px;
 }
 
-.pr-20px, .ph-20px {
+.pr-20, .ph-20 {
   padding-right: 20px;
 }
 
-.pb-20px, .pv-20px {
+.pb-20, .pv-20 {
   padding-bottom: 20px;
 }
 
-.pl-20px, .ph-20px {
+.pl-20, .ph-20 {
   padding-left: 20px;
 }
 
@@ -1705,135 +1705,159 @@ template {
   margin-left: auto;
 }
 
-.m-5px {
+.m-5 {
   margin: 5px;
 }
 
-.mt-5px, .mv-5px {
+.mt-5, .mv-5 {
   margin-top: 5px;
 }
 
-.mr-5px, .mh-5px {
+.mr-5, .mh-5 {
   margin-right: 5px;
 }
 
-.mb-5px, .mv-5px {
+.mb-5, .mv-5 {
   margin-bottom: 5px;
 }
 
-.ml-5px, .mh-5px {
+.ml-5, .mh-5 {
   margin-left: 5px;
 }
 
-.m-10px {
+.m-10 {
   margin: 10px;
 }
 
-.mt-10px, .mv-10px {
+.mt-10, .mv-10 {
   margin-top: 10px;
 }
 
-.mr-10px, .mh-10px {
+.mr-10, .mh-10 {
   margin-right: 10px;
 }
 
-.mb-10px, .mv-10px {
+.mb-10, .mv-10 {
   margin-bottom: 10px;
 }
 
-.ml-10px, .mh-10px {
+.ml-10, .mh-10 {
   margin-left: 10px;
 }
 
-.m-15px {
+.m-15 {
   margin: 15px;
 }
 
-.mt-15px, .mv-15px {
+.mt-15, .mv-15 {
   margin-top: 15px;
 }
 
-.mr-15px, .mh-15px {
+.mr-15, .mh-15 {
   margin-right: 15px;
 }
 
-.mb-15px, .mv-15px {
+.mb-15, .mv-15 {
   margin-bottom: 15px;
 }
 
-.ml-15px, .mh-15px {
+.ml-15, .mh-15 {
   margin-left: 15px;
 }
 
-.m-20px {
+.m-20 {
   margin: 20px;
 }
 
-.mt-20px, .mv-20px {
+.mt-20, .mv-20 {
   margin-top: 20px;
 }
 
-.mr-20px, .mh-20px {
+.mr-20, .mh-20 {
   margin-right: 20px;
 }
 
-.mb-20px, .mv-20px {
+.mb-20, .mv-20 {
   margin-bottom: 20px;
 }
 
-.ml-20px, .mh-20px {
+.ml-20, .mh-20 {
   margin-left: 20px;
 }
 
-.m-30px {
+.m-30 {
   margin: 30px;
 }
 
-.mt-30px, .mv-30px {
+.mt-30, .mv-30 {
   margin-top: 30px;
 }
 
-.mr-30px, .mh-30px {
+.mr-30, .mh-30 {
   margin-right: 30px;
 }
 
-.mb-30px, .mv-30px {
+.mb-30, .mv-30 {
   margin-bottom: 30px;
 }
 
-.ml-30px, .mh-30px {
+.ml-30, .mh-30 {
   margin-left: 30px;
 }
 
-.m-40px {
+.m-40 {
   margin: 40px;
 }
 
-.mt-40px, .mv-40px {
+.mt-40, .mv-40 {
   margin-top: 40px;
 }
 
-.mr-40px, .mh-40px {
+.mr-40, .mh-40 {
   margin-right: 40px;
 }
 
-.mb-40px, .mv-40px {
+.mb-40, .mv-40 {
   margin-bottom: 40px;
 }
 
-.ml-40px, .mh-40px {
+.ml-40, .mh-40 {
   margin-left: 40px;
 }
 
-.h-1px {
+.w-100\% {
+  width: 100%;
+}
+
+.minw-100\% {
+  min-width: 100%;
+}
+
+.maxw-100\% {
+  max-width: 100%;
+}
+
+.h-100\% {
+  height: 100%;
+}
+
+.minh-100\% {
+  min-height: 100%;
+}
+
+.maxh-100\% {
+  max-height: 100%;
+}
+
+.h-1 {
   height: 1px;
 }
 
-.minh-1px {
+.minh-1 {
   min-height: 1px;
 }
 
-.maxh-1px {
+.maxh-1 {
   max-height: 1px;
 }
 
@@ -1853,51 +1877,51 @@ template {
   left: 0;
 }
 
-.top-5px {
+.top-5 {
   top: 5px;
 }
 
-.right-5px {
+.right-5 {
   right: 5px;
 }
 
-.bottom-5px {
+.bottom-5 {
   bottom: 5px;
 }
 
-.left-5px {
+.left-5 {
   left: 5px;
 }
 
-.top-10px {
+.top-10 {
   top: 10px;
 }
 
-.right-10px {
+.right-10 {
   right: 10px;
 }
 
-.bottom-10px {
+.bottom-10 {
   bottom: 10px;
 }
 
-.left-10px {
+.left-10 {
   left: 10px;
 }
 
-.top-15px {
+.top-15 {
   top: 15px;
 }
 
-.right-15px {
+.right-15 {
   right: 15px;
 }
 
-.bottom-15px {
+.bottom-15 {
   bottom: 15px;
 }
 
-.left-15px {
+.left-15 {
   left: 15px;
 }
 
@@ -1933,63 +1957,63 @@ template {
   border-bottom-right-radius: 0;
 }
 
-.rad-3px {
+.rad-3 {
   border-radius: 3px;
 }
 
-.radtl-3px {
+.radtl-3 {
   border-top-left-radius: 3px;
 }
 
-.radtr-3px {
+.radtr-3 {
   border-top-right-radius: 3px;
 }
 
-.radbl-3px {
+.radbl-3 {
   border-bottom-left-radius: 3px;
 }
 
-.radbr-3px {
+.radbr-3 {
   border-bottom-right-radius: 3px;
 }
 
-.rad-5px {
+.rad-5 {
   border-radius: 5px;
 }
 
-.radtl-5px {
+.radtl-5 {
   border-top-left-radius: 5px;
 }
 
-.radtr-5px {
+.radtr-5 {
   border-top-right-radius: 5px;
 }
 
-.radbl-5px {
+.radbl-5 {
   border-bottom-left-radius: 5px;
 }
 
-.radbr-5px {
+.radbr-5 {
   border-bottom-right-radius: 5px;
 }
 
-.rad-10px {
+.rad-10 {
   border-radius: 10px;
 }
 
-.radtl-10px {
+.radtl-10 {
   border-top-left-radius: 10px;
 }
 
-.radtr-10px {
+.radtr-10 {
   border-top-right-radius: 10px;
 }
 
-.radbl-10px {
+.radbl-10 {
   border-bottom-left-radius: 10px;
 }
 
-.radbr-10px {
+.radbr-10 {
   border-bottom-right-radius: 10px;
 }
 
@@ -2013,83 +2037,83 @@ template {
   border-left-width: 0;
 }
 
-.b-1px {
+.b-1 {
   border-width: 1px;
 }
 
-.bt-1px, .bv-1px {
+.bt-1, .bv-1 {
   border-top-width: 1px;
 }
 
-.br-1px, .bh-1px {
+.br-1, .bh-1 {
   border-right-width: 1px;
 }
 
-.bb-1px, .bv-1px {
+.bb-1, .bv-1 {
   border-bottom-width: 1px;
 }
 
-.bl-1px, .bh-1px {
+.bl-1, .bh-1 {
   border-left-width: 1px;
 }
 
-.b-2px {
+.b-2 {
   border-width: 2px;
 }
 
-.bt-2px, .bv-2px {
+.bt-2, .bv-2 {
   border-top-width: 2px;
 }
 
-.br-2px, .bh-2px {
+.br-2, .bh-2 {
   border-right-width: 2px;
 }
 
-.bb-2px, .bv-2px {
+.bb-2, .bv-2 {
   border-bottom-width: 2px;
 }
 
-.bl-2px, .bh-2px {
+.bl-2, .bh-2 {
   border-left-width: 2px;
 }
 
-.b-3px {
+.b-3 {
   border-width: 3px;
 }
 
-.bt-3px, .bv-3px {
+.bt-3, .bv-3 {
   border-top-width: 3px;
 }
 
-.br-3px, .bh-3px {
+.br-3, .bh-3 {
   border-right-width: 3px;
 }
 
-.bb-3px, .bv-3px {
+.bb-3, .bv-3 {
   border-bottom-width: 3px;
 }
 
-.bl-3px, .bh-3px {
+.bl-3, .bh-3 {
   border-left-width: 3px;
 }
 
-.b-4px {
+.b-4 {
   border-width: 4px;
 }
 
-.bt-4px, .bv-4px {
+.bt-4, .bv-4 {
   border-top-width: 4px;
 }
 
-.br-4px, .bh-4px {
+.br-4, .bh-4 {
   border-right-width: 4px;
 }
 
-.bb-4px, .bv-4px {
+.bb-4, .bv-4 {
   border-bottom-width: 4px;
 }
 
-.bl-4px, .bh-4px {
+.bl-4, .bh-4 {
   border-left-width: 4px;
 }
 
@@ -2643,83 +2667,83 @@ template {
   padding-left: 0;
 }
 
-.xs\:p-2px {
+.xs\:p-2 {
   padding: 2px;
 }
 
-.xs\:pt-2px, .xs\:pv-2px {
+.xs\:pt-2, .xs\:pv-2 {
   padding-top: 2px;
 }
 
-.xs\:pr-2px, .xs\:ph-2px {
+.xs\:pr-2, .xs\:ph-2 {
   padding-right: 2px;
 }
 
-.xs\:pb-2px, .xs\:pv-2px {
+.xs\:pb-2, .xs\:pv-2 {
   padding-bottom: 2px;
 }
 
-.xs\:pl-2px, .xs\:ph-2px {
+.xs\:pl-2, .xs\:ph-2 {
   padding-left: 2px;
 }
 
-.xs\:p-10px {
+.xs\:p-10 {
   padding: 10px;
 }
 
-.xs\:pt-10px, .xs\:pv-10px {
+.xs\:pt-10, .xs\:pv-10 {
   padding-top: 10px;
 }
 
-.xs\:pr-10px, .xs\:ph-10px {
+.xs\:pr-10, .xs\:ph-10 {
   padding-right: 10px;
 }
 
-.xs\:pb-10px, .xs\:pv-10px {
+.xs\:pb-10, .xs\:pv-10 {
   padding-bottom: 10px;
 }
 
-.xs\:pl-10px, .xs\:ph-10px {
+.xs\:pl-10, .xs\:ph-10 {
   padding-left: 10px;
 }
 
-.xs\:p-15px {
+.xs\:p-15 {
   padding: 15px;
 }
 
-.xs\:pt-15px, .xs\:pv-15px {
+.xs\:pt-15, .xs\:pv-15 {
   padding-top: 15px;
 }
 
-.xs\:pr-15px, .xs\:ph-15px {
+.xs\:pr-15, .xs\:ph-15 {
   padding-right: 15px;
 }
 
-.xs\:pb-15px, .xs\:pv-15px {
+.xs\:pb-15, .xs\:pv-15 {
   padding-bottom: 15px;
 }
 
-.xs\:pl-15px, .xs\:ph-15px {
+.xs\:pl-15, .xs\:ph-15 {
   padding-left: 15px;
 }
 
-.xs\:p-20px {
+.xs\:p-20 {
   padding: 20px;
 }
 
-.xs\:pt-20px, .xs\:pv-20px {
+.xs\:pt-20, .xs\:pv-20 {
   padding-top: 20px;
 }
 
-.xs\:pr-20px, .xs\:ph-20px {
+.xs\:pr-20, .xs\:ph-20 {
   padding-right: 20px;
 }
 
-.xs\:pb-20px, .xs\:pv-20px {
+.xs\:pb-20, .xs\:pv-20 {
   padding-bottom: 20px;
 }
 
-.xs\:pl-20px, .xs\:ph-20px {
+.xs\:pl-20, .xs\:ph-20 {
   padding-left: 20px;
 }
 
@@ -2763,135 +2787,159 @@ template {
   margin-left: auto;
 }
 
-.xs\:m-5px {
+.xs\:m-5 {
   margin: 5px;
 }
 
-.xs\:mt-5px, .xs\:mv-5px {
+.xs\:mt-5, .xs\:mv-5 {
   margin-top: 5px;
 }
 
-.xs\:mr-5px, .xs\:mh-5px {
+.xs\:mr-5, .xs\:mh-5 {
   margin-right: 5px;
 }
 
-.xs\:mb-5px, .xs\:mv-5px {
+.xs\:mb-5, .xs\:mv-5 {
   margin-bottom: 5px;
 }
 
-.xs\:ml-5px, .xs\:mh-5px {
+.xs\:ml-5, .xs\:mh-5 {
   margin-left: 5px;
 }
 
-.xs\:m-10px {
+.xs\:m-10 {
   margin: 10px;
 }
 
-.xs\:mt-10px, .xs\:mv-10px {
+.xs\:mt-10, .xs\:mv-10 {
   margin-top: 10px;
 }
 
-.xs\:mr-10px, .xs\:mh-10px {
+.xs\:mr-10, .xs\:mh-10 {
   margin-right: 10px;
 }
 
-.xs\:mb-10px, .xs\:mv-10px {
+.xs\:mb-10, .xs\:mv-10 {
   margin-bottom: 10px;
 }
 
-.xs\:ml-10px, .xs\:mh-10px {
+.xs\:ml-10, .xs\:mh-10 {
   margin-left: 10px;
 }
 
-.xs\:m-15px {
+.xs\:m-15 {
   margin: 15px;
 }
 
-.xs\:mt-15px, .xs\:mv-15px {
+.xs\:mt-15, .xs\:mv-15 {
   margin-top: 15px;
 }
 
-.xs\:mr-15px, .xs\:mh-15px {
+.xs\:mr-15, .xs\:mh-15 {
   margin-right: 15px;
 }
 
-.xs\:mb-15px, .xs\:mv-15px {
+.xs\:mb-15, .xs\:mv-15 {
   margin-bottom: 15px;
 }
 
-.xs\:ml-15px, .xs\:mh-15px {
+.xs\:ml-15, .xs\:mh-15 {
   margin-left: 15px;
 }
 
-.xs\:m-20px {
+.xs\:m-20 {
   margin: 20px;
 }
 
-.xs\:mt-20px, .xs\:mv-20px {
+.xs\:mt-20, .xs\:mv-20 {
   margin-top: 20px;
 }
 
-.xs\:mr-20px, .xs\:mh-20px {
+.xs\:mr-20, .xs\:mh-20 {
   margin-right: 20px;
 }
 
-.xs\:mb-20px, .xs\:mv-20px {
+.xs\:mb-20, .xs\:mv-20 {
   margin-bottom: 20px;
 }
 
-.xs\:ml-20px, .xs\:mh-20px {
+.xs\:ml-20, .xs\:mh-20 {
   margin-left: 20px;
 }
 
-.xs\:m-30px {
+.xs\:m-30 {
   margin: 30px;
 }
 
-.xs\:mt-30px, .xs\:mv-30px {
+.xs\:mt-30, .xs\:mv-30 {
   margin-top: 30px;
 }
 
-.xs\:mr-30px, .xs\:mh-30px {
+.xs\:mr-30, .xs\:mh-30 {
   margin-right: 30px;
 }
 
-.xs\:mb-30px, .xs\:mv-30px {
+.xs\:mb-30, .xs\:mv-30 {
   margin-bottom: 30px;
 }
 
-.xs\:ml-30px, .xs\:mh-30px {
+.xs\:ml-30, .xs\:mh-30 {
   margin-left: 30px;
 }
 
-.xs\:m-40px {
+.xs\:m-40 {
   margin: 40px;
 }
 
-.xs\:mt-40px, .xs\:mv-40px {
+.xs\:mt-40, .xs\:mv-40 {
   margin-top: 40px;
 }
 
-.xs\:mr-40px, .xs\:mh-40px {
+.xs\:mr-40, .xs\:mh-40 {
   margin-right: 40px;
 }
 
-.xs\:mb-40px, .xs\:mv-40px {
+.xs\:mb-40, .xs\:mv-40 {
   margin-bottom: 40px;
 }
 
-.xs\:ml-40px, .xs\:mh-40px {
+.xs\:ml-40, .xs\:mh-40 {
   margin-left: 40px;
 }
 
-.xs\:h-1px {
+.xs\:w-100\% {
+  width: 100%;
+}
+
+.xs\:minw-100\% {
+  min-width: 100%;
+}
+
+.xs\:maxw-100\% {
+  max-width: 100%;
+}
+
+.xs\:h-100\% {
+  height: 100%;
+}
+
+.xs\:minh-100\% {
+  min-height: 100%;
+}
+
+.xs\:maxh-100\% {
+  max-height: 100%;
+}
+
+.xs\:h-1 {
   height: 1px;
 }
 
-.xs\:minh-1px {
+.xs\:minh-1 {
   min-height: 1px;
 }
 
-.xs\:maxh-1px {
+.xs\:maxh-1 {
   max-height: 1px;
 }
 
@@ -2911,51 +2959,51 @@ template {
   left: 0;
 }
 
-.xs\:top-5px {
+.xs\:top-5 {
   top: 5px;
 }
 
-.xs\:right-5px {
+.xs\:right-5 {
   right: 5px;
 }
 
-.xs\:bottom-5px {
+.xs\:bottom-5 {
   bottom: 5px;
 }
 
-.xs\:left-5px {
+.xs\:left-5 {
   left: 5px;
 }
 
-.xs\:top-10px {
+.xs\:top-10 {
   top: 10px;
 }
 
-.xs\:right-10px {
+.xs\:right-10 {
   right: 10px;
 }
 
-.xs\:bottom-10px {
+.xs\:bottom-10 {
   bottom: 10px;
 }
 
-.xs\:left-10px {
+.xs\:left-10 {
   left: 10px;
 }
 
-.xs\:top-15px {
+.xs\:top-15 {
   top: 15px;
 }
 
-.xs\:right-15px {
+.xs\:right-15 {
   right: 15px;
 }
 
-.xs\:bottom-15px {
+.xs\:bottom-15 {
   bottom: 15px;
 }
 
-.xs\:left-15px {
+.xs\:left-15 {
   left: 15px;
 }
 
@@ -2991,63 +3039,63 @@ template {
   border-bottom-right-radius: 0;
 }
 
-.xs\:rad-3px {
+.xs\:rad-3 {
   border-radius: 3px;
 }
 
-.xs\:radtl-3px {
+.xs\:radtl-3 {
   border-top-left-radius: 3px;
 }
 
-.xs\:radtr-3px {
+.xs\:radtr-3 {
   border-top-right-radius: 3px;
 }
 
-.xs\:radbl-3px {
+.xs\:radbl-3 {
   border-bottom-left-radius: 3px;
 }
 
-.xs\:radbr-3px {
+.xs\:radbr-3 {
   border-bottom-right-radius: 3px;
 }
 
-.xs\:rad-5px {
+.xs\:rad-5 {
   border-radius: 5px;
 }
 
-.xs\:radtl-5px {
+.xs\:radtl-5 {
   border-top-left-radius: 5px;
 }
 
-.xs\:radtr-5px {
+.xs\:radtr-5 {
   border-top-right-radius: 5px;
 }
 
-.xs\:radbl-5px {
+.xs\:radbl-5 {
   border-bottom-left-radius: 5px;
 }
 
-.xs\:radbr-5px {
+.xs\:radbr-5 {
   border-bottom-right-radius: 5px;
 }
 
-.xs\:rad-10px {
+.xs\:rad-10 {
   border-radius: 10px;
 }
 
-.xs\:radtl-10px {
+.xs\:radtl-10 {
   border-top-left-radius: 10px;
 }
 
-.xs\:radtr-10px {
+.xs\:radtr-10 {
   border-top-right-radius: 10px;
 }
 
-.xs\:radbl-10px {
+.xs\:radbl-10 {
   border-bottom-left-radius: 10px;
 }
 
-.xs\:radbr-10px {
+.xs\:radbr-10 {
   border-bottom-right-radius: 10px;
 }
 
@@ -3071,83 +3119,83 @@ template {
   border-left-width: 0;
 }
 
-.xs\:b-1px {
+.xs\:b-1 {
   border-width: 1px;
 }
 
-.xs\:bt-1px, .xs\:bv-1px {
+.xs\:bt-1, .xs\:bv-1 {
   border-top-width: 1px;
 }
 
-.xs\:br-1px, .xs\:bh-1px {
+.xs\:br-1, .xs\:bh-1 {
   border-right-width: 1px;
 }
 
-.xs\:bb-1px, .xs\:bv-1px {
+.xs\:bb-1, .xs\:bv-1 {
   border-bottom-width: 1px;
 }
 
-.xs\:bl-1px, .xs\:bh-1px {
+.xs\:bl-1, .xs\:bh-1 {
   border-left-width: 1px;
 }
 
-.xs\:b-2px {
+.xs\:b-2 {
   border-width: 2px;
 }
 
-.xs\:bt-2px, .xs\:bv-2px {
+.xs\:bt-2, .xs\:bv-2 {
   border-top-width: 2px;
 }
 
-.xs\:br-2px, .xs\:bh-2px {
+.xs\:br-2, .xs\:bh-2 {
   border-right-width: 2px;
 }
 
-.xs\:bb-2px, .xs\:bv-2px {
+.xs\:bb-2, .xs\:bv-2 {
   border-bottom-width: 2px;
 }
 
-.xs\:bl-2px, .xs\:bh-2px {
+.xs\:bl-2, .xs\:bh-2 {
   border-left-width: 2px;
 }
 
-.xs\:b-3px {
+.xs\:b-3 {
   border-width: 3px;
 }
 
-.xs\:bt-3px, .xs\:bv-3px {
+.xs\:bt-3, .xs\:bv-3 {
   border-top-width: 3px;
 }
 
-.xs\:br-3px, .xs\:bh-3px {
+.xs\:br-3, .xs\:bh-3 {
   border-right-width: 3px;
 }
 
-.xs\:bb-3px, .xs\:bv-3px {
+.xs\:bb-3, .xs\:bv-3 {
   border-bottom-width: 3px;
 }
 
-.xs\:bl-3px, .xs\:bh-3px {
+.xs\:bl-3, .xs\:bh-3 {
   border-left-width: 3px;
 }
 
-.xs\:b-4px {
+.xs\:b-4 {
   border-width: 4px;
 }
 
-.xs\:bt-4px, .xs\:bv-4px {
+.xs\:bt-4, .xs\:bv-4 {
   border-top-width: 4px;
 }
 
-.xs\:br-4px, .xs\:bh-4px {
+.xs\:br-4, .xs\:bh-4 {
   border-right-width: 4px;
 }
 
-.xs\:bb-4px, .xs\:bv-4px {
+.xs\:bb-4, .xs\:bv-4 {
   border-bottom-width: 4px;
 }
 
-.xs\:bl-4px, .xs\:bh-4px {
+.xs\:bl-4, .xs\:bh-4 {
   border-left-width: 4px;
 }
 
@@ -3768,83 +3816,83 @@ template {
     padding-left: 0;
   }
 
-  .sm\:p-2px {
+  .sm\:p-2 {
     padding: 2px;
   }
 
-  .sm\:pt-2px, .sm\:pv-2px {
+  .sm\:pt-2, .sm\:pv-2 {
     padding-top: 2px;
   }
 
-  .sm\:pr-2px, .sm\:ph-2px {
+  .sm\:pr-2, .sm\:ph-2 {
     padding-right: 2px;
   }
 
-  .sm\:pb-2px, .sm\:pv-2px {
+  .sm\:pb-2, .sm\:pv-2 {
     padding-bottom: 2px;
   }
 
-  .sm\:pl-2px, .sm\:ph-2px {
+  .sm\:pl-2, .sm\:ph-2 {
     padding-left: 2px;
   }
 
-  .sm\:p-10px {
+  .sm\:p-10 {
     padding: 10px;
   }
 
-  .sm\:pt-10px, .sm\:pv-10px {
+  .sm\:pt-10, .sm\:pv-10 {
     padding-top: 10px;
   }
 
-  .sm\:pr-10px, .sm\:ph-10px {
+  .sm\:pr-10, .sm\:ph-10 {
     padding-right: 10px;
   }
 
-  .sm\:pb-10px, .sm\:pv-10px {
+  .sm\:pb-10, .sm\:pv-10 {
     padding-bottom: 10px;
   }
 
-  .sm\:pl-10px, .sm\:ph-10px {
+  .sm\:pl-10, .sm\:ph-10 {
     padding-left: 10px;
   }
 
-  .sm\:p-15px {
+  .sm\:p-15 {
     padding: 15px;
   }
 
-  .sm\:pt-15px, .sm\:pv-15px {
+  .sm\:pt-15, .sm\:pv-15 {
     padding-top: 15px;
   }
 
-  .sm\:pr-15px, .sm\:ph-15px {
+  .sm\:pr-15, .sm\:ph-15 {
     padding-right: 15px;
   }
 
-  .sm\:pb-15px, .sm\:pv-15px {
+  .sm\:pb-15, .sm\:pv-15 {
     padding-bottom: 15px;
   }
 
-  .sm\:pl-15px, .sm\:ph-15px {
+  .sm\:pl-15, .sm\:ph-15 {
     padding-left: 15px;
   }
 
-  .sm\:p-20px {
+  .sm\:p-20 {
     padding: 20px;
   }
 
-  .sm\:pt-20px, .sm\:pv-20px {
+  .sm\:pt-20, .sm\:pv-20 {
     padding-top: 20px;
   }
 
-  .sm\:pr-20px, .sm\:ph-20px {
+  .sm\:pr-20, .sm\:ph-20 {
     padding-right: 20px;
   }
 
-  .sm\:pb-20px, .sm\:pv-20px {
+  .sm\:pb-20, .sm\:pv-20 {
     padding-bottom: 20px;
   }
 
-  .sm\:pl-20px, .sm\:ph-20px {
+  .sm\:pl-20, .sm\:ph-20 {
     padding-left: 20px;
   }
 
@@ -3888,135 +3936,159 @@ template {
     margin-left: auto;
   }
 
-  .sm\:m-5px {
+  .sm\:m-5 {
     margin: 5px;
   }
 
-  .sm\:mt-5px, .sm\:mv-5px {
+  .sm\:mt-5, .sm\:mv-5 {
     margin-top: 5px;
   }
 
-  .sm\:mr-5px, .sm\:mh-5px {
+  .sm\:mr-5, .sm\:mh-5 {
     margin-right: 5px;
   }
 
-  .sm\:mb-5px, .sm\:mv-5px {
+  .sm\:mb-5, .sm\:mv-5 {
     margin-bottom: 5px;
   }
 
-  .sm\:ml-5px, .sm\:mh-5px {
+  .sm\:ml-5, .sm\:mh-5 {
     margin-left: 5px;
   }
 
-  .sm\:m-10px {
+  .sm\:m-10 {
     margin: 10px;
   }
 
-  .sm\:mt-10px, .sm\:mv-10px {
+  .sm\:mt-10, .sm\:mv-10 {
     margin-top: 10px;
   }
 
-  .sm\:mr-10px, .sm\:mh-10px {
+  .sm\:mr-10, .sm\:mh-10 {
     margin-right: 10px;
   }
 
-  .sm\:mb-10px, .sm\:mv-10px {
+  .sm\:mb-10, .sm\:mv-10 {
     margin-bottom: 10px;
   }
 
-  .sm\:ml-10px, .sm\:mh-10px {
+  .sm\:ml-10, .sm\:mh-10 {
     margin-left: 10px;
   }
 
-  .sm\:m-15px {
+  .sm\:m-15 {
     margin: 15px;
   }
 
-  .sm\:mt-15px, .sm\:mv-15px {
+  .sm\:mt-15, .sm\:mv-15 {
     margin-top: 15px;
   }
 
-  .sm\:mr-15px, .sm\:mh-15px {
+  .sm\:mr-15, .sm\:mh-15 {
     margin-right: 15px;
   }
 
-  .sm\:mb-15px, .sm\:mv-15px {
+  .sm\:mb-15, .sm\:mv-15 {
     margin-bottom: 15px;
   }
 
-  .sm\:ml-15px, .sm\:mh-15px {
+  .sm\:ml-15, .sm\:mh-15 {
     margin-left: 15px;
   }
 
-  .sm\:m-20px {
+  .sm\:m-20 {
     margin: 20px;
   }
 
-  .sm\:mt-20px, .sm\:mv-20px {
+  .sm\:mt-20, .sm\:mv-20 {
     margin-top: 20px;
   }
 
-  .sm\:mr-20px, .sm\:mh-20px {
+  .sm\:mr-20, .sm\:mh-20 {
     margin-right: 20px;
   }
 
-  .sm\:mb-20px, .sm\:mv-20px {
+  .sm\:mb-20, .sm\:mv-20 {
     margin-bottom: 20px;
   }
 
-  .sm\:ml-20px, .sm\:mh-20px {
+  .sm\:ml-20, .sm\:mh-20 {
     margin-left: 20px;
   }
 
-  .sm\:m-30px {
+  .sm\:m-30 {
     margin: 30px;
   }
 
-  .sm\:mt-30px, .sm\:mv-30px {
+  .sm\:mt-30, .sm\:mv-30 {
     margin-top: 30px;
   }
 
-  .sm\:mr-30px, .sm\:mh-30px {
+  .sm\:mr-30, .sm\:mh-30 {
     margin-right: 30px;
   }
 
-  .sm\:mb-30px, .sm\:mv-30px {
+  .sm\:mb-30, .sm\:mv-30 {
     margin-bottom: 30px;
   }
 
-  .sm\:ml-30px, .sm\:mh-30px {
+  .sm\:ml-30, .sm\:mh-30 {
     margin-left: 30px;
   }
 
-  .sm\:m-40px {
+  .sm\:m-40 {
     margin: 40px;
   }
 
-  .sm\:mt-40px, .sm\:mv-40px {
+  .sm\:mt-40, .sm\:mv-40 {
     margin-top: 40px;
   }
 
-  .sm\:mr-40px, .sm\:mh-40px {
+  .sm\:mr-40, .sm\:mh-40 {
     margin-right: 40px;
   }
 
-  .sm\:mb-40px, .sm\:mv-40px {
+  .sm\:mb-40, .sm\:mv-40 {
     margin-bottom: 40px;
   }
 
-  .sm\:ml-40px, .sm\:mh-40px {
+  .sm\:ml-40, .sm\:mh-40 {
     margin-left: 40px;
   }
 
-  .sm\:h-1px {
+  .sm\:w-100\% {
+    width: 100%;
+  }
+
+  .sm\:minw-100\% {
+    min-width: 100%;
+  }
+
+  .sm\:maxw-100\% {
+    max-width: 100%;
+  }
+
+  .sm\:h-100\% {
+    height: 100%;
+  }
+
+  .sm\:minh-100\% {
+    min-height: 100%;
+  }
+
+  .sm\:maxh-100\% {
+    max-height: 100%;
+  }
+
+  .sm\:h-1 {
     height: 1px;
   }
 
-  .sm\:minh-1px {
+  .sm\:minh-1 {
     min-height: 1px;
   }
 
-  .sm\:maxh-1px {
+  .sm\:maxh-1 {
     max-height: 1px;
   }
 
@@ -4036,51 +4108,51 @@ template {
     left: 0;
   }
 
-  .sm\:top-5px {
+  .sm\:top-5 {
     top: 5px;
   }
 
-  .sm\:right-5px {
+  .sm\:right-5 {
     right: 5px;
   }
 
-  .sm\:bottom-5px {
+  .sm\:bottom-5 {
     bottom: 5px;
   }
 
-  .sm\:left-5px {
+  .sm\:left-5 {
     left: 5px;
   }
 
-  .sm\:top-10px {
+  .sm\:top-10 {
     top: 10px;
   }
 
-  .sm\:right-10px {
+  .sm\:right-10 {
     right: 10px;
   }
 
-  .sm\:bottom-10px {
+  .sm\:bottom-10 {
     bottom: 10px;
   }
 
-  .sm\:left-10px {
+  .sm\:left-10 {
     left: 10px;
   }
 
-  .sm\:top-15px {
+  .sm\:top-15 {
     top: 15px;
   }
 
-  .sm\:right-15px {
+  .sm\:right-15 {
     right: 15px;
   }
 
-  .sm\:bottom-15px {
+  .sm\:bottom-15 {
     bottom: 15px;
   }
 
-  .sm\:left-15px {
+  .sm\:left-15 {
     left: 15px;
   }
 
@@ -4116,63 +4188,63 @@ template {
     border-bottom-right-radius: 0;
   }
 
-  .sm\:rad-3px {
+  .sm\:rad-3 {
     border-radius: 3px;
   }
 
-  .sm\:radtl-3px {
+  .sm\:radtl-3 {
     border-top-left-radius: 3px;
   }
 
-  .sm\:radtr-3px {
+  .sm\:radtr-3 {
     border-top-right-radius: 3px;
   }
 
-  .sm\:radbl-3px {
+  .sm\:radbl-3 {
     border-bottom-left-radius: 3px;
   }
 
-  .sm\:radbr-3px {
+  .sm\:radbr-3 {
     border-bottom-right-radius: 3px;
   }
 
-  .sm\:rad-5px {
+  .sm\:rad-5 {
     border-radius: 5px;
   }
 
-  .sm\:radtl-5px {
+  .sm\:radtl-5 {
     border-top-left-radius: 5px;
   }
 
-  .sm\:radtr-5px {
+  .sm\:radtr-5 {
     border-top-right-radius: 5px;
   }
 
-  .sm\:radbl-5px {
+  .sm\:radbl-5 {
     border-bottom-left-radius: 5px;
   }
 
-  .sm\:radbr-5px {
+  .sm\:radbr-5 {
     border-bottom-right-radius: 5px;
   }
 
-  .sm\:rad-10px {
+  .sm\:rad-10 {
     border-radius: 10px;
   }
 
-  .sm\:radtl-10px {
+  .sm\:radtl-10 {
     border-top-left-radius: 10px;
   }
 
-  .sm\:radtr-10px {
+  .sm\:radtr-10 {
     border-top-right-radius: 10px;
   }
 
-  .sm\:radbl-10px {
+  .sm\:radbl-10 {
     border-bottom-left-radius: 10px;
   }
 
-  .sm\:radbr-10px {
+  .sm\:radbr-10 {
     border-bottom-right-radius: 10px;
   }
 
@@ -4196,83 +4268,83 @@ template {
     border-left-width: 0;
   }
 
-  .sm\:b-1px {
+  .sm\:b-1 {
     border-width: 1px;
   }
 
-  .sm\:bt-1px, .sm\:bv-1px {
+  .sm\:bt-1, .sm\:bv-1 {
     border-top-width: 1px;
   }
 
-  .sm\:br-1px, .sm\:bh-1px {
+  .sm\:br-1, .sm\:bh-1 {
     border-right-width: 1px;
   }
 
-  .sm\:bb-1px, .sm\:bv-1px {
+  .sm\:bb-1, .sm\:bv-1 {
     border-bottom-width: 1px;
   }
 
-  .sm\:bl-1px, .sm\:bh-1px {
+  .sm\:bl-1, .sm\:bh-1 {
     border-left-width: 1px;
   }
 
-  .sm\:b-2px {
+  .sm\:b-2 {
     border-width: 2px;
   }
 
-  .sm\:bt-2px, .sm\:bv-2px {
+  .sm\:bt-2, .sm\:bv-2 {
     border-top-width: 2px;
   }
 
-  .sm\:br-2px, .sm\:bh-2px {
+  .sm\:br-2, .sm\:bh-2 {
     border-right-width: 2px;
   }
 
-  .sm\:bb-2px, .sm\:bv-2px {
+  .sm\:bb-2, .sm\:bv-2 {
     border-bottom-width: 2px;
   }
 
-  .sm\:bl-2px, .sm\:bh-2px {
+  .sm\:bl-2, .sm\:bh-2 {
     border-left-width: 2px;
   }
 
-  .sm\:b-3px {
+  .sm\:b-3 {
     border-width: 3px;
   }
 
-  .sm\:bt-3px, .sm\:bv-3px {
+  .sm\:bt-3, .sm\:bv-3 {
     border-top-width: 3px;
   }
 
-  .sm\:br-3px, .sm\:bh-3px {
+  .sm\:br-3, .sm\:bh-3 {
     border-right-width: 3px;
   }
 
-  .sm\:bb-3px, .sm\:bv-3px {
+  .sm\:bb-3, .sm\:bv-3 {
     border-bottom-width: 3px;
   }
 
-  .sm\:bl-3px, .sm\:bh-3px {
+  .sm\:bl-3, .sm\:bh-3 {
     border-left-width: 3px;
   }
 
-  .sm\:b-4px {
+  .sm\:b-4 {
     border-width: 4px;
   }
 
-  .sm\:bt-4px, .sm\:bv-4px {
+  .sm\:bt-4, .sm\:bv-4 {
     border-top-width: 4px;
   }
 
-  .sm\:br-4px, .sm\:bh-4px {
+  .sm\:br-4, .sm\:bh-4 {
     border-right-width: 4px;
   }
 
-  .sm\:bb-4px, .sm\:bv-4px {
+  .sm\:bb-4, .sm\:bv-4 {
     border-bottom-width: 4px;
   }
 
-  .sm\:bl-4px, .sm\:bh-4px {
+  .sm\:bl-4, .sm\:bh-4 {
     border-left-width: 4px;
   }
 
@@ -4894,83 +4966,83 @@ template {
     padding-left: 0;
   }
 
-  .md\:p-2px {
+  .md\:p-2 {
     padding: 2px;
   }
 
-  .md\:pt-2px, .md\:pv-2px {
+  .md\:pt-2, .md\:pv-2 {
     padding-top: 2px;
   }
 
-  .md\:pr-2px, .md\:ph-2px {
+  .md\:pr-2, .md\:ph-2 {
     padding-right: 2px;
   }
 
-  .md\:pb-2px, .md\:pv-2px {
+  .md\:pb-2, .md\:pv-2 {
     padding-bottom: 2px;
   }
 
-  .md\:pl-2px, .md\:ph-2px {
+  .md\:pl-2, .md\:ph-2 {
     padding-left: 2px;
   }
 
-  .md\:p-10px {
+  .md\:p-10 {
     padding: 10px;
   }
 
-  .md\:pt-10px, .md\:pv-10px {
+  .md\:pt-10, .md\:pv-10 {
     padding-top: 10px;
   }
 
-  .md\:pr-10px, .md\:ph-10px {
+  .md\:pr-10, .md\:ph-10 {
     padding-right: 10px;
   }
 
-  .md\:pb-10px, .md\:pv-10px {
+  .md\:pb-10, .md\:pv-10 {
     padding-bottom: 10px;
   }
 
-  .md\:pl-10px, .md\:ph-10px {
+  .md\:pl-10, .md\:ph-10 {
     padding-left: 10px;
   }
 
-  .md\:p-15px {
+  .md\:p-15 {
     padding: 15px;
   }
 
-  .md\:pt-15px, .md\:pv-15px {
+  .md\:pt-15, .md\:pv-15 {
     padding-top: 15px;
   }
 
-  .md\:pr-15px, .md\:ph-15px {
+  .md\:pr-15, .md\:ph-15 {
     padding-right: 15px;
   }
 
-  .md\:pb-15px, .md\:pv-15px {
+  .md\:pb-15, .md\:pv-15 {
     padding-bottom: 15px;
   }
 
-  .md\:pl-15px, .md\:ph-15px {
+  .md\:pl-15, .md\:ph-15 {
     padding-left: 15px;
   }
 
-  .md\:p-20px {
+  .md\:p-20 {
     padding: 20px;
   }
 
-  .md\:pt-20px, .md\:pv-20px {
+  .md\:pt-20, .md\:pv-20 {
     padding-top: 20px;
   }
 
-  .md\:pr-20px, .md\:ph-20px {
+  .md\:pr-20, .md\:ph-20 {
     padding-right: 20px;
   }
 
-  .md\:pb-20px, .md\:pv-20px {
+  .md\:pb-20, .md\:pv-20 {
     padding-bottom: 20px;
   }
 
-  .md\:pl-20px, .md\:ph-20px {
+  .md\:pl-20, .md\:ph-20 {
     padding-left: 20px;
   }
 
@@ -5014,135 +5086,159 @@ template {
     margin-left: auto;
   }
 
-  .md\:m-5px {
+  .md\:m-5 {
     margin: 5px;
   }
 
-  .md\:mt-5px, .md\:mv-5px {
+  .md\:mt-5, .md\:mv-5 {
     margin-top: 5px;
   }
 
-  .md\:mr-5px, .md\:mh-5px {
+  .md\:mr-5, .md\:mh-5 {
     margin-right: 5px;
   }
 
-  .md\:mb-5px, .md\:mv-5px {
+  .md\:mb-5, .md\:mv-5 {
     margin-bottom: 5px;
   }
 
-  .md\:ml-5px, .md\:mh-5px {
+  .md\:ml-5, .md\:mh-5 {
     margin-left: 5px;
   }
 
-  .md\:m-10px {
+  .md\:m-10 {
     margin: 10px;
   }
 
-  .md\:mt-10px, .md\:mv-10px {
+  .md\:mt-10, .md\:mv-10 {
     margin-top: 10px;
   }
 
-  .md\:mr-10px, .md\:mh-10px {
+  .md\:mr-10, .md\:mh-10 {
     margin-right: 10px;
   }
 
-  .md\:mb-10px, .md\:mv-10px {
+  .md\:mb-10, .md\:mv-10 {
     margin-bottom: 10px;
   }
 
-  .md\:ml-10px, .md\:mh-10px {
+  .md\:ml-10, .md\:mh-10 {
     margin-left: 10px;
   }
 
-  .md\:m-15px {
+  .md\:m-15 {
     margin: 15px;
   }
 
-  .md\:mt-15px, .md\:mv-15px {
+  .md\:mt-15, .md\:mv-15 {
     margin-top: 15px;
   }
 
-  .md\:mr-15px, .md\:mh-15px {
+  .md\:mr-15, .md\:mh-15 {
     margin-right: 15px;
   }
 
-  .md\:mb-15px, .md\:mv-15px {
+  .md\:mb-15, .md\:mv-15 {
     margin-bottom: 15px;
   }
 
-  .md\:ml-15px, .md\:mh-15px {
+  .md\:ml-15, .md\:mh-15 {
     margin-left: 15px;
   }
 
-  .md\:m-20px {
+  .md\:m-20 {
     margin: 20px;
   }
 
-  .md\:mt-20px, .md\:mv-20px {
+  .md\:mt-20, .md\:mv-20 {
     margin-top: 20px;
   }
 
-  .md\:mr-20px, .md\:mh-20px {
+  .md\:mr-20, .md\:mh-20 {
     margin-right: 20px;
   }
 
-  .md\:mb-20px, .md\:mv-20px {
+  .md\:mb-20, .md\:mv-20 {
     margin-bottom: 20px;
   }
 
-  .md\:ml-20px, .md\:mh-20px {
+  .md\:ml-20, .md\:mh-20 {
     margin-left: 20px;
   }
 
-  .md\:m-30px {
+  .md\:m-30 {
     margin: 30px;
   }
 
-  .md\:mt-30px, .md\:mv-30px {
+  .md\:mt-30, .md\:mv-30 {
     margin-top: 30px;
   }
 
-  .md\:mr-30px, .md\:mh-30px {
+  .md\:mr-30, .md\:mh-30 {
     margin-right: 30px;
   }
 
-  .md\:mb-30px, .md\:mv-30px {
+  .md\:mb-30, .md\:mv-30 {
     margin-bottom: 30px;
   }
 
-  .md\:ml-30px, .md\:mh-30px {
+  .md\:ml-30, .md\:mh-30 {
     margin-left: 30px;
   }
 
-  .md\:m-40px {
+  .md\:m-40 {
     margin: 40px;
   }
 
-  .md\:mt-40px, .md\:mv-40px {
+  .md\:mt-40, .md\:mv-40 {
     margin-top: 40px;
   }
 
-  .md\:mr-40px, .md\:mh-40px {
+  .md\:mr-40, .md\:mh-40 {
     margin-right: 40px;
   }
 
-  .md\:mb-40px, .md\:mv-40px {
+  .md\:mb-40, .md\:mv-40 {
     margin-bottom: 40px;
   }
 
-  .md\:ml-40px, .md\:mh-40px {
+  .md\:ml-40, .md\:mh-40 {
     margin-left: 40px;
   }
 
-  .md\:h-1px {
+  .md\:w-100\% {
+    width: 100%;
+  }
+
+  .md\:minw-100\% {
+    min-width: 100%;
+  }
+
+  .md\:maxw-100\% {
+    max-width: 100%;
+  }
+
+  .md\:h-100\% {
+    height: 100%;
+  }
+
+  .md\:minh-100\% {
+    min-height: 100%;
+  }
+
+  .md\:maxh-100\% {
+    max-height: 100%;
+  }
+
+  .md\:h-1 {
     height: 1px;
   }
 
-  .md\:minh-1px {
+  .md\:minh-1 {
     min-height: 1px;
   }
 
-  .md\:maxh-1px {
+  .md\:maxh-1 {
     max-height: 1px;
   }
 
@@ -5162,51 +5258,51 @@ template {
     left: 0;
   }
 
-  .md\:top-5px {
+  .md\:top-5 {
     top: 5px;
   }
 
-  .md\:right-5px {
+  .md\:right-5 {
     right: 5px;
   }
 
-  .md\:bottom-5px {
+  .md\:bottom-5 {
     bottom: 5px;
   }
 
-  .md\:left-5px {
+  .md\:left-5 {
     left: 5px;
   }
 
-  .md\:top-10px {
+  .md\:top-10 {
     top: 10px;
   }
 
-  .md\:right-10px {
+  .md\:right-10 {
     right: 10px;
   }
 
-  .md\:bottom-10px {
+  .md\:bottom-10 {
     bottom: 10px;
   }
 
-  .md\:left-10px {
+  .md\:left-10 {
     left: 10px;
   }
 
-  .md\:top-15px {
+  .md\:top-15 {
     top: 15px;
   }
 
-  .md\:right-15px {
+  .md\:right-15 {
     right: 15px;
   }
 
-  .md\:bottom-15px {
+  .md\:bottom-15 {
     bottom: 15px;
   }
 
-  .md\:left-15px {
+  .md\:left-15 {
     left: 15px;
   }
 
@@ -5242,63 +5338,63 @@ template {
     border-bottom-right-radius: 0;
   }
 
-  .md\:rad-3px {
+  .md\:rad-3 {
     border-radius: 3px;
   }
 
-  .md\:radtl-3px {
+  .md\:radtl-3 {
     border-top-left-radius: 3px;
   }
 
-  .md\:radtr-3px {
+  .md\:radtr-3 {
     border-top-right-radius: 3px;
   }
 
-  .md\:radbl-3px {
+  .md\:radbl-3 {
     border-bottom-left-radius: 3px;
   }
 
-  .md\:radbr-3px {
+  .md\:radbr-3 {
     border-bottom-right-radius: 3px;
   }
 
-  .md\:rad-5px {
+  .md\:rad-5 {
     border-radius: 5px;
   }
 
-  .md\:radtl-5px {
+  .md\:radtl-5 {
     border-top-left-radius: 5px;
   }
 
-  .md\:radtr-5px {
+  .md\:radtr-5 {
     border-top-right-radius: 5px;
   }
 
-  .md\:radbl-5px {
+  .md\:radbl-5 {
     border-bottom-left-radius: 5px;
   }
 
-  .md\:radbr-5px {
+  .md\:radbr-5 {
     border-bottom-right-radius: 5px;
   }
 
-  .md\:rad-10px {
+  .md\:rad-10 {
     border-radius: 10px;
   }
 
-  .md\:radtl-10px {
+  .md\:radtl-10 {
     border-top-left-radius: 10px;
   }
 
-  .md\:radtr-10px {
+  .md\:radtr-10 {
     border-top-right-radius: 10px;
   }
 
-  .md\:radbl-10px {
+  .md\:radbl-10 {
     border-bottom-left-radius: 10px;
   }
 
-  .md\:radbr-10px {
+  .md\:radbr-10 {
     border-bottom-right-radius: 10px;
   }
 
@@ -5322,83 +5418,83 @@ template {
     border-left-width: 0;
   }
 
-  .md\:b-1px {
+  .md\:b-1 {
     border-width: 1px;
   }
 
-  .md\:bt-1px, .md\:bv-1px {
+  .md\:bt-1, .md\:bv-1 {
     border-top-width: 1px;
   }
 
-  .md\:br-1px, .md\:bh-1px {
+  .md\:br-1, .md\:bh-1 {
     border-right-width: 1px;
   }
 
-  .md\:bb-1px, .md\:bv-1px {
+  .md\:bb-1, .md\:bv-1 {
     border-bottom-width: 1px;
   }
 
-  .md\:bl-1px, .md\:bh-1px {
+  .md\:bl-1, .md\:bh-1 {
     border-left-width: 1px;
   }
 
-  .md\:b-2px {
+  .md\:b-2 {
     border-width: 2px;
   }
 
-  .md\:bt-2px, .md\:bv-2px {
+  .md\:bt-2, .md\:bv-2 {
     border-top-width: 2px;
   }
 
-  .md\:br-2px, .md\:bh-2px {
+  .md\:br-2, .md\:bh-2 {
     border-right-width: 2px;
   }
 
-  .md\:bb-2px, .md\:bv-2px {
+  .md\:bb-2, .md\:bv-2 {
     border-bottom-width: 2px;
   }
 
-  .md\:bl-2px, .md\:bh-2px {
+  .md\:bl-2, .md\:bh-2 {
     border-left-width: 2px;
   }
 
-  .md\:b-3px {
+  .md\:b-3 {
     border-width: 3px;
   }
 
-  .md\:bt-3px, .md\:bv-3px {
+  .md\:bt-3, .md\:bv-3 {
     border-top-width: 3px;
   }
 
-  .md\:br-3px, .md\:bh-3px {
+  .md\:br-3, .md\:bh-3 {
     border-right-width: 3px;
   }
 
-  .md\:bb-3px, .md\:bv-3px {
+  .md\:bb-3, .md\:bv-3 {
     border-bottom-width: 3px;
   }
 
-  .md\:bl-3px, .md\:bh-3px {
+  .md\:bl-3, .md\:bh-3 {
     border-left-width: 3px;
   }
 
-  .md\:b-4px {
+  .md\:b-4 {
     border-width: 4px;
   }
 
-  .md\:bt-4px, .md\:bv-4px {
+  .md\:bt-4, .md\:bv-4 {
     border-top-width: 4px;
   }
 
-  .md\:br-4px, .md\:bh-4px {
+  .md\:br-4, .md\:bh-4 {
     border-right-width: 4px;
   }
 
-  .md\:bb-4px, .md\:bv-4px {
+  .md\:bb-4, .md\:bv-4 {
     border-bottom-width: 4px;
   }
 
-  .md\:bl-4px, .md\:bh-4px {
+  .md\:bl-4, .md\:bh-4 {
     border-left-width: 4px;
   }
 
@@ -6020,83 +6116,83 @@ template {
     padding-left: 0;
   }
 
-  .lg\:p-2px {
+  .lg\:p-2 {
     padding: 2px;
   }
 
-  .lg\:pt-2px, .lg\:pv-2px {
+  .lg\:pt-2, .lg\:pv-2 {
     padding-top: 2px;
   }
 
-  .lg\:pr-2px, .lg\:ph-2px {
+  .lg\:pr-2, .lg\:ph-2 {
     padding-right: 2px;
   }
 
-  .lg\:pb-2px, .lg\:pv-2px {
+  .lg\:pb-2, .lg\:pv-2 {
     padding-bottom: 2px;
   }
 
-  .lg\:pl-2px, .lg\:ph-2px {
+  .lg\:pl-2, .lg\:ph-2 {
     padding-left: 2px;
   }
 
-  .lg\:p-10px {
+  .lg\:p-10 {
     padding: 10px;
   }
 
-  .lg\:pt-10px, .lg\:pv-10px {
+  .lg\:pt-10, .lg\:pv-10 {
     padding-top: 10px;
   }
 
-  .lg\:pr-10px, .lg\:ph-10px {
+  .lg\:pr-10, .lg\:ph-10 {
     padding-right: 10px;
   }
 
-  .lg\:pb-10px, .lg\:pv-10px {
+  .lg\:pb-10, .lg\:pv-10 {
     padding-bottom: 10px;
   }
 
-  .lg\:pl-10px, .lg\:ph-10px {
+  .lg\:pl-10, .lg\:ph-10 {
     padding-left: 10px;
   }
 
-  .lg\:p-15px {
+  .lg\:p-15 {
     padding: 15px;
   }
 
-  .lg\:pt-15px, .lg\:pv-15px {
+  .lg\:pt-15, .lg\:pv-15 {
     padding-top: 15px;
   }
 
-  .lg\:pr-15px, .lg\:ph-15px {
+  .lg\:pr-15, .lg\:ph-15 {
     padding-right: 15px;
   }
 
-  .lg\:pb-15px, .lg\:pv-15px {
+  .lg\:pb-15, .lg\:pv-15 {
     padding-bottom: 15px;
   }
 
-  .lg\:pl-15px, .lg\:ph-15px {
+  .lg\:pl-15, .lg\:ph-15 {
     padding-left: 15px;
   }
 
-  .lg\:p-20px {
+  .lg\:p-20 {
     padding: 20px;
   }
 
-  .lg\:pt-20px, .lg\:pv-20px {
+  .lg\:pt-20, .lg\:pv-20 {
     padding-top: 20px;
   }
 
-  .lg\:pr-20px, .lg\:ph-20px {
+  .lg\:pr-20, .lg\:ph-20 {
     padding-right: 20px;
   }
 
-  .lg\:pb-20px, .lg\:pv-20px {
+  .lg\:pb-20, .lg\:pv-20 {
     padding-bottom: 20px;
   }
 
-  .lg\:pl-20px, .lg\:ph-20px {
+  .lg\:pl-20, .lg\:ph-20 {
     padding-left: 20px;
   }
 
@@ -6140,135 +6236,159 @@ template {
     margin-left: auto;
   }
 
-  .lg\:m-5px {
+  .lg\:m-5 {
     margin: 5px;
   }
 
-  .lg\:mt-5px, .lg\:mv-5px {
+  .lg\:mt-5, .lg\:mv-5 {
     margin-top: 5px;
   }
 
-  .lg\:mr-5px, .lg\:mh-5px {
+  .lg\:mr-5, .lg\:mh-5 {
     margin-right: 5px;
   }
 
-  .lg\:mb-5px, .lg\:mv-5px {
+  .lg\:mb-5, .lg\:mv-5 {
     margin-bottom: 5px;
   }
 
-  .lg\:ml-5px, .lg\:mh-5px {
+  .lg\:ml-5, .lg\:mh-5 {
     margin-left: 5px;
   }
 
-  .lg\:m-10px {
+  .lg\:m-10 {
     margin: 10px;
   }
 
-  .lg\:mt-10px, .lg\:mv-10px {
+  .lg\:mt-10, .lg\:mv-10 {
     margin-top: 10px;
   }
 
-  .lg\:mr-10px, .lg\:mh-10px {
+  .lg\:mr-10, .lg\:mh-10 {
     margin-right: 10px;
   }
 
-  .lg\:mb-10px, .lg\:mv-10px {
+  .lg\:mb-10, .lg\:mv-10 {
     margin-bottom: 10px;
   }
 
-  .lg\:ml-10px, .lg\:mh-10px {
+  .lg\:ml-10, .lg\:mh-10 {
     margin-left: 10px;
   }
 
-  .lg\:m-15px {
+  .lg\:m-15 {
     margin: 15px;
   }
 
-  .lg\:mt-15px, .lg\:mv-15px {
+  .lg\:mt-15, .lg\:mv-15 {
     margin-top: 15px;
   }
 
-  .lg\:mr-15px, .lg\:mh-15px {
+  .lg\:mr-15, .lg\:mh-15 {
     margin-right: 15px;
   }
 
-  .lg\:mb-15px, .lg\:mv-15px {
+  .lg\:mb-15, .lg\:mv-15 {
     margin-bottom: 15px;
   }
 
-  .lg\:ml-15px, .lg\:mh-15px {
+  .lg\:ml-15, .lg\:mh-15 {
     margin-left: 15px;
   }
 
-  .lg\:m-20px {
+  .lg\:m-20 {
     margin: 20px;
   }
 
-  .lg\:mt-20px, .lg\:mv-20px {
+  .lg\:mt-20, .lg\:mv-20 {
     margin-top: 20px;
   }
 
-  .lg\:mr-20px, .lg\:mh-20px {
+  .lg\:mr-20, .lg\:mh-20 {
     margin-right: 20px;
   }
 
-  .lg\:mb-20px, .lg\:mv-20px {
+  .lg\:mb-20, .lg\:mv-20 {
     margin-bottom: 20px;
   }
 
-  .lg\:ml-20px, .lg\:mh-20px {
+  .lg\:ml-20, .lg\:mh-20 {
     margin-left: 20px;
   }
 
-  .lg\:m-30px {
+  .lg\:m-30 {
     margin: 30px;
   }
 
-  .lg\:mt-30px, .lg\:mv-30px {
+  .lg\:mt-30, .lg\:mv-30 {
     margin-top: 30px;
   }
 
-  .lg\:mr-30px, .lg\:mh-30px {
+  .lg\:mr-30, .lg\:mh-30 {
     margin-right: 30px;
   }
 
-  .lg\:mb-30px, .lg\:mv-30px {
+  .lg\:mb-30, .lg\:mv-30 {
     margin-bottom: 30px;
   }
 
-  .lg\:ml-30px, .lg\:mh-30px {
+  .lg\:ml-30, .lg\:mh-30 {
     margin-left: 30px;
   }
 
-  .lg\:m-40px {
+  .lg\:m-40 {
     margin: 40px;
   }
 
-  .lg\:mt-40px, .lg\:mv-40px {
+  .lg\:mt-40, .lg\:mv-40 {
     margin-top: 40px;
   }
 
-  .lg\:mr-40px, .lg\:mh-40px {
+  .lg\:mr-40, .lg\:mh-40 {
     margin-right: 40px;
   }
 
-  .lg\:mb-40px, .lg\:mv-40px {
+  .lg\:mb-40, .lg\:mv-40 {
     margin-bottom: 40px;
   }
 
-  .lg\:ml-40px, .lg\:mh-40px {
+  .lg\:ml-40, .lg\:mh-40 {
     margin-left: 40px;
   }
 
-  .lg\:h-1px {
+  .lg\:w-100\% {
+    width: 100%;
+  }
+
+  .lg\:minw-100\% {
+    min-width: 100%;
+  }
+
+  .lg\:maxw-100\% {
+    max-width: 100%;
+  }
+
+  .lg\:h-100\% {
+    height: 100%;
+  }
+
+  .lg\:minh-100\% {
+    min-height: 100%;
+  }
+
+  .lg\:maxh-100\% {
+    max-height: 100%;
+  }
+
+  .lg\:h-1 {
     height: 1px;
   }
 
-  .lg\:minh-1px {
+  .lg\:minh-1 {
     min-height: 1px;
   }
 
-  .lg\:maxh-1px {
+  .lg\:maxh-1 {
     max-height: 1px;
   }
 
@@ -6288,51 +6408,51 @@ template {
     left: 0;
   }
 
-  .lg\:top-5px {
+  .lg\:top-5 {
     top: 5px;
   }
 
-  .lg\:right-5px {
+  .lg\:right-5 {
     right: 5px;
   }
 
-  .lg\:bottom-5px {
+  .lg\:bottom-5 {
     bottom: 5px;
   }
 
-  .lg\:left-5px {
+  .lg\:left-5 {
     left: 5px;
   }
 
-  .lg\:top-10px {
+  .lg\:top-10 {
     top: 10px;
   }
 
-  .lg\:right-10px {
+  .lg\:right-10 {
     right: 10px;
   }
 
-  .lg\:bottom-10px {
+  .lg\:bottom-10 {
     bottom: 10px;
   }
 
-  .lg\:left-10px {
+  .lg\:left-10 {
     left: 10px;
   }
 
-  .lg\:top-15px {
+  .lg\:top-15 {
     top: 15px;
   }
 
-  .lg\:right-15px {
+  .lg\:right-15 {
     right: 15px;
   }
 
-  .lg\:bottom-15px {
+  .lg\:bottom-15 {
     bottom: 15px;
   }
 
-  .lg\:left-15px {
+  .lg\:left-15 {
     left: 15px;
   }
 
@@ -6368,63 +6488,63 @@ template {
     border-bottom-right-radius: 0;
   }
 
-  .lg\:rad-3px {
+  .lg\:rad-3 {
     border-radius: 3px;
   }
 
-  .lg\:radtl-3px {
+  .lg\:radtl-3 {
     border-top-left-radius: 3px;
   }
 
-  .lg\:radtr-3px {
+  .lg\:radtr-3 {
     border-top-right-radius: 3px;
   }
 
-  .lg\:radbl-3px {
+  .lg\:radbl-3 {
     border-bottom-left-radius: 3px;
   }
 
-  .lg\:radbr-3px {
+  .lg\:radbr-3 {
     border-bottom-right-radius: 3px;
   }
 
-  .lg\:rad-5px {
+  .lg\:rad-5 {
     border-radius: 5px;
   }
 
-  .lg\:radtl-5px {
+  .lg\:radtl-5 {
     border-top-left-radius: 5px;
   }
 
-  .lg\:radtr-5px {
+  .lg\:radtr-5 {
     border-top-right-radius: 5px;
   }
 
-  .lg\:radbl-5px {
+  .lg\:radbl-5 {
     border-bottom-left-radius: 5px;
   }
 
-  .lg\:radbr-5px {
+  .lg\:radbr-5 {
     border-bottom-right-radius: 5px;
   }
 
-  .lg\:rad-10px {
+  .lg\:rad-10 {
     border-radius: 10px;
   }
 
-  .lg\:radtl-10px {
+  .lg\:radtl-10 {
     border-top-left-radius: 10px;
   }
 
-  .lg\:radtr-10px {
+  .lg\:radtr-10 {
     border-top-right-radius: 10px;
   }
 
-  .lg\:radbl-10px {
+  .lg\:radbl-10 {
     border-bottom-left-radius: 10px;
   }
 
-  .lg\:radbr-10px {
+  .lg\:radbr-10 {
     border-bottom-right-radius: 10px;
   }
 
@@ -6448,83 +6568,83 @@ template {
     border-left-width: 0;
   }
 
-  .lg\:b-1px {
+  .lg\:b-1 {
     border-width: 1px;
   }
 
-  .lg\:bt-1px, .lg\:bv-1px {
+  .lg\:bt-1, .lg\:bv-1 {
     border-top-width: 1px;
   }
 
-  .lg\:br-1px, .lg\:bh-1px {
+  .lg\:br-1, .lg\:bh-1 {
     border-right-width: 1px;
   }
 
-  .lg\:bb-1px, .lg\:bv-1px {
+  .lg\:bb-1, .lg\:bv-1 {
     border-bottom-width: 1px;
   }
 
-  .lg\:bl-1px, .lg\:bh-1px {
+  .lg\:bl-1, .lg\:bh-1 {
     border-left-width: 1px;
   }
 
-  .lg\:b-2px {
+  .lg\:b-2 {
     border-width: 2px;
   }
 
-  .lg\:bt-2px, .lg\:bv-2px {
+  .lg\:bt-2, .lg\:bv-2 {
     border-top-width: 2px;
   }
 
-  .lg\:br-2px, .lg\:bh-2px {
+  .lg\:br-2, .lg\:bh-2 {
     border-right-width: 2px;
   }
 
-  .lg\:bb-2px, .lg\:bv-2px {
+  .lg\:bb-2, .lg\:bv-2 {
     border-bottom-width: 2px;
   }
 
-  .lg\:bl-2px, .lg\:bh-2px {
+  .lg\:bl-2, .lg\:bh-2 {
     border-left-width: 2px;
   }
 
-  .lg\:b-3px {
+  .lg\:b-3 {
     border-width: 3px;
   }
 
-  .lg\:bt-3px, .lg\:bv-3px {
+  .lg\:bt-3, .lg\:bv-3 {
     border-top-width: 3px;
   }
 
-  .lg\:br-3px, .lg\:bh-3px {
+  .lg\:br-3, .lg\:bh-3 {
     border-right-width: 3px;
   }
 
-  .lg\:bb-3px, .lg\:bv-3px {
+  .lg\:bb-3, .lg\:bv-3 {
     border-bottom-width: 3px;
   }
 
-  .lg\:bl-3px, .lg\:bh-3px {
+  .lg\:bl-3, .lg\:bh-3 {
     border-left-width: 3px;
   }
 
-  .lg\:b-4px {
+  .lg\:b-4 {
     border-width: 4px;
   }
 
-  .lg\:bt-4px, .lg\:bv-4px {
+  .lg\:bt-4, .lg\:bv-4 {
     border-top-width: 4px;
   }
 
-  .lg\:br-4px, .lg\:bh-4px {
+  .lg\:br-4, .lg\:bh-4 {
     border-right-width: 4px;
   }
 
-  .lg\:bb-4px, .lg\:bv-4px {
+  .lg\:bb-4, .lg\:bv-4 {
     border-bottom-width: 4px;
   }
 
-  .lg\:bl-4px, .lg\:bh-4px {
+  .lg\:bl-4, .lg\:bh-4 {
     border-left-width: 4px;
   }
 
