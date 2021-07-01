@@ -1,6 +1,7 @@
+@use 'states';
 @use '../functions' as *;
 
-@mixin make-utilities($screen: null) {
+@mixin make-utilities($screen: null, $screenIndex: null) {
   $screenPrefix: if($screen, $screen+'\\:', '');
 
   @include display($screenPrefix);
@@ -10,7 +11,7 @@
   @include vertical-align($screenPrefix);
   @include group($screenPrefix);
   @include list-style-type($screenPrefix);
-  @include text-utilities($screenPrefix);
+  @include text-utilities($screenPrefix, $screenIndex);
   @include cursor($screenPrefix);
 }
 
@@ -217,7 +218,8 @@
 // Generate text utilities
 //
 // @param  {string} $prefix
-@mixin text-utilities($prefix: null) {
+// @param  {integer} $screenIndex
+@mixin text-utilities($prefix: null, $screenIndex) {
   // alignment
   .#{$prefix}text-left {
     text-align: left;
@@ -250,6 +252,13 @@
   .#{$prefix}no-decoration,
   .#{$prefix}text-no-decoration {
     text-decoration: none;
+  }
+
+  @if ($screenIndex == 0) {
+    @include states.on-all-states(#{'text-strike'}) { @extend .text-strike; }
+    @include states.on-all-states(#{'text-underline'}) { @extend .text-underline; }
+    @include states.on-all-states(#{'no-decoration'}) { @extend .no-decoration; }
+    @include states.on-all-states(#{'text-no-decoration'}) { @extend .text-no-decoration; }
   }
 
   // white-space

@@ -1,6 +1,6 @@
 @use '../functions' as *;
 
-@mixin makeBox($type, $value, $boxIndex, $screenName:null, $screenIndex:null) {
+@mixin make-box($type, $value, $boxIndex, $screenName:null, $screenIndex:null) {
   @if ($type != 'stripunits') {
     // strip the unit
     $suffix: if(conf('stripunits'), strip-unit($value), $value);

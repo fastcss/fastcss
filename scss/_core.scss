@@ -15,10 +15,10 @@
   @each $confKey, $confValues in conf('box') {
     @each $value in $confValues {
       $index: index($confValues, $value) - 1;
-      @include box.makeBox($confKey, $value, $index, $screenName, $screenIndex);
+      @include box.make-box($confKey, $value, $index, $screenName, $screenIndex);
     }
   }
-  @include utilities.make-utilities($screenName);
+  @include utilities.make-utilities($screenName, $screenIndex);
   @if (conf('grid.utilities')) {
     @include grid.make-grid-utilities($screenName, conf('grid.columns'));
   }

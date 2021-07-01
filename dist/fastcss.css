@@ -2404,16 +2404,19 @@ template {
   text-transform: capitalize;
 }
 
-.text-strike {
+.text-strike, .focus\:text-strike:focus, .active\:text-strike:active, .hover\:text-strike:hover {
   text-decoration: line-through;
 }
 
-.text-underline {
+.text-underline, .focus\:text-underline:focus, .active\:text-underline:active, .hover\:text-underline:hover {
   text-decoration: underline;
 }
 
-.no-decoration,
-.text-no-decoration {
+.no-decoration, .focus\:no-decoration:focus, .active\:no-decoration:active, .hover\:no-decoration:hover,
+.text-no-decoration,
+.focus\:text-no-decoration:focus,
+.active\:text-no-decoration:active,
+.hover\:text-no-decoration:hover {
   text-decoration: none;
 }
 
