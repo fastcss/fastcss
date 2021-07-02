@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%;">
+<head>
+<meta charset="UTF-8">
+<title>Fastcss - Grid</title>
+<link rel="stylesheet" href="dist/fastcss.css" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body class="ff-sans">
+  <div class="container">
+    <h1>Grid</h1>
+    <div class="mb-15 gray-text:800">
+    	<i class="blue-fill:300 w-20 h-20 lh-base rad-50% inline-block text-center white-text fs-normal mr-5">i</i>
+    	The grid has flexbox under the hood, you can explore the sass files and find some nice helper classes.
+    </div>
+  </div>
+
+  <div class="container gray-fill:50">
+    <div class="p-15">
+      <div class="fs-lg pv-5 mb-15">Container</div>
+
+      <div class="row gray-fill:200 mb-10">
+          <div class="xs:col-12 sm:col-3 md:col-2 lg:col-1">
+              <div class="pv-10 mv-10 gray-fill"></div>
+          </div>
+          <div class="xs:col-6 sm:col-6 md:col-8 lg:col-10">
+              <div class="pv-10 mv-10 gray-fill"></div>
+          </div>
+          <div class="xs:col-6 sm:col-3 md:col-2 lg:col-1">
+              <div class="pv-10 mv-10 gray-fill"></div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="maxw-1200 ph-15 mh-auto">
+	  <div class="container-fluid mt-20 gray-fill:50">
+	    <div class="p-15">
+	      <div class="fs-lg pv-5 mb-15">Container Fluid</div>
+
+	      <div class="row gray-fill:200 mb-10">
+	          <div class="xs:col-12 sm:col-3 md:col-2 lg:col-1">
+	              <div class="pv-10 mv-10 gray-fill"></div>
+	          </div>
+	          <div class="xs:col-6 sm:col-6 md:col-8 lg:col-10">
+	              <div class="pv-10 mv-10 gray-fill"></div>
+	          </div>
+	          <div class="xs:col-6 sm:col-3 md:col-2 lg:col-1">
+	              <div class="pv-10 mv-10 gray-fill"></div>
+	          </div>
+	      </div>
+	      <div class="row gray-fill:200 mb-10">
+	          <div class="xs:col-12 sm:col-3 md:col-2 lg:col-1">
+	              <div class="pv-10 mv-10 gray-fill"></div>
+	          </div>
+	          <div class="xs:col-12 sm:col-9 md:col-10 lg:col-11">
+	              <div class="pv-10 mv-10 gray-fill"></div>
+	          </div>
+	      </div>
+	      <div class="row gray-fill:200 mb-10">
+	          <div class="xs:col-10 sm:col-6 md:col-8 lg:col-10">
+	              <div class="pv-10 mv-10 gray-fill"></div>
+	          </div>
+	          <div class="xs:col-2 sm:col-6 md:col-4 lg:col-2">
+	              <div class="pv-10 mv-10 gray-fill"></div>
+	          </div>
+	      </div>
+	    </div>
+	  </div>
+  </div>
+
+
+  <div class="container">
+    <h1>Colors</h1>
+    <div class="mb-15 gray-text:800">
+    	<i class="blue-fill:300 w-20 h-20 lh-base rad-50% inline-block text-center white-text fs-normal mr-5">i</i>
+    	Play with colors and color variants in the config file.
+    </div>
+
+	{state}:{color}-{fill|text}:{shade}
+
+    <h2 class="fs-lg mb-5">Fill <span class="gray-text:300">Colors</span></h2>
+    <div class="fs-sm gray-text:300 mb-15">Pick a variant and you're good to go. The base variant is 500. This system follow google's material colors guide.</div>
+    <div class="row fs-xs">
+    	<div class="xs:col-12 sm:col-3">
+			<div class="red-fill:50 hover:red-fill w-100% p-10">.red-fill:50.hover:red-fill</div>
+			<div class="red-fill:100 w-100% p-10">.red-fill:100</div>
+			<div class="red-fill:200 w-100% p-10">.red-fill:200</div>
+			<div class="red-fill:300 w-100% p-10">.red-fill:300</div>
+			<div class="red-fill:400 w-100% p-10">.red-fill:400</div>
+			<div class="red-fill w-100% p-10">.red-fill</div>
+			<div class="red-fill:600 w-100% p-10">.red-fill:600</div>
+			<div class="red-fill:700 w-100% p-10">.red-fill:700</div>
+			<div class="red-fill:800 w-100% p-10">.red-fill:800</div>
+			<div class="red-fill:900 w-100% p-10">.red-fill:900</div>
+    	</div>
+    	<div class="xs:hidden sm:show sm:col-3">
+			<div class="green-fill:50 active:green-fill w-100% p-10">.green-fill:50.active:green-fill</div>
+			<div class="green-fill:100 w-100% p-10">.green-fill:100</div>
+			<div class="green-fill:200 w-100% p-10">.green-fill:200</div>
+			<div class="green-fill:300 w-100% p-10">.green-fill:300</div>
+			<div class="green-fill:400 w-100% p-10">.green-fill:400</div>
+			<div class="green-fill w-100% p-10">.green-fill</div>
+			<div class="green-fill:600 w-100% p-10">.green-fill:600</div>
+			<div class="green-fill:700 w-100% p-10">.green-fill:700</div>
+			<div class="green-fill:800 w-100% p-10">.green-fill:800</div>
+			<div class="green-fill:900 w-100% p-10">.green-fill:900</div>
+    	</div>
+    	<div class="xs:hidden sm:show sm:col-3">
+			<input class="blue-fill:50 focus:blue-fill w-100% p-10 b-0" placeholder=".blue-fill:50.focus:blue-fill" />
+			<div class="blue-fill:100 w-100% p-10">.blue-fill:100</div>
+			<div class="blue-fill:200 w-100% p-10">.blue-fill:200</div>
+			<div class="blue-fill:300 w-100% p-10">.blue-fill:300</div>
+			<div class="blue-fill:400 w-100% p-10">.blue-fill:400</div>
+			<div class="blue-fill w-100% p-10">.blue-fill</div>
+			<div class="blue-fill:600 w-100% p-10">.blue-fill:600</div>
+			<div class="blue-fill:700 w-100% p-10">.blue-fill:700</div>
+			<div class="blue-fill:800 w-100% p-10">.blue-fill:800</div>
+			<div class="blue-fill:900 w-100% p-10">.blue-fill:900</div>
+	    </div>
+    	<div class="xs:hidden sm:show sm:col-3">
+			<div class="gray-fill:50 w-100% p-10">.gray-fill:50</div>
+			<div class="gray-fill:100 w-100% p-10">.gray-fill:100</div>
+			<div class="gray-fill:200 w-100% p-10">.gray-fill:200</div>
+			<div class="gray-fill:300 w-100% p-10">.gray-fill:300</div>
+			<div class="gray-fill:400 w-100% p-10">.gray-fill:400</div>
+			<div class="gray-fill w-100% p-10">.gray-fill</div>
+			<div class="gray-fill:600 w-100% p-10">.gray-fill:600</div>
+			<div class="gray-fill:700 w-100% p-10">.gray-fill:700</div>
+			<div class="gray-fill:800 w-100% p-10">.gray-fill:800</div>
+			<div class="gray-fill:900 w-100% p-10">.gray-fill:900</div>
+	    </div>
+    </div>
+
+    <h2 class="fs-lg mb-5">Text <span class="gray-text:300">Colors</span></h2>
+    <div class="fs-sm gray-text:300 mb-15">Same technique as fill but these change text color instead of background.</div>
+    <div class="row fs-xs">
+    	<div class="xs:col-12 sm:col-3">
+			<div class="gray-fill:50 mb-5 red-text:50 w-100% p-10">.red-text:50</div>
+			<div class="gray-fill:50 mb-5 red-text:100 w-100% p-10">.red-text:100</div>
+			<div class="gray-fill:50 mb-5 red-text:200 w-100% p-10">.red-text:200</div>
+			<div class="gray-fill:50 mb-5 red-text:300 w-100% p-10">.red-text:300</div>
+			<div class="gray-fill:50 mb-5 red-text:400 w-100% p-10">.red-text:400</div>
+			<div class="gray-fill:50 mb-5 red-text w-100% p-10">.red-text</div>
+			<div class="gray-fill:50 mb-5 red-text:600 w-100% p-10">.red-text:600</div>
+			<div class="gray-fill:50 mb-5 red-text:700 w-100% p-10">.red-text:700</div>
+			<div class="gray-fill:50 mb-5 red-text:800 w-100% p-10">.red-text:800</div>
+			<div class="gray-fill:50 mb-5 red-text:900 w-100% p-10">.red-text:900</div>
+    	</div>
+    	<div class="xs:col-12 sm:col-3">
+			<div class="gray-fill:50 mb-5 green-text:50 w-100% p-10">.green-text:50</div>
+			<div class="gray-fill:50 mb-5 green-text:100 w-100% p-10">.green-text:100</div>
+			<div class="gray-fill:50 mb-5 green-text:200 w-100% p-10">.green-text:200</div>
+			<div class="gray-fill:50 mb-5 green-text:300 w-100% p-10">.green-text:300</div>
+			<div class="gray-fill:50 mb-5 green-text:400 w-100% p-10">.green-text:400</div>
+			<div class="gray-fill:50 mb-5 green-text w-100% p-10">.green-text</div>
+			<div class="gray-fill:50 mb-5 green-text:600 w-100% p-10">.green-text:600</div>
+			<div class="gray-fill:50 mb-5 green-text:700 w-100% p-10">.green-text:700</div>
+			<div class="gray-fill:50 mb-5 green-text:800 w-100% p-10">.green-text:800</div>
+			<div class="gray-fill:50 mb-5 green-text:900 w-100% p-10">.green-text:900</div>
+    	</div>
+    	<div class="xs:col-12 sm:col-3">
+			<div class="gray-fill:50 mb-5 blue-text:50 w-100% p-10">.blue-text:50</div>
+			<div class="gray-fill:50 mb-5 blue-text:100 w-100% p-10">.blue-text:100</div>
+			<div class="gray-fill:50 mb-5 blue-text:200 w-100% p-10">.blue-text:200</div>
+			<div class="gray-fill:50 mb-5 blue-text:300 w-100% p-10">.blue-text:300</div>
+			<div class="gray-fill:50 mb-5 blue-text:400 w-100% p-10">.blue-text:400</div>
+			<div class="gray-fill:50 mb-5 blue-text w-100% p-10">.blue-text</div>
+			<div class="gray-fill:50 mb-5 blue-text:600 w-100% p-10">.blue-text:600</div>
+			<div class="gray-fill:50 mb-5 blue-text:700 w-100% p-10">.blue-text:700</div>
+			<div class="gray-fill:50 mb-5 blue-text:800 w-100% p-10">.blue-text:800</div>
+			<div class="gray-fill:50 mb-5 blue-text:900 w-100% p-10">.blue-text:900</div>
+    	</div>
+    	<div class="xs:col-12 sm:col-3">
+			<div class="gray-fill:50 mb-5 gray-text:50 w-100% p-10">.gray-text:50</div>
+			<div class="gray-fill:50 mb-5 gray-text:100 w-100% p-10">.gray-text:100</div>
+			<div class="gray-fill:50 mb-5 gray-text:200 w-100% p-10">.gray-text:200</div>
+			<div class="gray-fill:50 mb-5 gray-text:300 w-100% p-10">.gray-text:300</div>
+			<div class="gray-fill:50 mb-5 gray-text:400 w-100% p-10">.gray-text:400</div>
+			<div class="gray-fill:50 mb-5 gray-text w-100% p-10">.gray-text</div>
+			<div class="gray-fill:50 mb-5 gray-text:600 w-100% p-10">.gray-text:600</div>
+			<div class="gray-fill:50 mb-5 gray-text:700 w-100% p-10">.gray-text:700</div>
+			<div class="gray-fill:50 mb-5 gray-text:800 w-100% p-10">.gray-text:800</div>
+			<div class="gray-fill:50 mb-5 gray-text:900 w-100% p-10">.gray-text:900</div>
+    	</div>
+    </div>
+
+    <h2 class="fs-lg mb-5">Border <span class="gray-text:300">Colors</span></h2>
+    <div class="fs-sm gray-text:300 mb-15">Same technique as fill and text but these change border color.</div>
+    <div class="row fs-xs">
+    	<div class="sm:col-3">
+    		<div class="gray-fill:50 p-10 bl-1 bb-1 red-border">a</div>
+    	</div>
+    	<div class="sm:col-3">
+    		<div class="gray-fill:50 p-10 b-1 green-border">a</div>
+    	</div>
+    	<div class="sm:col-3">
+    		<div class="gray-fill:50 p-10 bt-1 bb-1 blue-border">a</div>
+    	</div>
+    	<div class="sm:col-3">
+    		<div class="gray-fill:50 p-10 br-1 bb-1 gray-border">a</div>
+    	</div>
+    </div>
+
+    <h2 class="fs-lg mb-5">Gradient <span class="gray-text:300">Colors</span></h2>
+    <div class="fs-sm gray-text:300 mb-15">Gradient classes are generated by the index number in the config file and it starts from .grad-0.</div>
+    <div>
+		<div class="grad-0 mb-5 gray-text:50 w-100% p-10">.grad-0</div>
+		<div class="grad-1 mb-5 gray-text:50 w-100% p-10">.grad-1</div>
+		<div class="grad-2 mb-5 gray-text:50 w-100% p-10">.grad-2</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h1>Fonts</h1>
+    <div class="fs-xs">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, beatae?</div>
+    <div class="fs-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, beatae?</div>
+    <div class="fs-base">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, beatae?</div>
+    <div class="fs-lg">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, beatae?</div>
+    <div class="fs-xl">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, beatae?</div>
+    <div class="fs-hg">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, beatae?</div>
+  </div>
+ 
+  <div class="container">
+    <h1>Box</h1>
+  </div>
+
+  <div class="container mb-40">
+    <h1>Tips</h1>
+    <div>
+    	Adding too many colors and utilities can result in large css output.
+    </div>
+  </div>
+  <br />
+</body>
+</html>
