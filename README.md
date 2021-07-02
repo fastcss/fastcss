@@ -8,7 +8,7 @@ Code fast with this awesome css framework.
 
 1. Install via npm
 
-```npm i fastcss```
+```npm i fastcss``` or ```yarn add fastcss```
 
 2. Copy the default configuration from here:
 
@@ -25,6 +25,10 @@ Code fast with this awesome css framework.
 ```node_modules/fastcss/scss/build.scss```
 
 Also don't forget to check the **webpack.config.js** file.
+
+## Examples
+
+Check the examples file [https://fastcss.org/examples.html](https://fastcss.org/examples.html).
 
 ## Documentation
 
