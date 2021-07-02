@@ -35,3 +35,5 @@ node_modules
 # specific files
 package-lock.json
 demo.html
+dist/main.js
+dist/main.js.map

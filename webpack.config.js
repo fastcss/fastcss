@@ -1,23 +1,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const IgnoreEmitPlugin = require('ignore-emit-webpack-plugin');
 const devMode = process.env.NODE_ENV !== "production";
-
-// it cleans unused webpack generated files (like main.js)
-class MiniCssExtractPluginCleanup {
-  constructor(deleteWhere = /\.js(\.map)?$/) {
-    this.shouldDelete = new RegExp(deleteWhere)
-  }
-  apply(compiler) {
-    compiler.hooks.emit.tapAsync("MiniCssExtractPluginCleanup", (compilation, callback) => {
-      Object.keys(compilation.assets).forEach((asset) => {
-        if (this.shouldDelete.test(asset)) {
-          delete compilation.assets[asset]
-        }
-      })
-      callback()
-    })
-  }
-}
 
 // webpack.config.js
 module.exports = {
@@ -59,14 +43,16 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               sourceMap: true,
-              plugins: [
-                require('postcss-sort-media-queries')({
-                  // available options: mobile-first, desktop-first, function(a, b)
-                  // custom example: return a.localeCompare(b);
-                  sort: 'mobile-first'
-                }),
-                require('autoprefixer')()
-              ]
+              postcssOptions: {
+                plugins: [
+                  require('postcss-sort-media-queries')({
+                    // available options: mobile-first, desktop-first, function(a, b)
+                    // custom example: return a.localeCompare(b);
+                    sort: 'mobile-first'
+                  }),
+                  require('autoprefixer')()
+                ]
+              }
             }
           },
 
@@ -93,7 +79,7 @@ module.exports = {
       chunkFilename: devMode ? "[id].css" : "[id].[hash].css",
       ignoreOrder: false, // Enable to remove warnings about conflicting order
     }),
-    new MiniCssExtractPluginCleanup()
+    new IgnoreEmitPlugin(['main.js', 'main.js.map'])
   ],
   resolve: {
     extensions: ['.js', '.jsx', '.scss']
