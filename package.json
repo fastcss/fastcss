@@ -1,7 +1,7 @@
 {
   "name": "fastcss",
   "description": "Code fast with this awesome css framework.",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "style": "dist/fastcss.css",
   "sass": "scss/fastcss.scss",
   "scripts": {
