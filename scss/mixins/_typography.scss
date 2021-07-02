@@ -35,11 +35,11 @@
 
 @mixin make-typography-body() {
   body {
-    font-size: #{conf('typography.font-sizes.base')};
-    font-family: #{conf('typography.font-families.base')};
-    line-height: #{conf('typography.line-heights.base')};
-    word-spacing: #{conf('typography.word-spacings.base')};
-    letter-spacing: #{conf('typography.letter-spacings.base')};
+    font-size: #{conf('typography.font-size.base')};
+    font-family: #{conf('typography.font-family.base')};
+    line-height: #{conf('typography.line-height.base')};
+    word-spacing: #{conf('typography.word-spacing.base')};
+    letter-spacing: #{conf('typography.letter-spacing.base')};
   }
 }
 

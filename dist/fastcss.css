@@ -344,6 +344,14 @@ template {
   /* For Firefox */
 }
 
+body {
+  font-size: 16px;
+  font-family: 'Source Sans Pro', -apple-system, sans-serif;
+  line-height: 1.375;
+  word-spacing: 0.03em;
+  letter-spacing: 0;
+}
+
 .ff-base {
   font-family: 'Source Sans Pro', -apple-system, sans-serif;
 }
