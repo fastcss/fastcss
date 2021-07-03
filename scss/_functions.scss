@@ -1,5 +1,6 @@
 @use "sass:list";
 @use "sass:math";
+@use "sass:string";
 @use 'config' as *;
 
 // The default config is used if the $config map is not overwritten

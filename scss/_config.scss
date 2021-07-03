@@ -78,17 +78,18 @@ $defaultConfig: (
   'colors': (
     // This is the color palette, add as many as you need
     // but remember, this will fatten your css file.
+    // 
+    // Do it like this:
+    // 'color:variant1,variant2': #hex,
     'palette': (
-      'transparent': transparent,
-      'black':     #000000,
-      'white':     #FFFFFF,
-      'gray':      #9E9E9E,
-      'bluegray':  #607D8B,
-      'red':       #F44336,
-      'green':     #4CAF50,
-      'blue':      #2196F3,
-      'lightblue': #03A9F4,
-      'orange':    #FF9800,
+      'transparent':    transparent,
+      'black':          #000000,
+      'white':          #FFFFFF,
+      'gray:50':        #9E9E9E,
+      'red:300,700':    #F44336,
+      'green:300,700':  #4CAF50,
+      'blue:300,700':   #2196F3,
+      'orange:300,700': #FF9800,
     ),
 
     // Control the lightness and the darnkess of the variants

@@ -1,4 +1,6 @@
 @use 'states';
+@use 'sass:list';
+@use 'sass:string';
 @use '../functions' as *;
 
 @mixin make-colors($palette: null, $gradients: null, $variants: null) {
@@ -9,14 +11,28 @@
   }
 
   @if ($palette) {
-    @each $color, $hex in $palette {
-      // base variant
-      @include color($color, '500');
+    @each $colorConfigName, $hexNew in $palette {
+      $colorName: $colorConfigName;
+      $colorVariants: null;
+      @if (string.index($colorConfigName, ':')) {
+        $colorData: explode($colorConfigName, ':');
+        $colorName: list.nth($colorData, 1);
+        $colorVariantsStr: list.nth($colorData, 2);
+        @if (string.index($colorVariantsStr, ',')) {
+          $colorVariants: explode($colorVariantsStr, ',');
+        } @else {
+          $colorVariants: $colorVariantsStr;
+        }
+      }
 
-      // some colors don't have variants
-      @if index(('transparent','white','black'), $color) == null {
-        @each $variant, $percent in $variants {
-          @include color($color, $variant);
+      // base variant
+      @include color($colorConfigName, '500');
+
+      @if index(('transparent','white','black'), $colorName) == null {
+        @each $colorVariant in $colorVariants {
+          @if ($colorVariant) {
+            @include color($colorConfigName, $colorVariant);
+          }
         }
       }
     }
@@ -34,46 +50,55 @@
   }
 }
 
-@mixin text($color, $variant: '500') {
+@mixin text($colorConfigName, $variant: '500') {
+  $colorData: explode($colorConfigName, ':');
+  $colorName: list.nth($colorData, 1);
+
   $variantText: #{if($variant != '500', '\\:'+$variant, '')};
 
-  .#{$color+''}-text#{$variantText} {
-    color: get-color($color, $variant);
+  .#{$colorName+''}-text#{$variantText} {
+    color: get-color($colorConfigName, $variant);
   }
 
-  @include states.on-all-states(#{$color+'-text'+$variantText}) {
-    @extend .#{$color+'-text'+$variantText};
+  @include states.on-all-states(#{$colorName+'-text'+$variantText}) {
+    @extend .#{$colorName+'-text'+$variantText};
   }
 }
 
-@mixin fill($color, $variant: '500') {
+@mixin fill($colorConfigName, $variant: '500') {
+  $colorData: explode($colorConfigName, ':');
+  $colorName: list.nth($colorData, 1);
+
   $variantText: #{if($variant != '500', '\\:'+$variant, '')};
 
-  .#{$color+''}-fill#{$variantText} {
-    background-color: get-color($color, $variant);
+  .#{$colorName+''}-fill#{$variantText} {
+    background-color: get-color($colorConfigName, $variant);
   }
 
-  @include states.on-all-states(#{$color+'-fill'+$variantText}) {
-    @extend .#{$color+'-fill'+$variantText};
+  @include states.on-all-states(#{$colorName+'-fill'+$variantText}) {
+    @extend .#{$colorName+'-fill'+$variantText};
   }
 }
 
-@mixin border($color, $variant: '500') {
+@mixin border($colorConfigName, $variant: '500') {
+  $colorData: explode($colorConfigName, ':');
+  $colorName: list.nth($colorData, 1);
+
   $variantText: #{if($variant != '500', '\\:'+$variant, '')};
 
-  .#{$color+''}-border#{$variantText} {
-    border-color: get-color($color, $variant);
+  .#{$colorName+''}-border#{$variantText} {
+    border-color: get-color($colorConfigName, $variant);
   }
 
-  @include states.on-all-states(#{$color+'-border'+$variantText}) {
-    @extend .#{$color+'-border'+$variantText};
+  @include states.on-all-states(#{$colorName+'-border'+$variantText}) {
+    @extend .#{$colorName+'-border'+$variantText};
   }
 }
 
-@mixin color($color, $variant: '500') {
-    @include text($color, $variant);
-    @include fill($color, $variant);
-    @include border($color, $variant);
+@mixin color($colorConfigName, $variant: '500') {
+    @include text($colorConfigName, $variant);
+    @include fill($colorConfigName, $variant);
+    @include border($colorConfigName, $variant);
 }
 
 @mixin gradient($suffix, $value) {
