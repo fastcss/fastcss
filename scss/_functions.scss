@@ -42,11 +42,16 @@ $config: $defaultConfig !default;
 // @param  {string} $variantName
 // @return {string} Hex color
 @function get-color($colorName, $variantName: '500') {
-  $colorHex: config('colors', 'palette', $colorName);
-  $variantPercent: config('colors', 'variants', $variantName);
+  $colorNameNoVariants: list.nth(string.split($colorName, ":"), 1);
 
-  $colorName: nth(string.split($colorName, ":"), 1);
-  // @debug(nth(string.split($colorName, ":"), 1));
+  $colorHex: null;
+  @each $name, $hex in config('colors', 'palette') {
+    @if (string.index($name, $colorNameNoVariants)) {
+      $colorHex: $hex;
+    }
+  }
+
+  $variantPercent: config('colors', 'variants', $variantName);
 
   @if not $colorHex {
     @error "Unknown color `#{$colorName}` in the configuration.";
