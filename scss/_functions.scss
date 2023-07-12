@@ -1,6 +1,7 @@
 @use "sass:list";
 @use "sass:math";
 @use "sass:string";
+@use "sass:map";
 @use 'config' as *;
 
 // The default config is used if the $config map is not overwritten
@@ -43,6 +44,9 @@ $config: $defaultConfig !default;
 @function get-color($colorName, $variantName: '500') {
   $colorHex: config('colors', 'palette', $colorName);
   $variantPercent: config('colors', 'variants', $variantName);
+
+  $colorName: nth(string.split($colorName, ":"), 1);
+  // @debug(nth(string.split($colorName, ":"), 1));
 
   @if not $colorHex {
     @error "Unknown color `#{$colorName}` in the configuration.";
