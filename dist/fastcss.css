@@ -346,93 +346,9 @@ template {
 
 body {
   font-size: 16px;
-  font-family: 'Source Sans Pro', -apple-system, sans-serif;
+  font-family: Source Sans Pro, -apple-system, sans-serif;
   line-height: 1.375;
   word-spacing: 0.03em;
-  letter-spacing: 0;
-}
-
-.ff-base {
-  font-family: 'Source Sans Pro', -apple-system, sans-serif;
-}
-
-.ff-sans {
-  font-family: 'Source Sans Pro', -apple-system, sans-serif;
-}
-
-.ff-serif {
-  font-family: serif;
-}
-
-.ff-mono {
-  font-family: monospace;
-}
-
-.fs-xs {
-  font-size: 0.75rem;
-}
-
-.fs-sm {
-  font-size: 0.875rem;
-}
-
-.fs-base {
-  font-size: 16px;
-}
-
-.fs-lg {
-  font-size: 1.25rem;
-}
-
-.fs-xl {
-  font-size: 1.5rem;
-}
-
-.fs-hg {
-  font-size: 2rem;
-}
-
-.fw-400 {
-  font-weight: 400;
-}
-
-.fw-600 {
-  font-weight: 600;
-}
-
-.fw-700 {
-  font-weight: 700;
-}
-
-.fs-normal {
-  font-style: normal;
-}
-
-.fs-italic {
-  font-style: italic;
-}
-
-.fs-oblique {
-  font-style: oblique;
-}
-
-.lh-xs {
-  line-height: 1;
-}
-
-.lh-base {
-  line-height: 1.375;
-}
-
-.lh-lg {
-  line-height: 1.5;
-}
-
-.ws-base {
-  word-spacing: 0.03em;
-}
-
-.ls-base {
   letter-spacing: 0;
 }
 
@@ -1467,6 +1383,90 @@ body {
 
 .bs-5 {
   box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+.ff-base {
+  font-family: Source Sans Pro, -apple-system, sans-serif;
+}
+
+.ff-sans {
+  font-family: Source Sans Pro, -apple-system, sans-serif;
+}
+
+.ff-serif {
+  font-family: serif;
+}
+
+.ff-mono {
+  font-family: monospace;
+}
+
+.fs-xs {
+  font-size: 0.75rem;
+}
+
+.fs-sm {
+  font-size: 0.875rem;
+}
+
+.fs-base {
+  font-size: 16px;
+}
+
+.fs-lg {
+  font-size: 1.25rem;
+}
+
+.fs-xl {
+  font-size: 1.5rem;
+}
+
+.fs-hg {
+  font-size: 2rem;
+}
+
+.fw-400 {
+  font-weight: 400;
+}
+
+.fw-600 {
+  font-weight: 600;
+}
+
+.fw-700 {
+  font-weight: 700;
+}
+
+.fs-normal {
+  font-style: normal;
+}
+
+.fs-italic {
+  font-style: italic;
+}
+
+.fs-oblique {
+  font-style: oblique;
+}
+
+.lh-xs {
+  line-height: 1;
+}
+
+.lh-base {
+  line-height: 1.375;
+}
+
+.lh-lg {
+  line-height: 1.5;
+}
+
+.ws-base {
+  word-spacing: 0.03em;
+}
+
+.ls-base {
+  letter-spacing: 0;
 }
 
 .show,
@@ -2605,6 +2605,90 @@ body {
 
 .xs\:bs-5 {
   box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+.xs\:ff-base {
+  font-family: Source Sans Pro, -apple-system, sans-serif;
+}
+
+.xs\:ff-sans {
+  font-family: Source Sans Pro, -apple-system, sans-serif;
+}
+
+.xs\:ff-serif {
+  font-family: serif;
+}
+
+.xs\:ff-mono {
+  font-family: monospace;
+}
+
+.xs\:fs-xs {
+  font-size: 0.75rem;
+}
+
+.xs\:fs-sm {
+  font-size: 0.875rem;
+}
+
+.xs\:fs-base {
+  font-size: 16px;
+}
+
+.xs\:fs-lg {
+  font-size: 1.25rem;
+}
+
+.xs\:fs-xl {
+  font-size: 1.5rem;
+}
+
+.xs\:fs-hg {
+  font-size: 2rem;
+}
+
+.xs\:fw-400 {
+  font-weight: 400;
+}
+
+.xs\:fw-600 {
+  font-weight: 600;
+}
+
+.xs\:fw-700 {
+  font-weight: 700;
+}
+
+.xs\:fs-normal {
+  font-style: normal;
+}
+
+.xs\:fs-italic {
+  font-style: italic;
+}
+
+.xs\:fs-oblique {
+  font-style: oblique;
+}
+
+.xs\:lh-xs {
+  line-height: 1;
+}
+
+.xs\:lh-base {
+  line-height: 1.375;
+}
+
+.xs\:lh-lg {
+  line-height: 1.5;
+}
+
+.xs\:ws-base {
+  word-spacing: 0.03em;
+}
+
+.xs\:ls-base {
+  letter-spacing: 0;
 }
 
 .xs\:show,
@@ -3810,6 +3894,90 @@ body {
 
   .sm\:bs-5 {
     box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+  }
+
+  .sm\:ff-base {
+    font-family: Source Sans Pro, -apple-system, sans-serif;
+  }
+
+  .sm\:ff-sans {
+    font-family: Source Sans Pro, -apple-system, sans-serif;
+  }
+
+  .sm\:ff-serif {
+    font-family: serif;
+  }
+
+  .sm\:ff-mono {
+    font-family: monospace;
+  }
+
+  .sm\:fs-xs {
+    font-size: 0.75rem;
+  }
+
+  .sm\:fs-sm {
+    font-size: 0.875rem;
+  }
+
+  .sm\:fs-base {
+    font-size: 16px;
+  }
+
+  .sm\:fs-lg {
+    font-size: 1.25rem;
+  }
+
+  .sm\:fs-xl {
+    font-size: 1.5rem;
+  }
+
+  .sm\:fs-hg {
+    font-size: 2rem;
+  }
+
+  .sm\:fw-400 {
+    font-weight: 400;
+  }
+
+  .sm\:fw-600 {
+    font-weight: 600;
+  }
+
+  .sm\:fw-700 {
+    font-weight: 700;
+  }
+
+  .sm\:fs-normal {
+    font-style: normal;
+  }
+
+  .sm\:fs-italic {
+    font-style: italic;
+  }
+
+  .sm\:fs-oblique {
+    font-style: oblique;
+  }
+
+  .sm\:lh-xs {
+    line-height: 1;
+  }
+
+  .sm\:lh-base {
+    line-height: 1.375;
+  }
+
+  .sm\:lh-lg {
+    line-height: 1.5;
+  }
+
+  .sm\:ws-base {
+    word-spacing: 0.03em;
+  }
+
+  .sm\:ls-base {
+    letter-spacing: 0;
   }
 
   .sm\:show,
@@ -5018,6 +5186,90 @@ body {
     box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
   }
 
+  .md\:ff-base {
+    font-family: Source Sans Pro, -apple-system, sans-serif;
+  }
+
+  .md\:ff-sans {
+    font-family: Source Sans Pro, -apple-system, sans-serif;
+  }
+
+  .md\:ff-serif {
+    font-family: serif;
+  }
+
+  .md\:ff-mono {
+    font-family: monospace;
+  }
+
+  .md\:fs-xs {
+    font-size: 0.75rem;
+  }
+
+  .md\:fs-sm {
+    font-size: 0.875rem;
+  }
+
+  .md\:fs-base {
+    font-size: 16px;
+  }
+
+  .md\:fs-lg {
+    font-size: 1.25rem;
+  }
+
+  .md\:fs-xl {
+    font-size: 1.5rem;
+  }
+
+  .md\:fs-hg {
+    font-size: 2rem;
+  }
+
+  .md\:fw-400 {
+    font-weight: 400;
+  }
+
+  .md\:fw-600 {
+    font-weight: 600;
+  }
+
+  .md\:fw-700 {
+    font-weight: 700;
+  }
+
+  .md\:fs-normal {
+    font-style: normal;
+  }
+
+  .md\:fs-italic {
+    font-style: italic;
+  }
+
+  .md\:fs-oblique {
+    font-style: oblique;
+  }
+
+  .md\:lh-xs {
+    line-height: 1;
+  }
+
+  .md\:lh-base {
+    line-height: 1.375;
+  }
+
+  .md\:lh-lg {
+    line-height: 1.5;
+  }
+
+  .md\:ws-base {
+    word-spacing: 0.03em;
+  }
+
+  .md\:ls-base {
+    letter-spacing: 0;
+  }
+
   .md\:show,
 .md\:block {
     display: block;
@@ -6222,6 +6474,90 @@ body {
 
   .lg\:bs-5 {
     box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+  }
+
+  .lg\:ff-base {
+    font-family: Source Sans Pro, -apple-system, sans-serif;
+  }
+
+  .lg\:ff-sans {
+    font-family: Source Sans Pro, -apple-system, sans-serif;
+  }
+
+  .lg\:ff-serif {
+    font-family: serif;
+  }
+
+  .lg\:ff-mono {
+    font-family: monospace;
+  }
+
+  .lg\:fs-xs {
+    font-size: 0.75rem;
+  }
+
+  .lg\:fs-sm {
+    font-size: 0.875rem;
+  }
+
+  .lg\:fs-base {
+    font-size: 16px;
+  }
+
+  .lg\:fs-lg {
+    font-size: 1.25rem;
+  }
+
+  .lg\:fs-xl {
+    font-size: 1.5rem;
+  }
+
+  .lg\:fs-hg {
+    font-size: 2rem;
+  }
+
+  .lg\:fw-400 {
+    font-weight: 400;
+  }
+
+  .lg\:fw-600 {
+    font-weight: 600;
+  }
+
+  .lg\:fw-700 {
+    font-weight: 700;
+  }
+
+  .lg\:fs-normal {
+    font-style: normal;
+  }
+
+  .lg\:fs-italic {
+    font-style: italic;
+  }
+
+  .lg\:fs-oblique {
+    font-style: oblique;
+  }
+
+  .lg\:lh-xs {
+    line-height: 1;
+  }
+
+  .lg\:lh-base {
+    line-height: 1.375;
+  }
+
+  .lg\:lh-lg {
+    line-height: 1.5;
+  }
+
+  .lg\:ws-base {
+    word-spacing: 0.03em;
+  }
+
+  .lg\:ls-base {
+    letter-spacing: 0;
   }
 
   .lg\:show,

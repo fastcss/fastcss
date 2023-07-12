@@ -1,35 +1,31 @@
 @use '../functions' as *;
 
-@mixin make-typography-all() {
+@mixin make-typography-base() {
   @include import-google-fonts(conf('typography.google-fonts'));
   @include make-typography-body();
-
-  @each $confKey, $confValues in conf('typography') {
-    @each $key, $value in $confValues {
-      $index: index($confValues, $value) - 1;
-      @include make-typography($confKey, $key, $value);
-    }
-  }
 }
 
 // @param  {string} $type
 // @param  {string} $key
 // @param  {string} $value
-@mixin make-typography($type, $key, $value) {
+@mixin make-typography-utilities($type, $key, $value, $screenName:null, $screenIndex:null) {
+    // create the prefix
+    $prefix: if($screenName, $screenName+'\\:', '');
+
     @if $type == 'font-family' {
-      @include font-family($key, $value);
+      @include font-family($key, $value, $prefix);
     } @else if $type == 'font-size' {
-      @include font-size($key, $value);
+      @include font-size($key, $value, $prefix);
     } @else if $type == 'font-weight' {
-      @include font-weight($key);
+      @include font-weight($key, $prefix);
     } @else if $type == 'font-style' {
-      @include font-style($key);
+      @include font-style($key, $prefix);
     } @else if $type == 'line-height' {
-      @include line-height($key, $value);
+      @include line-height($key, $value, $prefix);
     } @else if $type == 'word-spacing' {
-      @include word-spacing($key, $value);
+      @include word-spacing($key, $value, $prefix);
     } @else if $type == 'letter-spacing' {
-      @include letter-spacing($key, $value);
+      @include letter-spacing($key, $value, $prefix);
     }
 }
 
@@ -45,54 +41,54 @@
 
 // @param  {string} $name
 // @param  {integer} $value
-@mixin font-family($name, $value) {
-  .ff-#{$name} {
+@mixin font-family($name, $value, $prefix: null) {
+  .#{$prefix}ff-#{$name} {
     font-family: #{$value};
   }
 }
 
 // @param  {string} $name
 // @param  {integer} $value
-@mixin font-size($name, $value) {
-  .fs-#{$name} {
+@mixin font-size($name, $value, $prefix: null) {
+  .#{$prefix}fs-#{$name} {
     font-size: #{$value};
   }
 }
 
 // @param  {integer} $weight
-@mixin font-weight($weight) {
-  .fw-#{$weight} {
+@mixin font-weight($weight, $prefix: null) {
+  .#{$prefix}fw-#{$weight} {
     font-weight: #{$weight};
   }
 }
 
 // @param  {string} $style
-@mixin font-style($style) {
-  .fs-#{$style} {
+@mixin font-style($style, $prefix: null) {
+  .#{$prefix}fs-#{$style} {
     font-style: #{$style};
   }
 }
 
 // @param  {string} $name
 // @param  {integer} $value
-@mixin line-height($name, $value) {
-  .lh-#{$name} {
+@mixin line-height($name, $value, $prefix: null) {
+  .#{$prefix}lh-#{$name} {
     line-height: #{$value};
   }
 }
 
 // @param  {string} $name
 // @param  {integer} $value
-@mixin word-spacing($name, $value) {
-  .ws-#{$name} {
+@mixin word-spacing($name, $value, $prefix: null) {
+  .#{$prefix}ws-#{$name} {
     word-spacing: #{$value};
   }
 }
 
 // @param  {string} $name
 // @param  {integer} $value
-@mixin letter-spacing($name, $value) {
-  .ls-#{$name} {
+@mixin letter-spacing($name, $value, $prefix: null) {
+  .#{$prefix}ls-#{$name} {
     letter-spacing: #{$value};
   }
 }
