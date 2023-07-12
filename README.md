@@ -1,3 +1,4 @@
+
 # Fastcss
 
 Code fast with this awesome css framework.
@@ -32,7 +33,8 @@ Check the examples file [https://fastcss.org/examples.html](https://fastcss.org/
 
 ## Documentation
 
-Check [fastcss.org](http://fastcss.org/) for the full documentation.
+- [fastcss.org](http://fastcss.org/)
+- https://github.com/fastcss/fastcss
 
 ## Contributing
 
