@@ -1,6 +1,7 @@
 @use 'states';
 @use 'sass:list';
 @use 'sass:string';
+@use 'sass:map';
 @use '../functions' as *;
 
 @mixin make-colors($palette: null, $gradients: null, $variants: null) {
@@ -13,6 +14,8 @@
   @if ($palette) {
     @each $colorConfigName, $hexNew in $palette {
       $colorName: $colorConfigName;
+
+      // extract color variants
       $colorVariants: null;
       @if (string.index($colorConfigName, ':')) {
         $colorData: explode($colorConfigName, ':');
@@ -29,6 +32,12 @@
       @include color($colorConfigName, '500');
 
       @if index(('transparent','white','black'), $colorName) == null {
+
+        // if no color variants extracted, generate all variants, except for transparent, white and black
+        @if ($colorVariants == null) {
+          $colorVariants: map.keys(conf('colors.variants'));
+        }
+
         @each $colorVariant in $colorVariants {
           @if ($colorVariant) {
             @include color($colorConfigName, $colorVariant);

@@ -13,6 +13,7 @@
   @include list-style-type($screenPrefix);
   @include text-utilities($screenPrefix, $screenIndex);
   @include cursor($screenPrefix);
+  @include flexbox($screenPrefix);
 }
 
 // Generate the clearfix class
@@ -282,6 +283,14 @@
   }
 }
 
-@mixin flexbox() {
-  
+@mixin flexbox($prefix: null) {
+  .#{$prefix}flex-1 {
+    flex: 1;
+  }
+  .#{$prefix}flex-2 {
+    flex: 2;
+  }
+  .#{$prefix}flex-3 {
+    flex: 3;
+  }
 }

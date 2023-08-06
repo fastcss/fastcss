@@ -33,8 +33,7 @@ Check the examples file [https://fastcss.org/examples.html](https://fastcss.org/
 
 ## Documentation
 
-- [fastcss.org](http://fastcss.org/)
-- https://github.com/fastcss/fastcss
+- [https://github.com/fastcss/fastcss](https://github.com/fastcss/fastcss)
 
 ## Contributing
 

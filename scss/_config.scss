@@ -5,21 +5,22 @@ $defaultConfig: (
 
   'typography': (
     'google-fonts': (
-      'Source+Sans+Pro': (400, 600, 700),
+      'Roboto': (400, 600, 700),
     ),
     'font-family': (
-      'base': "Source Sans Pro, -apple-system, sans-serif",
-      'sans': "Source Sans Pro, -apple-system, sans-serif",
+      'base': "Roboto, -apple-system, sans-serif",
+      'sans': "Roboto, -apple-system, sans-serif",
       'serif': serif,
       'mono': monospace,
     ),
     'font-size': (
-      'xs': .75rem,
-      'sm': .875rem,
+      'xxs': .625rem, // 10px
+      'xs': .75rem, // 12px
+      'sm': .875rem, // 14px
       'base': 16px,
-      'lg': 1.25rem,
-      'xl': 1.5rem,
-      'hg': 2rem,
+      'lg': 1.25rem, // 20px
+      'xl': 1.5rem, // 24px
+      'hg': 2rem, // 32px
     ),
     'font-weight': (
       400, 600, 700
@@ -28,6 +29,8 @@ $defaultConfig: (
       normal, italic, oblique
     ),
     'line-height': (
+      '0': 0,
+      '1': 1,
       'xs': 1,
       'base': 1.375,
       'lg': 1.5,
@@ -42,12 +45,12 @@ $defaultConfig: (
 
   'box': (
     'stripunits': true, // percentages won't be striped
-    'padding': (0, 2px, 10px, 15px, 20px),
+    'padding': (0, 1px, 2px, 3px, 4px, 5px, 10px, 15px, 20px),
     'margin': (0, auto, 5px, 10px, 15px, 20px, 30px, 40px),
-    'width': (20px, 1200px, 100%),
-    'height': (20px, 100%, 1px),
+    'width': (10px, 15px, 20px, 1200px, 100%),
+    'height': (10px, 15px, 20px, 100%, 1px),
     'positions': (0, 5px, 10px, 15px), // for absolute positioning (top, left etc)
-    'z-index': (-1, 1, 2),
+    'z-index': (-1, 1, 2, 3, 99),
     'border-radius': (0, 3px, 5px, 10px, 50%),
     'border-width': (0, 1px, 2px, 3px, 4px),
 
@@ -81,15 +84,17 @@ $defaultConfig: (
     // 
     // Do it like this:
     // 'color:variant1,variant2': #hex,
+    // 
+    // If you leave the variants empty, it will generate all variants except for transparent, black and white.
     'palette': (
       'transparent':    transparent,
-      'black':          #000000,
-      'white':          #FFFFFF,
-      'gray:50':        #9E9E9E,
-      'red:300,700':    #F44336,
-      'green:300,700':  #4CAF50,
-      'blue:300,700':   #2196F3,
-      'orange:300,700': #FF9800,
+      'black':           #000000,
+      'white':           #FFFFFF,
+      'gray':            #9E9E9E,
+      'red:50,100,300,700,900': #F44336,
+      'green:50,300,700':   #4CAF50,
+      'blue:50,300,700':    #2196F3,
+      'orange:50,300,700':  #FF9800,
     ),
 
     // Control the lightness and the darnkess of the variants
