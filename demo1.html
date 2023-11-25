@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%;">
+<head>
+<meta charset="UTF-8">
+<title>Fastcss</title>
+<link rel="stylesheet" href="dist/fastcss.css" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&amp;display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Inconsolata&amp;display=swap" rel="stylesheet" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+    color: #24292e;
+    font-family: "Source Sans Pro", sans-serif;
+}
+a {
+    color: #24292e;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+#logo {
+    font-family: 'Impact', sans-serif;
+    display: inline-block;
+    margin-bottom: 10px;
+    text-decoration: none;
+}
+h3,h4,h5 {
+    font-weight: normal;
+    font-family: "Inconsolata", monospace;
+    font-weight: 600;
+}
+h3 {
+    font-size: 1.5rem;
+}
+h4 {
+    font-size: 1.25rem;
+}
+h5 {
+    font-size: 1rem;
+}
+</style>
+</head>
+<body>
+    <div class="flex p-20">
+        <div class="left flex-1 p-20 xs:fixed" style="width: 270px">
+            <div class="fs-lg fw-600"><a href="#">FASTCSS</a></div>
+            <div class="gray-text fs-sm mt-5 mb-30">v0.1.12</div>
+
+            <!-- menu -->
+            <div>
+                <div class="mb-30">
+                    <div class="mb-10"><a class="fs-lg" href="#">Getting Started</a></div>
+                    <div><a href="#">&#183; What is fastcss</a></div>
+                    <div><a href="#">&#183; Instalation</a></div>
+                    <div><a href="#">&#183; Directory structure</a></div>
+                    <div><a href="#">&#183; Configuration</a></div>
+                    <div><a href="#">&#183; Compiling</a></div>
+                    <div><a href="#">&#183; Github contributions</a></div>
+                </div>
+                <div class="mb-30">
+                    <div class="mb-10"><a class="fs-lg" href="#">Customization</a></div>
+                    <div><a href="#">&#183; Colors</a></div>
+                    <div><a href="#">&#183; Box helpers</a></div>
+                    <div><a href="#">&#183; Typography</a></div>
+                    <div><a href="#">&#183; Tables</a></div>
+                    <div><a href="#">&#183; Images</a></div>
+                    <div><a href="#">&#183; Lists</a></div>
+                    <div><a href="#">&#183; Grouping</a></div>
+                    <div><a href="#">&#183; The grid system</a></div>
+                    <div><a href="#">&#183; Forms</a></div>
+                    <div><a href="#">&#183; Buttons</a></div>
+                    <div><a href="#">&#183; Dropdowns</a></div>
+                    <div><a href="#">&#183; Flexbox</a></div>
+                    <div><a href="#">&#183; Other helper classes</a></div>
+                </div>
+                <div class="mb-30">
+                    <div class="mb-10"><a class="fs-lg" href="#">Component samples</a></div>
+                    <div><a href="#">&#183; Buttons</a></div>
+                    <div><a href="#">&#183; Form fields</a></div>
+                </div>
+                <div class="mb-30">
+                    <div class="mb-10"><a class="fs-lg" href="#">Third parties</a></div>
+                    <div><a href="#">&#183; Animations</a></div>
+                    <div><a href="#">&#183; Icons</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="right flex-1" style="margin-left: 270px; height: 3000px">
+            <div class="mh-auto gray-text:800" style="min-width: 480px;max-width: 856px">
+                <div class="bb-1 gray-border:100 pb-20 mb-20">
+                    <h3><a href="#">FASTCSS</a></h3>
+                    <div>Welcome to fastcss documentation.</div>
+                </div>
+                <div class="bb-1 gray-border:100 pb-20 mb-20">
+                    <h3><a href="#">Getting Started</a></h3>
+                    <div>Install, compile and understand the underlying layers. In this section you also find the GitHub contribution guide.</div>
+                </div>
+                <div class="pb-20 mb-20">
+                    <h4 class="relative"><div class="absolute blue-text" style="margin-left: -20px;">#</div><a href="#">What is fastcss</a></h4>
+                    <div>
+                        When I discovered sass I've seen the potential of class generation. I made some utilities with hardcoded configuration which were very helpfull in my projects.
+                        After a while I had this bright idea to transform it into a fully customizable pure sass-generated css framework.
+                    </div>
+                </div>
+                <div class="pb-20 mb-20">
+                    <h4 class="relative"><div class="absolute blue-text" style="margin-left: -20px;">#</div><a href="#"><a href="#">Installation</a></h4>
+                    <div>
+                        <h5>Yarn</h5>
+                        <div class="p-5 pl-20 bl-3 blue-border">yarn add fastcss</div>
+                        <h5>React</h5>
+                        <div class="p-5 pl-20 bl-3 blue-border">yarn add fastcss-react</div>
+                        <h5>Vue</h5>
+                        <div class="p-5 pl-20 bl-3 blue-border">yarn add fastcss-vue</div>
+                        <h5>CDN</h5>
+                        <div class="p-5 pl-20 bl-3 blue-border"><\script\>\https://cdn/fastcss.css<\/script></div>
+                    </div>
+                </div>
+                <div class="pb-20 mb-20">
+                    <h4 class="relative"><div class="absolute blue-text" style="margin-left: -20px;">#</div><a href="#"><a href="#">Directory structure</a></h4>
+                    <div>...</div>
+                </div>
+                <div class="pb-20 mb-20">
+                    <h4 class="relative"><div class="absolute blue-text" style="margin-left: -20px;">#</div><a href="#"><a href="#">Configuration</a></h4>
+                    <div>...</div>
+                </div>
+                <div class="pb-20 mb-20">
+                    <h4 class="relative"><div class="absolute blue-text" style="margin-left: -20px;">#</div><a href="#"><a href="#">Compiling</a></h4>
+                    <div>...</div>
+                </div>
+                <div class="pb-20 mb-20">
+                    <h4 class="relative"><div class="absolute blue-text" style="margin-left: -20px;">#</div><a href="#"><a href="#">Github contributions</a></h4>
+                    <div>...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

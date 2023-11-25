@@ -132,6 +132,19 @@ $defaultConfig: (
     ),
     'text-decoration': (
       'line-through', 'underline', 'none'
+    ),
+    'flexbox': (
+      'align-content': ('stretch', 'flex-start', 'flex-end', 'center', 'space-between', 'space-around'),
+      'align-items': ('flex-start', 'flex-end', 'center', 'baseline', 'stretch'),
+      'align-self': ('auto', 'flex-start', 'flex-end', 'center', 'baseline','stretch'),
+      'flex-basis': ('auto'),
+      'flex-direction': ('row', 'row-reverse', 'column', 'column-reverse'),
+      // 'flex-flow': (''),
+      'flex-grow': ('0', '1', '2'),
+      'flex-shrink': ('1', '0', '2'),
+      'flex-wrap': ('nowrap', 'wrap', 'wrap-reverse'),
+      'justify-content': ('flex-start', 'flex-end', 'center', 'space-between', 'space-around'),
+      'order': ('0', '1', '-1', '9')
     )
   )
 );

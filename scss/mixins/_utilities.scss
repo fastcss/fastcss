@@ -1,5 +1,7 @@
 @use 'states';
 @use '../functions' as *;
+@use 'sass:list';
+@use 'sass:string';
 
 @mixin make-utilities($screen: null, $screenIndex: null) {
   $screenPrefix: if($screen, $screen+'\\:', '');
@@ -283,14 +285,26 @@
   }
 }
 
+// 
 @mixin flexbox($prefix: null) {
-  .#{$prefix}flex-1 {
-    flex: 1;
+  // generate flex-number
+  @for $i from 1 through 5 {
+    .#{$prefix}flex-#{$i} {
+      flex: $i;
+    }
   }
-  .#{$prefix}flex-2 {
-    flex: 2;
-  }
-  .#{$prefix}flex-3 {
-    flex: 3;
+  @each $key, $values in conf('utilities.flexbox') {
+    $keys: string.split($key, "-");
+    $shortKey: str-slice(list.nth($keys, 1), 1, 1);
+
+    @if list.length($keys) > 1 {
+      $shortKey: $shortKey + str-slice(list.nth($keys, 2), 1, 1);
+    }
+
+    @each $value in $values {
+      .#{$prefix}flex-#{$shortKey}-#{$value} {
+        #{$key}: $value;
+      }
+    }
   }
 }
