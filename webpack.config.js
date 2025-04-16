@@ -64,9 +64,13 @@ module.exports = {
               implementation: require('sass'),
               sassOptions: {
                 indentedSyntax: false,
-                fiber: require('fibers'),
                 includePaths: [path.resolve(__dirname, "scss")],
               },
+              // sassOptions: {
+              //   indentedSyntax: false,
+              //   fiber: require('fibers'),
+              //   includePaths: [path.resolve(__dirname, "scss")],
+              // },
             }
           },
         ]

@@ -303,9 +303,89 @@
   </div>
 
   <div class="container mb-40">
+    <h1>Toggles</h1>
+    <div class="flex">
+
+        <div class="flex-1">
+            <h4>Hover</h4>
+            <!-- Show child as block on hover -->
+            <div class="hover:child-block">
+              Hover me
+              <div style="display: none;">Child visible on hover</div>
+            </div>
+        </div>
+
+        <div class="flex-1">
+            <h4>Focus</h4>
+            <!-- Show sibling as flex on focus -->
+            <div>
+              <input type="text" class="focus:sibling-flex" />
+              <div style="display: none;">Sibling appears on focus</div>
+            </div>
+        </div>
+
+        <div class="flex-1">
+            <h4>Active</h4>
+            <!-- Hide child on active -->
+            <div class="active:child-hide">
+              <button>Click me</button>
+              <div>Child hidden on click</div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <div class="container mb-40">
+    <h1>Flexbox</h1>
+    <div class="flex wrap gap-10 mt-15">
+
+      <div class="flex-1 gray-fill:50 p-15">
+        <h3 class="mb-5">Flex Direction</h3>
+        <div class="flex flex-col gap-5">
+          <div class="flex flex-row gap-5">
+            <div class="w-20 h-20 red-fill:300"></div>
+            <div class="w-20 h-20 green-fill:300"></div>
+            <div class="w-20 h-20 blue-fill:300"></div>
+          </div>
+          <div class="flex flex-col gap-5">
+            <div class="w-20 h-20 red-fill:300"></div>
+            <div class="w-20 h-20 green-fill:300"></div>
+            <div class="w-20 h-20 blue-fill:300"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex-1 gray-fill:50 p-15">
+        <h3 class="mb-5">Justify Content</h3>
+        <div class="flex flex-row justify-between">
+          <div class="w-20 h-20 red-fill:300"></div>
+          <div class="w-20 h-20 green-fill:300"></div>
+          <div class="w-20 h-20 blue-fill:300"></div>
+        </div>
+        <div class="flex flex-row justify-center mt-10">
+          <div class="w-20 h-20 red-fill:300"></div>
+          <div class="w-20 h-20 green-fill:300"></div>
+          <div class="w-20 h-20 blue-fill:300"></div>
+        </div>
+      </div>
+
+      <div class="flex-1 gray-fill:50 p-15">
+        <h3 class="mb-5">Align Items</h3>
+        <div class="h-60 flex items-center gray-fill:100">
+          <div class="w-20 h-20 red-fill:300"></div>
+          <div class="w-20 h-10 green-fill:300"></div>
+          <div class="w-20 h-30 blue-fill:300"></div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="container mb-40">
     <h1>Tips</h1>
     <div>
-    	Adding too many colors and utilities can result in large css output.
+        Adding too many colors and utilities can result in large css output.
     </div>
   </div>
   <br />

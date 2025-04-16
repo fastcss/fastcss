@@ -1,0 +1,33 @@
+$states: (
+  "hover": "hover",
+  "focus": "focus",
+  "active": "active"
+);
+
+$targets: (
+  "child": "> *",
+  "sibling": "~ *"
+);
+
+$displays: (
+  "block": block,
+  "flex": flex,
+  "inline": inline,
+  "inline-block": inline-block,
+  "grid": grid,
+  "hide": none
+);
+
+@each $state-name, $state-selector in $states {
+  @each $target-name, $target-selector in $targets {
+    @each $display-name, $display-value in $displays {
+      .#{$state-name}\:#{$target-name}-#{$display-name} {
+        &:#{$state-selector} {
+          #{$target-selector} {
+            display: #{$display-value} !important;
+          }
+        }
+      }
+    }
+  }
+}

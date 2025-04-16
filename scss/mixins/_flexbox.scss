@@ -1,0 +1,45 @@
+@use 'sass:string';
+@use '../functions' as *;
+
+@mixin make-flexbox($prefix: null) {
+  // Basic display
+  .#{$prefix}flex {
+    display: flex;
+  }
+  .#{$prefix}inline-flex {
+    display: inline-flex;
+  }
+
+  // flex: [1-5]
+  @for $i from 1 through 5 {
+    .#{$prefix}flex-#{$i} {
+      flex: $i;
+    }
+  }
+
+  // Loop through all flexbox utility keys and values
+  @each $key, $values in conf('utilities.flexbox') {
+    // Shorten the key name for class suffix
+    $keys: string.split($key, "-");
+    $shortKey: str-slice(list.nth($keys, 1), 1, 1);
+    @if list.length($keys) > 1 {
+      $shortKey: $shortKey + str-slice(list.nth($keys, 2), 1, 1);
+    }
+
+    // Generate classes
+    @each $value in $values {
+      .#{$prefix}flex-#{$shortKey}-#{$value} {
+        #{$key}: #{$value};
+      }
+    }
+  }
+
+  // Additional helpers for common patterns
+  .#{$prefix}flex-row        { flex-direction: row; }
+  .#{$prefix}flex-col        { flex-direction: column; }
+  .#{$prefix}flex-nowrap     { flex-wrap: nowrap; }
+  .#{$prefix}flex-wrap       { flex-wrap: wrap; }
+  .#{$prefix}items-center    { align-items: center; }
+  .#{$prefix}justify-center  { justify-content: center; }
+  .#{$prefix}justify-between { justify-content: space-between; }
+}
