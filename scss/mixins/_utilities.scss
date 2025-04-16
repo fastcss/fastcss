@@ -327,17 +327,21 @@
 
   // Loop through all flexbox utility keys and values
   @each $key, $values in conf('utilities.flexbox') {
-    // Shorten the key name for class suffix
-    $keys: string.split($key, "-");
-    $shortKey: str-slice(list.nth($keys, 1), 1, 1);
-    @if list.length($keys) > 1 {
-      $shortKey: $shortKey + str-slice(list.nth($keys, 2), 1, 1);
-    }
+    // Only proceed if the key is a valid string
+    @if type-of($key) == 'string' {
+      // Shorten the key name for class suffix
+      $keys: string.split($key, "-");
+      $shortKey: str-slice(list.nth($keys, 1), 1, 1);
 
-    // Generate classes
-    @each $value in $values {
-      .#{$prefix}flex-#{$shortKey}-#{$value} {
-        #{$key}: #{$value};
+      @if list.length($keys) > 1 {
+        $shortKey: $shortKey + str-slice(list.nth($keys, 2), 1, 1);
+      }
+
+      // Generate classes
+      @each $value in $values {
+        .#{$prefix}flex-#{$shortKey}-#{$value} {
+          #{$key}: #{$value};
+        }
       }
     }
   }
