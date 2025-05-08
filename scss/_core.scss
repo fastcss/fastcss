@@ -14,13 +14,13 @@
 @include grid.all-screen-min() using ($screenName, $screenWidth, $screenIndex) {
   @each $confKey, $confValues in conf('box') {
     @each $value in $confValues {
-      $index: index($confValues, $value) - 1;
+      $index: list.index($confValues, $value) - 1;
       @include box.make-box($confKey, $value, $index, $screenName, $screenIndex);
     }
   }
   @each $confKey, $confValues in conf('typography') {
     @each $key, $value in $confValues {
-      $index: index($confValues, $value) - 1;
+      $index: list.index($confValues, $value) - 1;
       @include typography.make-typography-utilities($confKey, $key, $value, $screenName, $screenIndex);
     }
   }

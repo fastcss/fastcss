@@ -1,3 +1,5 @@
+@use "sass:list";
+
 @mixin hover {
   &:hover {
     @content;
@@ -16,7 +18,7 @@
 
 @mixin on-states($class, $states: ('hover', 'active', 'focus')) {
   @each $state in $states {
-    @if index(('hover', 'active', 'focus'), $state) {
+    @if list.index(('hover', 'active', 'focus'), $state) {
       .#{$state}\:#{$class} {
         @if ($state == 'hover') {
           @include hover { @content; }

@@ -31,7 +31,7 @@
       // base variant
       @include color($colorConfigName, '500');
 
-      @if index(('transparent','white','black'), $colorName) == null {
+      @if list.index(('transparent','white','black'), $colorName) == null {
 
         // if no color variants extracted, generate all variants, except for transparent, white and black
         @if ($colorVariants == null) {
@@ -51,7 +51,7 @@
 
   @if ($gradients) {
     @each $value in $gradients {
-      $index: index($gradients, $value) - 1;
+      $index: list.index($gradients, $value) - 1;
       @include gradient($index, $value);
     }
   } @else {
@@ -63,14 +63,14 @@
   $colorData: explode($colorConfigName, ':');
   $colorName: list.nth($colorData, 1);
 
-  $variantText: #{if($variant != '500', '\\:'+$variant, '')};
+  $variantText: #{if($variant != '500', '\\:' + $variant, '')};
 
-  .#{$colorName+''}-text#{$variantText} {
+  .#{$colorName + ''}-text#{$variantText} {
     color: get-color($colorConfigName, $variant);
   }
 
-  @include states.on-all-states(#{$colorName+'-text'+$variantText}) {
-    @extend .#{$colorName+'-text'+$variantText};
+  @include states.on-all-states(#{$colorName + '-text' + $variantText}) {
+    @extend .#{$colorName + '-text' + $variantText};
   }
 }
 
@@ -78,14 +78,14 @@
   $colorData: explode($colorConfigName, ':');
   $colorName: list.nth($colorData, 1);
 
-  $variantText: #{if($variant != '500', '\\:'+$variant, '')};
+  $variantText: #{if($variant != '500', '\\:' + $variant, '')};
 
-  .#{$colorName+''}-fill#{$variantText} {
+  .#{$colorName + ''}-fill#{$variantText} {
     background-color: get-color($colorConfigName, $variant);
   }
 
-  @include states.on-all-states(#{$colorName+'-fill'+$variantText}) {
-    @extend .#{$colorName+'-fill'+$variantText};
+  @include states.on-all-states(#{$colorName + '-fill' + $variantText}) {
+    @extend .#{$colorName + '-fill' + $variantText};
   }
 }
 
@@ -93,21 +93,21 @@
   $colorData: explode($colorConfigName, ':');
   $colorName: list.nth($colorData, 1);
 
-  $variantText: #{if($variant != '500', '\\:'+$variant, '')};
+  $variantText: #{if($variant != '500', '\\:' + $variant, '')};
 
-  .#{$colorName+''}-border#{$variantText} {
+  .#{$colorName + ''}-border#{$variantText} {
     border-color: get-color($colorConfigName, $variant);
   }
 
-  @include states.on-all-states(#{$colorName+'-border'+$variantText}) {
-    @extend .#{$colorName+'-border'+$variantText};
+  @include states.on-all-states(#{$colorName + '-border' + $variantText}) {
+    @extend .#{$colorName + '-border' + $variantText};
   }
 }
 
 @mixin color($colorConfigName, $variant: '500') {
-    @include text($colorConfigName, $variant);
-    @include fill($colorConfigName, $variant);
-    @include border($colorConfigName, $variant);
+  @include text($colorConfigName, $variant);
+  @include fill($colorConfigName, $variant);
+  @include border($colorConfigName, $variant);
 }
 
 @mixin gradient($suffix, $value) {
@@ -115,7 +115,7 @@
     background: $value;
   }
 
-  @include states.on-all-states(#{'grad-'+$suffix}) {
-    @extend .#{'grad-'+$suffix};
+  @include states.on-all-states(#{'grad-' + $suffix}) {
+    @extend .#{'grad-' + $suffix};
   }
 }

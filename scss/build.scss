@@ -1,6 +1,9 @@
 // Import $defaultConfig
 @use 'config' as *;
 
+// Only import this if needed
+@use 'vendor/normalize.css';
+
 // Import fastcss with your configuration from a
 // separate file (from '_config.scss' in this example)
 @use 'fastcss' with ($config: $defaultConfig);

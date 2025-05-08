@@ -1,3 +1,4 @@
+@use "sass:string";
 @use '../functions' as *;
 
 @mixin make-typography-base() {
@@ -99,7 +100,7 @@
 // @param  {list} $weights: ()
 @mixin import-google-font($font, $weights: (400)) {
   $_weights: implode($weights, ';');
-  @import url('https://fonts.googleapis.com/css2?family=#{unquote($font)}:wght@#{$_weights}&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=#{string.unquote($font)}:wght@#{$_weights}&display=swap');
 }
 
 // @param  {list} $weights: ()

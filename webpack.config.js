@@ -10,6 +10,10 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist')
   },
+  stats: {
+    warnings: true,
+    warningsFilter: [],
+  },
   devtool: devMode ? 'source-map' : 'eval-cheap-module-source-map',
   module: {
     rules: [
@@ -63,14 +67,10 @@ module.exports = {
               sourceMap: true,
               implementation: require('sass'),
               sassOptions: {
+                quietDeps: false, // <-- show warnings from dependencies too
                 indentedSyntax: false,
                 includePaths: [path.resolve(__dirname, "scss")],
               },
-              // sassOptions: {
-              //   indentedSyntax: false,
-              //   fiber: require('fibers'),
-              //   includePaths: [path.resolve(__dirname, "scss")],
-              // },
             }
           },
         ]

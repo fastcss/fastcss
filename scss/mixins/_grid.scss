@@ -1,4 +1,5 @@
 @use 'sass:math';
+@use 'sass:list';
 @use '../functions' as *;
 @use '../mixins/utilities';
 
@@ -77,8 +78,8 @@
   }
   @for $column from 1 through $columns {
     .#{$screenText}col-#{$column} {
-      flex-basis: percentage(math.div($column, $columns));
-      max-width: percentage(math.div($column, $columns));
+      flex-basis: math.percentage(math.div($column, $columns));
+      max-width: math.percentage(math.div($column, $columns));
     }
   }
 }
@@ -94,13 +95,13 @@
 
   @for $column from 1 through $columns {
     .#{$screenText}col-#{$column}-offset {
-      margin-left: percentage(math.div($column, $columns));
+      margin-left: math.percentage(math.div($column, $columns));
     }
     .#{$screenText}col-#{$column}-push {
-      left: percentage(math.div($column, $columns));
+      left: math.percentage(math.div($column, $columns));
     }
     .#{$screenText}col-#{$column}-pull {
-      right: percentage(math.div($column, $columns));
+      right: math.percentage(math.div($column, $columns));
     }
   }
 }
@@ -146,9 +147,9 @@
   @content(null, null, null);
 
   @each $screenName, $screenWidth in $_screens {
-    $screenIndex: index($_screens, $screenName $screenWidth) - 1;
+    $screenIndex: list.index($_screens, $screenName $screenWidth) - 1;
 
-    @if $screenName == nth(nth($_screens, 1), 1) {
+    @if $screenName == list.nth(list.nth($_screens, 1), 1) {
       @content($screenName, $screenWidth, $screenIndex);
     } @else {
       @include screen-min($screenName) {
@@ -164,9 +165,9 @@
   @content(null, null, null);
 
   @each $screenName, $screenWidth in $_screens {
-    $screenIndex: index($_screens, $screenName $screenWidth) - 1;
+    $screenIndex: list.index($_screens, $screenName $screenWidth) - 1;
 
-    @if $screenName == nth(nth($_screens, 1), 1) {
+    @if $screenName == list.nth(list.nth($_screens, 1), 1) {
       @content($screenName, $screenWidth, $screenIndex);
     } @else {
       @include screen-max($screenName) {

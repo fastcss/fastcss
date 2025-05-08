@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "webpack",
     "prod": "webpack && cross-env NODE_ENV=production webpack",
-    "watch": "webpack --progress --color --watch"
+    "watch": "webpack --progress --color --watch",
+    "lint": "sass --verbose --no-source-map scss/build.scss > /dev/null"
   },
   "keywords": [
     "fastcss",
@@ -35,12 +36,10 @@
     "postcss": "^8.3.5",
     "postcss-loader": "^6.1.1",
     "postcss-sort-media-queries": "^3.11.12",
-    "sass": "1.86.3",
-    "sass-loader": "^12.1.0",
+    "sass": "^1.87.0",
+    "sass-loader": "^13.0.0",
     "webpack": "^5.42.0",
     "webpack-cli": "^4.7.2"
   },
-  "dependencies": {
-    "normalize.css": "^8.0.1"
-  }
+  "dependencies": {}
 }

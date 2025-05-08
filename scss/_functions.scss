@@ -2,6 +2,8 @@
 @use "sass:math";
 @use "sass:string";
 @use "sass:map";
+@use "sass:meta";
+@use 'sass:color';
 @use 'config' as *;
 
 // The default config is used if the $config map is not overwritten
@@ -14,10 +16,10 @@ $config: $defaultConfig !default;
 @function config($keys...) {
   $value: $config;
   @each $key in $keys {
-    @if null == map-get($value, $key) {
+    @if null == map.get($value, $key) {
       @return null;
     } @else {
-      $value: map-get($value, $key);
+      $value: map.get($value, $key);
     }
   }
   @return $value;
@@ -66,10 +68,10 @@ $config: $defaultConfig !default;
   }
 
   @if($variantPercent > 0) {
-    @return mix(white, $colorHex, (percentage(math.div($variantPercent, 100))));
+    @return color.mix(white, $colorHex, (math.percentage(math.div($variantPercent, 100))));
   }
 
-  @return mix(black, $colorHex, (percentage(math.div($variantPercent, -100))));
+  @return color.mix(black, $colorHex, (math.percentage(math.div($variantPercent, -100))));
 }
 
 // Get the previous element from a map by using the key of the current element
@@ -78,15 +80,14 @@ $config: $defaultConfig !default;
 // @param  {map} $map
 // @return {integer} The key of the previous element
 @function map-get-prev($key, $map) {
-
-  $keys: map-keys($map);
-  $index: index($keys, $key) - 1;
+  $keys: map.keys($map);
+  $index: list.index($keys, $key) - 1;
 
   @if($index == 0) {
     @return $key;
   }
 
-  @return nth($keys, $index);
+  @return list.nth($keys, $index);
 }
 
 // Convert pixels to ems
@@ -95,11 +96,11 @@ $config: $defaultConfig !default;
 // @param  {number} $base:  16
 // @return {em}
 @function pxtoem($pixels, $base: 16) {
-  @if (unitless($pixels)) {
+  @if (math.is-unitless($pixels)) {
     $pixels: $pixels * 1px;
   }
 
-  @if (unitless($base)) {
+  @if (math.is-unitless($base)) {
     $base: $base * 1px;
   }
 
@@ -111,7 +112,7 @@ $config: $defaultConfig !default;
 /// @param  {Number} $number - Number to remove unit from
 /// @return {Number} - Unitless number
 @function strip-unit($number) {
-  @if type-of($number) == 'number' and not unitless($number) {
+  @if meta.type-of($number) == 'number' and not math.is-unitless($number) {
     @return math.div($number, ($number * 0 + 1));
   }
 
@@ -124,31 +125,31 @@ $config: $defaultConfig !default;
 // @param {Mixed} $value
 // @return {List}
 @function prepend($list, $value) {
-  @return join($value, $list);
+  @return list.join(($value,), $list);
 }
 
 // Get the first key from the list
 //
 // @return {integer}
 @function first($list) {
-  @return nth($list, 1);
+  @return list.nth($list, 1);
 }
 
 // Get the last key from the list
 //
 // @return {integer}
 @function last($list) {
-  @return nth($list, length($list));
+  @return list.nth($list, list.length($list));
 }
 
 // @return {boolean}
 @function is-number($value) {
-  @return type-of($value) == 'number';
+  @return meta.type-of($value) == 'number';
 }
 
 // @return {boolean}
 @function is-time($value) {
-  @return is-number($value) and index('ms' 's', unit($value)) != null;
+  @return is-number($value) and list.index(('ms', 's'), math.unit($value)) != null;
 }
 
 // @return {boolean}
@@ -158,12 +159,12 @@ $config: $defaultConfig !default;
 
 // @return {boolean}
 @function is-angle($value) {
-  @return is-number($value) and index('deg' 'rad' 'grad' 'turn', unit($value)) != null;
+  @return is-number($value) and list.index(('deg', 'rad', 'grad', 'turn'), math.unit($value)) != null;
 }
 
 // @return {boolean}
 @function is-frequency($value) {
-  @return is-number($value) and index('Hz' 'kHz', unit($value)) != null;
+  @return is-number($value) and list.index(('Hz', 'kHz'), math.unit($value)) != null;
 }
 
 // @return {boolean}
@@ -173,17 +174,17 @@ $config: $defaultConfig !default;
 
 // @return {boolean}
 @function is-relative-length($value) {
-  @return is-number($value) and index('em' 'ex' 'ch' 'rem' 'vw' 'vh' 'vmin' 'vmax', unit($value)) != null;
+  @return is-number($value) and list.index(('em', 'ex', 'ch', 'rem', 'vw', 'vh', 'vmin', 'vmax'), math.unit($value)) != null;
 }
 
 // @return {boolean}
 @function is-absolute-length($value) {
-  @return is-number($value) and index('cm' 'mm' 'in' 'px' 'pt' 'pc', unit($value)) != null;
+  @return is-number($value) and list.index(('cm', 'mm', 'in', 'px', 'pt', 'pc'), math.unit($value)) != null;
 }
 
 // @return {boolean}
 @function is-percentage($value) {
-  @return is-number($value) and unit($value) == '%';
+  @return is-number($value) and math.unit($value) == '%';
 }
 
 // @return {boolean}
@@ -193,17 +194,17 @@ $config: $defaultConfig !default;
 
 // @return {boolean}
 @function is-resolution($value) {
-  @return is-number($value) and index('dpi' 'dpcm' 'dppx', unit($value)) != null;
+  @return is-number($value) and list.index(('dpi', 'dpcm', 'dppx'), math.unit($value)) != null;
 }
 
 // @return {boolean}
 @function is-position($value) {
-  @return is-length($value) or is-percentage($value) or index('top' 'right' 'bottom' 'left' 'center', $value) != null;
+  @return is-length($value) or is-percentage($value) or list.index(('top', 'right', 'bottom', 'left', 'center'), $value) != null;
 }
 
 // @return {boolean}
 @function is-map($value){
-  @return type-of($value) == 'map';
+  @return meta.type-of($value) == 'map';
 }
 
 // Split a string into a list of strings
@@ -214,26 +215,26 @@ $config: $defaultConfig !default;
 @function explode($string, $delimiter) {
   $result: ();
   @if $delimiter == "" {
-    @for $i from 1 through str-length($string) {
-      $result: append($result, str-slice($string, $i, $i));
+    @for $i from 1 through string.length($string) {
+      $result: list.append($result, string.slice($string, $i, $i));
     }
     @return $result;
   }
   $exploding: true;
   @while $exploding {
-    $d-index: str-index($string, $delimiter);
+    $d-index: string.index($string, $delimiter);
     @if $d-index {
       @if $d-index > 1 {
-        $result: append($result, str-slice($string, 1, $d-index - 1));
-        $string: str-slice($string, $d-index + str-length($delimiter));
+        $result: list.append($result, string.slice($string, 1, $d-index - 1));
+        $string: string.slice($string, $d-index + string.length($delimiter));
       } @else if $d-index == 1 {
-        $string: str-slice($string, 1, $d-index + str-length($delimiter));
+        $string: string.slice($string, 1, $d-index + string.length($delimiter));
       } @else {
-        $result: append($result, $string);
+        $result: list.append($result, $string);
         $exploding: false;
       }
     } @else {
-      $result: append($result, $string);
+      $result: list.append($result, $string);
       $exploding: false;
     }
   }
@@ -247,16 +248,16 @@ $config: $defaultConfig !default;
 // @return {string} The result string
 @function implode($pieces, $glue: "") {
   $result: null;
-  @for $i from 1 through length($pieces) {
-    $piece: nth($pieces, $i);
-    @if type-of($piece) == list {
-      $result: unquote("#{$result}#{$glue}#{implode($piece, $glue)}");
+  @for $i from 1 through list.length($pieces) {
+    $piece: list.nth($pieces, $i);
+    @if meta.type-of($piece) == list {
+      $result: string.unquote("#{$result}#{$glue}#{implode($piece, $glue)}");
     } @else {
-      $result: unquote("#{$result}#{$glue}#{$piece}");
+      $result: string.unquote("#{$result}#{$glue}#{$piece}");
     }
   }
   @if $result != null {
-    $result: str-slice($result, str-length($glue) + 1, -1);
+    $result: string.slice($result, string.length($glue) + 1, -1);
   }
   @return $result;
 }
@@ -265,5 +266,5 @@ $config: $defaultConfig !default;
 // @param  {Mixed} $needle
 // @return {boolean}
 @function contains($haystack, $needle) {
-  @return not not index($haystack, $needle);
+  @return not not list.index($haystack, $needle);
 }
