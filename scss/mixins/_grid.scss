@@ -69,7 +69,8 @@
 }
 
 @mixin column($screen, $columns) {
-  $screenText: if($screen, $screen+'\\:', '');
+  $screenText: '';
+  @if $screen { $screenText: $screen+'\\:'; }
 
   .#{$screenText}col {
     flex-grow: 1;
@@ -91,7 +92,8 @@
 }
 
 @mixin column-utilities($screen, $columns) {
-  $screenText: if($screen, $screen+'\\:', '');
+  $screenText: '';
+  @if $screen { $screenText: $screen+'\\:'; }
 
   @for $column from 1 through $columns {
     .#{$screenText}col-#{$column}-offset {
@@ -107,7 +109,8 @@
 }
 
 @mixin row-utilities($screen) {
-  $screenText: if($screen, $screen+'\\:', '');
+  $screenText: '';
+  @if $screen { $screenText: $screen+'\\:'; }
 
   .#{$screenText}items-start { justify-content: flex-start; }
   .#{$screenText}items-end { justify-content: flex-end; }
@@ -135,7 +138,8 @@
 
 @mixin screen-min-max($min-screen, $max-screen) {
   $max-width: conf('grid.screens', $max-screen);
-  $min-width: if(conf('grid.screens', $min-screen) == $max-width, 0, conf('grid.screens', $min-screen));
+  $min-width: 0;
+  @if conf('grid.screens', $min-screen) != $max-width { $min-width: conf('grid.screens', $min-screen); }
   @media (min-width: $min-width) and (max-width: $max-width) {
     @content;
   }

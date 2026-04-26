@@ -12,10 +12,13 @@
 @include colors.make-colors(conf('colors.palette'), conf('colors.gradients'), conf('colors.variants'));
 @include grid.make-grid(conf('grid.gutter'), conf('grid.columns'));
 @include grid.all-screen-min() using ($screenName, $screenWidth, $screenIndex) {
+  @include box.make-shadows($screenName, conf('box.shadow'));
   @each $confKey, $confValues in conf('box') {
-    @each $value in $confValues {
-      $index: list.index($confValues, $value) - 1;
-      @include box.make-box($confKey, $value, $index, $screenName, $screenIndex);
+    @if $confKey != 'shadow' {
+      @each $value in $confValues {
+        $index: list.index($confValues, $value) - 1;
+        @include box.make-box($confKey, $value, $index, $screenName, $screenIndex);
+      }
     }
   }
   @each $confKey, $confValues in conf('typography') {

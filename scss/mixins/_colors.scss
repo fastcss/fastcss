@@ -50,9 +50,8 @@
   }
 
   @if ($gradients) {
-    @each $value in $gradients {
-      $index: list.index($gradients, $value) - 1;
-      @include gradient($index, $value);
+    @each $key, $value in $gradients {
+      @include gradient($key, $value);
     }
   } @else {
     @warn "No gradients defined";
@@ -63,7 +62,8 @@
   $colorData: explode($colorConfigName, ':');
   $colorName: list.nth($colorData, 1);
 
-  $variantText: #{if($variant != '500', '\\:' + $variant, '')};
+  $variantText: '';
+  @if $variant != '500' { $variantText: '\\:' + $variant; }
 
   .#{$colorName + ''}-text#{$variantText} {
     color: get-color($colorConfigName, $variant);
@@ -78,7 +78,8 @@
   $colorData: explode($colorConfigName, ':');
   $colorName: list.nth($colorData, 1);
 
-  $variantText: #{if($variant != '500', '\\:' + $variant, '')};
+  $variantText: '';
+  @if $variant != '500' { $variantText: '\\:' + $variant; }
 
   .#{$colorName + ''}-fill#{$variantText} {
     background-color: get-color($colorConfigName, $variant);
@@ -93,7 +94,8 @@
   $colorData: explode($colorConfigName, ':');
   $colorName: list.nth($colorData, 1);
 
-  $variantText: #{if($variant != '500', '\\:' + $variant, '')};
+  $variantText: '';
+  @if $variant != '500' { $variantText: '\\:' + $variant; }
 
   .#{$colorName + ''}-border#{$variantText} {
     border-color: get-color($colorConfigName, $variant);

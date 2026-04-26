@@ -51,14 +51,15 @@ $defaultConfig: (
     'border-width': (0, 1px, 2px, 3px, 4px),
 
     // Based on google's material shadows guide.
-    // The first shadow is number 0 (bs-0).
+    // Keys become the class suffix: bs-{key}. Numeric keys keep backwards compatibility.
     'shadow': (
-      "none",
-      "0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)",
-      "0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)",
-      "0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)",
-      "0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)",
-      "0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22)",
+      '0': "none",
+      '1': "0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)",
+      '2': "0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)",
+      '3': "0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)",
+      '4': "0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)",
+      '5': "0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22)",
+      'card': "0 2px 8px rgba(0,0,0,0.12), 0 1px 3px rgba(0,0,0,0.08)",
     )
   ),
 
@@ -89,7 +90,7 @@ $defaultConfig: (
       'gray':            #9E9E9E,
       'red:50,100,300,700,900': #F44336,
       'green:50,300,700':   #4CAF50,
-      'blue:50,300,700':    #2196F3,
+      'blue:50,100,300,700,900': #2196F3,
       'orange:50,300,700':  #FF9800,
     ),
 
@@ -108,11 +109,13 @@ $defaultConfig: (
       '900': -52.5,
     ),
 
-    // Gradients (grad-0, grad-1, etc.)
+    // Gradients — keys become the class suffix: grad-{key}
+    // Use numeric keys for backwards compatibility, named keys for readability.
     'gradients': (
-      linear-gradient(90deg, #2196F3 0%, grey 100%),
-      linear-gradient(90deg, grey 0%, #F44336 100%),
-      radial-gradient(#2196F3, #9E9E9E),
+      '0': linear-gradient(90deg, #2196F3 0%, grey 100%),
+      '1': linear-gradient(90deg, grey 0%, #F44336 100%),
+      '2': radial-gradient(#2196F3, #9E9E9E),
+      'blue-to-grey': radial-gradient(#2196F3, #9E9E9E),
     )
   ),
 

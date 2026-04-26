@@ -11,7 +11,8 @@
 // @param  {string} $value
 @mixin make-typography-utilities($type, $key, $value, $screenName:null, $screenIndex:null) {
     // create the prefix
-    $prefix: if($screenName, $screenName+'\\:', '');
+    $prefix: '';
+    @if $screenName { $prefix: $screenName+'\\:'; }
 
     @if $type == 'font-family' {
       @include font-family($key, $value, $prefix);

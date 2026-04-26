@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Fastcss — Documentation</title>
+<link rel="stylesheet" href="dist/fastcss.css" />
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&family=Inconsolata:wght@400;600&display=swap" rel="stylesheet" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* { box-sizing: border-box; }
+body { color: #24292e; font-family: "Source Sans Pro", sans-serif; margin: 0; }
+a { color: #1976D2; text-decoration: none; }
+a:hover { text-decoration: underline; }
+h2, h3, h4 { font-family: "Inconsolata", monospace; font-weight: 600; margin-top: 0; }
+h2 { font-size: 1.6rem; margin-bottom: 6px; }
+h3 { font-size: 1.2rem; margin-bottom: 4px; }
+h4 { font-size: 1rem; margin-bottom: 4px; color: #555; }
+code {
+  font-family: "Inconsolata", monospace;
+  font-size: .85rem;
+  background: #f0f4f8;
+  border: 1px solid #dde3ea;
+  border-radius: 3px;
+  padding: 1px 5px;
+  color: #c0392b;
+}
+pre {
+  background: #f6f8fa;
+  border: 1px solid #e1e4e8;
+  border-radius: 4px;
+  padding: 12px 16px;
+  font-family: "Inconsolata", monospace;
+  font-size: .85rem;
+  overflow-x: auto;
+  line-height: 1.5;
+  margin: 0;
+}
+.sidebar { width: 240px; min-height: 100vh; border-right: 1px solid #e8eaed; background: #fafbfc; overflow-y: auto; position: fixed; top: 0; left: 0; bottom: 0; }
+.content { margin-left: 240px; padding: 40px 60px; max-width: 960px; }
+.nav-group { padding: 12px 20px 4px; }
+.nav-group-title { font-family: "Inconsolata", monospace; font-size: .7rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: #888; margin-bottom: 6px; }
+.nav-link { display: block; padding: 3px 0; font-size: .875rem; color: #444; }
+.nav-link:hover { color: #1976D2; text-decoration: none; }
+.section { border-bottom: 1px solid #e8eaed; padding-bottom: 40px; margin-bottom: 40px; }
+.section:last-child { border-bottom: none; }
+.class-table { width: 100%; border-collapse: collapse; font-size: .875rem; }
+.class-table th { text-align: left; padding: 6px 10px; border-bottom: 2px solid #e1e4e8; font-family: "Inconsolata", monospace; font-size: .8rem; color: #555; }
+.class-table td { padding: 5px 10px; border-bottom: 1px solid #f0f0f0; vertical-align: top; }
+.class-table tr:hover td { background: #fafbfc; }
+.swatch { display: inline-block; width: 24px; height: 24px; border-radius: 3px; vertical-align: middle; border: 1px solid rgba(0,0,0,.08); }
+.demo-box { display: inline-block; padding: 6px 12px; font-size: .8rem; background: #e3f2fd; border-radius: 3px; margin: 2px; }
+.demo-grid-col { background: #bbdefb; border-radius: 3px; padding: 8px; text-align: center; font-size: .8rem; font-family: "Inconsolata", monospace; margin-bottom: 8px; }
+.demo-shadow-box { display: inline-block; width: 80px; height: 50px; background: #fff; border-radius: 4px; margin: 8px; vertical-align: bottom; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: .75rem; font-family: "Inconsolata", monospace; margin: 2px; }
+.top-bar { height: 3px; background: linear-gradient(90deg, #1976D2 0%, #42A5F5 100%); position: fixed; top: 0; left: 0; right: 0; z-index: 99; }
+.anchor-link { color: #ccc; margin-left: 6px; font-size: .85rem; }
+.anchor-link:hover { color: #1976D2; }
+</style>
+</head>
+<body>
+
+<div class="top-bar"></div>
+
+<!-- ─── Sidebar ───────────────────────────────────────────────────────────── -->
+<aside class="sidebar" style="padding-top: 3px;">
+  <div style="padding: 20px 20px 10px;">
+    <div class="fs-xl fw-600" style="font-family:'Inconsolata',monospace;">fastcss</div>
+    <div class="gray-text fs-sm">v0.1 — Reference</div>
+  </div>
+
+  <div class="nav-group">
+    <div class="nav-group-title">Getting Started</div>
+    <a class="nav-link" href="#what-is">What is fastcss</a>
+    <a class="nav-link" href="#install">Installation</a>
+    <a class="nav-link" href="#responsive">Responsive prefixes</a>
+  </div>
+
+  <div class="nav-group">
+    <div class="nav-group-title">Colors</div>
+    <a class="nav-link" href="#colors-text">Text colors</a>
+    <a class="nav-link" href="#colors-fill">Fill (background)</a>
+    <a class="nav-link" href="#colors-border">Border colors</a>
+    <a class="nav-link" href="#colors-gradient">Gradients</a>
+    <a class="nav-link" href="#colors-states">Color state variants</a>
+  </div>
+
+  <div class="nav-group">
+    <div class="nav-group-title">Typography</div>
+    <a class="nav-link" href="#typo-family">Font family</a>
+    <a class="nav-link" href="#typo-size">Font size</a>
+    <a class="nav-link" href="#typo-weight">Font weight</a>
+    <a class="nav-link" href="#typo-style">Font style</a>
+    <a class="nav-link" href="#typo-lh">Line height</a>
+    <a class="nav-link" href="#typo-text">Text utilities</a>
+  </div>
+
+  <div class="nav-group">
+    <div class="nav-group-title">Box Helpers</div>
+    <a class="nav-link" href="#box-padding">Padding</a>
+    <a class="nav-link" href="#box-margin">Margin</a>
+    <a class="nav-link" href="#box-border">Border width</a>
+    <a class="nav-link" href="#box-radius">Border radius</a>
+    <a class="nav-link" href="#box-size">Width &amp; Height</a>
+    <a class="nav-link" href="#box-position">Positions</a>
+    <a class="nav-link" href="#box-z">Z-index</a>
+    <a class="nav-link" href="#box-shadow">Box shadow</a>
+  </div>
+
+  <div class="nav-group">
+    <div class="nav-group-title">Flexbox</div>
+    <a class="nav-link" href="#flex-display">Display</a>
+    <a class="nav-link" href="#flex-direction">Direction</a>
+    <a class="nav-link" href="#flex-wrap">Wrap</a>
+    <a class="nav-link" href="#flex-grow-shrink">Grow &amp; Shrink</a>
+    <a class="nav-link" href="#flex-basis">Basis</a>
+    <a class="nav-link" href="#flex-justify">Justify content</a>
+    <a class="nav-link" href="#flex-align-items">Align items</a>
+    <a class="nav-link" href="#flex-align-content">Align content</a>
+    <a class="nav-link" href="#flex-align-self">Align self</a>
+    <a class="nav-link" href="#flex-order">Order</a>
+    <a class="nav-link" href="#flex-shorthand">Shorthand helpers</a>
+  </div>
+
+  <div class="nav-group">
+    <div class="nav-group-title">Grid</div>
+    <a class="nav-link" href="#grid-container">Container</a>
+    <a class="nav-link" href="#grid-row">Row</a>
+    <a class="nav-link" href="#grid-columns">Columns</a>
+    <a class="nav-link" href="#grid-offset">Offset, push, pull</a>
+    <a class="nav-link" href="#grid-row-utils">Row utilities</a>
+  </div>
+
+  <div class="nav-group">
+    <div class="nav-group-title">Utilities</div>
+    <a class="nav-link" href="#util-display">Display</a>
+    <a class="nav-link" href="#util-position">Position</a>
+    <a class="nav-link" href="#util-overflow">Overflow</a>
+    <a class="nav-link" href="#util-float">Float &amp; Clear</a>
+    <a class="nav-link" href="#util-valign">Vertical align</a>
+    <a class="nav-link" href="#util-group">Group</a>
+    <a class="nav-link" href="#util-list">List</a>
+    <a class="nav-link" href="#util-cursor">Cursor</a>
+    <a class="nav-link" href="#util-states">State toggles</a>
+  </div>
+  <div style="padding: 20px; font-size: .75rem; color: #aaa;">© Lucian Ene</div>
+</aside>
+
+<!-- ─── Main content ──────────────────────────────────────────────────────── -->
+<main class="content">
+
+  <!-- ══════════════════════════════════════════════════════════════
+       GETTING STARTED
+  ══════════════════════════════════════════════════════════════════ -->
+  <div class="section" id="what-is">
+    <h2>What is fastcss <a class="anchor-link" href="#what-is">#</a></h2>
+    <p class="fs-lg gray-text:700 mb-20">A fully customizable, pure-SASS utility CSS framework. Generate only the classes you need from a single config map.</p>
+    <p>Fastcss generates helper classes at build time from a SASS <code>$config</code> map. The config controls colors, spacing scale, screen breakpoints, typography and more — so the final CSS only contains what you actually configured.</p>
+  </div>
+
+  <div class="section" id="install">
+    <h2>Installation <a class="anchor-link" href="#install">#</a></h2>
+    <div class="mb-20">
+      <h3>npm / yarn</h3>
+      <pre>npm install fastcss
+# or
+yarn add fastcss</pre>
+    </div>
+    <div class="mb-20">
+      <h3>Import in your SCSS</h3>
+      <pre>// Use default config
+@use 'fastcss';
+
+// Or supply your own config
+@use 'fastcss' with ($config: $myConfig);</pre>
+    </div>
+    <div>
+      <h3>Compile</h3>
+      <pre>sass scss/build.scss dist/fastcss.css</pre>
+    </div>
+  </div>
+
+  <div class="section" id="responsive">
+    <h2>Responsive prefixes <a class="anchor-link" href="#responsive">#</a></h2>
+    <p class="mb-15">Almost every utility class is generated for each breakpoint defined in <code>grid.screens</code>. Prefix a class with <code>{screen}:</code> to apply it only at that breakpoint and above.</p>
+    <table class="class-table">
+      <thead><tr><th>Prefix</th><th>Breakpoint</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td><em>(none)</em></td><td>All sizes</td><td><code>flex-col</code></td></tr>
+        <tr><td><code>xs:</code></td><td>≥ 576px</td><td><code>xs:flex-row</code></td></tr>
+        <tr><td><code>sm:</code></td><td>≥ 768px</td><td><code>sm:col-6</code></td></tr>
+        <tr><td><code>md:</code></td><td>≥ 992px</td><td><code>md:hidden</code></td></tr>
+        <tr><td><code>lg:</code></td><td>≥ 1200px</td><td><code>lg:col-3</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       COLORS
+  ══════════════════════════════════════════════════════════════════ -->
+  <div class="section" id="colors-text">
+    <h2>Text colors <a class="anchor-link" href="#colors-text">#</a></h2>
+    <p class="mb-15">Format: <code>{color}-text</code> (base / 500 variant) or <code>{color}-text:{variant}</code></p>
+    <div class="flex flex-wrap mb-15" style="gap:6px;">
+      <span class="transparent-text" style="background:#eee;padding:4px 10px;border-radius:3px;">transparent-text</span>
+      <span class="black-text">black-text</span>
+      <span class="white-text gray-fill" style="padding:2px 8px;border-radius:3px;">white-text</span>
+      <span class="gray-text">gray-text</span>
+      <span class="red-text">red-text</span>
+      <span class="green-text">green-text</span>
+      <span class="blue-text">blue-text</span>
+      <span class="orange-text">orange-text</span>
+    </div>
+    <div class="flex flex-wrap mb-20" style="gap:6px;">
+      <span class="blue-text:50">blue-text:50</span>
+      <span class="blue-text:300">blue-text:300</span>
+      <span class="blue-text">blue-text (500)</span>
+      <span class="blue-text:700">blue-text:700</span>
+      <span class="blue-text:900">blue-text:900</span>
+    </div>
+    <table class="class-table">
+      <thead><tr><th>Class</th><th>CSS</th></tr></thead>
+      <tbody>
+        <tr><td><code>{color}-text</code></td><td><code>color: {hex}</code> — base (500) variant</td></tr>
+        <tr><td><code>{color}-text:{variant}</code></td><td><code>color: {computed hex}</code></td></tr>
+        <tr><td colspan="2" style="color:#888;font-size:.8rem;">Variants: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900 (only configured variants are generated per color)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section" id="colors-fill">
+    <h2>Fill (background) <a class="anchor-link" href="#colors-fill">#</a></h2>
+    <p class="mb-15">Format: <code>{color}-fill</code> or <code>{color}-fill:{variant}</code></p>
+    <div class="flex flex-wrap mb-20" style="gap:6px;">
+      <span class="badge blue-fill white-text">blue-fill</span>
+      <span class="badge blue-fill:50">blue-fill:50</span>
+      <span class="badge blue-fill:300 white-text">blue-fill:300</span>
+      <span class="badge blue-fill:700 white-text">blue-fill:700</span>
+      <span class="badge red-fill white-text">red-fill</span>
+      <span class="badge green-fill white-text">green-fill</span>
+      <span class="badge orange-fill">orange-fill</span>
+      <span class="badge gray-fill white-text">gray-fill</span>
+      <span class="badge black-fill white-text">black-fill</span>
+      <span class="badge white-fill" style="border:1px solid #ddd;">white-fill</span>
+    </div>
+    <table class="class-table">
+      <thead><tr><th>Class</th><th>CSS</th></tr></thead>
+      <tbody>
+        <tr><td><code>{color}-fill</code></td><td><code>background-color: {hex}</code> — base (500) variant</td></tr>
+        <tr><td><code>{color}-fill:{variant}</code></td><td><code>background-color: {computed hex}</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section" id="colors-border">
+    <h2>Border colors <a class="anchor-link" href="#colors-border">#</a></h2>
+    <p class="mb-10">Format: <code>{color}-border</code> or <code>{color}-border:{variant}</code>. Requires a border-width class (e.g. <code>b-1</code>) to be visible.</p>
+    <div class="flex flex-wrap mb-20" style="gap:8px;">
+      <div class="b-2 blue-border rad-3" style="padding:6px 12px;">blue-border</div>
+      <div class="b-2 red-border rad-3" style="padding:6px 12px;">red-border</div>
+      <div class="b-2 green-border rad-3" style="padding:6px 12px;">green-border</div>
+      <div class="b-2 gray-border rad-3" style="padding:6px 12px;">gray-border</div>
+      <div class="b-2 blue-border:300 rad-3" style="padding:6px 12px;">blue-border:300</div>
+      <div class="b-2 blue-border:700 rad-3" style="padding:6px 12px;">blue-border:700</div>
+    </div>
+    <table class="class-table">
+      <thead><tr><th>Class</th><th>CSS</th></tr></thead>
+      <tbody>
+        <tr><td><code>{color}-border</code></td><td><code>border-color: {hex}</code></td></tr>
+        <tr><td><code>{color}-border:{variant}</code></td><td><code>border-color: {computed hex}</code></td></tr>
+        <tr><td colspan="2" style="color:#888;font-size:.8rem;">Note: <code>[class*="-border"]</code> also sets <code>border-style: solid; border-width: 0</code> automatically.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section" id="colors-gradient">
+    <h2>Gradients <a class="anchor-link" href="#colors-gradient">#</a></h2>
+    <p class="mb-10">Format: <code>grad-{key}</code> — the key is defined in <code>colors.gradients</code> config. Use numeric keys for backwards compatibility and named keys for readability.</p>
+    <pre class="mb-15">'gradients': (
+  '0':            linear-gradient(...), // → .grad-0
+  'blue-to-grey': radial-gradient(...), // → .grad-blue-to-grey
+)</pre>
+    <div class="flex flex-wrap mb-20" style="gap:8px;">
+      <div class="grad-0 white-text rad-3" style="padding:8px 20px;">grad-0</div>
+      <div class="grad-1 white-text rad-3" style="padding:8px 20px;">grad-1</div>
+      <div class="grad-2 white-text rad-3" style="padding:8px 20px;">grad-2</div>
+      <div class="grad-blue-to-grey white-text rad-3" style="padding:8px 20px;">grad-blue-to-grey</div>
+    </div>
+    <table class="class-table">
+      <thead><tr><th>Class</th><th>CSS</th></tr></thead>
+      <tbody>
+        <tr><td><code>grad-0</code></td><td><code>background: linear-gradient(90deg, #2196F3 0%, grey 100%)</code></td></tr>
+        <tr><td><code>grad-1</code></td><td><code>background: linear-gradient(90deg, grey 0%, #F44336 100%)</code></td></tr>
+        <tr><td><code>grad-2</code></td><td><code>background: radial-gradient(#2196F3, #9E9E9E)</code></td></tr>
+        <tr><td><code>grad-blue-to-grey</code></td><td><code>background: radial-gradient(#2196F3, #9E9E9E)</code></td></tr>
+      </tbody>
+    </table>
+    <p class="fs-sm gray-text mt-10">State variants are also generated: <code>hover:grad-0</code>, <code>hover:grad-blue-to-grey</code>, etc.</p>
+  </div>
+
+  <div class="section" id="colors-states">
+    <h2>Color state variants <a class="anchor-link" href="#colors-states">#</a></h2>
+    <p class="mb-15">All color classes (text, fill, border, gradients) are also generated for <code>hover:</code>, <code>focus:</code>, and <code>active:</code> states.</p>
+    <div class="flex flex-wrap mb-20" style="gap:8px;">
+      <button class="blue-fill white-text b-0 rad-3 cursor-pointer hover:blue-fill:700" style="padding:8px 16px;">hover:blue-fill:700</button>
+      <button class="gray-fill:100 cursor-pointer hover:red-text b-1 gray-border rad-3" style="padding:8px 16px;">hover:red-text</button>
+    </div>
+    <table class="class-table">
+      <thead><tr><th>Class</th><th>Applies when</th></tr></thead>
+      <tbody>
+        <tr><td><code>hover:{color}-text</code></td><td>Element is hovered</td></tr>
+        <tr><td><code>hover:{color}-fill</code></td><td>Element is hovered</td></tr>
+        <tr><td><code>hover:{color}-border</code></td><td>Element is hovered</td></tr>
+        <tr><td><code>focus:{color}-text</code></td><td>Element is focused</td></tr>
+        <tr><td><code>active:{color}-fill</code></td><td>Element is active (clicked)</td></tr>
+        <tr><td><code>hover:grad-{n}</code></td><td>Element is hovered</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       TYPOGRAPHY
+  ══════════════════════════════════════════════════════════════════ -->
+  <div class="section" id="typo-family">
+    <h2>Font family <a class="anchor-link" href="#typo-family">#</a></h2>
+    <p class="mb-15">Format: <code>ff-{name}</code></p>
+    <table class="class-table">
+      <thead><tr><th>Class</th><th>font-family</th><th>Preview</th></tr></thead>
+      <tbody>
+        <tr><td><code>ff-base</code></td><td>Roboto, -apple-system, sans-serif</td><td class="ff-base">The quick brown fox</td></tr>
+        <tr><td><code>ff-sans</code></td><td>Roboto, -apple-system, sans-serif</td><td class="ff-sans">The quick brown fox</td></tr>
+        <tr><td><code>ff-serif</code></td><td>serif</td><td class="ff-serif">The quick brown fox</td></tr>
+        <tr><td><code>ff-mono</code></td><td>monospace</td><td class="ff-mono">The quick brown fox</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section" id="typo-size">
+    <h2>Font size <a class="anchor-link" href="#typo-size">#</a></h2>
+    <p class="mb-15">Format: <code>fs-{key}</code></p>
+    <table class="class-table">
+      <thead><tr><th>Class</th><th>Size</th><th>Preview</th></tr></thead>
+      <tbody>
+        <tr><td><code>fs-xxs</code></td><td>0.625rem (10px)</td><td class="fs-xxs">The quick brown fox</td></tr>
+        <tr><td><code>fs-xs</code></td><td>0.75rem (12px)</td><td class="fs-xs">The quick brown fox</td></tr>
+        <tr><td><code>fs-sm</code></td><td>0.875rem (14px)</td><td class="fs-sm">The quick brown fox</td></tr>
+        <tr><td><code>fs-base</code></td><td>16px</td><td class="fs-base">The quick brown fox</td></tr>
+        <tr><td><code>fs-lg</code></td><td>1.25rem (20px)</td><td class="fs-lg">The quick brown fox</td></tr>
+        <tr><td><code>fs-xl</code></td><td>1.5rem (24px)</td><td class="fs-xl">The quick brown fox</td></tr>
+        <tr><td><code>fs-hg</code></td><td>2rem (32px)</td><td class="fs-hg">Heading</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section" id="typo-weight">
+    <h2>Font weight <a class="anchor-link" href="#typo-weight">#</a></h2>
+    <p class="mb-15">Format: <code>fw-{weight}</code></p>
+    <div class="flex flex-wrap mb-20" style="gap:16px;align-items:baseline;">
+      <span class="fw-400">fw-400 — Regular</span>
+      <span class="fw-600">fw-600 — SemiBold</span>
+      <span class="fw-700">fw-700 — Bold</span>
+    </div>
+    <table class="class-table">
+      <thead><tr><th>Class</th><th>font-weight</th></tr></thead>
+      <tbody>
+        <tr><td><code>fw-400</code></td><td>400</td></tr>
+        <tr><td><code>fw-600</code></td><td>600</td></tr>
+        <tr><td><code>fw-700</code></td><td>700</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section" id="typo-style">
+    <h2>Font style <a class="anchor-link" href="#typo-style">#</a></h2>
+    <p class="mb-15">Format: <code>fs-{style}</code></p>
+    <table class="class-table">
+      <thead><tr><th>Class</th><th>font-style</th><th>Preview</th></tr></thead>
+      <tbody>
+        <tr><td><code>fs-normal</code></td><td>normal</td><td class="fs-normal">The quick brown fox</td></tr>
+        <tr><td><code>fs-italic</code></td><td>italic</td><td class="fs-italic">The quick brown fox</td></tr>
+        <tr><td><code>fs-oblique</code></td><td>oblique</td><td class="fs-oblique">The quick brown fox</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section" id="typo-lh">
+    <h2>Line height <a class="anchor-link" href="#typo-lh">#</a></h2>
+    <p class="mb-15">Format: <code>lh-{key}</code></p>
+    <table class="class-table">
+      <thead><tr><th>Class</th><th>line-height</th></tr></thead>
+      <tbody>
+        <tr><td><code>lh-0</code></td><td>0</td></tr>
+        <tr><td><code>lh-1</code> / <code>lh-xs</code></td><td>1</td></tr>
+        <tr><td><code>lh-base</code></td><td>1.375</td></tr>
+        <tr><td><code>lh-lg</code></td><td>1.5</td></tr>
+      </tbody>
+    </table>
+    <div class="mt-15">
+      <h4>Also available</h4>
+      <table class="class-table">
+        <thead><tr><th>Class</th><th>CSS</th></tr></thead>
+        <tbody>
+          <tr><td><code>ws-base</code></td><td><code>word-spacing: .03em</code></td></tr>
+          <tr><td><code>ls-base</code></td><td><code>letter-spacing: 0</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="section" id="typo-text">
+    <h2>Text utilities <a class="anchor-link" href="#typo-text">#</a></h2>
+    <p class="mb-15">Responsive — all classes work with screen prefixes.</p>
+    <table class="class-table">
+      <thead><tr><th>Class</th><th>CSS</th><th>Preview</th></tr></thead>
+      <tbody>
+        <tr><td><code>text-left</code></td><td><code>text-align: left</code></td><td class="text-left" style="width:160px;">Left aligned text</td></tr>
+        <tr><td><code>text-center</code></td><td><code>text-align: center</code></td><td class="text-center" style="width:160px;">Center aligned</td></tr>
+        <tr><td><code>text-right</code></td><td><code>text-align: right</code></td><td class="text-right" style="width:160px;">Right aligned</td></tr>
+        <tr><td><code>text-lowercase</code></td><td><code>text-transform: lowercase</code></td><td class="text-lowercase">LOWER CASE</td></tr>
+        <tr><td><code>text-uppercase</code></td><td><code>text-transform: uppercase</code></td><td class="text-uppercase">upper case</td></tr>
+        <tr><td><code>text-capitalize</code></td><td><code>text-transform: capitalize</code></td><td class="text-capitalize">capitalize each word</td></tr>
+        <tr><td><code>text-strike</code></td><td><code>text-decoration: line-through</code></td><td class="text-strike">Strikethrough text</td></tr>
+        <tr><td><code>text-underline</code></td><td><code>text-decoration: underline</code></td><td class="text-underline">Underlined text</td></tr>
+        <tr><td><code>no-decoration</code> / <code>text-no-decoration</code></td><td><code>text-decoration: none</code></td><td class="no-decoration" style="text-decoration:underline;">No decoration</td></tr>
+        <tr><td><code>text-nowrap</code></td><td><code>white-space: nowrap</code></td><td>—</td></tr>
+        <tr><td><code>text-wrap</code></td><td><code>white-space: wrap</code></td><td>—</td></tr>
+      </tbody>
+    </table>
+    <p class="fs-sm gray-text mt-10">State variants available: <code>hover:text-strike</code>, <code>hover:text-underline</code>, <code>hover:no-decoration</code></p>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       BOX HELPERS
+  ══════════════════════════════════════════════════════════════════ -->
+  <div class="section" id="box-padding">
+    <h2>Padding <a class="anchor-link" href="#box-padding">#</a></h2>
+    <p class="mb-10">Format: <code>{direction}-{value}</code>. Values from config: <strong>0, 1, 2, 3, 4, 5, 10, 15, 20</strong></p>
+    <table class="class-table">
+      <thead><tr><th>Class</th><th>CSS</th></tr></thead>
+      <tbody>
+        <tr><td><code>p-{n}</code></td><td><code>padding: {n}px</code></td></tr>
+        <tr><td><code>pt-{n}</code></td><td><code>padding-top: {n}px</code></td></tr>
+        <tr><td><code>pr-{n}</code></td><td><code>padding-right: {n}px</code></td></tr>
+        <tr><td><code>pb-{n}</code></td><td><code>padding-bottom: {n}px</code></td></tr>
+        <tr><td><code>pl-{n}</code></td><td><code>padding-left: {n}px</code></td></tr>
+        <tr><td><code>pv-{n}</code></td><td><code>padding-top + padding-bottom: {n}px</code></td></tr>
+        <tr><td><code>ph-{n}</code></td><td><code>padding-left + padding-right: {n}px</code></td></tr>
+      </tbody>
+    </table>
+    <div class="mt-15 flex flex-wrap" style="gap:8px;">
+      <div class="p-5 blue-fill:50 rad-3 fs-sm">p-5</div>
+      <div class="p-10 blue-fill:50 rad-3 fs-sm">p-10</div>
+      <div class="p-20 blue-fill:50 rad-3 fs-sm">p-20</div>
+      <div class="pv-10 ph-20 blue-fill:50 rad-3 fs-sm">pv-10 ph-20</div>
+    </div>
+  </div>
+
+  <div class="section" id="box-margin">
+    <h2>Margin <a class="anchor-link" href="#box-margin">#</a></h2>
+    <p class="mb-10">Format: <code>m{direction}-{value}</code>. Values: <strong>0, 5, 10, 15, 20, 30, 40, auto</strong></p>
+    <table class="class-table">
+      <thead><tr><th>Class</th><th>CSS</th></tr></thead>
+      <tbody>
+        <tr><td><code>m-{n}</code></td><td><code>margin: {n}px</code></td></tr>
+        <tr><td><code>mt-{n}</code></td><td><code>margin-top: {n}px</code></td></tr>
+        <tr><td><code>mr-{n}</code></td><td><code>margin-right: {n}px</code></td></tr>
+        <tr><td><code>mb-{n}</code></td><td><code>margin-bottom: {n}px</code></td></tr>
+        <tr><td><code>ml-{n}</code></td><td><code>margin-left: {n}px</code></td></tr>
+        <tr><td><code>mv-{n}</code></td><td><code>margin-top + margin-bottom: {n}px</code></td></tr>
+        <tr><td><code>mh-{n}</code></td><td><code>margin-left + margin-right: {n}px</code></td></tr>
+        <tr><td><code>mh-auto</code></td><td><code>margin-left: auto; margin-right: auto</code> — center block</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section" id="box-border">
+    <h2>Border width <a class="anchor-link" href="#box-border">#</a></h2>
+    <p class="mb-10">Format: <code>b{direction}-{value}</code>. Values: <strong>0, 1, 2, 3, 4</strong>. Combine with a <code>{color}-border</code> class to set the color — border-style is set automatically.</p>
+    <table class="class-table mb-20">
+      <thead><tr><th>Class</th><th>CSS property</th></tr></thead>
+      <tbody>
+        <tr><td><code>b-{n}</code></td><td><code>border-width</code> — all sides</td></tr>
+        <tr><td><code>bt-{n}</code></td><td><code>border-top-width</code></td></tr>
+        <tr><td><code>br-{n}</code></td><td><code>border-right-width</code></td></tr>
+        <tr><td><code>bb-{n}</code></td><td><code>border-bottom-width</code></td></tr>
+        <tr><td><code>bl-{n}</code></td><td><code>border-left-width</code></td></tr>
+        <tr><td><code>bv-{n}</code></td><td><code>border-top-width + border-bottom-width</code> — vertical</td></tr>
+        <tr><td><code>bh-{n}</code></td><td><code>border-left-width + border-right-width</code> — horizontal</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Directions</h3>
+    <div class="row fs-sm mb-20" style="gap:0;">
+      <div class="sm:col-3 p-2">
+        <div class="gray-fill:50 p-2 bt-2 blue-border text-center">
+          <code>bt-2</code>
+        </div>
+      </div>
+      <div class="sm:col-3 p-2">
+        <div class="gray-fill:50 p-2 br-2 blue-border text-center">
+          <code>br-2</code>
+        </div>
+      </div>
+      <div class="sm:col-3 p-2">
+        <div class="gray-fill:50 p-2 bb-2 blue-border text-center">
+          <code>bb-2</code>
+        </div>
+      </div>
+      <div class="sm:col-3 p-2">
+        <div class="gray-fill:50 p-2 bl-2 blue-border text-center">
+          <code>bl-2</code>
+        </div>
+      </div>
+      <div class="sm:col-3 p-2">
+        <div class="gray-fill:50 p-2 bv-2 blue-border text-center">
+          <code>bv-2</code>
+        </div>
+      </div>
+      <div class="sm:col-3 p-2">
+        <div class="gray-fill:50 p-2 bh-2 blue-border text-center">
+          <code>bh-2</code>
+        </div>
+      </div>
+      <div class="sm:col-3 p-2">
+        <div class="gray-fill:50 p-2 b-2 blue-border text-center">
+          <code>b-2</code>
+        </div>
+      </div>
+      <div class="sm:col-3 p-2">
+        <div class="gray-fill:50 p-2 b-0 blue-border text-center">
+          <code>b-0</code>
+        </div>
+      </div>
+    </div>
+
+    <h3>Widths</h3>
+    <div class="flex flex-wrap mb-20" style="gap:8px;align-items:flex-end;">
+      <div class="gray-fill:50 p-2 bl-1 blue-border text-center fs-sm" style="min-width:60px;"><code>bl-1</code></div>
+      <div class="gray-fill:50 p-2 bl-2 blue-border text-center fs-sm" style="min-width:60px;"><code>bl-2</code></div>
+      <div class="gray-fill:50 p-2 bl-3 blue-border text-center fs-sm" style="min-width:60px;"><code>bl-3</code></div>
+      <div class="gray-fill:50 p-2 bl-4 blue-border text-center fs-sm" style="min-width:60px;"><code>bl-4</code></div>
+    </div>
+
+    <h3>Combined directions with color</h3>
+    <div class="row fs-sm" style="gap:0;">
+      <div class="sm:col-3 p-2">
+        <div class="gray-fill:50 p-2 bl-1 bb-1 red-border text-center">
+          <code>bl-1 bb-1</code><br><code class="gray-text">red-border</code>
+        </div>
+      </div>
+      <div class="sm:col-3 p-2">
+        <div class="gray-fill:50 p-2 b-1 green-border text-center">
+          <code>b-1</code><br><code class="gray-text">green-border</code>
+        </div>
+      </div>
+      <div class="sm:col-3 p-2">
+        <div class="gray-fill:50 p-2 bt-1 bb-1 blue-border text-center">
+          <code>bt-1 bb-1</code><br><code class="gray-text">blue-border</code>
+        </div>
+      </div>
+      <div class="sm:col-3 p-2">
+        <div class="gray-fill:50 p-2 br-1 bb-1 gray-border text-center">
+          <code>br-1 bb-1</code><br><code class="gray-text">gray-border</code>
+        </div>
+      </div>
+      <div class="sm:col-3 p-2">
+        <div class="gray-fill:50 p-2 bt-3 bl-3 orange-border text-center">
+          <code>bt-3 bl-3</code><br><code class="gray-text">orange-border</code>
+        </div>
+      </div>
+      <div class="sm:col-3 p-2">
+        <div class="gray-fill:50 p-2 bb-3 blue-border text-center">
+          <code>bb-3</code><br><code class="gray-text">blue-border</code>
+        </div>
+      </div>
+      <div class="sm:col-3 p-2">
+        <div class="gray-fill:50 p-2 bh-2 red-border text-center">
+          <code>bh-2</code><br><code class="gray-text">red-border</code>
+        </div>
+      </div>
+      <div class="sm:col-3 p-2">
+        <div class="gray-fill:50 p-2 bv-2 green-border text-center">
+          <code>bv-2</code><br><code class="gray-text">green-border</code>
+        </div>
+      </div>
+    </div>
+    <p class="fs-sm gray-text mt-10">All border classes also work with responsive prefixes: <code>sm:bl-2</code>, <code>md:b-0</code>, etc.</p>
+  </div>
+
+  <div class="section" id="box-radius">
+    <h2>Border radius <a class="anchor-link" href="#box-radius">#</a></h2>
+    <p class="mb-10">Format: <code>rad-{value}</code>. Values: <strong>0, 3, 5, 10, 50%</strong></p>
+    <table class="class-table">
+      <thead><tr><th>Class</th><th>CSS</th></tr></thead>
+      <tbody>
+        <tr><td><code>rad-{n}</code></td><td><code>border-radius: {n}px</code></td></tr>
+        <tr><td><code>radtl-{n}</code></td><td><code>border-top-left-radius: {n}px</code></td></tr>
+        <tr><td><code>radtr-{n}</code></td><td><code>border-top-right-radius: {n}px</code></td></tr>
+        <tr><td><code>radbl-{n}</code></td><td><code>border-bottom-left-radius: {n}px</code></td></tr>
+        <tr><td><code>radbr-{n}</code></td><td><code>border-bottom-right-radius: {n}px</code></td></tr>
+      </tbody>
+    </table>
+    <div class="mt-15 flex flex-wrap" style="gap:8px;align-items:center;">
+      <div class="blue-fill:100 p-15 rad-0 fs-sm">rad-0</div>
+      <div class="blue-fill:100 p-15 rad-3 fs-sm">rad-3</div>
+      <div class="blue-fill:100 p-15 rad-5 fs-sm">rad-5</div>
+      <div class="blue-fill:100 p-15 rad-10 fs-sm">rad-10</div>
+      <div class="blue-fill:100 p-15 rad-50\% fs-sm">rad-50%</div>
+    </div>
+  </div>
+
+  <div class="section" id="box-size">
+    <h2>Width &amp; Height <a class="anchor-link" href="#box-size">#</a></h2>
+    <p class="mb-10">Width values: <strong>10, 15, 20, 1200, 100%</strong> — Height values: <strong>10, 15, 20, 100%, 1</strong></p>
+    <table class="class-table">
+      <thead><tr><th>Class</th><th>CSS</th></tr></thead>
+      <tbody>
+        <tr><td><code>w-{n}</code></td><td><code>width: {n}px</code></td></tr>
+        <tr><td><code>minw-{n}</code></td><td><code>min-width: {n}px</code></td></tr>
+        <tr><td><code>maxw-{n}</code></td><td><code>max-width: {n}px</code></td></tr>
+        <tr><td><code>w-100\%</code></td><td><code>width: 100%</code></td></tr>
+        <tr><td><code>h-{n}</code></td><td><code>height: {n}px</code></td></tr>
+        <tr><td><code>minh-{n}</code></td><td><code>min-height: {n}px</code></td></tr>
+        <tr><td><code>maxh-{n}</code></td><td><code>max-height: {n}px</code></td></tr>
+        <tr><td><code>h-100\%</code></td><td><code>height: 100%</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section" id="box-position">
+    <h2>Positions <a class="anchor-link" href="#box-position">#</a></h2>
+    <p class="mb-10">Used with <code>absolute</code> / <code>fixed</code> / <code>sticky</code>. Values: <strong>0, 5, 10, 15</strong></p>
+    <table class="class-table">
+      <thead><tr><th>Class</th><th>CSS</th></tr></thead>
+      <tbody>
+        <tr><td><code>top-{n}</code></td><td><code>top: {n}px</code></td></tr>
+        <tr><td><code>right-{n}</code></td><td><code>right: {n}px</code></td></tr>
+        <tr><td><code>bottom-{n}</code></td><td><code>bottom: {n}px</code></td></tr>
+        <tr><td><code>left-{n}</code></td><td><code>left: {n}px</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section" id="box-z">
+    <h2>Z-index <a class="anchor-link" href="#box-z">#</a></h2>
+    <p class="mb-10">Format: <code>z-{value}</code>. Values: <strong>-1, 1, 2, 3, 99</strong></p>
+    <table class="class-table">
+      <thead><tr><th>Class</th><th>CSS</th></tr></thead>
+      <tbody>
+        <tr><td><code>z--1</code></td><td><code>z-index: -1</code></td></tr>
+        <tr><td><code>z-1</code></td><td><code>z-index: 1</code></td></tr>
+        <tr><td><code>z-2</code></td><td><code>z-index: 2</code></td></tr>
+        <tr><td><code>z-3</code></td><td><code>z-index: 3</code></td></tr>
+        <tr><td><code>z-99</code></td><td><code>z-index: 99</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section" id="box-shadow">
+    <h2>Box shadow <a class="anchor-link" href="#box-shadow">#</a></h2>
+    <p class="mb-10">Format: <code>bs-{key}</code> — the key is defined in <code>box.shadow</code> config. Use numeric keys for backwards compatibility and named keys for readability.</p>
+    <pre class="mb-20">'shadow': (
+  '0':    "none",                          // → .bs-0
+  '1':    "0 1px 3px rgba(0,0,0,0.12)...", // → .bs-1
+  'card': "0 2px 8px rgba(0,0,0,0.12)...", // → .bs-card
+)</pre>
+
+    <h3>Material scale (bs-0 → bs-5)</h3>
+    <div class="flex flex-wrap mb-20" style="gap:20px;align-items:flex-end;">
+      <div class="flex-col-center" style="gap:6px;">
+        <div class="demo-shadow-box bs-0 flex-center fs-sm gray-text">bs-0</div>
+        <code class="fs-sm">none</code>
+      </div>
+      <div class="flex-col-center" style="gap:6px;">
+        <div class="demo-shadow-box bs-1 flex-center fs-sm gray-text">bs-1</div>
+        <code class="fs-sm">dp1</code>
+      </div>
+      <div class="flex-col-center" style="gap:6px;">
+        <div class="demo-shadow-box bs-2 flex-center fs-sm gray-text">bs-2</div>
+        <code class="fs-sm">dp2</code>
+      </div>
+      <div class="flex-col-center" style="gap:6px;">
+        <div class="demo-shadow-box bs-3 flex-center fs-sm gray-text">bs-3</div>
+        <code class="fs-sm">dp3</code>
+      </div>
+      <div class="flex-col-center" style="gap:6px;">
+        <div class="demo-shadow-box bs-4 flex-center fs-sm gray-text">bs-4</div>
+        <code class="fs-sm">dp4</code>
+      </div>
+      <div class="flex-col-center" style="gap:6px;">
+        <div class="demo-shadow-box bs-5 flex-center fs-sm gray-text">bs-5</div>
+        <code class="fs-sm">dp5</code>
+      </div>
+      <div class="flex-col-center" style="gap:6px;">
+        <div class="demo-shadow-box bs-card flex-center fs-sm gray-text">bs-card</div>
+        <code class="fs-sm">card</code>
+      </div>
+    </div>
+
+    <table class="class-table mb-20">
+      <thead><tr><th>Class</th><th>box-shadow</th></tr></thead>
+      <tbody>
+        <tr><td><code>bs-0</code></td><td>none</td></tr>
+        <tr><td><code>bs-1</code></td><td>0 1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.24)</td></tr>
+        <tr><td><code>bs-2</code></td><td>0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23)</td></tr>
+        <tr><td><code>bs-3</code></td><td>0 10px 20px rgba(0,0,0,.19), 0 6px 6px rgba(0,0,0,.23)</td></tr>
+        <tr><td><code>bs-4</code></td><td>0 14px 28px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.22)</td></tr>
+        <tr><td><code>bs-5</code></td><td>0 19px 38px rgba(0,0,0,.30), 0 15px 12px rgba(0,0,0,.22)</td></tr>
+        <tr><td><code>bs-card</code></td><td>0 2px 8px rgba(0,0,0,.12), 0 1px 3px rgba(0,0,0,.08)</td></tr>
+      </tbody>
+    </table>
+
+    <h3>State variants</h3>
+    <p class="mb-15">Every shadow class is also generated for <code>hover:</code>, <code>focus:</code>, and <code>active:</code> states. Useful for interactive elements like cards and buttons.</p>
+    <table class="class-table mb-15">
+      <thead><tr><th>Class</th><th>Applies when</th></tr></thead>
+      <tbody>
+        <tr><td><code>hover:bs-{key}</code></td><td>Element is hovered</td></tr>
+        <tr><td><code>focus:bs-{key}</code></td><td>Element is focused</td></tr>
+        <tr><td><code>active:bs-{key}</code></td><td>Element is active (clicked)</td></tr>
+      </tbody>
+    </table>
+    <div class="flex flex-wrap mb-10" style="gap:12px;">
+      <div class="demo-shadow-box bs-1 hover:bs-4 flex-center fs-sm gray-text cursor-pointer" style="transition:box-shadow .2s;">hover:bs-4</div>
+      <div class="demo-shadow-box bs-0 hover:bs-card flex-center fs-sm gray-text cursor-pointer" style="transition:box-shadow .2s;">hover:bs-card</div>
+      <div class="demo-shadow-box bs-2 active:bs-0 flex-center fs-sm gray-text cursor-pointer" style="transition:box-shadow .1s;">active:bs-0</div>
+    </div>
+    <pre class="mb-10">&lt;div class="bs-1 hover:bs-4"&gt;Card&lt;/div&gt;
+&lt;div class="bs-0 hover:bs-card"&gt;Flat card&lt;/div&gt;
+&lt;button class="bs-2 active:bs-0"&gt;Button&lt;/button&gt;</pre>
+    <p class="fs-sm gray-text">Add any key to <code>box.shadow</code> in your config to generate a new <code>bs-{key}</code> class with state variants automatically included.</p>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       FLEXBOX
+  ══════════════════════════════════════════════════════════════════ -->
+  <div class="section" id="flex-display">
+    <h2>Flexbox — Display <a class="anchor-link" href="#flex-display">#</a></h2>
+    <table class="class-table">
+      <thead><tr><th>Class</th><th>CSS</th></tr></thead>
+      <tbody>
+        <tr><td><code>flex</code></td><td><code>display: flex</code></td></tr>
+        <tr><td><code>inline-flex</code></td><td><code>display: inline-flex</code></td></tr>
+        <tr><td><code>flex-1</code> … <code>flex-6</code></td><td><code>flex: 1</code> … <code>flex: 6</code></td></tr>
+        <tr><td><code>flex-auto</code></td><td><code>flex: 1 1 auto</code></td></tr>
+        <tr><td><code>flex-initial</code></td><td><code>flex: 0 1 auto</code></td></tr>
+        <tr><td><code>flex-none</code></td><td><code>flex: none</code></td></tr>
+      </tbody>
+    </table>
+    <div class="mt-15 flex" style="gap:4px;">
+      <div class="flex-2 blue-fill:50 p-10 rad-3 text-center fs-sm">flex-2</div>
+      <div class="flex-1 green-fill:50 p-10 rad-3 text-center fs-sm">flex-1</div>
+      <div class="flex-3 orange-fill:50 p-10 rad-3 text-center fs-sm">flex-3</div>
+    </div>
+  </div>
+
+  <div class="section" id="flex-direction">
+    <h2>Flexbox — Direction <a class="anchor-link" href="#flex-direction">#</a></h2>
+    <table class="class-table">
+      <thead><tr><th>Class</th><th>CSS</th></tr></thead>
+      <tbody>
+        <tr><td><code>flex-row</code></td><td><code>flex-direction: row</code></td></tr>
+        <tr><td><code>flex-row-reverse</code></td><td><code>flex-direction: row-reverse</code></td></tr>
+        <tr><td><code>flex-col</code></td><td><code>flex-direction: column</code></td></tr>
+        <tr><td><code>flex-col-reverse</code></td><td><code>flex-direction: column-reverse</code></td></tr>
+      </tbody>
+    </table>
+    <div class="mt-15 flex flex-col" style="gap:4px;max-width:200px;">
+      <div class="blue-fill:50 p-10 rad-3 text-center fs-sm">item 1</div>
+      <div class="blue-fill:50 p-10 rad-3 text-center fs-sm">item 2</div>
+      <div class="blue-fill:50 p-10 rad-3 text-center fs-sm">item 3</div>
+    </div>
+    <p class="fs-sm gray-text mt-5">Example: <code>flex flex-col</code></p>
+  </div>
+
+  <div class="section" id="flex-wrap">
+    <h2>Flexbox — Wrap <a class="anchor-link" href="#flex-wrap">#</a></h2>
+    <table class="class-table">
+      <thead><tr><th>Class</th><th>CSS</th></tr></thead>
+      <tbody>
+        <tr><td><code>flex-wrap</code></td><td><code>flex-wrap: wrap</code></td></tr>
+        <tr><td><code>flex-wrap-reverse</code></td><td><code>flex-wrap: wrap-reverse</code></td></tr>
+        <tr><td><code>flex-nowrap</code></td><td><code>flex-wrap: nowrap</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section" id="flex-grow-shrink">
+    <h2>Flexbox — Grow &amp; Shrink <a class="anchor-link" href="#flex-grow-shrink">#</a></h2>
+    <table class="class-table">
+      <thead><tr><th>Class</th><th>CSS</th></tr></thead>
+      <tbody>
+        <tr><td><code>grow</code></td><td><code>flex-grow: 1</code></td></tr>
+        <tr><td><code>grow-0</code></td><td><code>flex-grow: 0</code></td></tr>
+        <tr><td><code>shrink</code></td><td><code>flex-shrink: 1</code></td></tr>
+        <tr><td><code>shrink-0</code></td><td><code>flex-shrink: 0</code></td></tr>
+      </tbody>
+    </table>
+    <div class="mt-15 flex" style="gap:4px;width:300px;">
+      <div class="shrink-0 blue-fill:100 p-10 rad-3 fs-sm text-center" style="width:120px;">shrink-0</div>
+      <div class="grow blue-fill:50 p-10 rad-3 fs-sm text-center">grow</div>
+    </div>
+  </div>
+
+  <div class="section" id="flex-basis">
+    <h2>Flexbox — Basis <a class="anchor-link" href="#flex-basis">#</a></h2>
+    <table class="class-table">
+      <thead><tr><th>Class</th><th>CSS</th></tr></thead>
+      <tbody>
+        <tr><td><code>basis-auto</code></td><td><code>flex-basis: auto</code></td></tr>
+        <tr><td><code>basis-full</code></td><td><code>flex-basis: 100%</code></td></tr>
+        <tr><td><code>basis-0</code></td><td><code>flex-basis: 0</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section" id="flex-justify">
+    <h2>Flexbox — Justify content <a class="anchor-link" href="#flex-justify">#</a></h2>
+    <table class="class-table">
+      <thead><tr><th>Class</th><th>justify-content</th></tr></thead>
+      <tbody>
+        <tr><td><code>justify-start</code></td><td>flex-start</td></tr>
+        <tr><td><code>justify-end</code></td><td>flex-end</td></tr>
+        <tr><td><code>justify-center</code></td><td>center</td></tr>
+        <tr><td><code>justify-between</code></td><td>space-between</td></tr>
+        <tr><td><code>justify-around</code></td><td>space-around</td></tr>
+        <tr><td><code>justify-evenly</code></td><td>space-evenly</td></tr>
+      </tbody>
+    </table>
+    <div class="mt-15">
+      <div class="flex justify-between blue-fill:50 p-10 rad-3 mb-5" style="gap:4px;">
+        <div class="blue-fill:100 p-5 rad-3 fs-sm">A</div>
+        <div class="blue-fill:100 p-5 rad-3 fs-sm">B</div>
+        <div class="blue-fill:100 p-5 rad-3 fs-sm">C</div>
+      </div>
+      <p class="fs-sm gray-text">Example: <code>flex justify-between</code></p>
+      <div class="flex justify-center blue-fill:50 p-10 rad-3 mt-5" style="gap:4px;">
+        <div class="blue-fill:100 p-5 rad-3 fs-sm">A</div>
+        <div class="blue-fill:100 p-5 rad-3 fs-sm">B</div>
+        <div class="blue-fill:100 p-5 rad-3 fs-sm">C</div>
+      </div>
+      <p class="fs-sm gray-text">Example: <code>flex justify-center</code></p>
+    </div>
+  </div>
+
+  <div class="section" id="flex-align-items">
+    <h2>Flexbox — Align items <a class="anchor-link" href="#flex-align-items">#</a></h2>
+    <table class="class-table">
+      <thead><tr><th>Class</th><th>align-items</th></tr></thead>
+      <tbody>
+        <tr><td><code>items-start</code></td><td>flex-start</td></tr>
+        <tr><td><code>items-end</code></td><td>flex-end</td></tr>
+        <tr><td><code>items-center</code></td><td>center</td></tr>
+        <tr><td><code>items-baseline</code></td><td>baseline</td></tr>
+        <tr><td><code>items-stretch</code></td><td>stretch</td></tr>
+      </tbody>
+    </table>
+    <div class="mt-15 flex items-center blue-fill:50 p-10 rad-3" style="gap:4px;height:60px;">
+      <div class="blue-fill:100 ph-10 pv-5 rad-3 fs-sm">A</div>
+      <div class="blue-fill:100 ph-10 pv-15 rad-3 fs-sm">B (tall)</div>
+      <div class="blue-fill:100 ph-10 pv-5 rad-3 fs-sm">C</div>
+    </div>
+    <p class="fs-sm gray-text mt-5">Example: <code>flex items-center</code></p>
+  </div>
+
+  <div class="section" id="flex-align-content">
+    <h2>Flexbox — Align content <a class="anchor-link" href="#flex-align-content">#</a></h2>
+    <p class="mb-10">Used with multi-line flex containers (<code>flex-wrap</code>).</p>
+    <table class="class-table">
+      <thead><tr><th>Class</th><th>align-content</th></tr></thead>
+      <tbody>
+        <tr><td><code>content-start</code></td><td>flex-start</td></tr>
+        <tr><td><code>content-end</code></td><td>flex-end</td></tr>
+        <tr><td><code>content-center</code></td><td>center</td></tr>
+        <tr><td><code>content-between</code></td><td>space-between</td></tr>
+        <tr><td><code>content-around</code></td><td>space-around</td></tr>
+        <tr><td><code>content-evenly</code></td><td>space-evenly</td></tr>
+        <tr><td><code>content-stretch</code></td><td>stretch</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section" id="flex-align-self">
+    <h2>Flexbox — Align self <a class="anchor-link" href="#flex-align-self">#</a></h2>
+    <p class="mb-10">Applied to an individual flex child to override the parent's <code>align-items</code>.</p>
+    <table class="class-table">
+      <thead><tr><th>Class</th><th>align-self</th></tr></thead>
+      <tbody>
+        <tr><td><code>self-auto</code></td><td>auto</td></tr>
+        <tr><td><code>self-start</code></td><td>flex-start</td></tr>
+        <tr><td><code>self-end</code></td><td>flex-end</td></tr>
+        <tr><td><code>self-center</code></td><td>center</td></tr>
+        <tr><td><code>self-baseline</code></td><td>baseline</td></tr>
+        <tr><td><code>self-stretch</code></td><td>stretch</td></tr>
+      </tbody>
+    </table>
+    <div class="mt-15 flex items-start blue-fill:50 p-10 rad-3" style="gap:4px;height:80px;">
+      <div class="blue-fill:100 ph-10 pv-5 rad-3 fs-sm self-start">self-start</div>
+      <div class="blue-fill:300 ph-10 pv-5 rad-3 fs-sm self-center white-text">self-center</div>
+      <div class="blue-fill:100 ph-10 pv-5 rad-3 fs-sm self-end">self-end</div>
+    </div>
+  </div>
+
+  <div class="section" id="flex-order">
+    <h2>Flexbox — Order <a class="anchor-link" href="#flex-order">#</a></h2>
+    <table class="class-table">
+      <thead><tr><th>Class</th><th>order</th></tr></thead>
+      <tbody>
+        <tr><td><code>order-first</code></td><td>-9999</td></tr>
+        <tr><td><code>order-last</code></td><td>9999</td></tr>
+        <tr><td><code>order-none</code></td><td>0</td></tr>
+        <tr><td><code>order-1</code> … <code>order-12</code></td><td>1 … 12</td></tr>
+      </tbody>
+    </table>
+    <div class="mt-15 flex" style="gap:4px;">
+      <div class="order-3 blue-fill:100 p-10 rad-3 fs-sm">order-3 (DOM 1st)</div>
+      <div class="order-1 blue-fill:300 p-10 rad-3 fs-sm white-text">order-1 (DOM 2nd)</div>
+      <div class="order-2 blue-fill:50 p-10 rad-3 fs-sm">order-2 (DOM 3rd)</div>
+    </div>
+  </div>
+
+  <div class="section" id="flex-shorthand">
+    <h2>Flexbox — Shorthand helpers <a class="anchor-link" href="#flex-shorthand">#</a></h2>
+    <p class="mb-10">Convenience classes that combine display + alignment in one.</p>
+    <table class="class-table">
+      <thead><tr><th>Class</th><th>CSS</th></tr></thead>
+      <tbody>
+        <tr><td><code>flex-center</code></td><td><code>display:flex; align-items:center; justify-content:center</code></td></tr>
+        <tr><td><code>flex-between</code></td><td><code>display:flex; align-items:center; justify-content:space-between</code></td></tr>
+        <tr><td><code>flex-col-center</code></td><td><code>display:flex; flex-direction:column; align-items:center; justify-content:center</code></td></tr>
+      </tbody>
+    </table>
+    <div class="mt-15 flex" style="gap:8px;">
+      <div class="flex-center blue-fill:50 rad-3 fs-sm" style="width:120px;height:60px;">flex-center</div>
+      <div class="flex-between blue-fill:50 rad-3 fs-sm p-10" style="width:200px;height:60px;">
+        <span>left</span><span>right</span>
+      </div>
+      <div class="flex-col-center blue-fill:50 rad-3 fs-sm" style="width:120px;height:80px;">
+        <span>col</span><span>center</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       GRID
+  ══════════════════════════════════════════════════════════════════ -->
+  <div class="section" id="grid-container">
+    <h2>Grid — Container <a class="anchor-link" href="#grid-container">#</a></h2>
+    <table class="class-table mb-20">
+      <thead><tr><th>Class</th><th>CSS</th></tr></thead>
+      <tbody>
+        <tr><td><code>container</code></td><td>Centered block, max-width shrinks to the current breakpoint width minus gutter, with horizontal gutter padding</td></tr>
+        <tr><td><code>container-fluid</code></td><td>Full-width block, horizontal gutter padding only — no max-width</td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="mb-10">container</h3>
+    <p class="fs-sm gray-text mb-10">Centered, max-width constrained per breakpoint. Resize the window to see it adapt.</p>
+    <div class="mb-20" style="overflow:hidden;">
+      <div class="container gray-fill:50">
+          <div class="row gray-fill:200 mb-10">
+              <div class="xs:col-12 sm:col-3 md:col-2 lg:col-1">
+                  <div class="pv-10 mv-10 gray-fill:50"></div>
+              </div>
+              <div class="xs:col-6 sm:col-6 md:col-8 lg:col-10">
+                  <div class="pv-10 mv-10 gray-fill:50"></div>
+              </div>
+              <div class="xs:col-6 sm:col-3 md:col-2 lg:col-1">
+                  <div class="pv-10 mv-10 gray-fill:50"></div>
+              </div>
+          </div>
+      </div>
+    </div>
+    <pre class="mb-20">&lt;div class="container"&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="xs:col-12 sm:col-3 md:col-2 lg:col-1"&gt;...&lt;/div&gt;
+    &lt;div class="xs:col-6  sm:col-6 md:col-8 lg:col-10"&gt;...&lt;/div&gt;
+    &lt;div class="xs:col-6  sm:col-3 md:col-2 lg:col-1"&gt;...&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+
+    <h3 class="mb-10">container-fluid</h3>
+    <p class="fs-sm gray-text mb-10">Always stretches to full width, only adds gutter padding on the sides.</p>
+    <div class="mb-10" style="overflow:hidden;">
+      <div class="container-fluid gray-fill:50">
+          <div class="row gray-fill:200 mb-10">
+              <div class="xs:col-12 sm:col-3 md:col-2 lg:col-1">
+                  <div class="pv-10 mv-10 gray-fill:50"></div>
+              </div>
+              <div class="xs:col-6 sm:col-6 md:col-8 lg:col-10">
+                  <div class="pv-10 mv-10 gray-fill:50"></div>
+              </div>
+              <div class="xs:col-6 sm:col-3 md:col-2 lg:col-1">
+                  <div class="pv-10 mv-10 gray-fill:50"></div>
+              </div>
+          </div>
+          <div class="row gray-fill:200 mb-10">
+              <div class="xs:col-12 sm:col-3 md:col-2 lg:col-1">
+                  <div class="pv-10 mv-10 gray-fill:50"></div>
+              </div>
+              <div class="xs:col-12 sm:col-9 md:col-10 lg:col-11">
+                  <div class="pv-10 mv-10 gray-fill:50"></div>
+              </div>
+          </div>
+          <div class="row gray-fill:200 mb-10">
+              <div class="xs:col-10 sm:col-6 md:col-8 lg:col-10">
+                  <div class="pv-10 mv-10 gray-fill:50"></div>
+              </div>
+              <div class="xs:col-2 sm:col-6 md:col-4 lg:col-2">
+                  <div class="pv-10 mv-10 gray-fill:50"></div>
+              </div>
+          </div>
+      </div>
+    </div>
+    <pre>&lt;div class="container-fluid"&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="xs:col-10 sm:col-6 md:col-8 lg:col-10"&gt;...&lt;/div&gt;
+    &lt;div class="xs:col-2  sm:col-6 md:col-4 lg:col-2"&gt;...&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+  </div>
+
+  <div class="section" id="grid-row">
+    <h2>Grid — Row <a class="anchor-link" href="#grid-row">#</a></h2>
+    <table class="class-table">
+      <thead><tr><th>Class</th><th>CSS</th></tr></thead>
+      <tbody>
+        <tr><td><code>row</code></td><td><code>display:flex; flex-wrap:wrap</code> + negative gutter margins</td></tr>
+        <tr><td><code>row-reverse</code></td><td>Applies <code>flex-direction: row-reverse</code> inside a <code>.row</code></td></tr>
+        <tr><td><code>col-reverse</code></td><td>Applies <code>flex-direction: column-reverse</code> on a column</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section" id="grid-columns">
+    <h2>Grid — Columns <a class="anchor-link" href="#grid-columns">#</a></h2>
+    <p class="mb-15">12-column grid. Responsive: prefix with <code>xs:</code>, <code>sm:</code>, <code>md:</code>, <code>lg:</code>.</p>
+    <div class="row mb-10">
+      <div class="col-12"><div class="demo-grid-col">col-12</div></div>
+    </div>
+    <div class="row mb-10">
+      <div class="col-6"><div class="demo-grid-col">col-6</div></div>
+      <div class="col-6"><div class="demo-grid-col">col-6</div></div>
+    </div>
+    <div class="row mb-10">
+      <div class="col-4"><div class="demo-grid-col">col-4</div></div>
+      <div class="col-4"><div class="demo-grid-col">col-4</div></div>
+      <div class="col-4"><div class="demo-grid-col">col-4</div></div>
+    </div>
+    <div class="row mb-10">
+      <div class="col-3"><div class="demo-grid-col">col-3</div></div>
+      <div class="col-3"><div class="demo-grid-col">col-3</div></div>
+      <div class="col-3"><div class="demo-grid-col">col-3</div></div>
+      <div class="col-3"><div class="demo-grid-col">col-3</div></div>
+    </div>
+    <div class="row mb-10">
+      <div class="col-8"><div class="demo-grid-col">col-8</div></div>
+      <div class="col-4"><div class="demo-grid-col">col-4</div></div>
+    </div>
+    <div class="row mb-15">
+      <div class="col"><div class="demo-grid-col">col (auto)</div></div>
+      <div class="col"><div class="demo-grid-col">col (auto)</div></div>
+      <div class="col"><div class="demo-grid-col">col (auto)</div></div>
+    </div>
+    <pre><!-- responsive example -->
+&lt;div class="row"&gt;
+  &lt;div class="col-12 sm:col-6 md:col-4 lg:col-3"&gt;...&lt;/div&gt;
+  &lt;div class="col-12 sm:col-6 md:col-8 lg:col-9"&gt;...&lt;/div&gt;
+&lt;/div&gt;</pre>
+  </div>
+
+  <div class="section" id="grid-offset">
+    <h2>Grid — Offset, Push, Pull <a class="anchor-link" href="#grid-offset">#</a></h2>
+    <table class="class-table">
+      <thead><tr><th>Class</th><th>CSS</th></tr></thead>
+      <tbody>
+        <tr><td><code>col-{n}-offset</code></td><td><code>margin-left: {n/12 * 100}%</code></td></tr>
+        <tr><td><code>col-{n}-push</code></td><td><code>left: {n/12 * 100}%</code></td></tr>
+        <tr><td><code>col-{n}-pull</code></td><td><code>right: {n/12 * 100}%</code></td></tr>
+      </tbody>
+    </table>
+    <div class="row mt-15 mb-5">
+      <div class="col-6 col-3-offset"><div class="demo-grid-col">col-6 col-3-offset</div></div>
+    </div>
+  </div>
+
+  <div class="section" id="grid-row-utils">
+    <h2>Grid — Row utilities <a class="anchor-link" href="#grid-row-utils">#</a></h2>
+    <p class="mb-10">Applied to a <code>.row</code> element to control alignment of its columns.</p>
+    <table class="class-table">
+      <thead><tr><th>Class</th><th>CSS</th></tr></thead>
+      <tbody>
+        <tr><td><code>items-start</code></td><td><code>justify-content: flex-start</code></td></tr>
+        <tr><td><code>items-end</code></td><td><code>justify-content: flex-end</code></td></tr>
+        <tr><td><code>items-center</code></td><td><code>justify-content: center</code></td></tr>
+        <tr><td><code>items-around</code></td><td><code>justify-content: space-around</code></td></tr>
+        <tr><td><code>items-between</code></td><td><code>justify-content: space-between</code></td></tr>
+        <tr><td><code>items-top</code></td><td><code>align-items: flex-start</code></td></tr>
+        <tr><td><code>items-middle</code></td><td><code>align-items: center</code></td></tr>
+        <tr><td><code>items-bottom</code></td><td><code>align-items: flex-end</code></td></tr>
+        <tr><td><code>items-reverse</code></td><td><code>flex-direction: row-reverse</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       UTILITIES
+  ══════════════════════════════════════════════════════════════════ -->
+  <div class="section" id="util-display">
+    <h2>Utilities — Display <a class="anchor-link" href="#util-display">#</a></h2>
+    <p class="mb-10">All are responsive.</p>
+    <table class="class-table">
+      <thead><tr><th>Class</th><th>CSS</th></tr></thead>
+      <tbody>
+        <tr><td><code>block</code> / <code>show</code></td><td><code>display: block</code></td></tr>
+        <tr><td><code>hidden</code> / <code>hide</code></td><td><code>display: none</code></td></tr>
+        <tr><td><code>inline</code></td><td><code>display: inline</code></td></tr>
+        <tr><td><code>inline-block</code></td><td><code>display: inline-block</code></td></tr>
+        <tr><td><code>table</code></td><td><code>display: table</code></td></tr>
+        <tr><td><code>table-row</code></td><td><code>display: table-row</code></td></tr>
+        <tr><td><code>table-cell</code></td><td><code>display: table-cell</code></td></tr>
+        <tr><td><code>flex</code></td><td><code>display: flex</code></td></tr>
+        <tr><td><code>inline-flex</code></td><td><code>display: inline-flex</code></td></tr>
+        <tr><td><code>visible</code></td><td><code>visibility: visible</code></td></tr>
+        <tr><td><code>invisible</code></td><td><code>visibility: hidden</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section" id="util-position">
+    <h2>Utilities — Position <a class="anchor-link" href="#util-position">#</a></h2>
+    <p class="mb-10">All are responsive.</p>
+    <table class="class-table">
+      <thead><tr><th>Class</th><th>CSS</th></tr></thead>
+      <tbody>
+        <tr><td><code>relative</code></td><td><code>position: relative</code></td></tr>
+        <tr><td><code>absolute</code></td><td><code>position: absolute</code></td></tr>
+        <tr><td><code>fixed</code></td><td><code>position: fixed</code></td></tr>
+        <tr><td><code>static</code></td><td><code>position: static</code></td></tr>
+        <tr><td><code>sticky</code></td><td><code>position: sticky</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section" id="util-overflow">
+    <h2>Utilities — Overflow <a class="anchor-link" href="#util-overflow">#</a></h2>
+    <table class="class-table">
+      <thead><tr><th>Class</th><th>CSS</th></tr></thead>
+      <tbody>
+        <tr><td><code>of-hidden</code></td><td><code>overflow: hidden</code></td></tr>
+        <tr><td><code>of-visible</code></td><td><code>overflow: visible</code></td></tr>
+        <tr><td><code>of-auto</code></td><td><code>overflow: auto</code></td></tr>
+        <tr><td><code>of-auto-y</code></td><td><code>overflow-y: auto</code></td></tr>
+        <tr><td><code>of-auto-x</code></td><td><code>overflow-x: auto</code></td></tr>
+        <tr><td><code>of-scroll</code></td><td><code>overflow: scroll</code></td></tr>
+        <tr><td><code>of-scroll-y</code></td><td><code>overflow-y: scroll</code></td></tr>
+        <tr><td><code>of-scroll-x</code></td><td><code>overflow-x: scroll</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section" id="util-float">
+    <h2>Utilities — Float &amp; Clear <a class="anchor-link" href="#util-float">#</a></h2>
+    <table class="class-table">
+      <thead><tr><th>Class</th><th>CSS</th></tr></thead>
+      <tbody>
+        <tr><td><code>float-left</code></td><td><code>float: left</code></td></tr>
+        <tr><td><code>float-right</code></td><td><code>float: right</code></td></tr>
+        <tr><td><code>float-none</code></td><td><code>float: none</code></td></tr>
+        <tr><td><code>clear-left</code></td><td><code>clear: left</code></td></tr>
+        <tr><td><code>clear-right</code></td><td><code>clear: right</code></td></tr>
+        <tr><td><code>clear-both</code></td><td><code>clear: both</code></td></tr>
+        <tr><td><code>clear-none</code></td><td><code>clear: none</code></td></tr>
+        <tr><td><code>clearfix</code></td><td><code>::before + ::after</code> clearfix hack</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section" id="util-valign">
+    <h2>Utilities — Vertical align <a class="anchor-link" href="#util-valign">#</a></h2>
+    <p class="mb-10">Format: <code>va-{value}</code></p>
+    <table class="class-table">
+      <thead><tr><th>Class</th><th>vertical-align</th></tr></thead>
+      <tbody>
+        <tr><td><code>va-initial</code></td><td>initial</td></tr>
+        <tr><td><code>va-inherit</code></td><td>inherit</td></tr>
+        <tr><td><code>va-middle</code></td><td>middle</td></tr>
+        <tr><td><code>va-super</code></td><td>super</td></tr>
+        <tr><td><code>va-sub</code></td><td>sub</td></tr>
+        <tr><td><code>va-top</code></td><td>top</td></tr>
+        <tr><td><code>va-bottom</code></td><td>bottom</td></tr>
+        <tr><td><code>va-text-top</code></td><td>text-top</td></tr>
+        <tr><td><code>va-text-bottom</code></td><td>text-bottom</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section" id="util-group">
+    <h2>Utilities — Group <a class="anchor-link" href="#util-group">#</a></h2>
+    <p class="mb-10">A horizontal flexbox row with no-shrink children. Useful for button groups, navbars, etc.</p>
+    <table class="class-table">
+      <thead><tr><th>Class</th><th>Role</th></tr></thead>
+      <tbody>
+        <tr><td><code>group</code></td><td>Flex container: <code>display:flex; flex-direction:row</code></td></tr>
+        <tr><td><code>group-item</code></td><td>Non-shrinking child: <code>flex-shrink:0</code></td></tr>
+        <tr><td><code>group-item-shrink</code></td><td>Shrinkable child override</td></tr>
+        <tr><td><code>group-shrink</code></td><td>Makes all children shrinkable</td></tr>
+        <tr><td><code>group-vertical</code></td><td><code>flex-direction: column</code></td></tr>
+        <tr><td><code>group-center</code></td><td><code>justify-content: center</code></td></tr>
+        <tr><td><code>group-left</code></td><td><code>justify-content: flex-start</code></td></tr>
+        <tr><td><code>group-right</code></td><td><code>justify-content: flex-end</code></td></tr>
+      </tbody>
+    </table>
+    <div class="group mt-15" style="gap:4px;">
+      <div class="group-item blue-fill:50 p-10 rad-3 fs-sm">group-item</div>
+      <div class="group-item blue-fill:100 p-10 rad-3 fs-sm">group-item</div>
+      <div class="group-item-shrink blue-fill:50 p-10 rad-3 fs-sm grow">group-item-shrink grow</div>
+    </div>
+  </div>
+
+  <div class="section" id="util-list">
+    <h2>Utilities — List <a class="anchor-link" href="#util-list">#</a></h2>
+    <table class="class-table">
+      <thead><tr><th>Class</th><th>CSS</th></tr></thead>
+      <tbody>
+        <tr><td><code>list-none</code></td><td><code>list-style-type: none</code></td></tr>
+        <tr><td><code>list-disc</code></td><td><code>list-style-type: disc</code></td></tr>
+        <tr><td><code>list-circle</code></td><td><code>list-style-type: circle</code></td></tr>
+        <tr><td><code>list-square</code></td><td><code>list-style-type: square</code></td></tr>
+        <tr><td><code>list-decimal</code></td><td><code>list-style-type: decimal</code></td></tr>
+        <tr><td><code>list-upper-roman</code></td><td><code>list-style-type: upper-roman</code></td></tr>
+        <tr><td><code>list-lower-roman</code></td><td><code>list-style-type: lower-roman</code></td></tr>
+        <tr><td><code>list-upper-latin</code></td><td><code>list-style-type: upper-latin</code></td></tr>
+        <tr><td><code>list-lower-latin</code></td><td><code>list-style-type: lower-latin</code></td></tr>
+        <tr><td><code>list-outside</code></td><td><code>list-style-position: outside</code></td></tr>
+        <tr><td><code>list-inside</code></td><td><code>list-style-position: inside</code></td></tr>
+      </tbody>
+    </table>
+    <div class="flex" style="gap:40px;margin-top:12px;">
+      <ul class="list-disc"><li>list-disc</li><li>item</li><li>item</li></ul>
+      <ul class="list-decimal"><li>list-decimal</li><li>item</li><li>item</li></ul>
+      <ul class="list-none"><li>list-none</li><li>no bullets</li><li>here</li></ul>
+    </div>
+  </div>
+
+  <div class="section" id="util-cursor">
+    <h2>Utilities — Cursor <a class="anchor-link" href="#util-cursor">#</a></h2>
+    <p class="mb-10">Format: <code>cursor-{value}</code></p>
+    <table class="class-table">
+      <thead><tr><th>Class</th><th>cursor</th></tr></thead>
+      <tbody>
+        <tr><td><code>cursor-default</code></td><td>default</td></tr>
+        <tr><td><code>cursor-none</code></td><td>none</td></tr>
+        <tr><td><code>cursor-grab</code></td><td>grab</td></tr>
+        <tr><td><code>cursor-grabbing</code></td><td>grabbing</td></tr>
+        <tr><td><code>cursor-help</code></td><td>help</td></tr>
+        <tr><td><code>cursor-pointer</code></td><td>pointer</td></tr>
+        <tr><td><code>cursor-zoom-in</code></td><td>zoom-in</td></tr>
+        <tr><td><code>cursor-zoom-out</code></td><td>zoom-out</td></tr>
+      </tbody>
+    </table>
+    <div class="flex flex-wrap mt-15" style="gap:8px;">
+      <span class="cursor-pointer blue-fill:50 p-10 rad-3 fs-sm">cursor-pointer (hover me)</span>
+      <span class="cursor-help blue-fill:50 p-10 rad-3 fs-sm">cursor-help</span>
+      <span class="cursor-grab blue-fill:50 p-10 rad-3 fs-sm">cursor-grab</span>
+      <span class="cursor-zoom-in blue-fill:50 p-10 rad-3 fs-sm">cursor-zoom-in</span>
+    </div>
+  </div>
+
+  <div class="section" id="util-states">
+    <h2>Utilities — State child/sibling toggles <a class="anchor-link" href="#util-states">#</a></h2>
+    <p class="mb-10">Toggle the <code>display</code> of <strong>all direct children</strong> or <strong>all siblings</strong> when the element enters a state.</p>
+    <p class="mb-10">Format: <code>{state}:{target}-{display}</code></p>
+    <table class="class-table">
+      <thead><tr><th>States</th><th>Targets</th><th>Displays</th></tr></thead>
+      <tbody>
+        <tr><td><code>hover</code>, <code>focus</code>, <code>active</code></td><td><code>child</code> (→ <code>&gt; *</code>), <code>sibling</code> (→ <code>~ *</code>)</td><td><code>block</code>, <code>flex</code>, <code>inline</code>, <code>inline-block</code>, <code>grid</code>, <code>hide</code></td></tr>
+      </tbody>
+    </table>
+    <div class="mt-15">
+      <h4>Examples</h4>
+      <table class="class-table">
+        <thead><tr><th>Class</th><th>Effect</th></tr></thead>
+        <tbody>
+          <tr><td><code>hover:child-block</code></td><td>On hover, sets <code>display:block</code> on all direct children</td></tr>
+          <tr><td><code>hover:child-hide</code></td><td>On hover, hides all direct children</td></tr>
+          <tr><td><code>hover:sibling-flex</code></td><td>On hover, sets <code>display:flex</code> on all siblings</td></tr>
+          <tr><td><code>focus:child-block</code></td><td>On focus, shows all direct children as block</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="mt-20">
+      <h3 class="mb-15">Live examples</h3>
+      <div class="row" style="gap:0;">
+
+        <!-- hover:child-block — dropdown -->
+        <div class="sm:col-4 p-5">
+          <h4 class="mb-10">hover:child-block</h4>
+          <div class="inline-block cursor-pointer hover:child-block blue-fill:50 p-10 rad-3 fs-sm" style="position:relative;">
+            Hover me
+            <div class="hidden absolute white-fill bs-2 rad-3 p-10" style="top:100%;left:0;min-width:160px;z-index:10;">
+              Child visible on hover
+            </div>
+          </div>
+          <pre class="mt-10">&lt;div class="hover:child-block"&gt;
+  Hover me
+  &lt;div style="display:none"&gt;
+    Child visible on hover
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+        </div>
+
+        <!-- focus:sibling-flex — input hint -->
+        <div class="sm:col-4 p-5">
+          <h4 class="mb-10">focus:sibling-flex</h4>
+          <div>
+            <input type="text" class="focus:sibling-flex b-1 gray-border rad-3 p-5" placeholder="Focus me" style="outline:none;width:100%;" />
+            <div class="hidden items-center mt-5 blue-fill:50 blue-text p-5 rad-3 fs-sm" style="gap:6px;">
+              Sibling appears on focus
+            </div>
+          </div>
+          <pre class="mt-10">&lt;input class="focus:sibling-flex" /&gt;
+&lt;div style="display:none"&gt;
+  Sibling appears on focus
+&lt;/div&gt;</pre>
+        </div>
+
+        <!-- active:child-hide — press to hide -->
+        <div class="sm:col-4 p-5">
+          <h4 class="mb-10">active:child-hide</h4>
+          <div class="active:child-hide cursor-pointer blue-fill p-10 rad-3 white-text fs-sm inline-block">
+            <span>Click me</span>
+            <span>Child hidden on click</span>
+          </div>
+          <pre class="mt-10">&lt;div class="active:child-hide"&gt;
+  &lt;span&gt;Click me&lt;/span&gt;
+  &lt;span&gt;Hidden on click&lt;/span&gt;
+&lt;/div&gt;</pre>
+        </div>
+
+        <!-- hover:child-flex — reveal actions -->
+        <div class="sm:col-4 p-5">
+          <h4 class="mb-10">hover:child-flex</h4>
+          <div class="hover:child-flex gray-fill:50 b-1 gray-border rad-3 p-15 fs-sm" style="position:relative;">
+            Hover card to reveal actions
+            <div class="hidden justify-end" style="gap:6px;margin-top:8px;">
+              <span class="blue-fill white-text rad-3 pv-5 ph-10 cursor-pointer fs-sm">Edit</span>
+              <span class="red-fill white-text rad-3 pv-5 ph-10 cursor-pointer fs-sm">Delete</span>
+            </div>
+          </div>
+          <pre class="mt-10">&lt;div class="hover:child-flex"&gt;
+  Card content
+  &lt;div style="display:none"&gt;
+    &lt;!-- action buttons --&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+        </div>
+
+        <!-- hover:sibling-block — tooltip -->
+        <div class="sm:col-4 p-5">
+          <h4 class="mb-10">hover:sibling-block</h4>
+          <div style="position:relative;display:inline-block;">
+            <span class="hover:sibling-block blue-text cursor-pointer text-underline fs-sm">Hover for tooltip</span>
+            <div class="hidden absolute black-fill white-text rad-3 p-10 fs-sm" style="top:100%;left:0;min-width:150px;z-index:10;margin-top:4px;">
+              Sibling tooltip
+            </div>
+          </div>
+          <pre class="mt-10">&lt;span class="hover:sibling-block"&gt;
+  Hover for tooltip
+&lt;/span&gt;
+&lt;div style="display:none"&gt;
+  Sibling tooltip
+&lt;/div&gt;</pre>
+        </div>
+
+        <!-- active:child-flex — press feedback -->
+        <div class="sm:col-4 p-5">
+          <h4 class="mb-10">active:sibling-flex</h4>
+          <div>
+            <button class="active:sibling-flex blue-fill white-text b-0 rad-3 p-10 cursor-pointer fs-sm">Press me</button>
+            <div class="hidden items-center mt-5 green-fill:50 green-text p-5 rad-3 fs-sm" style="gap:4px;">
+              Sibling shown while pressed
+            </div>
+          </div>
+          <pre class="mt-10">&lt;button class="active:sibling-flex"&gt;
+  Press me
+&lt;/button&gt;
+&lt;div style="display:none"&gt;
+  Shown while pressed
+&lt;/div&gt;</pre>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</main>
+
+</body>
+</html>

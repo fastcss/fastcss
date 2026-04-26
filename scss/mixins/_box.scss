@@ -1,17 +1,20 @@
 @use '../functions' as *;
+@use 'states';
 
 // @debug strip-unit('20px');
 
 @mixin make-box($type, $value, $boxIndex, $screenName:null, $screenIndex:null) {
   @if ($type != 'stripunits') {
     // strip the unit
-    $suffix: if(conf('box.stripunits'), strip-unit($value), $value);
+    $suffix: $value;
+    @if conf('box.stripunits') { $suffix: strip-unit($value); }
 
     // escape percentages
-    $suffix: if(is-percentage($value), $suffix + '\\%', $suffix);
+    @if is-percentage($value) { $suffix: $suffix + '\\%'; }
 
     // create the prefix
-    $prefix: if($screenName, $screenName+'\\:', '');
+    $prefix: '';
+    @if $screenName { $prefix: $screenName+'\\:'; }
 
     @if $type == 'margin' {
       @include margin($prefix, $suffix, $value);
@@ -29,8 +32,6 @@
       @include positions($prefix, $suffix, $value);
     } @else if $type == 'z-index' {
       @include z-index($prefix, $suffix, $value);
-    } @else if $type == 'shadow' {
-      @include shadow($prefix, $suffix, $value, $boxIndex);
     } @else {
       @warn 'Type "' + $type + '" is not valid.';
     }
@@ -108,6 +109,17 @@
 @mixin z-index($prefix, $suffix, $value) {
   .#{$prefix}z-#{$suffix} { z-index: #{$value}; }
 }
-@mixin shadow($prefix, $suffix, $value, $index) {
-  .#{$prefix}bs-#{$index} { box-shadow: #{$value}; }
+@mixin shadow($prefix, $key, $value) {
+  .#{$prefix}bs-#{$key} { box-shadow: #{$value}; }
+
+  @include states.on-all-states(#{$prefix + 'bs-' + $key}) {
+    @extend .#{$prefix}bs-#{$key};
+  }
+}
+@mixin make-shadows($screenName, $shadows) {
+  $prefix: '';
+  @if $screenName { $prefix: $screenName+'\\:'; }
+  @each $key, $value in $shadows {
+    @include shadow($prefix, $key, $value);
+  }
 }

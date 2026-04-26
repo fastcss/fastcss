@@ -1,45 +1,95 @@
-@use 'sass:string';
-@use '../functions' as *;
-
 @mixin make-flexbox($prefix: null) {
-  // Basic display
-  .#{$prefix}flex {
+  // ─── Display ────────────────────────────────────────────────────────────────
+  .#{$prefix}flex        { display: flex; }
+  .#{$prefix}inline-flex { display: inline-flex; }
+
+  // ─── flex shorthand ─────────────────────────────────────────────────────────
+  @for $i from 1 through 6 {
+    .#{$prefix}flex-#{$i} { flex: $i; }
+  }
+  .#{$prefix}flex-auto    { flex: 1 1 auto; }
+  .#{$prefix}flex-initial { flex: 0 1 auto; }
+  .#{$prefix}flex-none    { flex: none; }
+
+  // ─── flex-direction ─────────────────────────────────────────────────────────
+  .#{$prefix}flex-row            { flex-direction: row; }
+  .#{$prefix}flex-row-reverse    { flex-direction: row-reverse; }
+  .#{$prefix}flex-col            { flex-direction: column; }
+  .#{$prefix}flex-col-reverse    { flex-direction: column-reverse; }
+
+  // ─── flex-wrap ──────────────────────────────────────────────────────────────
+  .#{$prefix}flex-wrap           { flex-wrap: wrap; }
+  .#{$prefix}flex-wrap-reverse   { flex-wrap: wrap-reverse; }
+  .#{$prefix}flex-nowrap         { flex-wrap: nowrap; }
+
+  // ─── flex-grow ──────────────────────────────────────────────────────────────
+  .#{$prefix}grow                { flex-grow: 1; }
+  .#{$prefix}grow-0              { flex-grow: 0; }
+
+  // ─── flex-shrink ────────────────────────────────────────────────────────────
+  .#{$prefix}shrink              { flex-shrink: 1; }
+  .#{$prefix}shrink-0            { flex-shrink: 0; }
+
+  // ─── flex-basis ─────────────────────────────────────────────────────────────
+  .#{$prefix}basis-auto          { flex-basis: auto; }
+  .#{$prefix}basis-full          { flex-basis: 100%; }
+  .#{$prefix}basis-0             { flex-basis: 0; }
+
+  // ─── justify-content ────────────────────────────────────────────────────────
+  .#{$prefix}justify-start       { justify-content: flex-start; }
+  .#{$prefix}justify-end         { justify-content: flex-end; }
+  .#{$prefix}justify-center      { justify-content: center; }
+  .#{$prefix}justify-between     { justify-content: space-between; }
+  .#{$prefix}justify-around      { justify-content: space-around; }
+  .#{$prefix}justify-evenly      { justify-content: space-evenly; }
+
+  // ─── align-items ────────────────────────────────────────────────────────────
+  .#{$prefix}items-start         { align-items: flex-start; }
+  .#{$prefix}items-end           { align-items: flex-end; }
+  .#{$prefix}items-center        { align-items: center; }
+  .#{$prefix}items-baseline      { align-items: baseline; }
+  .#{$prefix}items-stretch       { align-items: stretch; }
+
+  // ─── align-content ──────────────────────────────────────────────────────────
+  .#{$prefix}content-start       { align-content: flex-start; }
+  .#{$prefix}content-end         { align-content: flex-end; }
+  .#{$prefix}content-center      { align-content: center; }
+  .#{$prefix}content-between     { align-content: space-between; }
+  .#{$prefix}content-around      { align-content: space-around; }
+  .#{$prefix}content-evenly      { align-content: space-evenly; }
+  .#{$prefix}content-stretch     { align-content: stretch; }
+
+  // ─── align-self ─────────────────────────────────────────────────────────────
+  .#{$prefix}self-auto           { align-self: auto; }
+  .#{$prefix}self-start          { align-self: flex-start; }
+  .#{$prefix}self-end            { align-self: flex-end; }
+  .#{$prefix}self-center         { align-self: center; }
+  .#{$prefix}self-baseline       { align-self: baseline; }
+  .#{$prefix}self-stretch        { align-self: stretch; }
+
+  // ─── order ──────────────────────────────────────────────────────────────────
+  .#{$prefix}order-first         { order: -9999; }
+  .#{$prefix}order-last          { order: 9999; }
+  .#{$prefix}order-none          { order: 0; }
+  @for $i from 1 through 12 {
+    .#{$prefix}order-#{$i}       { order: $i; }
+  }
+
+  // ─── Shorthand helpers ──────────────────────────────────────────────────────
+  .#{$prefix}flex-center {
     display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  .#{$prefix}inline-flex {
-    display: inline-flex;
+  .#{$prefix}flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
-
-  // flex: [1-5]
-  @for $i from 1 through 5 {
-    .#{$prefix}flex-#{$i} {
-      flex: $i;
-    }
+  .#{$prefix}flex-col-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
-
-  // Loop through all flexbox utility keys and values
-  @each $key, $values in conf('utilities.flexbox') {
-    // Shorten the key name for class suffix
-    $keys: string.split($key, "-");
-    $shortKey: str-slice(list.nth($keys, 1), 1, 1);
-    @if list.length($keys) > 1 {
-      $shortKey: $shortKey + str-slice(list.nth($keys, 2), 1, 1);
-    }
-
-    // Generate classes
-    @each $value in $values {
-      .#{$prefix}flex-#{$shortKey}-#{$value} {
-        #{$key}: #{$value};
-      }
-    }
-  }
-
-  // Additional helpers for common patterns
-  .#{$prefix}flex-row        { flex-direction: row; }
-  .#{$prefix}flex-col        { flex-direction: column; }
-  .#{$prefix}flex-nowrap     { flex-wrap: nowrap; }
-  .#{$prefix}flex-wrap       { flex-wrap: wrap; }
-  .#{$prefix}items-center    { align-items: center; }
-  .#{$prefix}justify-center  { justify-content: center; }
-  .#{$prefix}justify-between { justify-content: space-between; }
 }
