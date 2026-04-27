@@ -35,7 +35,7 @@ pre {
   line-height: 1.5;
   margin: 0;
 }
-.sidebar { width: 240px; min-height: 100vh; border-right: 1px solid #e8eaed; background: #fafbfc; overflow-y: auto; position: fixed; top: 0; left: 0; bottom: 0; }
+.sidebar { width: 240px; min-height: 100vh; border-right: 1px solid #e8eaed; background: #fafbfc; overflow-y: auto; position: fixed; top: 0; left: 0; bottom: 0; z-index: 100; transition: transform .25s ease; }
 .content { margin-left: 240px; padding: 40px 60px; max-width: 960px; }
 .nav-group { padding: 12px 20px 4px; }
 .nav-group-title { font-family: "Inconsolata", monospace; font-size: .7rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: #888; margin-bottom: 6px; }
@@ -47,19 +47,58 @@ pre {
 .class-table th { text-align: left; padding: 6px 10px; border-bottom: 2px solid #e1e4e8; font-family: "Inconsolata", monospace; font-size: .8rem; color: #555; }
 .class-table td { padding: 5px 10px; border-bottom: 1px solid #f0f0f0; vertical-align: top; }
 .class-table tr:hover td { background: #fafbfc; }
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 .swatch { display: inline-block; width: 24px; height: 24px; border-radius: 3px; vertical-align: middle; border: 1px solid rgba(0,0,0,.08); }
 .demo-box { display: inline-block; padding: 6px 12px; font-size: .8rem; background: #e3f2fd; border-radius: 3px; margin: 2px; }
 .demo-grid-col { background: #bbdefb; border-radius: 3px; padding: 8px; text-align: center; font-size: .8rem; font-family: "Inconsolata", monospace; margin-bottom: 8px; }
 .demo-shadow-box { display: inline-block; width: 80px; height: 50px; background: #fff; border-radius: 4px; margin: 8px; vertical-align: bottom; }
 .badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: .75rem; font-family: "Inconsolata", monospace; margin: 2px; }
-.top-bar { height: 3px; background: linear-gradient(90deg, #1976D2 0%, #42A5F5 100%); position: fixed; top: 0; left: 0; right: 0; z-index: 99; }
+.top-bar { height: 3px; background: linear-gradient(90deg, #1976D2 0%, #42A5F5 100%); position: fixed; top: 0; left: 0; right: 0; z-index: 200; }
 .anchor-link { color: #ccc; margin-left: 6px; font-size: .85rem; }
 .anchor-link:hover { color: #1976D2; }
+
+/* Mobile menu toggle */
+.menu-toggle {
+  display: none;
+  position: fixed;
+  top: 10px;
+  left: 12px;
+  z-index: 150;
+  background: #fff;
+  border: 1px solid #e8eaed;
+  border-radius: 4px;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  box-shadow: 0 1px 4px rgba(0,0,0,.1);
+}
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.4);
+  z-index: 99;
+}
+.overlay.open { display: block; }
+
+@media (max-width: 768px) {
+  .menu-toggle { display: flex; align-items: center; justify-content: center; }
+  .sidebar { transform: translateX(-100%); }
+  .sidebar.open { transform: translateX(0); box-shadow: 4px 0 20px rgba(0,0,0,.15); }
+  .content { margin-left: 0; padding: 24px 16px; padding-top: 58px; }
+  pre { font-size: .78rem; }
+  .demo-shadow-box { width: 60px; height: 40px; margin: 5px; }
+}
 </style>
 </head>
 <body>
 
 <div class="top-bar"></div>
+
+<button class="menu-toggle" id="menuToggle" aria-label="Open navigation">&#9776;</button>
+<div class="overlay" id="overlay"></div>
 
 <!-- ─── Sidebar ───────────────────────────────────────────────────────────── -->
 <aside class="sidebar" style="padding-top: 3px;">
@@ -1394,6 +1433,41 @@ yarn add fastcss</pre>
   </div>
 
 </main>
+
+<script>
+(function () {
+  var toggle = document.getElementById('menuToggle');
+  var sidebar = document.querySelector('.sidebar');
+  var overlay = document.getElementById('overlay');
+
+  function openMenu() {
+    sidebar.classList.add('open');
+    overlay.classList.add('open');
+    toggle.setAttribute('aria-label', 'Close navigation');
+    toggle.innerHTML = '&#10005;';
+  }
+
+  function closeMenu() {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('open');
+    toggle.setAttribute('aria-label', 'Open navigation');
+    toggle.innerHTML = '&#9776;';
+  }
+
+  toggle.addEventListener('click', function () {
+    sidebar.classList.contains('open') ? closeMenu() : openMenu();
+  });
+
+  overlay.addEventListener('click', closeMenu);
+
+  // Close menu when a nav link is tapped on mobile
+  document.querySelectorAll('.nav-link').forEach(function (link) {
+    link.addEventListener('click', function () {
+      if (window.innerWidth <= 768) closeMenu();
+    });
+  });
+}());
+</script>
 
 </body>
 </html>
