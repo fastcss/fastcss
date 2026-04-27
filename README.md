@@ -1,7 +1,7 @@
 
 # Fastcss
 
-A config-driven CSS utility framework. Define your design tokens once in `_config.scss` and Fastcss generates all your utility classes — colors, typography, spacing, flexbox, grid, shadows, gradients, and more.
+A config-driven **SASS/SCSS utility CSS framework**. Define your design tokens once in `_config.scss` and Fastcss generates responsive helper classes for colors, typography, spacing, flexbox, grid, shadows, gradients and more — no build magic, just Sass.
 
 ## Documentation
 

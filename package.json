@@ -1,6 +1,6 @@
 {
   "name": "fastcss",
-  "description": "Code fast with this awesome css framework.",
+  "description": "A config-driven SASS/SCSS utility CSS framework. Generate responsive helper classes for colors, typography, flexbox, grid, spacing and shadows from a single config map.",
   "version": "0.3.0",
   "style": "dist/fastcss.css",
   "sass": "scss/fastcss.scss",
@@ -15,7 +15,16 @@
     "css",
     "sass",
     "scss",
-    "framework"
+    "utility",
+    "framework",
+    "utility-css",
+    "responsive",
+    "flexbox",
+    "grid",
+    "design-tokens",
+    "css-framework",
+    "sass-framework",
+    "helper-classes"
   ],
   "author": "Lucian Ene <lucianene@mail.com>",
   "license": "MIT",
