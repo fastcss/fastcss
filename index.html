@@ -253,10 +253,15 @@ html.dark .toggle-thumb { transform: translateX(16px); }
 <body>
 
 <script>
-// Apply dark mode before render to avoid flash
-if (localStorage.getItem('theme') === 'dark') {
-  document.documentElement.classList.add('dark');
-}
+// Apply theme before render to avoid flash.
+// Priority: localStorage override → system preference
+(function() {
+  var saved = localStorage.getItem('theme');
+  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if (saved === 'dark' || (!saved && prefersDark)) {
+    document.documentElement.classList.add('dark');
+  }
+}());
 </script>
 
 <div class="top-bar"></div>
@@ -1860,7 +1865,13 @@ document.querySelectorAll('pre').forEach(function(pre) {
   function applyTheme(dark) {
     document.documentElement.classList.toggle('dark', dark);
     theme.href = dark ? DARK : LIGHT;
-    localStorage.setItem('theme', dark ? 'dark' : 'light');
+    var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    // If toggled back to match system, clear the override so system takes over
+    if (dark === systemDark) {
+      localStorage.removeItem('theme');
+    } else {
+      localStorage.setItem('theme', dark ? 'dark' : 'light');
+    }
   }
 
   // Sync button label on load
