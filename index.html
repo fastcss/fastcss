@@ -8,7 +8,13 @@
 <meta name="description" content="Fastcss is a lightweight, config-driven SASS/SCSS utility CSS framework. Generate responsive helper classes for colors, typography, flexbox, grid, spacing, shadows and more — all from a single config map.">
 <meta name="keywords" content="css framework, sass framework, scss utilities, utility css, tailwind alternative, responsive css, flexbox helpers, css grid, sass utility classes, fastcss">
 <meta name="author" content="Lucian Ene">
+<meta name="theme-color" content="#1976D2">
 <link rel="canonical" href="https://fastcss.org/">
+
+<!-- Preconnect to external origins -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
@@ -16,12 +22,16 @@
 <meta property="og:title" content="Fastcss — Config-driven SASS/SCSS Utility CSS Framework">
 <meta property="og:description" content="Generate responsive utility classes for colors, typography, flexbox, grid, spacing and more — all from a single SASS config map. Lightweight, customizable, no build magic required.">
 <meta property="og:site_name" content="Fastcss">
+<meta property="og:image" content="https://fastcss.org/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 
 <!-- Twitter Card -->
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Fastcss — Config-driven SASS/SCSS Utility CSS Framework">
 <meta name="twitter:description" content="Generate responsive utility classes for colors, typography, flexbox, grid and more from a single SASS config map.">
 <meta name="twitter:url" content="https://fastcss.org/">
+<meta name="twitter:image" content="https://fastcss.org/og-image.png">
 
 <!-- Structured data -->
 <script type="application/ld+json">
@@ -41,12 +51,35 @@
 </script>
 
 <link rel="stylesheet" href="dist/fastcss.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github.min.css" id="hljs-theme">
 <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&family=Inconsolata:wght@400;600&display=swap" rel="stylesheet" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 * { box-sizing: border-box; }
-body { color: #24292e; font-family: "Source Sans Pro", sans-serif; margin: 0; }
-a { color: #1976D2; text-decoration: none; }
+:root {
+  --bg: #ffffff;
+  --bg-sidebar: #fafbfc;
+  --bg-code: #f6f8fa;
+  --border: #e8eaed;
+  --border-code: #e1e4e8;
+  --text: #24292e;
+  --text-muted: #555;
+  --text-faint: #aaa;
+  --link: #1976D2;
+}
+html.dark {
+  --bg: #0d1117;
+  --bg-sidebar: #161b22;
+  --bg-code: #1c2128;
+  --border: #30363d;
+  --border-code: #30363d;
+  --text: #e6edf3;
+  --text-muted: #8b949e;
+  --text-faint: #484f58;
+  --link: #58a6ff;
+}
+body { color: var(--text); background: var(--bg); font-family: "Source Sans Pro", sans-serif; margin: 0; }
+a { color: var(--link); text-decoration: none; }
 a:hover { text-decoration: underline; }
 h2, h3, h4 { font-family: "Inconsolata", monospace; font-weight: 600; margin-top: 0; }
 h2 { font-size: 1.6rem; margin-bottom: 6px; }
@@ -55,15 +88,16 @@ h4 { font-size: 1rem; margin-bottom: 4px; color: #555; }
 code {
   font-family: "Inconsolata", monospace;
   font-size: .85rem;
-  background: #f0f4f8;
-  border: 1px solid #dde3ea;
+  background: var(--bg-code);
+  border: 1px solid var(--border-code);
   border-radius: 3px;
   padding: 1px 5px;
   color: #c0392b;
 }
+html.dark code { color: #ff7b72; }
 pre {
-  background: #f6f8fa;
-  border: 1px solid #e1e4e8;
+  background: var(--bg-code);
+  border: 1px solid var(--border-code);
   border-radius: 4px;
   padding: 12px 16px;
   font-family: "Inconsolata", monospace;
@@ -71,28 +105,114 @@ pre {
   overflow-x: auto;
   line-height: 1.5;
   margin: 0;
+  position: relative;
 }
-.sidebar { width: 240px; min-height: 100vh; border-right: 1px solid #e8eaed; background: #fafbfc; overflow-y: auto; position: fixed; top: 0; left: 0; bottom: 0; z-index: 100; transition: transform .25s ease; }
+.copy-btn {
+  position: absolute;
+  top: 7px;
+  right: 8px;
+  padding: 2px 8px;
+  font-size: .72rem;
+  font-family: "Source Sans Pro", sans-serif;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  cursor: pointer;
+  color: var(--text-muted);
+  opacity: 0;
+  transition: opacity .15s, background .15s;
+  line-height: 1.6;
+}
+pre:hover .copy-btn { opacity: 1; }
+.copy-btn:hover { background: #f0f4f8; color: #1976D2; border-color: #1976D2; }
+.copy-btn.copied { color: #2e7d32; border-color: #2e7d32; }
+.back-to-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 38px;
+  height: 38px;
+  background: #1976D2;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s, transform .2s;
+  z-index: 90;
+}
+.back-to-top.visible { opacity: 1; pointer-events: auto; }
+.back-to-top:hover { transform: translateY(-2px); background: #1565C0; }
+.sidebar { width: 240px; min-height: 100vh; border-right: 1px solid var(--border); background: var(--bg-sidebar); overflow-y: auto; position: fixed; top: 0; left: 0; bottom: 0; z-index: 100; transition: transform .25s ease; }
 .content { margin-left: 240px; padding: 40px 60px; max-width: 960px; }
 .nav-group { padding: 12px 20px 4px; }
-.nav-group-title { font-family: "Inconsolata", monospace; font-size: .7rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: #888; margin-bottom: 6px; }
-.nav-link { display: block; padding: 3px 0; font-size: .875rem; color: #444; }
-.nav-link:hover { color: #1976D2; text-decoration: none; }
-.section { border-bottom: 1px solid #e8eaed; padding-bottom: 40px; margin-bottom: 40px; }
+.nav-group-title { font-family: "Inconsolata", monospace; font-size: .7rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--text-faint); margin-bottom: 6px; }
+.nav-link { display: block; padding: 3px 0; font-size: .875rem; color: var(--text-muted); }
+.nav-link:hover { color: var(--link); text-decoration: none; }
+.nav-link.active { color: var(--link); font-weight: 600; }
+.section { border-bottom: 1px solid var(--border); padding-bottom: 40px; margin-bottom: 40px; }
 .section:last-child { border-bottom: none; }
+.section:last-of-type { border-bottom: none; }
 .class-table { width: 100%; border-collapse: collapse; font-size: .875rem; }
-.class-table th { text-align: left; padding: 6px 10px; border-bottom: 2px solid #e1e4e8; font-family: "Inconsolata", monospace; font-size: .8rem; color: #555; }
-.class-table td { padding: 5px 10px; border-bottom: 1px solid #f0f0f0; vertical-align: top; }
-.class-table tr:hover td { background: #fafbfc; }
+.class-table th { text-align: left; padding: 6px 10px; border-bottom: 2px solid var(--border); font-family: "Inconsolata", monospace; font-size: .8rem; color: var(--text-muted); }
+.class-table td { padding: 5px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.class-table tr:hover td { background: var(--bg-sidebar); }
 .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 .swatch { display: inline-block; width: 24px; height: 24px; border-radius: 3px; vertical-align: middle; border: 1px solid rgba(0,0,0,.08); }
-.demo-box { display: inline-block; padding: 6px 12px; font-size: .8rem; background: #e3f2fd; border-radius: 3px; margin: 2px; }
-.demo-grid-col { background: #bbdefb; border-radius: 3px; padding: 8px; text-align: center; font-size: .8rem; font-family: "Inconsolata", monospace; margin-bottom: 8px; }
-.demo-shadow-box { display: inline-block; width: 80px; height: 50px; background: #fff; border-radius: 4px; margin: 8px; vertical-align: bottom; }
+.demo-box { display: inline-block; padding: 6px 12px; font-size: .8rem; background: #e3f2fd; border-radius: 3px; margin: 2px; color: #0d47a1; }
+html.dark .demo-box { background: #1a3a5c; color: #90caf9; }
+.demo-grid-col { background: #bbdefb; border-radius: 3px; padding: 8px; text-align: center; font-size: .8rem; font-family: "Inconsolata", monospace; margin-bottom: 8px; color: #0d47a1; }
+html.dark .demo-grid-col { background: #1a3a5c; color: #90caf9; }
+.demo-shadow-box { display: inline-block; width: 80px; height: 50px; background: var(--bg); border-radius: 4px; margin: 8px; vertical-align: bottom; }
 .badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: .75rem; font-family: "Inconsolata", monospace; margin: 2px; }
+.notice-warning { padding: 10px 14px; background: #fff8e1; border-left: 3px solid #f9a825; border-radius: 3px; font-size: .875rem; color: #5d4037; }
+html.dark .notice-warning { background: #2a2000; border-color: #f9a825; color: #ffe082; }
+/* Keep text dark on very light fastcss fill examples so they stay readable in dark mode */
+html.dark [class*="-fill\:50"],
+html.dark [class*="-fill\:100"],
+html.dark [class*="-fill\:200"] { color: #24292e !important; }
 .top-bar { height: 3px; background: linear-gradient(90deg, #1976D2 0%, #42A5F5 100%); position: fixed; top: 0; left: 0; right: 0; z-index: 200; }
 .anchor-link { color: #ccc; margin-left: 6px; font-size: .85rem; }
 .anchor-link:hover { color: #1976D2; }
+/* highlight.js — let the pre wrapper control bg/padding, hljs only adds color */
+pre code.hljs { background: transparent; padding: 0; font-size: inherit; border-radius: 0; border: 0; }
+html.dark .hljs { background: transparent; }
+.dark-toggle {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: .8rem; color: var(--text-muted); background: none;
+  border: none; padding: 2px 0; cursor: pointer; margin-top: 4px;
+}
+.dark-toggle:hover { color: var(--link); }
+.toggle-track {
+  width: 36px; height: 20px;
+  background: #ccc;
+  border-radius: 10px;
+  position: relative;
+  transition: background .2s;
+  flex-shrink: 0;
+}
+html.dark .toggle-track { background: #1976D2; }
+.toggle-thumb {
+  width: 14px; height: 14px;
+  background: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 3px; left: 3px;
+  transition: transform .2s;
+  box-shadow: 0 1px 3px rgba(0,0,0,.3);
+}
+html.dark .toggle-thumb { transform: translateX(16px); }
+.sidebar-ext-link { display:inline-flex; align-items:center; gap:6px; font-size:.8rem; color:#555; text-decoration:none; }
+.sidebar-ext-link:hover { color: #1976D2; text-decoration: none; }
+.page-footer { border-top: 1px solid var(--border); padding: 32px 0 16px; margin-top: 20px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; font-size:.8rem; color: var(--text-faint); }
+.page-footer a { color: var(--text-muted); text-decoration:none; display:inline-flex; align-items:center; gap:5px; }
+.page-footer a:hover { color: var(--link); }
 
 /* Mobile menu toggle */
 .menu-toggle {
@@ -101,8 +221,8 @@ pre {
   top: 10px;
   left: 12px;
   z-index: 150;
-  background: #fff;
-  border: 1px solid #e8eaed;
+  background: var(--bg);
+  border: 1px solid var(--border);
   border-radius: 4px;
   width: 36px;
   height: 36px;
@@ -132,22 +252,50 @@ pre {
 </head>
 <body>
 
+<script>
+// Apply dark mode before render to avoid flash
+if (localStorage.getItem('theme') === 'dark') {
+  document.documentElement.classList.add('dark');
+}
+</script>
+
 <div class="top-bar"></div>
 
 <button class="menu-toggle" id="menuToggle" aria-label="Open navigation">&#9776;</button>
 <div class="overlay" id="overlay"></div>
+<button class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">&#8679;</button>
 
 <!-- ─── Sidebar ───────────────────────────────────────────────────────────── -->
 <aside class="sidebar" style="padding-top: 3px;">
-  <div style="padding: 20px 20px 10px;">
+  <div style="padding: 20px 20px 12px;">
     <div class="fs-xl fw-600" style="font-family:'Inconsolata',monospace;">fastcss</div>
-    <div class="gray-text fs-sm">v0.1 — Reference</div>
+    <div class="gray-text fs-sm" style="margin-bottom:10px;">v0.3.0 — Reference</div>
+    <div style="display:flex;flex-direction:column;gap:5px;">
+      <a href="https://github.com/fastcss/fastcss" target="_blank" rel="noopener" class="sidebar-ext-link">
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="14" height="14" fill="currentColor" style="flex-shrink:0"><path d="M10.226 17.284c-2.965-.36-5.054-2.493-5.054-5.256 0-1.123.404-2.336 1.078-3.144-.292-.741-.247-2.314.09-2.965.898-.112 2.111.36 2.83 1.01.853-.269 1.752-.404 2.853-.404 1.1 0 1.999.135 2.807.382.696-.629 1.932-1.1 2.83-.988.315.606.36 2.179.067 2.942.72.854 1.101 2 1.101 3.167 0 2.763-2.089 4.852-5.098 5.234.763.494 1.28 1.572 1.28 2.807v2.336c0 .674.561 1.056 1.235.786 4.066-1.55 7.255-5.615 7.255-10.646C23.5 6.188 18.334 1 11.978 1 5.62 1 .5 6.188.5 12.545c0 4.986 3.167 9.12 7.435 10.669.606.225 1.19-.18 1.19-.786V20.63a2.9 2.9 0 0 1-1.078.224c-1.483 0-2.359-.808-2.987-2.313-.247-.607-.517-.966-1.034-1.033-.27-.023-.359-.135-.359-.27 0-.27.45-.471.898-.471.652 0 1.213.404 1.797 1.235.45.651.921.943 1.483.943.561 0 .92-.202 1.437-.719.382-.381.674-.718.944-.943"></path></svg>
+        fastcss/fastcss
+      </a>
+      <a href="https://github.com/lucianene" target="_blank" rel="noopener" class="sidebar-ext-link">
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="14" height="14" fill="currentColor" style="flex-shrink:0"><path d="M10.226 17.284c-2.965-.36-5.054-2.493-5.054-5.256 0-1.123.404-2.336 1.078-3.144-.292-.741-.247-2.314.09-2.965.898-.112 2.111.36 2.83 1.01.853-.269 1.752-.404 2.853-.404 1.1 0 1.999.135 2.807.382.696-.629 1.932-1.1 2.83-.988.315.606.36 2.179.067 2.942.72.854 1.101 2 1.101 3.167 0 2.763-2.089 4.852-5.098 5.234.763.494 1.28 1.572 1.28 2.807v2.336c0 .674.561 1.056 1.235.786 4.066-1.55 7.255-5.615 7.255-10.646C23.5 6.188 18.334 1 11.978 1 5.62 1 .5 6.188.5 12.545c0 4.986 3.167 9.12 7.435 10.669.606.225 1.19-.18 1.19-.786V20.63a2.9 2.9 0 0 1-1.078.224c-1.483 0-2.359-.808-2.987-2.313-.247-.607-.517-.966-1.034-1.033-.27-.023-.359-.135-.359-.27 0-.27.45-.471.898-.471.652 0 1.213.404 1.797 1.235.45.651.921.943 1.483.943.561 0 .92-.202 1.437-.719.382-.381.674-.718.944-.943"></path></svg>
+        Lucian Ene
+      </a>
+      <a href="https://www.npmjs.com/package/fastcss" target="_blank" rel="noopener" class="sidebar-ext-link">
+        <svg viewBox="0 0 27.23 27.23" width="14" height="14" aria-hidden="true" style="flex-shrink:0"><rect fill="#CC3534" width="27.23" height="27.23" rx="2"></rect><polygon fill="#fff" points="5.8 21.75 13.66 21.75 13.67 9.98 17.59 9.98 17.58 21.76 21.51 21.76 21.52 6.06 5.82 6.04 5.8 21.75"></polygon></svg>
+        fastcss on npm
+      </a>
+      <button class="dark-toggle" id="darkToggle" aria-label="Toggle dark mode">
+        <span>☀️</span>
+        <span class="toggle-track"><span class="toggle-thumb"></span></span>
+        <span>🌙</span>
+      </button>
+    </div>
   </div>
 
   <div class="nav-group">
     <div class="nav-group-title">Getting Started</div>
     <a class="nav-link" href="#what-is">What is fastcss</a>
     <a class="nav-link" href="#install">Installation</a>
+    <a class="nav-link" href="#config">Configuration</a>
     <a class="nav-link" href="#responsive">Responsive prefixes</a>
   </div>
 
@@ -218,11 +366,13 @@ pre {
     <a class="nav-link" href="#util-cursor">Cursor</a>
     <a class="nav-link" href="#util-states">State toggles</a>
   </div>
-  <div style="padding: 20px; font-size: .75rem; color: #aaa;">© Lucian Ene</div>
+  <div style="padding: 16px 20px; font-size: .75rem; color: #aaa;">© <a href="https://github.com/lucianene" target="_blank" rel="noopener" style="color:#aaa;text-decoration:none;" onmouseover="this.style.color='#1976D2'" onmouseout="this.style.color='#aaa'">Lucian Ene</a> — MIT License</div>
 </aside>
 
 <!-- ─── Main content ──────────────────────────────────────────────────────── -->
 <main class="content">
+
+  <h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;">Fastcss — Config-driven SASS/SCSS Utility CSS Framework</h1>
 
   <!-- ══════════════════════════════════════════════════════════════
        GETTING STARTED
@@ -231,6 +381,12 @@ pre {
     <h2>What is fastcss <a class="anchor-link" href="#what-is">#</a></h2>
     <p class="fs-lg gray-text:700 mb-20">A fully customizable, pure-SASS utility CSS framework. Generate only the classes you need from a single config map.</p>
     <p>Fastcss generates helper classes at build time from a SASS <code>$config</code> map. The config controls colors, spacing scale, screen breakpoints, typography and more — so the final CSS only contains what you actually configured.</p>
+    <p style="margin-top:16px;">
+      <a href="https://github.com/fastcss/fastcss" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border:1px solid #d0d7de;border-radius:6px;font-size:.875rem;color:#24292e;text-decoration:none;background:#f6f8fa;" onmouseover="this.style.background='#eef1f5'" onmouseout="this.style.background='#f6f8fa'">
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M10.226 17.284c-2.965-.36-5.054-2.493-5.054-5.256 0-1.123.404-2.336 1.078-3.144-.292-.741-.247-2.314.09-2.965.898-.112 2.111.36 2.83 1.01.853-.269 1.752-.404 2.853-.404 1.1 0 1.999.135 2.807.382.696-.629 1.932-1.1 2.83-.988.315.606.36 2.179.067 2.942.72.854 1.101 2 1.101 3.167 0 2.763-2.089 4.852-5.098 5.234.763.494 1.28 1.572 1.28 2.807v2.336c0 .674.561 1.056 1.235.786 4.066-1.55 7.255-5.615 7.255-10.646C23.5 6.188 18.334 1 11.978 1 5.62 1 .5 6.188.5 12.545c0 4.986 3.167 9.12 7.435 10.669.606.225 1.19-.18 1.19-.786V20.63a2.9 2.9 0 0 1-1.078.224c-1.483 0-2.359-.808-2.987-2.313-.247-.607-.517-.966-1.034-1.033-.27-.023-.359-.135-.359-.27 0-.27.45-.471.898-.471.652 0 1.213.404 1.797 1.235.45.651.921.943 1.483.943.561 0 .92-.202 1.437-.719.382-.381.674-.718.944-.943"></path></svg>
+        View on GitHub — fastcss/fastcss
+      </a>
+    </p>
   </div>
 
   <div class="section" id="install">
@@ -253,6 +409,130 @@ yarn add fastcss</pre>
       <h3>Compile</h3>
       <pre>sass scss/build.scss dist/fastcss.css</pre>
     </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       CONFIGURATION
+  ══════════════════════════════════════════════════════════════════ -->
+  <div class="section" id="config">
+    <h2>Configuration <a class="anchor-link" href="#config">#</a></h2>
+    <p class="mb-20">All of fastcss is driven by a single <code>$config</code> Sass map. Copy <code>node_modules/fastcss/scss/_config.scss</code> into your project, trim it down to only what you need, and pass it to fastcss at compile time. <strong>Every value you add generates more CSS</strong> — keep the config lean and your output file will stay small.</p>
+
+    <div class="notice-warning mb-20">
+      <strong>File size warning:</strong> Each color variant, spacing value, shadow, and breakpoint multiplies the number of generated classes. A large config with many colors, many spacing steps, and all breakpoints enabled can produce a large CSS file. Only configure what your project actually uses. Also, by deleting keys from the config, will strip the feature entirely from your css.
+    </div>
+
+    <h3>Minimal config example</h3>
+    <div class="mb-20">
+      <pre style="max-height:320px;overflow-y:auto;">// _my-config.scss
+
+$defaultConfig: (
+
+  // ─── Typography ────────────────────────────────────────────────
+  // Each key in font-size generates .fs-{key}, each weight generates .fw-{weight}.
+  // More values = more classes = bigger file.
+  'typography': (
+    'font-family': (
+      'base': "Roboto, -apple-system, sans-serif",
+      'mono': monospace,
+    ),
+    'font-size': (
+      'sm':   .875rem,   // → .fs-sm
+      'base': 1rem,      // → .fs-base
+      'lg':   1.25rem,   // → .fs-lg
+      'xl':   1.5rem,    // → .fs-xl
+    ),
+    'font-weight': (400, 600, 700),  // → .fw-400 .fw-600 .fw-700
+    'font-style':  (normal, italic),
+    'line-height': (
+      'base': 1.5,                   // → .lh-base
+    ),
+  ),
+
+  // ─── Box / Spacing ─────────────────────────────────────────────
+  // padding and margin lists are the actual values. stripunits:true removes
+  // the px suffix from class names (e.g. p-10 instead of p-10px).
+  'box': (
+    'stripunits':   true,
+    'padding':      (0, 5px, 10px, 15px, 20px),   // → .p-0 .p-5 .p-10 …
+    'margin':       (0, auto, 5px, 10px, 20px),   // → .m-0 .m-auto .m-5 …
+    'width':        (100%, 200px, 400px),          // → .w-100\% .w-200 …
+    'height':       (100%, 40px),
+    'positions':    (0, 5px, 10px),               // top/right/bottom/left helpers
+    'z-index':      (1, 2, 99),
+    'border-radius':(0, 4px, 50%),                // → .rad-0 .rad-4 .rad-50\%
+    'border-width': (0, 1px, 2px),                // → .b-0 .b-1 .b-2
+
+    // Named or numeric keys — key becomes the class suffix: bs-{key}
+    // Add a named key for semantic aliases: hover:bs-card
+    'shadow': (
+      '0':    "none",
+      '1':    "0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)",
+      '2':    "0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)",
+      'card': "0 2px 8px rgba(0,0,0,0.10), 0 1px 3px rgba(0,0,0,0.08)",
+    ),
+  ),
+
+  // ─── Grid ──────────────────────────────────────────────────────
+  // columns: number of grid columns.
+  // screens: each breakpoint doubles the class count for every utility.
+  // Remove breakpoints you don't need to reduce output size significantly.
+  'grid': (
+    'columns':   12,
+    'gutter':    30px,
+    'utilities': true,
+    'screens': (
+      'xs': 576px,
+      'sm': 768px,
+      'md': 992px,
+      'lg': 1200px,
+    ),
+  ),
+
+  // ─── Colors ────────────────────────────────────────────────────
+  // Format: 'name:variant1,variant2,...': #baseHex
+  // Each variant generates .name-text:variant, .name-fill:variant, .name-border:variant
+  // plus all their responsive and state variants → colors are the biggest CSS cost.
+  // 
+  // Omit variants to generate only the base (500): 'white': #fff
+  'colors': (
+    'palette': (
+      'transparent': transparent,
+      'white':       #FFFFFF,
+      'black':       #000000,
+      'gray:300,500,700':         #9E9E9E,   // → .gray-text:300 .gray-fill:500 …
+      'blue:100,300,500,700,900': #2196F3,   // → .blue-text .blue-fill .blue-border …
+      'red:300,500,700':          #F44336,
+    ),
+
+    // Lightness/darkness adjustment per variant (positive = lighter, negative = darker)
+    'variants': (
+      '100': 70,
+      '300': 30,
+      '500': 0,    // base — no adjustment
+      '700': -21,
+      '900': -52.5,
+    ),
+
+    // Named or numeric gradient keys → grad-{key}
+    'gradients': (
+      '0':          linear-gradient(90deg, #2196F3, #9E9E9E),
+      'blue-fade':  linear-gradient(180deg, #2196F3 0%, transparent 100%),
+    ),
+  ),
+
+  // ─── Utilities ─────────────────────────────────────────────────
+  'utilities': (
+    'cursor':          ('pointer', 'default', 'grab', 'grabbing'),
+    'text-decoration': ('none', 'underline', 'line-through'),
+    'vertical-align':  ('middle', 'top', 'bottom'),
+    'list-style-type': ('none', 'disc', 'decimal'),
+  ),
+);</pre>
+    </div>    <h3>How to use your config</h3>
+    <pre>// main.scss
+@use 'my-config' as *;            // exposes $defaultConfig
+@use 'fastcss' with ($config: $defaultConfig);</pre>
   </div>
 
   <div class="section" id="responsive">
@@ -1032,16 +1312,16 @@ yarn add fastcss</pre>
     <h3 class="mb-10">container</h3>
     <p class="fs-sm gray-text mb-10">Centered, max-width constrained per breakpoint. Resize the window to see it adapt.</p>
     <div class="mb-20" style="overflow:hidden;">
-      <div class="container gray-fill:50">
-          <div class="row gray-fill:200 mb-10">
+      <div class="container blue-fill:50 rad-3">
+          <div class="row blue-fill:100 rad-3 mb-10">
               <div class="xs:col-12 sm:col-3 md:col-2 lg:col-1">
-                  <div class="pv-10 mv-10 gray-fill:50"></div>
+                  <div class="pv-10 mv-10 blue-fill:300 rad-3"></div>
               </div>
               <div class="xs:col-6 sm:col-6 md:col-8 lg:col-10">
-                  <div class="pv-10 mv-10 gray-fill:50"></div>
+                  <div class="pv-10 mv-10 blue-fill:300 rad-3"></div>
               </div>
               <div class="xs:col-6 sm:col-3 md:col-2 lg:col-1">
-                  <div class="pv-10 mv-10 gray-fill:50"></div>
+                  <div class="pv-10 mv-10 blue-fill:300 rad-3"></div>
               </div>
           </div>
       </div>
@@ -1057,32 +1337,32 @@ yarn add fastcss</pre>
     <h3 class="mb-10">container-fluid</h3>
     <p class="fs-sm gray-text mb-10">Always stretches to full width, only adds gutter padding on the sides.</p>
     <div class="mb-10" style="overflow:hidden;">
-      <div class="container-fluid gray-fill:50">
-          <div class="row gray-fill:200 mb-10">
+      <div class="container-fluid blue-fill:50 rad-3">
+          <div class="row blue-fill:100 rad-3 mb-10">
               <div class="xs:col-12 sm:col-3 md:col-2 lg:col-1">
-                  <div class="pv-10 mv-10 gray-fill:50"></div>
+                  <div class="pv-10 mv-10 blue-fill:300 rad-3"></div>
               </div>
               <div class="xs:col-6 sm:col-6 md:col-8 lg:col-10">
-                  <div class="pv-10 mv-10 gray-fill:50"></div>
+                  <div class="pv-10 mv-10 blue-fill:300 rad-3"></div>
               </div>
               <div class="xs:col-6 sm:col-3 md:col-2 lg:col-1">
-                  <div class="pv-10 mv-10 gray-fill:50"></div>
+                  <div class="pv-10 mv-10 blue-fill:300 rad-3"></div>
               </div>
           </div>
-          <div class="row gray-fill:200 mb-10">
+          <div class="row blue-fill:100 rad-3 mb-10">
               <div class="xs:col-12 sm:col-3 md:col-2 lg:col-1">
-                  <div class="pv-10 mv-10 gray-fill:50"></div>
+                  <div class="pv-10 mv-10 blue-fill:300 rad-3"></div>
               </div>
               <div class="xs:col-12 sm:col-9 md:col-10 lg:col-11">
-                  <div class="pv-10 mv-10 gray-fill:50"></div>
+                  <div class="pv-10 mv-10 blue-fill:300 rad-3"></div>
               </div>
           </div>
-          <div class="row gray-fill:200 mb-10">
+          <div class="row blue-fill:100 rad-3 mb-10">
               <div class="xs:col-10 sm:col-6 md:col-8 lg:col-10">
-                  <div class="pv-10 mv-10 gray-fill:50"></div>
+                  <div class="pv-10 mv-10 blue-fill:300 rad-3"></div>
               </div>
               <div class="xs:col-2 sm:col-6 md:col-4 lg:col-2">
-                  <div class="pv-10 mv-10 gray-fill:50"></div>
+                  <div class="pv-10 mv-10 blue-fill:300 rad-3"></div>
               </div>
           </div>
       </div>
@@ -1469,6 +1749,26 @@ yarn add fastcss</pre>
     </div>
   </div>
 
+  <!-- ─── Footer ──────────────────────────────────────────────────────────── -->
+  <footer class="page-footer">
+    <span>© <a href="https://github.com/lucianene" target="_blank" rel="noopener">Lucian Ene</a> — MIT License</span>
+    <div style="display:flex;gap:20px;flex-wrap:wrap;">
+      <a href="https://github.com/fastcss/fastcss" target="_blank" rel="noopener">
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M10.226 17.284c-2.965-.36-5.054-2.493-5.054-5.256 0-1.123.404-2.336 1.078-3.144-.292-.741-.247-2.314.09-2.965.898-.112 2.111.36 2.83 1.01.853-.269 1.752-.404 2.853-.404 1.1 0 1.999.135 2.807.382.696-.629 1.932-1.1 2.83-.988.315.606.36 2.179.067 2.942.72.854 1.101 2 1.101 3.167 0 2.763-2.089 4.852-5.098 5.234.763.494 1.28 1.572 1.28 2.807v2.336c0 .674.561 1.056 1.235.786 4.066-1.55 7.255-5.615 7.255-10.646C23.5 6.188 18.334 1 11.978 1 5.62 1 .5 6.188.5 12.545c0 4.986 3.167 9.12 7.435 10.669.606.225 1.19-.18 1.19-.786V20.63a2.9 2.9 0 0 1-1.078.224c-1.483 0-2.359-.808-2.987-2.313-.247-.607-.517-.966-1.034-1.033-.27-.023-.359-.135-.359-.27 0-.27.45-.471.898-.471.652 0 1.213.404 1.797 1.235.45.651.921.943 1.483.943.561 0 .92-.202 1.437-.719.382-.381.674-.718.944-.943"></path></svg>
+        fastcss/fastcss
+      </a>
+      <a href="https://github.com/lucianene" target="_blank" rel="noopener">
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M10.226 17.284c-2.965-.36-5.054-2.493-5.054-5.256 0-1.123.404-2.336 1.078-3.144-.292-.741-.247-2.314.09-2.965.898-.112 2.111.36 2.83 1.01.853-.269 1.752-.404 2.853-.404 1.1 0 1.999.135 2.807.382.696-.629 1.932-1.1 2.83-.988.315.606.36 2.179.067 2.942.72.854 1.101 2 1.101 3.167 0 2.763-2.089 4.852-5.098 5.234.763.494 1.28 1.572 1.28 2.807v2.336c0 .674.561 1.056 1.235.786 4.066-1.55 7.255-5.615 7.255-10.646C23.5 6.188 18.334 1 11.978 1 5.62 1 .5 6.188.5 12.545c0 4.986 3.167 9.12 7.435 10.669.606.225 1.19-.18 1.19-.786V20.63a2.9 2.9 0 0 1-1.078.224c-1.483 0-2.359-.808-2.987-2.313-.247-.607-.517-.966-1.034-1.033-.27-.023-.359-.135-.359-.27 0-.27.45-.471.898-.471.652 0 1.213.404 1.797 1.235.45.651.921.943 1.483.943.561 0 .92-.202 1.437-.719.382-.381.674-.718.944-.943"></path></svg>
+        lucianene
+      </a>
+      <a href="https://www.npmjs.com/package/fastcss" target="_blank" rel="noopener">
+        <svg viewBox="0 0 27.23 27.23" width="15" height="15" aria-hidden="true"><rect fill="#CC3534" width="27.23" height="27.23" rx="2"></rect><polygon fill="#fff" points="5.8 21.75 13.66 21.75 13.67 9.98 17.59 9.98 17.58 21.76 21.51 21.76 21.52 6.06 5.82 6.04 5.8 21.75"></polygon></svg>
+        fastcss on npm
+      </a>
+      <a href="https://fastcss.org/" target="_blank" rel="noopener">fastcss.org</a>
+    </div>
+  </footer>
+
 </main>
 
 <script>
@@ -1502,6 +1802,81 @@ yarn add fastcss</pre>
     link.addEventListener('click', function () {
       if (window.innerWidth <= 768) closeMenu();
     });
+  });
+}());
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+<script>
+// Wrap all <pre> contents in <code> for highlight.js, skipping already-wrapped ones
+document.querySelectorAll('pre').forEach(function(pre) {
+  if (pre.querySelector('code')) return;
+  var code = document.createElement('code');
+  code.textContent = pre.textContent;
+  pre.textContent = '';
+  pre.appendChild(code);
+});
+hljs.highlightAll();
+
+// ─── Copy button ─────────────────────────────────────────────────────────────
+document.querySelectorAll('pre').forEach(function(pre) {
+  var btn = document.createElement('button');
+  btn.className = 'copy-btn';
+  btn.textContent = 'Copy';
+  btn.addEventListener('click', function() {
+    var text = pre.querySelector('code') ? pre.querySelector('code').innerText : pre.innerText;
+    navigator.clipboard.writeText(text).then(function() {
+      btn.textContent = 'Copied!';
+      btn.classList.add('copied');
+      setTimeout(function() { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 1800);
+    });
+  });
+  pre.appendChild(btn);
+});
+
+// ─── Active nav on scroll ─────────────────────────────────────────────────────
+(function() {
+  var sections = document.querySelectorAll('.section[id]');
+  var navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        navLinks.forEach(function(l) { l.classList.remove('active'); });
+        var link = document.querySelector('.nav-link[href="#' + entry.target.id + '"]');
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -75% 0px' });
+  sections.forEach(function(s) { observer.observe(s); });
+}());
+
+// ─── Dark mode toggle ─────────────────────────────────────────────────────────
+(function() {
+  var btn = document.getElementById('darkToggle');
+  var theme = document.getElementById('hljs-theme');
+  var LIGHT = 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github.min.css';
+  var DARK  = 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github-dark.min.css';
+
+  function applyTheme(dark) {
+    document.documentElement.classList.toggle('dark', dark);
+    theme.href = dark ? DARK : LIGHT;
+    localStorage.setItem('theme', dark ? 'dark' : 'light');
+  }
+
+  // Sync button label on load
+  applyTheme(document.documentElement.classList.contains('dark'));
+
+  btn.addEventListener('click', function() {
+    applyTheme(!document.documentElement.classList.contains('dark'));
+  });
+}());
+(function() {
+  var btn = document.getElementById('backToTop');
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+  btn.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 }());
 </script>
