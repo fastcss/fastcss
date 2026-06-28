@@ -1,7 +1,7 @@
 {
   "name": "fastcss",
   "description": "A config-driven SASS/SCSS utility CSS framework. Generate responsive helper classes for colors, typography, flexbox, grid, spacing and shadows from a single config map.",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "style": "dist/fastcss.css",
   "sass": "scss/fastcss.scss",
   "scripts": {
