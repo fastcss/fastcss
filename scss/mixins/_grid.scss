@@ -17,7 +17,6 @@
 
 @mixin make-grid-utilities($screen, $columns) {
   @include column-utilities($screen, $columns);
-  @include row-utilities($screen);
 }
 
 @mixin row($gutterHalf) {
@@ -106,22 +105,6 @@
       right: math.percentage(math.div($column, $columns));
     }
   }
-}
-
-@mixin row-utilities($screen) {
-  $screenText: '';
-  @if $screen { $screenText: $screen+'\\:'; }
-
-  .#{$screenText}items-start { justify-content: flex-start; }
-  .#{$screenText}items-end { justify-content: flex-end; }
-  .#{$screenText}items-center { justify-content: center; }
-  .#{$screenText}items-top { align-items: flex-start; }
-  .#{$screenText}items-bottom { align-items: flex-end; }
-  .#{$screenText}items-middle { align-items: center; }
-  .#{$screenText}items-around { justify-content: space-around; }
-  .#{$screenText}items-between { justify-content: space-between; }
-  .#{$screenText}items-initial-items { order: initial; }
-  .#{$screenText}items-reverse { flex-direction: row-reverse; }
 }
 
 @mixin screen-max($screen) {

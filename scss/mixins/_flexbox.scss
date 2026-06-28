@@ -1,4 +1,29 @@
+@use '../functions' as *;
+@use 'sass:map';
+
+// Maps each CSS property name to the class-name prefix used when generating
+// utility classes.  Class format:  .{screen-prefix}{cls-prefix}-{suffix}
+//
+// Example:  gap → .gap-4   |   column-gap → .col-gap-8   |   align-items → .items-center
+$_prop-prefixes: (
+  'align-content':   'content',
+  'align-items':     'items',
+  'align-self':      'self',
+  'flex-basis':      'basis',
+  'flex-direction':  'flex',
+  'flex-grow':       'grow',
+  'flex-shrink':     'shrink',
+  'flex-wrap':       'flex',
+  'justify-content': 'justify',
+  'order':           'order',
+  'gap':             'gap',
+  'row-gap':         'row-gap',
+  'column-gap':      'col-gap',
+);
+
 @mixin make-flexbox($prefix: null) {
+  $flexbox: conf('utilities.flexbox');
+
   // ─── Display ────────────────────────────────────────────────────────────────
   .#{$prefix}flex        { display: flex; }
   .#{$prefix}inline-flex { display: inline-flex; }
@@ -11,68 +36,27 @@
   .#{$prefix}flex-initial { flex: 0 1 auto; }
   .#{$prefix}flex-none    { flex: none; }
 
-  // ─── flex-direction ─────────────────────────────────────────────────────────
-  .#{$prefix}flex-row            { flex-direction: row; }
-  .#{$prefix}flex-row-reverse    { flex-direction: row-reverse; }
-  .#{$prefix}flex-col            { flex-direction: column; }
-  .#{$prefix}flex-col-reverse    { flex-direction: column-reverse; }
+  // ─── grow / shrink semantic aliases ─────────────────────────────────────────
+  .#{$prefix}grow   { flex-grow: 1; }
+  .#{$prefix}shrink { flex-shrink: 1; }
 
-  // ─── flex-wrap ──────────────────────────────────────────────────────────────
-  .#{$prefix}flex-wrap           { flex-wrap: wrap; }
-  .#{$prefix}flex-wrap-reverse   { flex-wrap: wrap-reverse; }
-  .#{$prefix}flex-nowrap         { flex-wrap: nowrap; }
+  // ─── order static helpers ───────────────────────────────────────────────────
+  .#{$prefix}order-first { order: -9999; }
+  .#{$prefix}order-last  { order: 9999; }
+  .#{$prefix}order-none  { order: 0; }
 
-  // ─── flex-grow ──────────────────────────────────────────────────────────────
-  .#{$prefix}grow                { flex-grow: 1; }
-  .#{$prefix}grow-0              { flex-grow: 0; }
-
-  // ─── flex-shrink ────────────────────────────────────────────────────────────
-  .#{$prefix}shrink              { flex-shrink: 1; }
-  .#{$prefix}shrink-0            { flex-shrink: 0; }
-
-  // ─── flex-basis ─────────────────────────────────────────────────────────────
-  .#{$prefix}basis-auto          { flex-basis: auto; }
-  .#{$prefix}basis-full          { flex-basis: 100%; }
-  .#{$prefix}basis-0             { flex-basis: 0; }
-
-  // ─── justify-content ────────────────────────────────────────────────────────
-  .#{$prefix}justify-start       { justify-content: flex-start; }
-  .#{$prefix}justify-end         { justify-content: flex-end; }
-  .#{$prefix}justify-center      { justify-content: center; }
-  .#{$prefix}justify-between     { justify-content: space-between; }
-  .#{$prefix}justify-around      { justify-content: space-around; }
-  .#{$prefix}justify-evenly      { justify-content: space-evenly; }
-
-  // ─── align-items ────────────────────────────────────────────────────────────
-  .#{$prefix}items-start         { align-items: flex-start; }
-  .#{$prefix}items-end           { align-items: flex-end; }
-  .#{$prefix}items-center        { align-items: center; }
-  .#{$prefix}items-baseline      { align-items: baseline; }
-  .#{$prefix}items-stretch       { align-items: stretch; }
-
-  // ─── align-content ──────────────────────────────────────────────────────────
-  .#{$prefix}content-start       { align-content: flex-start; }
-  .#{$prefix}content-end         { align-content: flex-end; }
-  .#{$prefix}content-center      { align-content: center; }
-  .#{$prefix}content-between     { align-content: space-between; }
-  .#{$prefix}content-around      { align-content: space-around; }
-  .#{$prefix}content-evenly      { align-content: space-evenly; }
-  .#{$prefix}content-stretch     { align-content: stretch; }
-
-  // ─── align-self ─────────────────────────────────────────────────────────────
-  .#{$prefix}self-auto           { align-self: auto; }
-  .#{$prefix}self-start          { align-self: flex-start; }
-  .#{$prefix}self-end            { align-self: flex-end; }
-  .#{$prefix}self-center         { align-self: center; }
-  .#{$prefix}self-baseline       { align-self: baseline; }
-  .#{$prefix}self-stretch        { align-self: stretch; }
-
-  // ─── order ──────────────────────────────────────────────────────────────────
-  .#{$prefix}order-first         { order: -9999; }
-  .#{$prefix}order-last          { order: 9999; }
-  .#{$prefix}order-none          { order: 0; }
-  @for $i from 1 through 12 {
-    .#{$prefix}order-#{$i}       { order: $i; }
+  // ─── Config-driven classes ──────────────────────────────────────────────────
+  // Each entry in utilities.flexbox is a map of  suffix → CSS value.
+  // The $_prop-prefixes map above resolves the class-name prefix per property.
+  @each $prop, $values in $flexbox {
+    $cls-prefix: map.get($_prop-prefixes, $prop);
+    @if $cls-prefix {
+      @each $suffix, $value in $values {
+        .#{$prefix}#{$cls-prefix}-#{$suffix} {
+          #{$prop}: #{$value};
+        }
+      }
+    }
   }
 
   // ─── Shorthand helpers ──────────────────────────────────────────────────────
